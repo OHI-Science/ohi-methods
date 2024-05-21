@@ -4,7 +4,7 @@ project:
 
 website:
   title: "ohi-methods"
-  navbar:
+  sidebar:
     left:
       - href: index.qmd
         text: Home
@@ -34,7 +34,7 @@ website:
         text: 6. Description of Data Layers
         # 107 subsections :)
         
-      - href: #references.qmd
+      - href: ohi-global/documents/OHI.bib
         text: References
         
 
