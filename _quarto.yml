@@ -9,28 +9,28 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
-      - href: #tbd
+      - href: OHI-theory.qmd
       # look up numbering
         text: 1. Theory of OHI
         
-      - href: #tbd
+      - href: OHI-score-anatomy.qmd
         text: 2. Brief Anatomy of OHI Scores # data inclusion, data gaps
         
-      - href: #index.qmd
+      - href: regions.qmd
         text: 3. Regions
       
-      - href: #index.qmd
+      - href: models/models.qmd
         text: 4. Models
         # subsections: 
         # regional and global index scores
         # goal scores
         # likely future status dimensions
         
-      - href: #index.qmd
+      - href: goals/goal-models-data.qmd
         text: 5. Goal Models and Data
         # has all 10 goals etc.
         
-      - href: #index.qmd
+      - href: data-layers/data-layer-descriptions.qmd
         text: 6. Description of Data Layers
         # 107 subsections :)
         
