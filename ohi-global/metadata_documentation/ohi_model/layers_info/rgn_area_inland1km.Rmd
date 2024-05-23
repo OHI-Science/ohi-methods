@@ -1,4 +1,4 @@
-See **`r layer_meta$name[layer_meta$layer == 'rgn_area']`** layer for more information.
+
 
 Area (km^2^) located from each region's land-sea interface to 1 km inland. 
 

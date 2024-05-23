@@ -24,10 +24,10 @@ Description of the stressor data layers used to calculate overall pressure for e
 
 ```{r pressure categories, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
 
-full_lyr_names <- read.csv(here("ohi-global/metadata_documentation/layers_eez_base.csv")) %>% 
+full_lyr_names <- read_csv(here("ohi-global/metadata_documentation/layers_eez_base.csv")) %>% 
   select(layer, name, description)
 
-pressure_cat <- read.csv(here("ohi-global/eez/conf/pressure_categories.csv")) %>% 
+pressure_cat <- read_csv(here("ohi-global/eez/conf/pressure_categories.csv")) %>% 
   left_join(full_lyr_names, by = "layer") %>% 
   mutate(subcategory = gsub("_", " ", subcategory)) %>%
   select(Data = name, "Short name" = layer, Category = category, Subcategory = subcategory, Description = description)

@@ -3,11 +3,15 @@ project:
   output-dir: docs
 
 website:
-  title: "ohi-methods"
   sidebar:
-    left:
+    title: "OHI Methods 2024 (test)"
+    logo: media/OHI-logo.png
+    style: "docked"
+    search: true
+    contents:
       - href: index.qmd
         text: Home
+        icon: house
       - about.qmd
       - href: OHI-theory.qmd
       # look up numbering
@@ -34,8 +38,8 @@ website:
         text: 6. Description of Data Layers
         # 107 subsections :)
         
-      - href: ohi-global/documents/OHI.bib
-        text: References
+      # - href: ohi-global/documents/OHI.bib
+      #   text: References
         
         
   page-footer: 
