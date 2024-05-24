@@ -1,18 +1,22 @@
 project:
   type: website
+  render: 
+    - "!ohi-global/"
+    - "*.qmd"
+    - "*.png"
   output-dir: docs
+  
 
 website:
   sidebar:
-    title: "OHI Methods 2024 (test)"
-    logo: media/OHI-logo.png
+    title: "OHI Methods 2024"
+    logo: media/ohi_banner.png
     style: "docked"
     search: true
     contents:
       - href: index.qmd
         text: Home
         icon: house
-      - about.qmd
       - href: OHI-theory.qmd
       # look up numbering
         text: 1. Theory of OHI
