@@ -3,7 +3,7 @@ title: "1. Theory of OHI"
 toc: true
 ---
 
-![Credit: Pixabay](media/ocean_sunset_island.jpg){fig-align="right"}
+[![Credit: Body of Water during Dawn, Pixabay](media/ocean_sunset_island.jpg){fig-align="right"}](https://www.pexels.com/photo/body-of-water-during-dawn-37403/)
 
 ## 1.1 A comprehensive framework to assess ocean health
 
