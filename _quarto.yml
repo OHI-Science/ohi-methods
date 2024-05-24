@@ -10,7 +10,7 @@ project:
 website:
   sidebar:
     title: "OHI Methods 2024"
-    logo: media/ohi_banner.png
+    logo: media/OHI_Logo_Blue.png
     style: "docked"
     search: true
     contents:
