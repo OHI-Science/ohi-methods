@@ -25,10 +25,10 @@ website:
         text: 2. Brief Anatomy of OHI Scores # data inclusion, data gaps
         
       - href: regions.qmd
-        text: 3. Regions
+        text: 3. Regions 
       
       - href: models/models.qmd
-        text: 4. Models
+        text: 4. Models # this is where the "child = ..." issue first arises 
         # subsections: 
         # regional and global index scores
         # goal scores

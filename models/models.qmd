@@ -1,3 +1,63 @@
 ---
 title: "4. Models"
+toc: TRUE
 ---
+
+```{r models_setup}
+# setup
+
+library(knitr)
+library(xtable)
+library(pander)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(here)
+library(kableExtra)
+
+options(knitr.kable.NA = '')
+
+# If there are changes to the references, run BIBcorrect.R!!!
+
+# exclude when knitting
+# setwd("documents/methods")
+# assessmentYear <- 2023
+assessmentYear <- 2024
+
+# sections to run:
+ten_goals <- TRUE
+index_scores <- TRUE
+table_regions <- TRUE
+goal_model <- TRUE
+trend <- TRUE
+pressure <- TRUE
+resilience <- TRUE
+
+```
+
+
+## Regional and global Index scores
+```{r child = '../../metadata_documentation/ohi_model/index_scores.Rmd', eval=index_scores}
+# just copy paste that content into a new subheading 
+```
+
+## Goal scores
+```{r child = '../../metadata_documentation/ohi_model/goal_model.Rmd', eval=goal_model}
+
+```
+
+## Likely future status dimensions
+Three dimensions are used to calculate likely future status: trends, pressure, and resilience.  This section describes the calculations underlying these three dimensions.
+
+```{r child = '../../metadata_documentation/ohi_model/trend.Rmd', eval=trend}
+
+```
+
+```{r child = '../../metadata_documentation/ohi_model/pressure.Rmd', eval=pressure}
+
+```
+
+```{r child = '../../metadata_documentation/ohi_model/resilience.Rmd', eval=resilience}
+
+```
+
