@@ -27,8 +27,8 @@ website:
       - href: regions.qmd
         text: 3. Regions 
       
-      - href: models/models.qmd
-        text: 4. Models # this is where the "child = ..." issue first arises 
+      # - href: models/models.qmd
+      #   text: 4. Models # this is where the "child = ..." issue first arises 
         # subsections: 
         # regional and global index scores
         # goal scores

@@ -1,5 +1,7 @@
 ---
 title: "2. Brief Anatomy of OHI Scores"
+editor_options: 
+  chunk_output_type: console
 ---
 
 # A Brief Anatomy of OHI Scores
@@ -8,8 +10,16 @@ We define ocean health as the sustainable delivery of ten widely-held public goa
 
 ## 10 Goals of OHI
 
-**Table 2.1. The 10 goals of the Ocean Health Index** 
+**Table 2.1. The 10 goals of the Ocean Health Index**
+
 ```{r ten_goals, eval = TRUE, echo=FALSE}
+library(dplyr)
+library(kableExtra)
+library(knitr)
+library(xtable)
+library(pander)
+library(tidyr)
+library(ggplot2)
 
 goals <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/tables/ten_goals.csv") %>%
   select(Goal, Abbreviation, Description) %>%
@@ -19,15 +29,15 @@ kable(goals) %>%
   kableExtra::kable_styling(full_width = T)
 ```
 
-
 <br/>
 
 ## Subgoals
 
-**Table 2.2. Subgoals used to calculate 4 of the Ocean Health Index goals** 
-```{r subgoals, eval = ten_goals, echo=FALSE}
+**Table 2.2. Subgoals used to calculate 4 of the Ocean Health Index goals**
 
-subgoals <- read.csv(here("metadata_documentation/ohi_model/tables/Subgoal_Descriptions.csv")) %>%
+```{r subgoals, echo=FALSE}
+
+subgoals <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/tables/Subgoal_Descriptions.csv") %>%
   select(Subgoal, Goal, Abbreviation, Description) %>%
   arrange(Goal)
 
@@ -35,44 +45,35 @@ kable(subgoals) %>%
   kableExtra::kable_styling(full_width = F)
 ```
 
-Goal (and subgoal scores) are calculated using several variables (referred to as “dimensions”, Table 2.3).  Goal scores (Section 5.2) are calculated as the average of current status (Section 5) and likely future status.  Likely future status (Section 5.3) is the current status modified by variables (resilience, pressures, and trend) expected to influence future status. 
+Goal (and subgoal scores) are calculated using several variables (referred to as “dimensions”, Table 2.3). Goal scores (Section 5.2) are calculated as the average of current status (Section 5) and likely future status. Likely future status (Section 5.3) is the current status modified by variables (resilience, pressures, and trend) expected to influence future status.
 
 <br/>
 
 ## Dimensions
 
-**Table 2.3. Dimension used to calculate an OHI goal score**
-Goal scores are the average of current and likely future status.  Likely future status adjusts current status scores based on pressures and resilience variables acting on the goal as well as recent trends in status.
+**Table 2.3. Dimension used to calculate an OHI goal score** Goal scores are the average of current and likely future status. Likely future status adjusts current status scores based on pressures and resilience variables acting on the goal as well as recent trends in status.
 
-Dimension        | Subdimension   | Description                  | More information     | Calculating
----------------- | ----------- | ---------------------------- | -------------------- | ----------------------
-Current status   |  -          | Current state of the goal relative to the desired "reference point".  Values range from 0-100. | *Section 6. Goal models and data* | Calculated using functions in ohi-global repo: https://github.com/OHI-Science/ohi-global/blob/draft/eez/conf/functions.R and the *scenario_data_years.csv* file (in same folder)
-Predicted future status | Resilience | Variables such as good governance and ecological factors that provide resilience to pressures, and thus, are likely to improve future status.  Values range from 0-100  | *Section 5.3 Likely future status dimensions* | Calculated using functions in ohicore package.And, files: *resilience_categories.csv* and *resilience_matrix.csv* located here: https://github.com/OHI-Science/ohi-global/tree/draft/eez/conf
-Predicted future status | Pressure  | Pressures stress the system and threaten future delivery of benefits, and thus, are likely to reduce future status. Values range from 0-100  | *Section 5.3 Likely future status dimensions* | Calculated using function in ohicore package.  And, files: *pressure_categories.csv* and *pressures_matrix.csv*, located here: https://github.com/OHI-Science/ohi-global/tree/draft/eez/conf
-Predicted future status | Trend  | Average yearly change in status (typically estimated using most recent 5 years of data) multiplied by 5 to esimate five years into the future.  Units are proportional change (absolute change/year is divided by the value of the earliest year) and range from -1 to 1  | *Section 5.3 Likely future status dimensions* | Calculated using functions from ohi-global repo: https://github.com/OHI-Science/ohi-global/blob/draft/eez/conf/functions.R and the scenario_data_years.csv file (in same folder)
+| Dimension               | Subdimension | Description                                                                                                                                                                                                                                                             | More information                              | Calculating                                                                                                                                                                                   |
+|--------------|--------------|-----------------|--------------|--------------|
+| Current status          | \-           | Current state of the goal relative to the desired "reference point". Values range from 0-100.                                                                                                                                                                           | *Section 6. Goal models and data*             | Calculated using functions in ohi-global repo: https://github.com/OHI-Science/ohi-global/blob/draft/eez/conf/functions.R and the *scenario_data_years.csv* file (in same folder)              |
+| Predicted future status | Resilience   | Variables such as good governance and ecological factors that provide resilience to pressures, and thus, are likely to improve future status. Values range from 0-100                                                                                                   | *Section 5.3 Likely future status dimensions* | Calculated using functions in ohicore package.And, files: *resilience_categories.csv* and *resilience_matrix.csv* located here: https://github.com/OHI-Science/ohi-global/tree/draft/eez/conf |
+| Predicted future status | Pressure     | Pressures stress the system and threaten future delivery of benefits, and thus, are likely to reduce future status. Values range from 0-100                                                                                                                             | *Section 5.3 Likely future status dimensions* | Calculated using function in ohicore package. And, files: *pressure_categories.csv* and *pressures_matrix.csv*, located here: https://github.com/OHI-Science/ohi-global/tree/draft/eez/conf   |
+| Predicted future status | Trend        | Average yearly change in status (typically estimated using most recent 5 years of data) multiplied by 5 to esimate five years into the future. Units are proportional change (absolute change/year is divided by the value of the earliest year) and range from -1 to 1 | *Section 5.3 Likely future status dimensions* | Calculated using functions from ohi-global repo: https://github.com/OHI-Science/ohi-global/blob/draft/eez/conf/functions.R and the scenario_data_years.csv file (in same folder)              |
 
-
-**Figure 2.1. Relationship between OHI dimensions and scores**
-This figure describes how the dimensions come together to calculate a goal score.  This figure represents equations 4.3 and 4.5. 
-![](../../metadata_documentation/ohi_model/figures/OHI dimensions.png)
-
-
+**Figure 2.1. Relationship between OHI dimensions and scores** This figure describes how the dimensions come together to calculate a goal score. This figure represents equations 4.3 and 4.5. ![](../../metadata_documentation/ohi_model/figures/OHI%20dimensions.png)
 
 Finally, an overall Index score for each region is calculated by averaging the goal scores (Figure 2.2).
 
-**Figure 2.2. Example flowerplot of goal scores for a region**
-Goal and subgoal scores for Canada.  The middle value is the regional Index score, and is calculated by averaging the goal scores.
-![](../../metadata_documentation/ohi_model/figures/flower_Canada_alt.png)
-
+**Figure 2.2. Example flowerplot of goal scores for a region** Goal and subgoal scores for Canada. The middle value is the regional Index score, and is calculated by averaging the goal scores. ![](../../metadata_documentation/ohi_model/figures/flower_Canada_alt.png)
 
 ## Data inclusion and data gaps
 
-Ideally, regional and local assessments should use the best available data, but this decision limits the ability to compare across scales. For direct comparisons among locations to be valid, they must use consistent data.  For this reason, we focused on using global datasets so differences in Index scores across regions are driven by differences in ocean health rather than variation in the data. Although, in reality, many global datasets are compilations of local or regional datasets and their quality varies spatially. In some cases, data for a particular component or dimension of a goal were available for most, but not all, countries. Gaps in these data were known to not be true zero values. Rather than exclude these data layers, we employed several different methods to fill these data gaps [@frazier2016mapping].  
+Ideally, regional and local assessments should use the best available data, but this decision limits the ability to compare across scales. For direct comparisons among locations to be valid, they must use consistent data. For this reason, we focused on using global datasets so differences in Index scores across regions are driven by differences in ocean health rather than variation in the data. Although, in reality, many global datasets are compilations of local or regional datasets and their quality varies spatially. In some cases, data for a particular component or dimension of a goal were available for most, but not all, countries. Gaps in these data were known to not be true zero values. Rather than exclude these data layers, we employed several different methods to fill these data gaps [@frazier2016mapping].
 
-These guidelines both motivated and constrained our methods. The development of the model frameworks for each goal (including reference points) was heavily dictated by the availability of global datasets. And, ultimately, several key elements related to ocean health could not be included due to lack of existing or appropriate global datasets. As new and better data become available in the future, details of how goals or dimensions are modeled will likely change, although the framework we have developed can accommodate these changes. 
+These guidelines both motivated and constrained our methods. The development of the model frameworks for each goal (including reference points) was heavily dictated by the availability of global datasets. And, ultimately, several key elements related to ocean health could not be included due to lack of existing or appropriate global datasets. As new and better data become available in the future, details of how goals or dimensions are modeled will likely change, although the framework we have developed can accommodate these changes.
 
-For Index scores to be comparable, every region must have a value for each data layer included in the analysis, unless it is known to not be relevant to a region. In other words, missing data are not acceptable [@burgass2017navigating]. Adhering to this criterion is critical to avoid influencing the Index score simply because of inclusion (or absence) of a particular data layer for any reporting region.  
+For Index scores to be comparable, every region must have a value for each data layer included in the analysis, unless it is known to not be relevant to a region. In other words, missing data are not acceptable [@burgass2017navigating]. Adhering to this criterion is critical to avoid influencing the Index score simply because of inclusion (or absence) of a particular data layer for any reporting region.
 
-Gaps in data are common; many developing countries lack the resources to gather detailed datasets, and even developed, data-rich countries have inevitable data gaps.  We use a variety of methods to estimate missing data, including: averages of closely related groups (e.g., regions sharing ecological, spatial, political attributes; taxonomic groups; etc.), spatial or temporal interpolation (e.g., raster or time-series data), and predictive models (e.g., regression analysis, machine learning, etc.). Gapfilling is a major source of uncertainty, especially for certain goals and regions. Given how common gaps in data are, clear documentation of gapfilling is a critical step of index development because it provides a measure of the reliability of index scores.  
+Gaps in data are common; many developing countries lack the resources to gather detailed datasets, and even developed, data-rich countries have inevitable data gaps. We use a variety of methods to estimate missing data, including: averages of closely related groups (e.g., regions sharing ecological, spatial, political attributes; taxonomic groups; etc.), spatial or temporal interpolation (e.g., raster or time-series data), and predictive models (e.g., regression analysis, machine learning, etc.). Gapfilling is a major source of uncertainty, especially for certain goals and regions. Given how common gaps in data are, clear documentation of gapfilling is a critical step of index development because it provides a measure of the reliability of index scores.
 
 One of the ongoing goals of the Ocean Health Index (OHI) has been to improve our approach to dealing with missing data, by quantifying the potential influence of gapfilled data on index scores, and developing effective methods of tracking, quantifying, and communicating this information [@frazier2016mapping].
