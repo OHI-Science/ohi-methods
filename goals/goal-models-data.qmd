@@ -1,3 +1,115 @@
 ---
 title: "5. Goal Models and Data"
+toc: true
 ---
+
+# Goal models and data
+In this section we describe how the current status and trend of each goal was calculated. We also indicate which data layers were used to calculate current status, trend (if different from current status), pressure, and resilience.  
+
+The R code used to calculate the goal model is located [here](https://github.com/OHI-Science/ohi-global/blob/draft/eez/conf/functions.R) (scroll to the appropriate goal function). To learn more about the data layers used in the model calculations see Section 7: Description of data layers. Table 7.1 includes links to the code and data used to create the data layers (current calculations are in the folder with the most recent year). Table 7.2 describes the data sources used to create the data layers.  
+
+
+```{r goal functions, echo=FALSE, warning=FALSE, error=FALSE, results="asis"}
+
+## data and functions used to list data layers in each goal
+
+# data with information
+layers <- read.csv(here("metadata_documentation/layers_eez_base.csv"))
+targets <- read.csv(here("metadata_documentation/layers_eez_targets.csv"))
+layers_web <- "http://ohi-science.org/ohi-global/layers.html"
+
+# function
+data_layers <- function(dimension, goal){ # goal = "ICO"; dimension=c("status", "trend")
+  
+  st <- targets[targets$goal == goal, ]
+  st <- st[st$dimension %in% dimension, ]
+  
+st <- st %>%
+  select(layer) %>%
+  unique()
+
+st_layers <- filter(layers, layer %in% st$layer) %>%
+  mutate(web_name = gsub(" ", "_", name)) %>%
+  mutate(web_name = tolower(web_name)) %>%
+  mutate(web_name = gsub("/", "", web_name)) %>%
+  mutate(info = sprintf("%s (%s): %s", name, layer, description))
+#%>%
+ # mutate(info = sprintf("[%s](%s#%s) (%s): %s", name, layers_web, web_name, layer, description))
+
+cat(paste(st_layers$info, collapse="\n\n"))
+}
+
+```
+
+
+```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/AO_long.Rmd'}
+
+```
+
+```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/BD_long.Rmd'}
+
+```
+
+```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/HAB_long.Rmd'}
+
+```
+
+```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/SPP_long.Rmd'}
+
+```
+
+```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/CP_long.Rmd'}
+
+```
+
+```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/CS_long.Rmd'}
+
+```
+
+```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/CW_long.Rmd'}
+
+```
+
+```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/FP_long.Rmd'}
+
+```
+
+```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/FIS_long.Rmd'}
+
+```
+
+```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/MAR_long.Rmd'}
+
+```
+
+```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/LE_long.Rmd'}
+
+```
+
+```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/ECO_long.Rmd'}
+
+```
+
+```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/LIV_long.Rmd'}
+
+```
+
+```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/NP_long.Rmd'}
+
+```
+
+```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/SP_long.Rmd'}
+
+```
+
+```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/ICO_long.Rmd'}
+
+```
+
+```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/LSP_long.Rmd'}
+
+```
+
+```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/TR_long.Rmd'}
+
+```

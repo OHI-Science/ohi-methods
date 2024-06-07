@@ -1,3 +1,106 @@
 ---
 title: "6. Description of Data Layers"
+toc: true
 ---
+
+# Description of data layers
+
+### Tables describing data layers (Table 7.1) and sources (Table 7.2)
+
+**Table 7.1. Data layers of `r assessmentYear` global OHI assessment**
+A brief overview of all the data layers used to calculate the global OHI.  The "Data layer" variable provides links to a full description of the data layer.  The "Description" variable provides link/s to the data preparation scripts (when available).   See Table 7.2 for a description of the data sources used to create these data layers.
+
+```{r DataLayer Table, echo=FALSE, warning=FALSE, error=FALSE, messages=FALSE}
+options(dplyr.summarise.inform=F)
+## Get list of layers, name, description:
+base <- read.csv(here("metadata_documentation/layers_eez_base.csv")) %>%
+  # mutate(Name = paste0("[", name, "](", "http://ohi-science.org/ohi-global/layers#", layer, ")")) %>%
+  select(layer, Name = name, Description = description)
+
+## Get dimension/targets
+target <- read.csv(here("metadata_documentation/layers_eez_targets.csv"), stringsAsFactors = FALSE) %>%
+  mutate(goal = ifelse(dimension %in% c("pressure", "resilience", "spatial", "weighting"), dimension, goal)) %>%
+  select(layer, goal) %>%
+    unique() %>%
+  group_by(layer) %>%
+  summarize(Dimension = paste(goal, collapse = ", "))
+
+# setdiff(base$layer, target$layer) # the sp_alien_species ends up not being used
+# setdiff(target$layer, base$layer)
+
+data <- left_join(target, base, by="layer")
+
+## Get data prep url (will be a link in description)
+url <- read.csv(here("metadata_documentation/layers_eez_dataprep.csv")) %>%
+  group_by(layer) %>%
+  mutate(N = 1) %>%
+  mutate(method_count = cumsum(N)) %>%
+  mutate(total_methods = sum(N)) %>%
+  mutate(count = sum(N)) %>%
+  mutate(url_link = ifelse(count==1,  sprintf("[data prep](http://ohi-science.org/ohiprep_v%s/%s)", assessmentYear, dataprep_url), 
+                sprintf("[data prep %s](http://ohi-science.org/ohiprep_v%s/%s)", method_count, assessmentYear, dataprep_url))) %>%
+  summarize(url_link = paste(url_link, collapse = ", ")) %>%
+  select(layer, url_link) %>%
+  ungroup()
+
+data <- left_join(data, url, by="layer") %>%
+  mutate(Description = sprintf("%s (%s)", Description, url_link)) %>%
+  select(layer, Name, Description, Dimension)
+
+## get references:
+refs <- read.csv(here("metadata_documentation/layers_eez_reference.csv")) %>%
+  select(layer, reference) %>%
+  unique() %>%
+  mutate(ref = paste0("@", reference)) %>%
+  group_by(layer) %>%
+  summarize(reference = paste(ref, collapse = "; ")) %>%
+  ungroup() %>%
+  #mutate(reference = paste0("[", reference, "]")) %>%
+  select(layer, References=reference)
+  
+# setdiff(data$layer, refs$layer) # these are reasonable layers to not have references
+
+data <- data %>%
+  left_join(refs, by="layer")
+
+### Get method updates
+updates <- read.csv(here("metadata_documentation/layers_eez_updates.csv")) %>%
+  select(layer, Updates=updates) %>%
+  unique()
+
+data <- data %>%
+  left_join(updates, by="layer") %>%
+  select(-layer) %>%
+  select(Layer=Name, Description, Dimension, References, Updates) %>%
+  arrange(Dimension)
+
+kable(data) %>%
+  kableExtra::kable_styling(full_width = F)
+
+```
+
+<br/> 
+
+**Table 7.2. Data sources used to create data layers for `r assessmentYear` global OHI assessment**
+A brief overview of the data sources used to calculate the global OHI.
+
+```{r DataSources Table, echo=FALSE, warning=FALSE, error=FALSE, messages=FALSE}
+
+### Get datasource primary data
+
+
+## get source data
+ds_source <- read.csv(here("metadata_documentation/layers_eez_data_sources.csv")) %>%
+  mutate(ds_reference = paste0("@", ds_reference)) %>%
+  select(Reference = ds_reference, "Description" = ds_description, Years=ds_years, Resolution = ds_native_resolution, Updated = sprintf("ds_updated_%s", assessmentYear))
+kable(ds_source) %>%
+  kableExtra::kable_styling(full_width = F)
+
+```
+
+
+
+```{r child = 'layers_all.Rmd'}
+## Need to run CombineLayers.R to create the relevant Rmd file
+# 'https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/documents/methods/layers_all.Rmd'
+```
