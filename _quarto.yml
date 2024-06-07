@@ -24,22 +24,25 @@ website:
       - href: OHI-score-anatomy.qmd
         text: 2. Brief Anatomy of OHI Scores # data inclusion, data gaps
         
+  #    - href: OHI-score-anatomy.qmd
+  #      text: 3. data inclusion, data gaps
+        
       - href: regions.qmd
-        text: 3. Regions 
+        text: 4. Regions 
       
       # - href: models/models.qmd
-      #   text: 4. Models # this is where the "child = ..." issue first arises 
+      #   text: 5. Models # this is where the "child = ..." issue first arises 
         # subsections: 
         # regional and global index scores
         # goal scores
         # likely future status dimensions
         
       - href: goals/goal-models-data.qmd
-        text: 5. Goal Models and Data
+        text: 6. Goal Models and Data
         # has all 10 goals etc.
         
       - href: data-layers/data-layer-descriptions.qmd
-        text: 6. Description of Data Layers
+        text: 7. Description of Data Layers
         # 107 subsections :)
         
       - href: ohi-global/documents/OHI.bib
