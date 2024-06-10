@@ -1,9 +1,6 @@
 ---
 title: "4. Models"
 toc: TRUE
-editor: 
-  markdown: 
-    wrap: 72
 ---
 
 ```{r models_setup}
