@@ -1,7 +1,7 @@
 ---
 title: "2. Brief Anatomy of OHI Scores"
 editor_options: 
-  chunk_output_type: console
+  chunk_output_type: inline
 ---
 
 # A Brief Anatomy of OHI Scores
@@ -47,26 +47,24 @@ kable(subgoals) %>%
 
 Goal (and subgoal scores) are calculated using several variables (referred to as “dimensions”, Table 2.3). Goal scores (Section 5.2) are calculated as the average of current status (Section 5) and likely future status. Likely future status (Section 5.3) is the current status modified by variables (resilience, pressures, and trend) expected to influence future status.
 
-<br/>
-
 ## Dimensions
 
 **Table 2.3. Dimension used to calculate an OHI goal score** Goal scores are the average of current and likely future status. Likely future status adjusts current status scores based on pressures and resilience variables acting on the goal as well as recent trends in status.
 
 | Dimension               | Subdimension | Description                                                                                                                                                                                                                                                             | More information                              | Calculating                                                                                                                                                                                   |
-|----------|----------|--------------------------|----------|-----------------|
+|--------------|--------------|----------------|--------------|--------------|
 | Current status          | \-           | Current state of the goal relative to the desired "reference point". Values range from 0-100.                                                                                                                                                                           | *Section 6. Goal models and data*             | Calculated using functions in ohi-global repo: https://github.com/OHI-Science/ohi-global/blob/draft/eez/conf/functions.R and the *scenario_data_years.csv* file (in same folder)              |
 | Predicted future status | Resilience   | Variables such as good governance and ecological factors that provide resilience to pressures, and thus, are likely to improve future status. Values range from 0-100                                                                                                   | *Section 5.3 Likely future status dimensions* | Calculated using functions in ohicore package.And, files: *resilience_categories.csv* and *resilience_matrix.csv* located here: https://github.com/OHI-Science/ohi-global/tree/draft/eez/conf |
 | Predicted future status | Pressure     | Pressures stress the system and threaten future delivery of benefits, and thus, are likely to reduce future status. Values range from 0-100                                                                                                                             | *Section 5.3 Likely future status dimensions* | Calculated using function in ohicore package. And, files: *pressure_categories.csv* and *pressures_matrix.csv*, located here: https://github.com/OHI-Science/ohi-global/tree/draft/eez/conf   |
 | Predicted future status | Trend        | Average yearly change in status (typically estimated using most recent 5 years of data) multiplied by 5 to esimate five years into the future. Units are proportional change (absolute change/year is divided by the value of the earliest year) and range from -1 to 1 | *Section 5.3 Likely future status dimensions* | Calculated using functions from ohi-global repo: https://github.com/OHI-Science/ohi-global/blob/draft/eez/conf/functions.R and the scenario_data_years.csv file (in same folder)              |
 
-**Figure 2.1. Relationship between OHI dimensions and scores** This figure describes how the dimensions come together to calculate a goal score. This figure represents equations 4.3 and 4.5. ![](../../metadata_documentation/ohi_model/figures/OHI%20dimensions.png)
+![**Figure 2.1. Relationship between OHI dimensions and scores**. This figure describes how the dimensions come together to calculate a goal score, and represents equations 4.3 and 4.5.](media/figs/OHI dimensions.png){fig-align="center"}
 
 Finally, an overall Index score for each region is calculated by averaging the goal scores (Figure 2.2).
 
-**Figure 2.2. Example flowerplot of goal scores for a region** Goal and subgoal scores for Canada. The middle value is the regional Index score, and is calculated by averaging the goal scores. ![](../../metadata_documentation/ohi_model/figures/flower_Canada_alt.png)
+![**Figure 2.2. Example flowerplot of goal scores for a region.** Goal and subgoal scores for Canada. The middle value is the regional Index score, and is calculated by averaging the goal scores.](media/figs/flower_Canada_alt.png)
 
-## Data inclusion and data gaps
+# Data inclusion and data gaps
 
 Ideally, regional and local assessments should use the best available data, but this decision limits the ability to compare across scales. For direct comparisons among locations to be valid, they must use consistent data. For this reason, we focused on using global datasets so differences in Index scores across regions are driven by differences in ocean health rather than variation in the data. Although, in reality, many global datasets are compilations of local or regional datasets and their quality varies spatially. In some cases, data for a particular component or dimension of a goal were available for most, but not all, countries. Gaps in these data were known to not be true zero values. Rather than exclude these data layers, we employed several different methods to fill these data gaps [@frazier2016mapping].
 

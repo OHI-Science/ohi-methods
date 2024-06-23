@@ -2,17 +2,15 @@
 title: "3. Regions"
 ---
 
-
 # Regions
-One of the first steps of conducting an OHI assessment is defining regions of interest. These can be based on political and/or ecological boundaries. The definition of a “region” varies depending on the goals and scale of the OHI assessment. For the global OHI, each region is defined as the Exclusive Economic Zone boundaries [EEZ,  @claus2012marine] area (300 nm offshore) for all coastal countries and territories (e.g., US Virgin Islands).  
+
+One of the first steps of conducting an OHI assessment is defining regions of interest. These can be based on political and/or ecological boundaries. The definition of a “region” varies depending on the goals and scale of the OHI assessment. For the global OHI, each region is defined as the Exclusive Economic Zone boundaries [EEZ, @claus2012marine] area (300 nm offshore) for all coastal countries and territories (e.g., US Virgin Islands).
 
 There are 220 global coastal countries and territorial regions (Table 4.1). Regions are based on EEZ boundaries. However, we aggregate some EEZ regions to the level of country (e.g., Hawaii is estimated as part of the larger U.S.). We have also modified some boundaries [@halpern2012index; @halpern2015patterns]. We do not estimate OHI values for disputed or unclaimed areas.
 
-**Figure 4.1. Global regions**
-Map of the OHI regions (with color corresponding to 2022 regional index scores). Mollweide coordinate reference system is used because it accurately represents area.  
+**Figure 4.1. Global regions** Map of the OHI regions (with color corresponding to 2022 regional index scores). Mollweide coordinate reference system is used because it accurately represents area.
 
-[add to media/figs folder!]
-![](../../yearly_results/global2023/Results/figures/maps_by_goal_mol/global_map_Index_2023_mol.png)
+![](media/figs/global_map_Index_2023_mol.png){fig-align="center"}
 
 **Table 4.1. Global regions**
 
@@ -33,5 +31,3 @@ regions <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohiprep/maste
 kable(regions) %>%
   kableExtra::kable_styling(full_width = F)
 ```
-
-
