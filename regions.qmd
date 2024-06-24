@@ -1,5 +1,7 @@
 ---
 title: "3. Regions"
+callout-icon: false
+callout-appearance: simple
 ---
 
 # Regions
@@ -12,8 +14,9 @@ There are 220 global coastal countries and territorial regions (Table 4.1). Regi
 
 ![](media/figs/global_map_Index_2023_mol.png){fig-align="center"}
 
-**Table 4.1. Global regions**
 
+::: {.callout-note collapse=true}
+# Table 4.1. Global regions
 ```{r table_regions, eval = TRUE, echo=FALSE, message=FALSE, error=FALSE, warning=FALSE}
 
 regions <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohiprep/master/src/LookupTables/eez_rgn_2013master.csv", stringsAsFactors = FALSE) %>%
@@ -31,3 +34,4 @@ regions <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohiprep/maste
 kable(regions) %>%
   kableExtra::kable_styling(full_width = F)
 ```
+:::
