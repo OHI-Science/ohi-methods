@@ -1,10 +1,6 @@
 ---
-title: "Data: Inclusion & Gaps"
-
+title: "Data Inclusion & Gaps"
 ---
-
-
-# Data inclusion and data gaps
 
 Ideally, regional and local assessments should use the best available data, but this decision limits the ability to compare across scales. For direct comparisons among locations to be valid, they must use consistent data. For this reason, we focused on using global datasets so differences in Index scores across regions are driven by differences in ocean health rather than variation in the data. Although, in reality, many global datasets are compilations of local or regional datasets and their quality varies spatially. In some cases, data for a particular component or dimension of a goal were available for most, but not all, countries. Gaps in these data were known to not be true zero values. Rather than exclude these data layers, we employed several different methods to fill these data gaps [@frazier2016mapping].
 

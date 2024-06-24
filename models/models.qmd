@@ -1,5 +1,5 @@
 ---
-title: "4. Models"
+title: "Models"
 toc: TRUE
 editor_options: 
   chunk_output_type: console
@@ -143,8 +143,9 @@ where $\gamma$ is the relative weight for ecological vs. social pressures and eq
 
 **Table 5.1. Pressure data and categories** Description of the stressor data layers used to calculate overall pressure for each goal and region for the global assessment (descriptions of pressure data in section 6). Each data layer is assigned to an ecological or social category, and ecological data are assigned to one of five subcategories.
 
-::: {.callout-note collapse=true}
-# Table 5.1. Pressure data and categories
+::: {.callout-note collapse="true"}
+#### Table 5.1. Pressure data and categories (click to expand)
+
 ```{r pressure categories, eval = TRUE, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
 
 full_lyr_names <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/76634d93f7fbc2470a2144793d15924d55f552ff/metadata_documentation/layers_eez_base.csv") %>% 
@@ -167,7 +168,11 @@ We determined the rank sensitivity of each goal/subgoal to each stressor (or, wh
 
 **Table 5.2. Pressure matrix** Rank sensitivity of each goal (or, goal element) to each stressor.
 
-```{r pressure matrix, eval = TRUE, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
+```{r, fig.width=9, fig.height=9}
+#| echo: false
+#| warning: false
+#| message: false
+
 full_lyr_names <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/layers_eez_base.csv") %>% 
   select(layer, name, description)
 
@@ -275,8 +280,9 @@ Each resilience category is composed of 1 or more data layers (Table 5.3) with v
 
 **Table 5.3. Resilience categories and weights** The data layers used to calculate resilience for each goal and region for the global assessment (descriptions of data layers and sources are in section 6). Each data layer is assigned to an ecological or social category. The ecological category is broken into an ecosystem and regulatory category type.
 
-::: {.callout-note collapse=true}
-# Table 5.3. Resilience categories and weight table
+::: {.callout-note collapse="true"}
+#### Table 5.3. Resilience categories and weight table (click to expand)
+
 ```{r Resilience categories and weight table, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
 
 full_lyr_names <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/76634d93f7fbc2470a2144793d15924d55f552ff/metadata_documentation/layers_eez_base.csv") %>% 
@@ -294,15 +300,13 @@ kable(res_cat, align = "l")
 
 **Table 5.4. Resilience matrix** Describes which goals/subgoals (and goal elements) are influenced by the resilience data layers.
 
-```{r Resilience matrix, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+<!-- ```{r Resilience matrix, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE} -->
 
-res_matrix <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/76634d93f7fbc2470a2144793d15924d55f552ff/eez/conf/resilience_matrix.csv", na.strings = "") 
+<!-- res_matrix <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/76634d93f7fbc2470a2144793d15924d55f552ff/eez/conf/resilience_matrix.csv", na.strings = "")  -->
 
-kable(res_matrix, align = "l")
+<!-- kable(res_matrix, align = "l") -->
 
-```
-
-# new **Table 5.4. Resilience matrix**
+<!-- ``` -->
 
 ```{r, fig.width=9, fig.height=9}
 #| echo: false
@@ -323,19 +327,20 @@ resilience_pre <-  read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-g
 resilience_labels <- resilience_pre %>%
   select(resilience_short=layer, category, subcategory, resilience = name)
 
-subgoal_labels <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/tables/Subgoal_Descriptions.csv")
-goal_labels <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/tables/ten_goals.csv") %>%
- filter(!(tolower(Goal) %in% tolower(subgoal_labels$Goal)))
-goal_names <- subgoal_labels %>%
- mutate(Goal = paste0(Goal, ": ", Subgoal)) %>%
- select(Goal, Abbreviation) %>%
- rbind(select(goal_labels, c(Goal, Abbreviation)))
+# subgoal_labels <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/tables/Subgoal_Descriptions.csv")
+# goal_labels <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/tables/ten_goals.csv") %>%
+#  filter(!(tolower(Goal) %in% tolower(subgoal_labels$Goal)))
+# 
+# goal_names <- subgoal_labels %>%
+#  mutate(Goal = paste0(Goal, ": ", Subgoal)) %>%
+#  select(Goal, Abbreviation) %>%
+#  rbind(select(goal_labels, c(Goal, Abbreviation)))
 
 goal_names <- data.frame(Goal = c("Food provision: Fisheries", "Food provision: Mariculture", "Biodiversity: Habitat", "Biodiversity: Species condition", "Sense of place: Iconic species", "Sense of place: Lasting special places", "Livelihoods", "Economies", "Artisanal Fishing Opportunity", "Natural Products", "Carbon Storage", "Tourism and Recreation", "Clean Waters", "Coastal Protection"),
                  Abbreviation = c("FIS", "MAR", "HAB", "SPP", "ICO", "LSP", "LIV",
                                   "ECO", "AO", "NP", "CS", "TR", "CW", "CP"))
 
-resilience_matrix <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/eez/conf/resilience_matrix.csv") %>%
+resilience_matrix <- read_csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/eez/conf/resilience_matrix.csv") %>%
 #  mutate(element = ifelse(is.na(element_name), element, element_name)) %>%
 #  select(-element_name) %>%
   pivot_longer(cols=-c("goal", "element"),
@@ -362,8 +367,7 @@ ggplot(resilience_matrix, aes(x = resilience, y = goal, size = value, color = Ab
     ) 
 ```
 
-
-#### Ecological resilience
+#### Ecological resilience 
 
 ##### Ecosystem integrity
 

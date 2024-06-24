@@ -22,4 +22,6 @@ The global Ocean Health Index assesses ocean health for 220 coastal countries an
 
 For more information about the philosophy of the Ocean Health Index and model development see Halpern et al. (2012, 2015) and [OHI Global](http://ohi-science.org/ohi-global/){target="_blank"}, which includes information about downloading global ocean health data.
 
-![](media/OHI_infographic.jpg)
+![](media/ohi-score-goals.png){fig-align="center"}
+
+![](media/OHI_infographic.jpg){fig-align="center"}

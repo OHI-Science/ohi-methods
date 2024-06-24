@@ -1,11 +1,11 @@
 ---
-title: "1. Theory of OHI"
+title: "Theory of OHI"
 toc: true
 ---
 
 [![Credit: Body of Water during Dawn, Pixabay](media/ocean_sunset_island.jpg){fig-align="right"}](https://www.pexels.com/photo/body-of-water-during-dawn-37403/)
 
-## 1.1 A comprehensive framework to assess ocean health
+## A comprehensive framework to assess ocean health
 
 The Ocean Health Index assesses ocean health which we define as how well we are sustainably managing the resources that we want and need from the ocean (e.g., tourism and recreation, food provisioning).
 
@@ -13,11 +13,11 @@ The OHI is considered a composite indicator because it combines many indicators 
 
 Without an overall framework to evaluate indicators, certain indicators may be overemphasized relative to their true importance due to researcher bias (most researchers believe their area of study is the most important), trends in research (what is currently considered a hot topic and is funded), and availability of data (e.g., some data is easier to collect). A model that combines multiple indicators will inevitably have flaws, but at least we know which variables are included and how they are weighted.
 
-## 1.2 The role of humans
+## The role of humans
 
 One of the primary contributions of the OHI is that it recognizes people are an important part of the marine system. Both conservation and extractive use of ocean resources are valued, and consequently, scores are highest when we maximize the benefits we receive while maintaining sustainability so we can continue to receive benefits now and into the future. One temptation of indicator development is to focus only on the pressures that humans apply to systems. This makes sense because we want to be sure we are adequately protecting resources. However, eliminating all pressures on the ocean would require eliminating all contact between humans and the ocean. Beyond being unrealistic, this is undesirable because we would stop receiving all the benefits that we rely on from the ocean. The OHI is unique because it tracks both the pressures we put on oceans as well as the benefits we receive.
 
-## 1.3 Yearly assessments
+## Yearly assessments
 
 The global Ocean Health Index has been assessed every year since 2012. The primary goal of each yearly assessment is to calculate a new year of scores using the most recent data. Often, in addition to incorporating an additional year of data, we make improvements to models or decide to use different data sources. To ensure that scores for all years are comparable, we recalculate scores for previous scenario years for each assessment using new methods and data sources. For the current assessment, for example, in addition to calculating the current year’s scores, we recalculate scores for every year since 2012. Consequently, comparisons among years should always be performed using data from the same assessment year so trends in scores reflect changes to ocean health rather than changes to methods.
 

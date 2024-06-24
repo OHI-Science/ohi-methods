@@ -3,19 +3,22 @@ title: "5. Goal Models and Data"
 toc: true
 ---
 
-# Goal models and data
-In this section we describe how the current status and trend of each goal was calculated. We also indicate which data layers were used to calculate current status, trend (if different from current status), pressure, and resilience.  
+In this section we describe how the current status and trend of each goal was calculated. We also indicate which data layers were used to calculate current status, trend (if different from current status), pressure, and resilience.
 
-The R code used to calculate the goal model is located [here](https://github.com/OHI-Science/ohi-global/blob/draft/eez/conf/functions.R) (scroll to the appropriate goal function). To learn more about the data layers used in the model calculations see Section 7: Description of data layers. Table 7.1 includes links to the code and data used to create the data layers (current calculations are in the folder with the most recent year). Table 7.2 describes the data sources used to create the data layers.  
+The R code used to calculate the goal model is located [here](https://github.com/OHI-Science/ohi-global/blob/draft/eez/conf/functions.R) (scroll to the appropriate goal function). To learn more about the data layers used in the model calculations see Section 7: Description of data layers. Table 7.1 includes links to the code and data used to create the data layers (current calculations are in the folder with the most recent year). Table 7.2 describes the data sources used to create the data layers.
 
+![](/media/ohi-breakdown.jpg){fig-align="center"}
 
-```{r goal functions, echo=FALSE, warning=FALSE, error=FALSE, results="asis"}
+```{r goal functions, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, results="asis"}
+library(tidyverse)
+library(magrittr)
+library(kableExtra)
 
 ## data and functions used to list data layers in each goal
 
 # data with information
-layers <- read.csv(here("metadata_documentation/layers_eez_base.csv"))
-targets <- read.csv(here("metadata_documentation/layers_eez_targets.csv"))
+layers <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/76634d93f7fbc2470a2144793d15924d55f552ff/metadata_documentation/layers_eez_base.csv")
+targets <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/76634d93f7fbc2470a2144793d15924d55f552ff/metadata_documentation/layers_eez_targets.csv")
 layers_web <- "http://ohi-science.org/ohi-global/layers.html"
 
 # function
@@ -41,75 +44,1050 @@ cat(paste(st_layers$info, collapse="\n\n"))
 
 ```
 
+previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/AO_long.Rmd'}
 
-```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/AO_long.Rmd'}
+## Artisanal opportunities
+
+Artisanal fishing, often also called small-scale fishing, provides a critical source of food, nutrition, poverty alleviation and livelihood opportunities for many people around the world, in particular in developing nations [@allison2001livelihoods]. Artisanal fishing refers to fisheries involving households, cooperatives or small firms (as opposed to large, commercial companies) that use relatively small amounts of capital and energy and small fishing vessels (if any), make relatively short fishing trips, and use fish mainly for local consumption or trade. These traits differ from commercial scale fisheries that serve the global fish trade, and commercial and artisanal scale fisheries also differ in how they are valued by many communities around the world.
+
+Artisanal fisheries contribute over half of the world’s marine and inland fish catch, nearly all of which is used for direct human consumption [@unitednations2010faostat]. They employ over 90 percent of the world’s more than 35 million capture fishers and support another approximate 90 million people employed in jobs associated with fish processing, distribution and marketing [@unitednations2010faostat]. Artisanal fisheries also are distinguished by the role they play in shaping and sustaining human cultures around the world; this role contributes to their distinct value [@mcgoodwin2001understanding]. For this reason, we designate artisanal fishing opportunities as a distinct public goal. In some countries like the U.S.A., artisanal fishing may happen under a commercial license (e.g., a family run lobster boat or individual shellfish harvesting permit), or under a recreational fishing permit (e.g., families fishing with rods for fish to eat); the food provided by these activities should ideally be captured under the food provision goal, whereas the opportunity to pursue artisanal fishing is captured here. The goal is not about recreational fishing for sport, which is captured in food provision (if it provides food) and tourism and recreation.
+
+The livelihood and household economy provided by fishing are considered part of the coastal livelihoods and economies goal, although similar to food provision from artisanal fishing it is currently impossible to measure on a global scale. Our focus is on the opportunity to conduct this kind of fishing. What is intended by the idea of ‘opportunity’ is the ability to conduct sustainable artisanal-scale fishing when the need is present, rather than the actual amount of catch or household revenue that is generated. Although this may seem nuanced on the value and intent of artisanal fishing, the opportunity to conduct this fishing is clearly of great importance to many people [@mcgoodwin2001understanding]. Status for this goal is a function of need for artisanal fishing opportunities and whether or not the opportunity is permitted and/or encouraged institutionally and done sustainability. This need could potentially be driven by any number of socio-economic factors, but perhaps the simplest and most directly tied to this need is the percent of the population that is below the poverty level. Data on how many people live below the poverty level are not available for many countries. Therefore, we used an analogous proxy that is more complete globally: per capita gross domestic product (pcGDP) adjusted by the purchasing power parity (PPP). This metric translates the average annual income (pcGDP) into its local value (PPP). These data correlate with UN data on the percent of a population living below the \$2/day international poverty standard (linear: R^2^ = 0.61, p \<0.001; logarithmic regression: R^2^ = 0.76, p \< 0.001). Because the relationship is a better fit with the ln-linear regression, we ln-transform the PPPpcGDP scores.
+
+#### Current status
+
+Status for this goal ($x_{ao}$) is therefore measured by unmet demand ($D_u$), which includes measures of opportunity for artisanal fishing ($O_{ao}$, defined below) and the sustainability of the methods used ($S_{ao}$):
+
+$$
+x_{ao} = (1 – D_u) * S_{ao}, (Eq. 6.1)
+$$
+
+where $S_{ao}$ indicates whether artisanal fishing is done in a sustainable manner. This was approximated using Sea Around Us Project (SAUP) [@pauly2020] global marine fisheries catch data [@pauly2016catch] and B/Bmsy data [@ricard2012examining; @costello_status_2016; @martell2016simple; @thorson_new_2016; @rosenberg2014developing; @costello2016global; @ramlegacystockassessmentdatabase2023] calculated from our fisheries sub-goal (methods can be found in section 6.6.1), and subsetted for artisanal and subsistence stocks notated in the SAUP data. And, $D_u$ is calculated as:
+
+$$
+D_{u} = (1 – PPPpcGDP) * (1 – O_{ao}), (Eq. 6.2)
+$$
+
+where, $PPPpcGDP$ is the ln-transformed, rescaled purchasing power parity adjusted per capita GDP, and $O_{ao}$ is the access to artisanal-scale fishing determined by the United Nations Sustainable Development Goal (UN SDG) 14.b.1 [@sdg_14_b_1].
+
+We rescaled the ln-transformed $PPPpcGDP$ values from 0-1 by dividing by the value corresponding to the 99th quantile across all regions and years from 2005 to 2015 (values \> 1 were capped at 1). Developed countries with lower demand for artisanal scale fishing (i.e., low poverty indicated by high PPPpcGDP) score high, regardless of the opportunity made available (since it would not matter to many), and developing countries with high demand and opportunity would also score high.
+
+To assess the opportunity or ability to meet this demand, $O_{ao}$, we used data from UN SDG 14.b.1 [@sdg_14_b_1], which scores countries on the institutional measures that support or protect access to artisanal and small-scale fishing. The data come are FAO member country responses to the Code of Conduct for Responsible Fisheries (CCRF) (Table 6.1) survey questionnaire which is circulated by FAO every two years to members and IGOs and INGOs and are on a scale from 0 to 1.
+
+The sustainability of artisanal fishing practices was estimated by subsetting for artisanal and subsistence stock B/Bmsy values which were calculated in our fisheries sub-goal (section 6.6.1).
+
+Several issues and datasets relevant to artisanal fishing opportunities were not included in our calculations for a number of reasons. High unemployment can lead to a greater demand for artisanal fishing opportunities [@cinner2009socioeconomic], but unemployment is not a good measure of potential 'demand' for most developing countries since many people not working do not get recorded in unemployment statistics, even though it may be relevant for developed countries. Regardless, it is very difficult to set an arbitrary cut-off for developing versus developed countries, and so there is no clear way to use unemployment data for this goal.
+
+**Table 6.1. Artisanal access**. Questions from UN SDG 14.b.1 [@sdg_14_b_1] that were used to evaluate access to artisanal scale fishing.
+
+-   Are there any laws, regulations, policies, plans or strategies that specifically target or address the small-scale fisheries sector?
+
+|                        | Yes | No  |
+|------------------------|-----|-----|
+| Law                    |     |     |
+| Regulation             |     |     |
+| Policy                 |     |     |
+| Plan/strategy          |     |     |
+| Other (please specify) |     |     |
+
+-   The Voluntary Guidelines for Securing Sustainable Small-scale Fisheries in the Context of Food Security and Poverty Eradication (SSF Guidelines) were endorsed by [COFI in June 2014](https://www.fao.org/3/i4356en/I4356EN.pdf). Does your country have a specific initiative to implement the SSF Guidelines?
+
+#### Trend
+
+Trend was calculated as described in section 5.3.1.
+
+#### Data
+
+*Status and trend*
+
+```{r AO data st, results="asis", echo=FALSE}
+data_layers(goal="AO", dimension=c("status", "trend"))
+```
+
+*Pressure*
+
+```{r AO data p, results="asis", echo=FALSE}
+data_layers(goal="AO", dimension=c("pressure"))
+```
+
+*Resilience*
+
+```{r AO r, results="asis", echo=FALSE}
+data_layers(goal="AO", dimension=c("resilience"))
 
 ```
 
-```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/BD_long.Rmd'}
+previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/BD_long.Rmd'}
+
+## Biodiversity
+
+People value biodiversity in particular for its existence value. The risk of species extinction generates great emotional and moral concern for many people. As such, this goal assesses the conservation status of species based on the best available global data through two sub-goals: species and habitats. Species were assessed because they are what one typically thinks of in relation to biodiversity. Because only a small proportion of marine species worldwide have been mapped and assessed, we also assessed habitats as part of this goal, and considered them a proxy for condition of the broad suite of species that depend on them. For the species sub-goal, we used species risk assessments from the International Union for Conservation of Nature [@iucn2022] for a wide range of taxa to provide a geographic snapshot of how total marine biodiversity is faring, even though it is a very small sub-sample of overall species diversity [@mora2011how]. We calculate each of these subgoals separately and weight them equally when calculating the overall goal score.
+
+previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/HAB_long.Rmd'}
+
+### Habitat (subgoal of biodiversity)
+
+The habitat subgoal measures the average condition of marine habitats present in each region that provide critical habitat for a broad range of species (mangroves, coral reefs, seagrass beds, kelp forests, salt marshes, sea ice edge, tidal flats, and subtidal soft bottom). This subgoal is considered a proxy for the condition of the broad suite of marine species.
+
+Data availability remains a major challenge for species and habitat assessments. We compiled and analyzed the best available data in both cases, but key gaps remain. Although several efforts have been made in recent years to create or compile the data necessary to look at the status and trends of marine habitats, most efforts are still hampered by limited geographical and temporal sampling [@joppa2016filling], although sea ice @digirolamo2022 data is an exception. In addition, most marine habitats have only been monitored since the late 1970s at the earliest, many sites were only sampled over a short period of time, and very few sites were monitored before the late 1990s so establishing reference points was difficult. Salt marshes, kelp forests, and seagrasses were the most data-limited of the habitats included in the analysis.
+
+#### Current status
+
+The status of the habitat sub-goal, $x_{hab}$, was assessed as the average of the condition estimates, $C$, for each habitat, $k$, present in a region; measured as the loss of habitat and/or % degradation of remaining habitat, such that:
+
+$$
+x_{hab} = \frac { \displaystyle\sum _{ k=1 }^{ N }{ { C }_{ k } }  }{ N}, \quad \quad (Eq. 6.3)
+$$
+
+where, $C_{k} = C_{c}/C_{r}$ and $N$ is the number of habitats in a region. $C_{c}$ is the current condition and $C_{r}$ is the reference condition specific to each $k$ habitat present in the region (Table 6.2). This formulation ensures that each country is assessed only for those habitats that can exist (e.g., Canada is not assessed on the status of its nonexistent coral reefs). We generally considered the reference years to be between 1980-1995, although these varied by habitat due to data availability.
+
+**Table 6.2. Habitat data** Description of condition, extent, and trend calculations for habitat data (Note: extent is not used to calculate the habitat subgoal, but is used for the coastal protection and carbon storage goals). More information about the sources used to generate these values is located in Section 7 and Table 7.2.
+
+| Habitat      | Condition                                                                                                                                                                | Extent                                              | Trend                                                                                                                                                      |
+|------------------|-------------------|------------------|------------------|
+| Seagrass     | Increasing or stable trend assigned condition = 1.0; decreasing trend assigned condition = 0.71 based on global loss                                                     | Seagrass extent per oceanic region (vector based)   | Calculated across data from 1990 - 2000                                                                                                                    |
+| Kelp         | Increasing or stable trend assigned condition = 1.0; decreasing trend assigned condition based on a 2% global yearly loss                                                | Kelp extent per oceanic region (vector based)       | Calculated across data from 1983 - 2012                                                                                                                    |
+| Coral reefs  | Current % cover divided by reference % cover                                                                                                                             | Coral reef extent per oceanic region (Vector based) | Calculated across data from 1975-2006                                                                                                                      |
+| Mangroves    | Current hectares divided by reference hectares, for coastal mangroves only                                                                                               | Mangrove extent per oceanic region (vector based)   | Calculated using 5 most recent years of data                                                                                                               |
+| Salt marsh   | All regions assigned condition = 0.75 based on conservative historical extent losses                                                                                     | Salt marsh extent per oceanic region                | All regions assigned trend based on historical .28% global yearly loss                                                                                     |
+| Sea ice edge | Current (3-year rolling-average using the current year and previous 2 years) % cover of sea ice having 10-50% cover, divided by reference % cover average from 1979-2000 | Same as condition                                   | Calculated from the fitted slope of %-deviation-from-reference per year, of the most recent 5 years of data (each year of data is based on 3-year average) |
+| Soft bottom  | Soft-bottom destructive fishing practices relative to area of soft-bottom habitat and rescaled to 0-1 based on relative global values                                    | Halpern et al. [-@halpern2008global]                | Calculated using 5 most recent years of condition data                                                                                                     |
+| Tidal flat   | Average tidal flat extent of 2010 and 2013 relative to historic extent (average of 1989 and 1992)                                                                        | Tidal flat extent per oceanic region (vector based) | Calculated across data from 2001-2013                                                                                                                      |
+
+A significant amount of pre-processing of the habitat data was needed to fill data gaps and resolve data quality issues (Section 7). Because consistent habitat monitoring data was unavailable for many countries, anomalous values can occur. This is particularly true for highly variable habitats like seagrasses or coral reefs which can have significant site-to-site and year-to-year differences in extent and condition [@bruno_regional_2016]. Biases may also have been introduced from spatial (e.g., protected or impacted sites) and temporal (e.g., directly after a disturbance event) selections in sampling. In regions where we had a limited number of surveys in a particular country, overall status can be under- or overestimated because of these fluctuations.
+
+#### Trend
+
+Trend in habitat data were calculated as the linear trend in extent or condition with slight variations depending on habitat type. Coral reef habitat trends were calculated on a per country basis, using all available data. For saltmarsh we apply a single global trend value to each region. For seagrasses and kelp we calculated trends on a per site basis. For mangroves we used the rate of change in areal extent over the most recent 5 years of available data. For sea ice we calculated the slope across the most recent 5 years of data, where each year of data is based on a 3-year moving averages to smooth out potential climate variation. For soft bottom habitat we simply calculated the slope of the recent change in condition over the past 5 years, i.e., the change in proportion of bottom trawl and dredge fishing per unit area of soft bottom habitat within a region.
+
+#### Data
+
+*Status and trend*
+
+```{r HAB data st, results="asis", echo=FALSE}
+data_layers(goal="HAB", dimension=c("status", "trend"))
+```
+
+*Pressure*
+
+```{r HAB data p, results="asis", echo=FALSE}
+data_layers(goal="HAB", dimension=c("pressure"))
+```
+
+*Resilience*
+
+```{r HAB r, results="asis", echo=FALSE}
+data_layers(goal="HAB", dimension=c("resilience"))
 
 ```
 
-```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/HAB_long.Rmd'}
+previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/SPP_long.Rmd'}
+
+### Species condition (subgoal of biodiversity)
+
+This goal aims to assess the average condition of the marine species within each region based on IUCN status. The target for the species subgoal is to have all species at a risk status of Least Concern.
+
+#### Current status
+
+Species status was calculated as the area and status-weighted average of assessed species within each region. Marine species distribution and threat category data mostly came from IUCN Red List of Threatened Species, and we limited data to all species having IUCN habitat system of "marine" <http://www.iucnredlist.org> [@iucn2022; @iucn_spatial_2022]. Seabird distributions data came from Birdlife International <http://datazone.birdlife.org> [@birdlifeinternationalandhandbookofthebirdsoftheworld2020].
+
+We scaled the lower end of the biodiversity goal to be 0 when 75% species are extinct, a level comparable to the five documented mass extinctions [@barnosky_has_2011] and would constitute a catastrophic loss of biodiversity.
+
+Threat weights, $w_{i}$, were assigned based on the IUCN threat categories status of each $i$ species, following the weighting schemes developed by Butchart et al. [-@butchart2007improvements] (Table 6.3). For the purposes of this analysis, we included only data for extant species for which sufficient data were available to conduct an assessment. We did not include the Data Deficient classification as assessed species following previously published guidelines for a mid-point approach [@schipper2008status; @hoffmann_impact_2010].
+
+We first calculated each the region’s area-weighted average species risk status, $\bar R_{spp}$. For each 0.5 degree grid cell within a region, $c$, the risk status, $w$, for each species, $i$, present is summed and multiplied by cell area $A_c$, to get an area- and count-weighted species risk for each cell. This value is then divided by the sum of count-weighted area $A_c \times N_c$ across all cells within the region. The result is the area-weighted mean species risk across the entire region.
+
+$$
+\bar R_{spp} = \frac { \displaystyle\sum_{ c=1 }^{ M } \left( \displaystyle\sum _{ i=1 }^{N_c} w_i \right) \times A_c } 
+                { \displaystyle\sum_{ c=1 }^{ M } A_c \times N_c },  (Eq. 6.4)
+$$ To convert $\bar R_{spp}$ into a score, we set a floor at 25% (representing a catastrophic loss of biodiversity, as noted above) and then rescaled to produce a $x_{spp}$ value between zero and one.
+
+$$
+x_{spp} = max \left( \frac { \bar R_{SPP} - .25 }{ .75 }, 0 \right), (Eq. 6.5)
+$$
+
+**Table 6.3. Weights for assessment of species status based on IUCN risk categories**
+
+| Risk Category         | IUCN code | Weight |
+|-----------------------|-----------|--------|
+| Extinct               | EX        | 0.0    |
+| Critically Endangered | CR        | 0.2    |
+| Endangered            | EN        | 0.4    |
+| Vulnerable            | VU        | 0.6    |
+| Near Threatened       | NT        | 0.8    |
+| Least Concern         | LC        | 1.0    |
+
+#### Trend
+
+We calculate trend using data the IUCN provides for current and past assessments of species, which we use to estimate annual change in IUCN risk status for each species. We then summarize these species trend values for each region using the same general approach used to calculate status.
+
+#### Data
+
+*Status and trend*
+
+```{r SPP data st, results="asis", echo=FALSE}
+data_layers(goal="SPP", dimension=c("status", "trend"))
+```
+
+*Pressure*
+
+```{r SPP data p, results="asis", echo=FALSE}
+data_layers(goal="SPP", dimension=c("pressure"))
+```
+
+*Resilience*
+
+```{r SPP r, results="asis", echo=FALSE}
+data_layers(goal="SPP", dimension=c("resilience"))
+```
+
+previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/CP_long.Rmd'}
+
+## Coastal protection
+
+This goal aims to assess the amount of protection provided by marine and coastal habitats to coastal areas that people value, both inhabited (homes and other structures) and uninhabited (parks, special places, etc.). At local and regional scales data may exist on all these variables at a high enough resolution to map and calculate exactly which habitats are providing how much protection to which coastal areas. At global scales, such data do not exist and so we focused on EEZ-scale assessments, even though this scale does not allow one to account for the spatial configuration of habitats relative to coastal areas and human populations. Consequently, we assumed that all coastal areas have value (and equal value) and assessed the total area and condition of key habitats within each EEZ (without regard to their precise location relative to coastal areas). The habitats that provide protection to coastal areas for which we have global data include mangroves, coral reefs, seagrasses, kelp forests, salt marshes (Table 6.2), and coastal sea ice (shoreline pixels with \>15% ice cover).
+
+#### Current status
+
+The status of this goal, $x_{cp}$, was calculated to be a function of the relative health of the habitats, $k$, within a region that provide shoreline protection, weighted by their area and protectiveness rank (Table 6.4), such that:
+
+$$
+x_{cp} = \frac { \displaystyle\sum _{ k=1 }^{ N }{ { (h }_{ k } } \times { w }_{ k }\times { A }_{ k }) }{ \displaystyle\sum _{ k=1 }^{ N }{ { (w }_{ k }\times { A }_{ k }) }  }, (Eq. 6.6)
+$$
+
+where, $w$ is the rank weight of the habitat’s protective ability, $A$ is the area within a region for each $k$ habitat type, and $h$ is a measure of each habitat's condition:
+
+$$
+h = \frac { C_{ c } }{ { C }_{ r } }
+$$
+
+where, $C_c$ is current condition and $C_r$ is reference condition.
+
+**Table 6.4. Coastal protectiveness ranks** Scores range from 1-4, with 4 being the most protective [@tallis2011invest].
+
+| Habitat         | Protectiveness rank ($w$) |
+|-----------------|---------------------------|
+| mangroves       | 4                         |
+| salt marshes    | 4                         |
+| coastal sea ice | 4                         |
+| coral reefs     | 3                         |
+| seagrasses      | 1                         |
+| kelp            | 1                         |
+
+The reference area for each habitat is treated as a fixed value; in cases where current area might exceed this reference value (e.g., through restoration), we cap the score at the maximum value (1.0). Although this does not give credit for restoration, data tend to be of poor quality making it difficult to determine true increases, and in general habitat restoration beyond reference values is extremely unlikely. Rank weights for the protective ability of each habitat ($w_{k}$) come from previous work [@tallis2011invest].
+
+#### Trend
+
+The trend for this goal is calculated using different methods for each habitat due to data availability (Table 6.2, with sea ice shoreline following the same general methods as sea ice edge).
+
+#### Data
+
+*Status and trend*
+
+```{r CP data st, results="asis", echo=FALSE}
+data_layers(goal="CP", dimension=c("status", "trend"))
+```
+
+*Pressure*
+
+```{r CP data p, results="asis", echo=FALSE}
+data_layers(goal="CP", dimension=c("pressure"))
+```
+
+*Resilience*
+
+```{r CP r, results="asis", echo=FALSE}
+data_layers(goal="CP", dimension=c("resilience"))
+```
+
+previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/CS_long.Rmd'}
+
+## Carbon storage
+
+The present-day pelagic ocean sink for anthropogenic carbon dioxide, estimated at approximately 2000 TgC yr<sup>-1</sup>, accounts for about a quarter of total anthropogenic CO<sub>2</sub> emissions to the atmosphere and helps mitigate a key driver of global climate change [@lequere2009trends; @sabine2010estimation]. The physical-chemical mechanisms driving the ocean sink are well understood but are not directly amenable to human management. Highly productive coastal wetland ecosystems (e.g., mangroves, salt marshes, seagrass beds) have substantially larger areal carbon burial rates than terrestrial forests, and "Blue Carbon" has been suggested as an alternate, more manageable carbon sequestration approach. The rapid destruction of these coastal habitats may release large amounts of buried carbon back into the ocean-atmosphere system. Donato and colleagues [-@donato_mangroves_2011], for example, estimate that mangrove deforestation generates emissions of 20-120 TgC yr<sup>-1</sup>. Our focus here, therefore, is on coastal habitats because they are threatened, have large amounts of stored carbon that would rapidly be released with further habitat destruction, have the highest per-area sequestration rates of any habitat on the planet, and are amenable to management, conservation, and restoration efforts. We refer to this goal as carbon storage but intend its meaning to include sequestration.
+
+We focused on four coastal habitats known to provide meaningful amounts of carbon storage (Table 6.2): mangroves, seagrasses, salt marshes, and tidal flats [@chen_tidal_2022]. For mangroves, we used coastal mangroves that are on land or in river deltas.
+
+#### Current status
+
+We measured the status of carbon storage, $x_{cs}$, as a function of the carbon storing habitats' current condition, $C_{c}$, relative to their reference condition, $C_{r}$. The habitat condition values were averaged, weighted by the area of each habitat, $A_{k}$, and a coefficient, $w_k$, to account for the relative contribution of each habitat type, $k$, to total carbon storage [@laffoley2009management] (Table 6.5):
+
+$$
+x_{cs} = \frac { \displaystyle\sum _{ k=1 }^{ N }{ { (h }_{ k } } \times { w }_{ k }\times { A }_{ k }) }{ \displaystyle\sum _{ k=1 }^{ N }{ { (w }_{ k }\times { A }_{ k }) }  }, (Eq. 6.7)
+$$
+
+where:
+
+$$
+h = \frac { C_{ c } }{ { C }_{ r } }
+$$
+
+We employed several different methods for calculating habitat condition scores depending on the habitat of interest and available data (Table 6.2).
+
+**Table 6.5. Carbon sequestration data** Weighting factors based on carbon sequestration rates for habitats used in the carbon storage goal [@chen_tidal_2022].
+
+| Habitat carbon storage | Sequestration (weight) |
+|------------------------|------------------------|
+| Mangrove               | 230.9                  |
+| Saltmarsh              | 244.7                  |
+| Seagrass               | 138                    |
+| Tidal flat             | 129.8                  |
+
+We scaled each region's score to habitat area for two reasons. First, it avoids penalizing a country that naturally lacks one of the habitats (e.g., Canada is too cold to have mangroves). Second, it ensures that habitats influence the goal score proportionately to their area of extent. This rewards the protection of large extents of habitat but does not assign a higher weight to higher habitat diversity. As such, our measure underestimates the actual amount of carbon storage being done by these coastal habitats (because we cannot account for habitats we do not know exist).
+
+Reference area for each habitat is treated as a fixed value; in cases where current area might exceed this reference value (e.g., through restoration), we cap the score at the maximum value (1.0). Although this does not give credit for restoration efforts improving things, data tend to be of poor quality making it difficult to determine true increases, and in general habitat restoration beyond reference values is extremely unlikely.
+
+### Trend
+
+The trend for this goal is calculated using different methods for each habitat due to data availability (Table 6.2).
+
+#### Data
+
+*Status and trend*
+
+```{r CS data st, results="asis", echo=FALSE}
+data_layers(goal="CS", dimension=c("status", "trend"))
+```
+
+*Pressure*
+
+```{r CS data p, results="asis", echo=FALSE}
+data_layers(goal="CS", dimension=c("pressure"))
+```
+
+*Resilience*
+
+```{r CS r, results="asis", echo=FALSE}
+data_layers(goal="CS", dimension=c("resilience"))
+```
+
+previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/CW_long.Rmd'}
+
+## Clean waters
+
+People value marine waters that are free of pollution and debris for aesthetic and health reasons. Contamination of waters comes from oil spills, chemicals, eutrophication, algal blooms, disease pathogens (e.g., fecal coliform, viruses, and parasites from sewage outflow), floating trash, and mass kills of organisms due to pollution. People are sensitive to these phenomena occurring in areas they access for recreation or other purposes as well as for simply knowing that clean waters exist. This goal scores highest when the contamination level is zero.
+
+We include four measures of pollution in the clean waters goal: eutrophication (nutrients), chemicals, pathogens and marine debris. This decision was meant to represent a comprehensive list of the contamination categories that are commonly considered in assessments of coastal clean waters [@borja2008overview] and for which we could obtain datasets (Table 6.6). The status of these components is the inverse of their intensity (i.e., high input results in low status score).
+
+**Table 6.6. Clean waters goal components**
+
+| Component                 | Data                                                                                                                                                                                                                                                                            | Trend                                                                               |
+|-------------------|------------------------------|-----------------------|
+| Eutrophication (nutrient) | FAO fertilizer and manure data [@unitednations2022faostata; @unitednations2021faostat; @halpern2022cumulative; @tuholske2021]                                                                                                                                                   | Standard method (section 5.3.1)                                                     |
+| Chemical                  | Land-based organic pollution (FAO pesticide data), Land-based inorganic pollution (based on run-off from impermeable surfaces), ocean-based pollution based on commercial shipping and port traffic [@unitednations2022faostata; @unitednations2021faostat; @halpern2008global] | Trend based only on changes in organic pollution, other variables remained the same |
+| Pathogens                 | Proportion of population without access to improved sanitation facilities [@who-unicef2023]                                                                                                                                                                                     | Standard method                                                                     |
+| Marine debris             | Plastic pollution [@eriksen2014plastic]                                                                                                                                                                                                                                         | Data on improperly disposed of plastics [@jambeck2015plastic]                       |
+
+We used the modeled input of land-based nitrogen input from livestock manure and crop fertilizer application as a proxy for nutrient input following similar methods to @halpern2022cumulative and @tuholske2021. The modeled proxy approach does not allow the distinction between toxic and non-toxic bloom events that can arise from excess nutrient input (often both referred to in the literature as harmful algal blooms, or HABs) or at what nutrient concentration an ecosystem is pushed into a HAB condition (i.e., the threshold value). Local studies may be able to obtain information on such non-linear responses and include it as part of this status measure.
+
+For the chemical pollution component [@halpern2008global], we used a combination of modeled input of fertilizer input as a proxy for land-based organic pollution, and impermeable surfaces as a proxy for land-based organic pollution, and shipping and port traffic for ocean based pollution. We were not able to assess specific toxic chemicals at the global scale; however regional case studies often will have data available for the quantities and toxicity of a range of chemicals put into watersheds and coastal waters. We also did not have global data for oil spills and so could not include oil pollution, but in future assessments where such data exist it would be included in chemical pollution as well.
+
+Human-derived pathogens are found in coastal waters primarily from sewage discharge or direct human defecation. Since we did not have access to a global database of in situ measurements of pathogen levels, we used a proxy measure for the status of pathogen pollution, namely the number of people in coastal areas without access to improved sanitation facilities [@who-unicef2023]. The underlying assumption is that locations with a low number of people with access to improved facilities will likely have higher levels of coastal water contamination from human pathogens. To estimate this pathogen intensity, we multiplied the human population within 25 miles of the coast by the percentage of population without access to improved sanitation. This allows countries with low coastal population densities and low access to improved sanitation to score better than high population countries with better access if the absolute number of people without access is lower in the small country.
+
+The status of trash pollution was estimated using globally-available plastic pollution data [@eriksen2014plastic].
+
+#### Current status
+
+The status of this goal, $x_{cw}$, was calculated as the geometric mean of the four components, such that:
+
+$$
+x_{cw} = \sqrt [ 4 ]{ a\ast u\ast l\ast d },  (Eq. 6.8)
+$$
+
+where $a$ = 1 - the number of people without access to sanitation, rescaled to the global maximum; $u$ = 1 – (nutrient input), rescaled at the raster level by the 99th quantile value; $l$ = 1 – (chemical input), rescaled at the raster level by the 99.99th quantile value; and $d$ = 1 – (marine debris), rescaled at the raster level by the 99.99th quantile value.
+
+We used a geometric mean, as is commonly done for water quality indices [@liou2004generalized], because a very bad score for any one subcomponent would pollute the waters sufficiently to make people feel the waters were ‘too dirty’ to enjoy for recreational or aesthetic purposes (e.g., a large oil spill trumps any other measure of pollution). However, in cases where a subcomponent was zero, we added a value of 0.01 (on a scale of 0 to 1) to prevent the overall score from going to zero. Given that there is uncertainty around our pollution estimates, a zero score resulting from one subcomponent seemed too extreme.
+
+Although clean waters are relevant and important anywhere in the ocean, coastal waters drive this goal both because the problems of pollution are concentrated there and because people predominantly access and care about clean waters in coastal areas. The nearshore area is what people can see and where beach-going, shoreline fishing, and other activities occur. Furthermore, the data for high seas areas is limited and there is little meaningful regulation or governance over the input of pollution into these areas. We therefore calculate this goal only for the first 3 nm of ocean for each country’s EEZ. We chose 3 nm for several reasons, but found the status results to be relatively insensitive to different distances.
+
+A number of potential components of clean water were not included due to lack of global datasets, including toxic algal blooms, oil spills, turbidity (sediment input), and floating trash. In future applications of the Index where such data are available, they would be included in their appropriate component of clean waters (nutrients, chemicals, and trash, respectively).
+
+#### Trend
+
+Trends in eutrophication, pathogens, and chemical pollution are estimated as described in section 5.3.1. Because only one of the inputs (organic pollution) of the chemical pollution layer includes data over time, the trend only reflects this input. Marine debris trends are estimated using a secondary dataset describing the amount of improperly disposed of plastics within each country [@jambeck2015plastic].
+
+#### Data
+
+*Status and trend*
+
+```{r CW data st, results="asis", echo=FALSE}
+data_layers(goal="CW", dimension=c("status", "trend"))
+```
+
+*Pressure*
+
+```{r CW data p, results="asis", echo=FALSE}
+data_layers(goal="CW", dimension=c("pressure"))
+```
+
+*Resilience*
+
+```{r CW r, results="asis", echo=FALSE}
+data_layers(goal="CW", dimension=c("resilience"))
 
 ```
 
-```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/SPP_long.Rmd'}
+previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/FP_long.Rmd'}
+
+## Food Provision
+
+One of the most fundamental services the ocean provides people is the provision of seafood. From meeting the basic nutritional needs of over half of the world’s population to being sold in high-end sushi restaurants, seafood is an important benefit of healthy oceans. This goal measures the amount of seafood sustainably harvested within an EEZ or region through any means for use primarily in human consumption and thus includes wild-caught commercial fisheries, mariculture, artisanal-scale and recreational fisheries. Importantly, seafood harvest using unsustainable fishing practices or catch levels is penalized as the goal aims to maximize the amount of sustainably produced seafood from wild or cultured stocks. Because we do not track where the fish go after being caught or produced, this goal does not aim to measure food security for the population of a given country, but instead measures the food provided from its waters.
+
+The status of the food provision goal is calculated as the mean of the fisheries and mariculture subgoals, weighted by their relative contribution in tonnes to food production for each region.
+
+previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/FIS_long.Rmd'}
+
+### Fisheries (subgoal of food provision)
+
+This model aims to assess the amount of wild-caught seafood that can be sustainably harvested with penalties assigned for over-harvesting. As such, one must establish a reference point at which harvest is both maximal and sustainable. We assess food provision from wild caught fisheries by estimating population biomass relative to the biomass that can deliver maximum sustainable yield ($B/B_{MSY}$) for each stock. When available, we obtained $B/B_{MSY}$ values from the RAM Legacy Stock Assessment Database [@ricard2012examining; @ramlegacystockassessmentdatabase2023], which contains stock assessment information for a portion of global fish stocks. When RAM data were not available, we used data-limited approaches that have been developed to estimate $B/B_{MSY}$ values using globally available catch data [@costello_status_2016; @martell2016simple; @thorson_new_2016; @rosenberg2014developing; @costello2016global]. To calculate the status for each region and year, $B/B_{MSY}$ values were converted to a stock status score between 0-1 that penalizes over-harvesting. To obtain the overall status for each region, the stock status scores for all the stocks within a region were averaged using a geometric mean weighted by the average catch (tonnes) of each stock using Sea Around Us catch data [@pauly2020].
+
+**Figure 6.1: Overview of fisheries status calculations.**
+
+![](/media/figs/fis_methods.png){fig-align="center"}
+
+#### Current status
+
+*Spatial allocation of catch to regions*
+
+The data we use to calculate $B/B_{MSY}$ and the weights used in the geometric mean are from Sea Around Us (2020) global marine fisheries catch data [@pauly2020]. Sea Around Us (2020) uses a spatial allocation method to distribute FAO catch data (reported at the country scale) to a global grid of one half-degree cell resolution based on the spatial distribution of fished taxa from [FishBase](http://www.fishbase.org/) [@froese2022fishbase] and [SeaLifeBase](https://www.sealifebase.se/) [@palomares2022search].
+
+We use the Sea Around Us (2020) catch data in two ways. To get the data needed to weight the stock status scores, we download the total catch for each taxa within each region's EEZ to get the total catch in tonnes for each year. To get the data needed to calculate $B/B_{MSY}$ values, we download the total catch for each taxa within each major fishing region [@faofisheriesandaquaculturedepartment2015cwp] for each year. We have traditionally included all fisheries catch in the Fisheries subgoal. However, a substantial portion of the catch is not used for human consumption, but rather for fish oil and fish meal used primarily for animal feed. Currently, it is estimated about 10% of forage fish enter the human diet directly [@froehlich2020avoiding]. To account for this, we excluded the proportion of catch that produce fish oil and fish meal for animal feed from the total catch.
+
+To combine the $B/B_{MSY}$ values from the RAM database with the Sea Around Us (2020) global fish catch data, we used the spatial boundaries that Christopher Free created for the RAM stocks up to 2017 and assigned FAO and OHI regions to each stock [@free2017mapping]. Newly added stocks to the RAM database had some spatially explicit information, but were mostly manually assigned regions based on best available information on stock distribution.
+
+*Estimating* $B/B_{MSY}$
+
+When we were unable to obtain $B/B_{MSY}$ values from the RAM database for a stock, we calculated them using a data-poor, or catch only model, developed by Martell & Froese [-@martell2016simple], and hereafter referred to as the “catch-MSY” method. The latter was chosen, among other data-limited methods because it was as good, or better, at predicting RAM $B/B_{MSY}$ values than other methods based on our initial testing. We compared $B/B_{MSY}$ scores from three catch models (catch-MSY, SSCOM, and COMSIR) as well as a variety of ensemble methods [@anderson2017improving]. The catch_MSY model performed as well or better than the other models at predicting RAM $B/B_{MSY}$ values. Furthermore, this method performed well (although not as well as the Random Forest ensemble approach, based on a rank correlation analysis) in analyses using simulated stocks with a broad range of life history traits and different known sources of uncertainty [@anderson2017improving].
+
+We defined a stock as species occurring within a major fishing area, and consequently, we ran the catch-MSY model using yearly catch data aggregated to FAO region from 1950 to the most current year. We chose this definition because many fish populations straddle the boundaries of EEZs. Any aggregation method will be biased in some way, but populations with the largest catches are most often straddling stocks, so a bias in assessments due to erroneous aggregation of catch could occur more often with cosmopolitan species that include small, sedentary (i.e., patchily distributed) populations that are less likely to play a dominant role in a country’s fisheries. The catch-MSY model was applied only to stocks identified to the species level.
+
+The catch-MSY method is based on the same assumptions used in many stock assessment models [@schaefer2017aspects], namely that the change in a population’s biomass depends on its biomass in the previous year and two population-specific parameters: the carrying capacity (${K}$) and rate of population increase (${r}$). The method estimates the status of a given population using landings time-series as proxies for biomass removals from the population, and using empirically derived relationships of relative peak to current catch values to estimate depletion at the end of the time series [@martell2016simple]. Then, a sampling procedure is used to estimate the distribution of values of ${r}$ and ${K}$ that are compatible with the estimated current depletion levels, and are constrained within the range that maintains viable population abundance and at the same time does not exceed the population’s carrying capacity. In the original formulation of Martell & Froese [-@martell2016simple] the geometric mean ${r}$ and ${K}$ were used to derive an estimate of MSY. Rosenberg et al. [-@rosenberg2014developing] modified this method by producing a biomass time series for each of the viable ${r-K}$ pairs using the surplus production model. The arithmetic mean biomass time series was selected and the current year stock abundance (${B}$) relative to the abundance that achieves ${MSY}$ ($B_{MSY}$) produced a measure, $B/B_{MSY}$.
+
+A potential issue of the catch-MSY method (when using the default "constrained" prior) is that declining catch is assumed to indicate declining population biomass (resulting in lower $B/B_{MSY}$ values) rather than reduced effort or improved management. When declining catch is known to be due to reduced effort and/or improved management this results in artificially low $B/B_{MSY}$ values; however, the catch-MSY model can be modified by using a "uniform" prior distribution for the final biomass. However, this adjustment should be considered carefully because the model will assume that all stocks with declining catch are rebuilding (resulting in higher $B/B_{MSY}$ values), which is unrealistic. Previously, for the 2015 assessment, we attempted to use the constrained vs. uniform prior for each stock based on the catch weighted fishery management scores of the regions catching the stock. However, recent analyses suggest this method did not improve the ability of the catch-MSY derived $B/B_{MSY}$ values to predict RAM values, suggesting we were adding additional complication that did not improve our model. Consequently, all analyses are done using the "constrained" prior.
+
+*Weights for stock status scores*
+
+To get the data needed to weight the stock status scores, we sum the total catch for each taxa within each region's EEZ to get the total catch in tonnes for each year. We then average each taxa's catch within each region across all years from 1980 to the most current year's data. Consequently, for a taxa within a region, the average catch value is the same across all years (only the $B/B_{MSY}$ value will vary across years.). This provides an estimate of the mean potential contribution of each species to total food provision, independent of yearly stochastic fluctuations of the population and possible recent declines.
+
+*Goal model calculations*
+
+The status of wild caught fisheries, $x_{fis}$, for each reporting region in each year was calculated as the geometric mean of the stock status scores, $SS$ (derived from $B/B_{MSY}$ score for each stock, described below) and weighted by the stock's relative contribution to overall catch, $C$, such that:
+
+$$
+x_{fis} = \prod _{ i=1 }^{ n }{ { SS }_{ i }^{ (\frac { { C }_{ i } }{ \sum { { C }_{ i } }  } ) } },  (Eq. 6.9)
+$$
+
+where ${i}$ is an individual taxon and $n$ is the total number of taxa in the reported catch for each region throughout the time-series, and ${C}$ is the average catch, since the first non null record, for each taxon within each region.
+
+We used a geometric weighted mean to account for the portfolio effect of exploiting a diverse suite of resources, such that small stocks that are doing poorly will have a stronger influence on the overall score than they would using an arithmetic weighted mean, even though their ${C}$ contributes relatively little to the overall tonnage of harvested seafood within a given region. The behavior of the geometric mean is such that improving a well-performing stock is not rewarded as much as improving one that is doing poorly. We believe this behavior is desirable because the recovery of stocks in poor condition requires more effort and can have more important effects on the system than making a species that is already abundant even more abundant. In this way, the score is not solely driven by absolute tonnes of fish produced and accounts for preserving the health of a diversity of species.
+
+$B/B_{MSY}$ values were used to derive stock status scores, ${SS}$, such that the best score is achieved for stocks at $B/B_{MSY} = 1\%$, with a 5% error buffer, and it decreases as the distance of $B$ from $B_{MSY}$ increases, due to over-exploitation (Figure 6.2). For each species reported, within each major fishing area, the stock status score was calculated as:
+
+![](/media/figs/StockStatus.png){fig-align="center"}
+
+where, for $B/B_{MSY} < 1$ (with a 5% buffer), status declines with direct proportionality to the decline of $\beta$ with respect to $B_{MSY}$, while for $B/B_{MSY} > 1$, status is given a perfect score. Thus, consistent with previous work [@halpern2012index], countries are rewarded for having wild stocks at the biomass that can sustainably deliver the maximum sustainable yield, -5% to allow for measurement error, and are penalized for over-harvesting.
+
+For the 2021 assessment, we decided to exclude all underharvest penalties because by applying an underharvest penalty, we ended up unduly penalizing regions that have high proportions of underharvested stocks, which may be intentional in many cases. This suggests that an improvement to our fisheries approach by including a more just underharvest penalty could be needed.
+
+**Figure 6.2: Conversion of** $B/B_{MSY}$ to stock status, $SS$ score.
+
+![](/media/figs/FIS_Bmsy2score.png){fig-align="center"}
+
+```{r bbmsy to ss, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE, eval = FALSE}
+
+  alpha <- 0.5
+  beta <- 0.25
+  lowerBuffer <- 0.95
+  upperBuffer <- 1.05
+  
+  b <- data.frame(bmsy = seq(0,3, by=0.01))
+  
+  b$score = ifelse(b$bmsy < lowerBuffer, b$bmsy,
+                   ifelse (b$bmsy >= lowerBuffer, 1, NA))
+  b$score = ifelse(!is.na(b$score), b$score,  
+                   ifelse(1 - alpha*(b$bmsy - upperBuffer) > beta,
+                          1 - alpha*(b$bmsy - upperBuffer), 
+                          beta))
+
+plot <- ggplot(b, aes(x=bmsy, y=score)) +
+  geom_line() +
+  labs(x='B/Bmsy', y='Stock status score') +
+  theme_bw()
 
 ```
 
-```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/CP_long.Rmd'}
+We needed to gapfill missing status, $SS$, scores for a large proportion of the catch. Gapfilling was necessary because we could only estimate $B/B_{MSY}$ values for taxa identified to the species level. Furthermore, we were unable to estimate $B/B_{MSY}$ values for some species due to too few years of catch data. Missing status scores were gapfilled using the mean status scores of the stocks sharing a region and year, the mean value was then adjusted using a taxonomic reporting penalty (Table 6.7). For catch not reported to the species level, a penalty was applied for increasingly coarser taxonomic reporting, as this is considered a sign of minimal monitoring and management. We based the penalty on the ISSCAAP convention for taxon codes (http://www.fao.org/fishery/collection/asfis/en), which defines 6 levels of taxonomic aggregation, from 6 (species) to 1 (order or higher). When ${g}<6$, a penalized gapfilled value for status was estimated for the taxa in each region:
+
+**Table 6.7: Penalty applied to gapfilled stock status scores** The penalty is multiplied by the gapfilled stock status score to obtain the final stock status score.
+
+| ISSCAAP taxon code | Description                                                            | Penalty (gapfilled score multiplied by value) |
+|-------------------|-------------------------------|-----------------------|
+| 1                  | e.g., Marine fishes not identified, Miscellaneous marine molluscs      | 0.1                                           |
+| 2                  | Class, Subclass, Subphylum (e.g., Cephalopoda, Holocephali, Crustacea) | 0.25                                          |
+| 3                  | Order (e.g., Chimaeriformes, Octopoda)                                 | 0.5                                           |
+| 4                  | Family (e.g., Lamnidae, Squillidae)                                    | 0.8                                           |
+| 5                  | Genus (e.g., Strongylocentrotus, Scyllarides)                          | 0.9                                           |
+| 6                  | Species                                                                | 1 (no penalty)                                |
+
+*Model limitations*
+
+This model is based on single-species assessments of stock status and thus cannot predict the effect of multi-species interactions. This model adopts $B=B_{MSY}$ as a single-species reference point, which by various assessment frameworks is considered very conservative (e.g., @froese_generic_2016), and the fact that the single-species values are aggregated using a geometric mean ensures that some multi-species effects may influence the scores. Nonetheless, a better understanding of the emerging effects of fishing various species at their reference levels would be desirable and will hopefully be possible in the future.
+
+Despite the fact that invertebrates represent a large proportion of global caught biomass, and represent the dominant stocks in many regions, stock assessment approaches for these taxa are poorly developed. The catch-MSY approach was applied to invertebrates even though the model developers only tested it on fish [@martell2016simple]. Part of the challenge in broadly testing this approach on organisms other than fish is the lack of a large enough collection of invertebrate assessments to use for validation testing.
+
+This approach captures whether stocks have been historically well managed, but it is worth noting that it does not directly measure current food production.
+
+#### Trend
+
+Trend was calculated as described in section 5.3.1.
+
+#### Data
+
+*Status and trend*
+
+```{r FIS data st, results="asis", echo=FALSE}
+data_layers(goal="FIS", dimension=c("status", "trend"))
+```
+
+*Pressure*
+
+```{r FIS data p, results="asis", echo=FALSE}
+data_layers(goal="FIS", dimension=c("pressure"))
+```
+
+*Resilience*
+
+```{r FIS r, results="asis", echo=FALSE}
+data_layers(goal="FIS", dimension=c("resilience"))
+```
+
+previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/MAR_long.Rmd'}
+
+### Mariculture (subgoal of food provision)
+
+The mariculture subgoal attempts to measure each region's food production from mariculture relative to its capacity [@unitednations2023a] and sustainability [@2023]. A basic problem facing previous assessments of mariculture was the lack of an ecologically- and socially-based reference point for the potential yield of every suitable mariculture species for every type of geographic habitat and location. Determining such reference points for every country at the global scale is difficult, not only because of key missing data and information, but also because species, genotypes and habitats suitable for production in any given location are likely to change from year to year. However, recent research [@gentry2019exploring] estimated the global biological potential for marine aquaculture at a high resolution spatial scale, addressing one of these key gaps: ecological reference points. To account for the social and economic realities and constraints to these ecological potentials, we constrained the per-country potential to 1% of this tonnage estimate and used these country values as reference points. Furthermore, the paper does not exclude high biodiversity or environmentally sensitive areas, meaning 100% of potential aquaculture tonnage estimate is a large overestimation of what is actually possible. Additionally, we include a sustainability score for each species in each region which is based on the [Monterey Bay Aquarium Seafood Watch aquaculture recommendations](https://www.seafoodwatch.org/seafood-recommendations/standards-revision) [@2023].
+
+#### Current status
+
+The status of the mariculture subgoal, $x_{mar}$, was defined as production of strictly marine taxa from FAO categories for both marine and brackish waters, excluding species that were not used as a source of food for human consumption. In particular this was only an issue for seaweeds, as many seaweed species are not used for human consumption (or only partially used for human consumption). Table 6.8 shows the proportions, with a justification column, explaining the proportions of each seaweed species used for human consumption.
+
+**Table 6.8 Mariculture seaweed exclusion**. List of seaweed mariculture species, what proportion of their harvest is not used for human consumption, and a justification for the exclusion.
+
+```{r mar seaweeds, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+data <- read.csv('https://raw.githubusercontent.com/OHI-Science/ohiprep_v2023/gh-pages/globalprep/mar/v2023/raw/species_list.csv') %>%
+	dplyr::filter(Taxon_code == "AL") %>%
+dplyr::select(`FAO species name` = FAO_name, `Proportion non food use` = exclude, `Justification` = notes_2)
+
+kable(data) %>%
+  kable_styling(full_width = F)
+```
+
+Harvest data reported by FAO does not always clearly describe whether it is derived from mariculture or from land-based facilities. Mariculture status, $x_{mar}$, was therefore assessed as the current re-scaled met potential of harvested yield, $Y_{c}$, within each country, multiplied by the production weighted average of sustainability of mariculture within each county, $S_{c}$, such that:
+
+$$
+x_{mar} = Y_{c} \ \times \ S_{c},  \   (Eq. 6.10)
+$$
+
+where, $Y_{c}$, is the current re-scaled met potential of harvested yield within each country, c, such that:
+
+$$
+Y_{c}= \frac {\displaystyle\sum _{ k=1 }^{ N }{ { Y }_{ k } }}{Y_{r, ref}}, \  (Eq. 6.11)
+$$
+
+where, $Y_{r,ref}$ is the value that corresponds to 1% of the potential aquaculture harvest in each region, and $Y_{k}$ is the 4-year moving window average of tonnes of production [@unitednations2023a] for each ${k}$ mariculture species that is currently or at one time cultured within a country. $Y_{c}$ is then capped at 1, so that no country can receive a better-than-perfect score. $S_{c}$ is the production weighted average of sustainability of mariculture in each country, such that:
+
+$$
+S_{c}  =  \frac { \displaystyle\sum _{ k=1 }^{ N }{ { Y }_{ k }{ S }_{ k,r } }  } {{\displaystyle\sum _{ k=1 }^{ N }{ { Y }_{ k } }}}, (Eq. 6.12)
+$$
+
+where, $Y_{k}$ is the 4-year moving window average of tonnes of production [@unitednations2023a] for each ${k}$ mariculture species that is currently or at one time cultured within a country, and $S_{k,r}$ is the sustainability score for each $k$ mariculture species and region.
+
+All regions scoring above 1.0 are given a score of 1.0. A score of one could occur when the current aquaculture harvest is greater than 1% of the biological production potential (taken from [@gentry2019exploring]) and mariculture harvest is perfectly sustainable within a region. However, when a region has a current harvested yield that is less than 100 tonnes, and when 1% of potential mariculture harfvest is less than 100 tonnes, a score of NA is assigned. This assumption is made to avoid giving a perfect score to regions that have essentially zero harvested yield, and essentially zero biological production potential.
+
+The sustainability score, $S_{k,r}$, for each species in each region is based on the [Monterey Bay Aquarium Seafood Watch aquaculture recommendations](https://www.seafoodwatch.org/seafood-recommendations/standards-revision) [@2023]. Ten mariculture practice criteria from the Monterey Bay Aquarium Seafood Watch Aquaculture Recommendations contributed to the sustainability of mariculture (data quality, effluent, habitat risk, chemical use, feed, escapes, disease, source of stock, predator and wildlife mortalities, and escape of secondary species). These criteria represent the internal mariculture practices with the potential to affect the long term sustainability of the mariculture system. Scores for each assessment criterion were aggregated and averaged. All country average scores were then rescaled from 0 to 1 using the maximum possible raw SFW score of 10 and minimum of 1. These scores are country and species-specific, however, many country/species combinations are not assessed by Seafood Watch. Given that each mariculture record must have a corresponding sustainability score, we used a series of steps to estimate sustainability scores for every country and species. If a country/species match was available we used that, otherwise, we gapfilled using the following sequence:
+
+1.  Used the global species value provided by Seafood Watch.
+2.  Within a country, used the average of species within the same family.
+3.  Within a UN geo-political region, used the average of species within the same family.
+4.  Global, used average of species within the same family.
+5.  Global, used average of species within a broad taxonomic grouping (e.g., crustaceans, algae, bivalves, etc.).
+6.  Finally, if these scores were not available for the categories above, we used the global average of all species.
+
+Seaweed or algae species were given the global seaweed sustainability score provided by the Seafood Watch recommendations. We are aware that there is some bias associated with using scores derived as averages across countries because they were originally assigned to specific species-country pairs, nevertheless this is preferable to applying a sustainability score solely based on a subset of the species harvested.
+
+#### Trend
+
+Trend was calculated as described in section 5.3.1.
+
+#### Data
+
+*Status and trend*
+
+```{r MAR data st, results="asis", echo=FALSE, eval = FALSE}
+data_layers(goal="MAR", dimension=c("status", "trend"))
+```
+
+*Pressure*
+
+```{r MAR data p, results="asis", echo=FALSE, eval = FALSE}
+data_layers(goal="MAR", dimension=c("pressure"))
+```
+
+*Resilience*
+
+```{r MAR r, results="asis", echo=FALSE, eval = FALSE}
+data_layers(goal="MAR", dimension=c("resilience"))
+```
+
+previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/LE_long.Rmd'}
+
+## Livelihoods and economies
+
+Due to discontinued and non-updated source datasets, we have not updated the status of this goal since 2013 (changes across scenario years after 2013 are due to changes in pressures/resilience).
+
+The jobs and revenue produced from marine-related industries are clearly of huge value to many people, even those who do not directly participate in the industries but value community identity, tax revenue, and indirect economic and social impacts of a stable coastal economy.
+
+This goal is composed of two equally important sub-goals, livelihoods and economies, which are assessed across as many marine-related sectors as possible (Table 6.8). Livelihoods includes two equally important sub-components, the number of jobs, which is a proxy for livelihood quantity, and the per capita average annual wages, which is a proxy for job quality. Economies is composed of a single component, revenue. We track the two halves of this goal separately because the number and quality of jobs and the amount of revenue produced are both of considerable interest to stakeholders and governments, and could show very different patterns in some cases (e.g., high revenue sectors do not necessarily provide large employment opportunities). The status of the livelihoods and economies goal is the average of the livelihoods and economies subgoals.
+
+The total value of economic industries cannot be captured fully by measuring only the jobs and revenue generated directly by those industries, since activity in the direct industry stimulates additional jobs and revenue in related industries. For example, the fishing industry provides direct jobs to fishers, indirect jobs to fishing gear manufacturing companies, and induced jobs to the restaurants and movie theaters where those manufacturing employees spend their income. In the case of tourism, data describing total jobs and revenue (direct plus indirect and induced) were available from the primary data source, and so we used that information as the best estimate of total employment and total revenue for that sector. For all other sectors we used sector- and development status-specific multipliers derived from the literature to estimate total job or revenue impacts. We did not apply multiplier values to wages since the cascading effects of earned income are more contentious. We assumed that sector-specific job and revenue multipliers are static and globally consistent, but distinct for developed versus developing countries (when such information was available), because we do not have data to resolve temporal or regional differences (Table 6.9). Countries were classified as developed or developing using the Human Development Index (HDI, @undp_human_2010), with all countries identified as “very high human development” classified as developed and all others as developing. We classified regions not assessed by the HDI by compiling information used to calculate the HDI score (schooling, life expectancy and per capita Gross National Income statistics).
+
+For a job or wage sector to be included in our assessment it needed to report at least two time points and have data for all or most coastal regions (reported separately, not as a single global number). However, a sector did not need to have data for all three measures – jobs, wages, and revenue – as this would have eliminated almost every sector. Consequently, the sectors that comprise each of the three measures differ (Table 6.8) and there is variation across regions in which sectors and measures comprise the status score (because of gaps in datasets and the fact that not all sectors exist in all countries). If a region only had one data layer (a single sector for only one measure), a status score was not calculated for that region and instead, a regional average was applied. We used a weighted average of the region's UN geopolitical region; revenue values were weighted by each region’s GDP, jobs were weighted by each region’s workforce size, and wages were unweighted.
+
+A number of sectors were not included primarily because sufficient data do not exist. In the future, particularly in finer scale applications, it would be desirable to include these sectors, including (but not limited to) ecotourism (beyond just cetacean watching), sailing/kayaking/boating, surfing/kiteboarding, etc., offshore wind and wave energy, navigation assistance, safety and security, coastal development, scientific research, and restoration and conservation.
+
+**Table 6.9. Livelihoods and economies sectors.** Sectors for which data were available for each component of the livelihoods and economies goal.
+
+| Sector                    | Jobs data | Wages data | Revenue data |
+|---------------------------|-----------|------------|--------------|
+| Tourism                   | X         | X          | X            |
+| Commercial fishing        | X         | X          | X            |
+| Marine mammal watching    | X         |            |              |
+| Aquarium fishing          |           |            | X            |
+| Wave & renewable energy   | X         |            | X            |
+| Mariculture               | X         |            | X            |
+| Transportation & shipping |           | X          |              |
+| Ports & harbors           |           | X          |              |
+| Ship & boatbuilding       |           | X          |              |
+
+**Table 6.10. Sector multipliers.** Sector-specific multipliers used to calculate total jobs and total revenue created by sector-based employment in developing and developed nations. N/A (not applicable) indicates that total employment or total revenue (direct plus indirect and induced) data were provided by primary data source, eliminating the need for a multiplier value. ND indicates no data available for that sector.
+
+|                        | Developed Countries |             | Developing Countries |             |
+|---------------|---------------|---------------|---------------|---------------|
+| **Sector**             | **Jobs**            | **Revenue** | **Jobs**             | **Revenue** |
+| Tourism                | N/A                 | N/A         | N/A                  | N/A         |
+| Commercial fishing     | 1.582               | 1.568       | 1.582                | 1.568       |
+| Marine mammal watching | 1.915               | 1.0         | 1.915                | 1.0         |
+| Aquarium fishing       | ND                  | 1.568       | ND                   | 1.568       |
+| Wave & tidal energy    | 1.88                | 1.652       | 1.88                 | 1.652       |
+| Mariculture            | 2.7                 | 2.377       | 1.973                | 1.59        |
+
+This goal aims to maintain coastal livelihoods and economies (i.e., avoid the loss of, coastal and ocean-dependent jobs and revenues), while also maximizing livelihood quality (relative wages). It does not attempt to capture any aspects of job identity (i.e., the reputation, desirability or other social or cultural perspectives associated with different jobs), although one can examine the component parts that make up this goal to evaluate individual sectors and infer implications for job identity. We make the assumption that all marine-related jobs are equivalent, such that, for example, a fisherman could transition to a job in mariculture or ship-building without affecting the score of this goal. While job identity has social and cultural value, there are not adequate data to track individual workers and assess their job satisfaction on a global scale. We also do not include any measure of petroleum extraction, as we do not consider these practices to be related to the biophysical state of the system and, because they rely on a non-renewable resource, they are inherently unsustainable. Furthermore, because of data constraints, this goal does not provide more credit for sectors or economic activities that are more ecologically sustainable. Future, finer scale applications of the Index may incorporate these key considerations.
+
+Gaps were filled in the adjustment datasets (national GDP and national employment) by first determining the average metric value (e.g., average employment rate) in UN geopolitical regions (@unitednations2013statistics) for each year based on all countries in that region for which there were data. Using these regional average time series, we fit nonlinear models to the adjustment data. Using the model fit, we determined the slope between each year. To fill in missing data points in country time series, we applied the slope (percent change in the metric) between the missing year and the following year (or previous year, if necessary). We prioritized filling in backwards (e.g., if a country has data from 2006 and 2008, to fill in 2007, one would use the regional delta between 2008 and 2007), but filled forwards when there were no data for a subsequent year.
+
+previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/ECO_long.Rmd'}
+
+### Economies (subgoal of livelihoods and economies)
+
+Due to discontinued and static source datasets, we have not updated the status of this subgoal since 2013 (changes across scenario years after 2013 are due to changes in pressures/resilience) [@unitednations2013faob].
+
+This subgoal measures the revenue produced from marine-related industries.
+
+#### Current status
+
+The model to estimate the status of the economies sub-goal, $x_{eco}$, is:
+
+$$
+x_{eco} = \frac { \displaystyle\sum _{ k=1 }^{ N }{ { e }_{ c,k } }  }{ \displaystyle\sum _{ k=1 }^{ N }{ { e }_{ r,k } }  }, (Eq. 6.13)
+$$
+
+where, $e$ is the total adjusted revenue generated directly and indirectly from sector $k$, at current $c$, and reference $r$, time points.
+
+Because there is no absolute global reference point for revenue (i.e., a target number would be completely arbitrary), the economies subgoal uses a moving baseline as the reference point. Reference revenue is calculated as the value in the current year (or most recent year), relative to the value in a recent moving reference period, defined as 5 years prior to the current year. This reflects an implicit goal of maintaining coastal revenue on short time scales, allowing for decadal or generational shifts in what people want and expect. We allowed for a longer or shorter gap between the current and recent years if a 5 year span was not available from the data, but the gap could not be greater than 10 years. Our preferred gap between years was as follows (in order of preference): 5, 6, 4, 7, 3, 8, 2, 9, 1, and 10 years.
+
+Absolute values for $e$ in the current and reference periods were lumped across all sectors before calculating reference values (even though the current and reference years will not be exactly the same for all sectors), allowing a decrease in one sector to be balanced by an increase in another sector. As such, we do not track the status of individual sectors and instead always focus on the status of all sectors together.
+
+To control for inflation/deflation, we used a standard dollar year. To account for broader economic forces that may affect revenue independent of changes in ocean health (e.g., a global recession), we adjusted revenue based on a country's GDP (i.e., must keep pace with growth in GDP). The current and reference years used for GDP data were based on the average current year and average reference year across the sector data sources used for revenue.
+
+#### Trend
+
+Trend was calculated as the slope in the individual sector values (not summed sectors) for revenue over the most recent five years (as opposed to the status, which examines changes between two points in time, current versus five years prior to current), corrected by GDP. We calculated the average for revenue by averaging slopes across sectors weighted by the revenue in each sector.
+
+#### Data
+
+*Status and trend*
+
+```{r ECO data st, results="asis", echo=FALSE}
+data_layers(goal="ECO", dimension=c("status", "trend"))
+```
+
+*Pressure*
+
+```{r ECO data p, results="asis", echo=FALSE}
+data_layers(goal="ECO", dimension=c("pressure"))
+```
+
+*Resilience*
+
+```{r ECO r, results="asis", echo=FALSE}
+data_layers(goal="ECO", dimension=c("resilience"))
+```
+
+previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/LIV_long.Rmd'}
+
+### Livelihoods (subgoal of livelihoods and economies)
+
+Due to discontinued and non-updated source datasets, we have not updated the status of this subgoal since 2013 (changes across scenario years after 2013 are due to changes in pressures/resilience).
+
+This subgoal measures the jobs produced from marine-related industries. Livelihoods includes two equally important sub-components, the number of jobs, which is a proxy for livelihood quantity, and the per capita average annual wages, which is a proxy for job quality.
+
+#### Current status
+
+The status of the livelihoods sub-goal, $x_{liv}$, is calculated as:
+
+$$
+x_{liv} = \frac { \frac { \sum _{ 1 }^{ k }{ { j }_{ c,k } }  }{ \sum _{ 1 }^{ k }{ { j }_{ r,k } }  } \quad +\quad \frac { \sum _{ 1 }^{ k }{ { w }_{ m,k } }  }{ \sum _{ 1 }^{ k }{ { w }_{ r,k } }  }  }{ 2 }, (Eq. 6.14)
+$$
+
+where $j$ is the adjusted number of direct and indirect jobs within sector $k$ within a region and $w$ is the average PPP-adjusted wages per job within the sector. Jobs are summed across sectors and measured at current, $c$, and reference, $r$, time points. Adjusted wage data are averaged across sectors within each region, $m$, and the reference country, $r$, with the highest average wages across all sectors.
+
+Because there is no absolute global reference point for jobs (i.e., a target number would be completely arbitrary), this component of the livelihoods subgoal uses a moving baseline as the reference point. Jobs, $j$, are calculated as a relative value: the value in the current year (or most recent year), $c$, relative to the value in a recent moving reference period, $r$, defined as 5 years prior to $c$. This reflects an implicit goal of maintaining coastal jobs on short time scales, allowing for decadal or generational shifts in what people want and expect. We allowed for a longer or shorter gap between the current and recent years if a 5 year span was not available from the data, but the gap could not be greater than 10 years. Our preferred gap between years was as follows (in order of preference): 5, 6, 4, 7, 3, 8, 2, 9, 1, and 10 years. For wages, $w$, we assumed the reference value was the highest value observed across all regions.
+
+Absolute values for $j$ and $w$ in the current and reference period (jobs) or region (wages) were lumped across all sectors before calculating relative values (even though the current and reference years will not be exactly the same for all sectors), allowing a decrease in one sector to be balanced by an increase in another sector. As such, we do not track the status of individual sectors and instead always focus on the status of all sectors together. For wages, we use the most current data available for each country and each sector, but only use data from 1990 on, assuming that wages are relatively slow to change over time (apart from inflation adjustments, which we control for by using real dollars) and thus can be compared across sectors and countries without controlling for year.
+
+Wages data were divided by the inflation conversion factor so that wage data across years would be comparable in 2010 US dollars (inflation conversion factors were downloaded from http://oregonstate.edu/cla/polisci/sahr/sahr). These data were also multiplied by the purchasing power parity-adjusted per capita GDP <https://data.worldbank.org/indicator/NY.GDP.PCAP.CD>. To account for broader economic forces that may affect jobs independent of changes in ocean health (e.g., a global recession), we adjusted jobs data by dividing by percent employment for the corresponding year: (1 – percent unemployment) \* total labor force [@worldbank2014labor; @worldbank2014unemployment]. For example, if unemployment increased from the reference to the current period, we would expect the number of marine-related jobs to decrease by a comparable proportion, without causing a lower score for the goal. Therefore, the objective of the goal is actually no loss of jobs and jobs must keep pace with growth in employment rates or sustain losses no greater than national increases in unemployment rates. The current and reference years used for unemployment data were based on the average current year and average reference year across the sector data sources used for number of jobs.
+
+#### Trend
+
+Trend was calculated as the slope in the individual sector values (not summed sectors) for jobs and wages over the most recent five years (as opposed to the status, which examines changes between two points in time, current versus five years prior to current), corrected by national trends in employment rates and average wages. We then calculated the average trend for jobs across all sectors, with the average weighted by the number of jobs in each sector. We calculated the average trend for wages across all sectors. We then averaged the wages and jobs average slopes to get the livelihoods trend.
+
+#### Data
+
+*Status and trend*
+
+```{r LIV data st, results="asis", echo=FALSE}
+data_layers(goal="LIV", dimension=c("status", "trend"))
+```
+
+*Pressure*
+
+```{r LIV data p, results="asis", echo=FALSE}
+data_layers(goal="LIV", dimension=c("pressure"))
+```
+
+*Resilience*
+
+```{r LIV r, results="asis", echo=FALSE}
+data_layers(goal="LIV", dimension=c("resilience"))
+```
+
+previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/NP_long.Rmd'}
+
+## Natural products
+
+In many countries the harvest of non-food natural products is important for local economies and can also be traded internationally. The sustainable harvest of these products is therefore an important component of a healthy ocean. This goal assesses the ability of countries to maximize the sustainable harvest of living marine resources, and includes three natural product categories: ornamental fish, fish oil and fish meal, and inedible seaweeds and marine plants (Table 6.12). It does not include bioprospecting, which focuses on potential (and largely unknowable and potentially infinite) value rather than current realized value, or non-living products such as oil and gas or mining products which by definition are not sustainable. It also excludes wood from mangroves as few data exist for if/where this harvest is happening and whether it is sustainable, as well as oils from mammals as this harvest is widely seen as unsustainable. In past assessments we included coral harvest, shells, and sponges, but we now exclude these resources. In the case of coral, harvest is not sustainable given current and future global threats. For sponges and shells, harvest yields were often highly variable and had relatively small values (Table 6.11), resulting in scores fluctuating dramatically across years for some countries even though the total USD values contributed very little to national economies (e.g. going from 100USD to 200USD would double the score).
+
+**Table 6.11. Commodity values** Total value (in USD) of 5 different natural product categories for the entire span of FAO commodities dataset (1976-2018).
+
+```{r commodities values, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
+data <- read.csv('https://raw.githubusercontent.com/OHI-Science/ohiprep_v2021/gh-pages/globalprep/np/v2021/int/h_methods_sum.csv') %>%
+  group_by(product) %>%
+  summarise(sum_usd = sum(usd, na.rm = TRUE)) %>%
+dplyr::select(Commodity = product, `Total value (USD)` = sum_usd) %>%
+  arrange(-`Total value (USD)`)
+
+kable(data) %>%
+kable_styling(full_width = T)
+```
+
+As such, we focus on three natural product categories: ornamental fish, fish oil and fish meal, and inedible seaweeds and marine plants (Table 6.12).
+
+#### Current status
+
+To determine the total production in tonnes for seaweed we summed seaweed production provided in the FAO global aquaculture production data [@unitednations2023a]. To determine total production in tonnes of ornamental fish we summed the products provided in the FAO commodities data [@un-fao2023]. Finally, to determine the total production in tonnes for fish oil and fish meal, we used Sea Around Us Project (2020) global marine fisheries catch data [@pauly2020] and B/Bmsy data [@ricard2012examining; @costello_status_2016; @martell2016simple; @thorson_new_2016; @rosenberg2014developing; @costello2016global] calculated from our fisheries sub-goal (methods can be found in section 6.6.1), and subsetted the stocks for stocks used for fish oil production (Table 6.12) [@froehlich2020avoiding]. The tonnes of harvest of fish oil and fish meal species were multiplied by 0.9 to reflect the amount of the fish actually going to production of feed or oil, while the other 10% of fish is used in other ways, such as direct human consumption [@froehlich2020avoiding].
+
+**Table 6.12. Natural product categories**. List of species and FAO products included in each of the three natural product categories.
+
+```{r np commodity, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
+data <- read.csv('https://raw.githubusercontent.com/OHI-Science/ohiprep_v2021/gh-pages/globalprep/np/v2021/raw/commodities2products_new.csv') %>%
+  group_by(product) %>%
+  summarize(subcategory = paste(commodity, collapse = ", ")) %>%
+  select(commodity = product, subcategory) %>%
+  mutate(commodity = gsub("_", " ", commodity)) %>%
+dplyr::select(Commodity = commodity, Subcategory = subcategory)
+
+kable(data) %>%
+kable_styling(full_width = F)
 
 ```
 
-```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/CS_long.Rmd'}
+The status of the seaweeds and ornamentals categories, $P_c$, were calculated as:
+
+$$
+ P_c = { H }_{ c }\ast { S }_{ c } , (Eq. 6.15)
+$$ where, $H_{c}$ is the harvest level for a category relative to its own peak reference point and $S_{c}$ is the sustainability of that commodity.
+
+For seaweeds and ornamental fish we calculated $H_{c}$ as the most recent harvest (in metric tons) per region relative to the maximum harvest ever achieved in that region, under the assumption that the maximum achieved at any point in time was likely the maximum possible. This creates a reference point internal to each country. We rescaled these values from 0-1, with the peak harvest set to 1.0.
+
+For fish oil and fish meal, we used the same methods to calculate the status as our fisheries sub-goal, only we subsetted the species (Table 6.12) to those species that contribute to fish oil and fish meal (methods for our fisheries sub-goal can be found in section 6.6.1). The tonnes of harvest of fish oil and fish meal species were multiplied by 0.9 to reflect the proportion of catch among these taxa going to production of feed or oil.
+
+Although we do not know actual sustainable levels of harvest for ornamentals, $S_{p}$, in each region, we estimated it based on exposure and risk components:
+
+$$
+S_{c} = 1- average({ E_c+R_c }),  (Eq. 6.16)
+$$
+
+where ${E_c}$ is the exposure term and ${R_c}$ is the risk term for ornamentals.
+
+The exposure term, $E_c$, is the ln-transformed intensity of harvest for ornamental fish calculated as tonnes of harvest per km^2^ of coral and rocky reef, relative to the global maximum. We ln transformed the harvest intensity scores because the distribution of values was highly skewed; because we do not know the true threshold of sustainable harvest, nearly all values would be considered highly sustainable without the log transformation. To estimate rocky reef extent area (km^2^) we used data from Halpern et al. (2008) [@halpern2008global], which assumes rocky reef habitat exists in all cells within 1 km of shore. Coral extent area (km^2^) are from UNEP-WCMC et al. (2018) [@unep-wcmc2018global].
+
+The risk term, $R_c$, is based on whether ornamental fishing has unsustainable harvest practices. In specific, we used the intensity of cyanide and dynamite fishing as a proxy. Risk for ornamental fish was set based on assessments of cyanide or dynamite fishing by Reefs at Risk Revisited (www.wri.org/publication/reefs-at-risk-revisited) under the assumption that most ornamental fishes are harvested from coral reefs.
+
+For seaweed commodity sustainability, we used the mariculture sustainability scores represented in the Monterey Bay Aquarium Seafood Watch aquaculture recommendations [@2023]. Ten mariculture practice criteria from the Monterey Bay Aquarium Seafood Watch Aquaculture Recommendations contributed to the sustainability of mariculture (data quality, effluent, habitat risk, chemical use, feed, escapes, disease, source of stock, predator and wildlife mortalities, and escape of secondary species). These criteria represent the internal mariculture practices with the potential to affect the long term sustainability of the mariculture system. Scores for each assessment criterion were aggregated and averaged. All country average scores were then rescaled from 0 to 1 using the maximum possible raw SFW score of 10 and minimum of 1. The sustainability score for seaweeds in the Seafood Watch recommendations was a global score, 0.79, which was applied to the seaweed harvest. Seaweed is widely regarded as a very sustainable aquaculture harvest, however, it does poorly on 3 of the 10 criteria that Seafood Watch uses, bringing its average down to 0.79. In specific, it scores poorly on the data quality (having robust and up-to-date information on production practices and their impacts available for analysis), escapes (preventing population-level impacts to wild species or other ecosystem-level impacts from farm escapes), and habitat (maintaining the functionality of ecological valuable habitat) criteria.
+
+The fish oil commodity sustainability was estimated using the B/Bmsy values which were calculated in our fisheries sub-goal (section 6.6.1).
+
+To estimate the status score, $x_{np}$, for each region and year we took the weighted average of the individual product scores, $P_c$, such that:
+
+$$
+x_{np} = \frac { \displaystyle\sum _{ c=1 }^{ N }{ { P }_{ c }\ast { w }_{ c } }  }{ { { N } }  }, (Eq. 6.17)
+$$
+
+where ${N}$ is the number of product categories, $c$, that were harvested, and $w_{c}$ is the relative contribution of each product to the overall status of the goal. $w_c$ was calculated as the ratio of the 5-year average maximum US dollar value for a product (from the smoothed, gap-filled FAO commodities data) across all years of data for the product, relative to the 5-year average sum of maximum values for all products harvested in the country.
+
+If a product had a peak value, but was missing a harvest value for that product in a given year, we used $w_{c} = 0$ during the aggregation for that year.
+
+Because dollar values were not present in the data that was used for seaweeds and fish oil, we relied on the FAO global commodities dataset to obtain these, which we used to calculate $w_c$ for each category (Table 6.13).
+
+**Table 6.13. Natural product categories**. List of FAO products included in each of the three natural product categories used for determining natural product weights.
+
+```{r np commodity weights, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
+data <- read.csv('https://raw.githubusercontent.com/OHI-Science/ohiprep_v2021/gh-pages/globalprep/np/v2021/raw/commodities2products_weighting.csv') %>%
+dplyr::filter(product %in% c("ornamentals", "seaweeds", "fish_oil")) %>%
+  group_by(product) %>%
+  summarize(subcategory = paste(commodity, collapse = ", ")) %>%
+  select(commodity = product, subcategory) %>%
+  mutate(commodity = gsub("_", " ", commodity))%>%
+dplyr::select(Commodity = commodity, Subcategory = subcategory)
+
+kable(data) %>%
+kable_styling(full_width = F)
 
 ```
 
-```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/CW_long.Rmd'}
+There are several important caveats about the natural product status model. First, our approach for ornamentals is supply (export) based. If declining demand for ornamentals causes a decline in production, the producing country’s score declines even if it could (sustainably) produce more. Similarly, if a country chose to reduce or halt production of ornamentals in order to improve conservation or sustainability, its score would decline. Second, we do not have Maximum Sustainable Yield (MSY) estimates for seaweeds or ornamental fish production. When such estimates become available in the future they can easily be incorporated. These scenarios may lead to decreases in the score for a region despite maintenance or even improvement of the sustainable harvest of natural products. Finally, our estimate of the sustainability of the harvest practices of ornamental fish are likely overly optimistic. For example, fishing for ornamental trade often employs unsustainable techniques such as cyanide fishing, but we have few data to inform such an estimate of sustainability in the status calculation for ornamental fish.
 
+This model requires both harvest tonnes and value data. However, because of inconsistencies with how data are reported to FAO, there are many cases where harvest data but no value data are reported, and vice versa. We gapfilled these data because otherwise these mismatches in reporting would result in losing real data, especially for producing the weight contributions of each natural product commodity. We used a linear regression model to estimate missing tonnes or US dollar values [@frazier2016mapping]. For countries that never harvested a product, we assumed they cannot produce it and treat that as a ‘no data’ rather than a zero value. For countries that harvested a product at any point in time, empty values are treated as zeros since the country has the capacity to harvest that product.
+
+#### Trend
+
+Trend was calculated as described in section 5.3.1.
+
+#### Data
+
+*Status and trend*
+
+```{r NP data st, results="asis", echo=FALSE}
+data_layers(goal="NP", dimension=c("status", "trend"))
 ```
 
-```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/FP_long.Rmd'}
+*Pressure*
 
+```{r NP data p, results="asis", echo=FALSE}
+data_layers(goal="NP", dimension=c("pressure"))
 ```
 
-```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/FIS_long.Rmd'}
+*Resilience*
 
+```{r NP r, results="asis", echo=FALSE}
+data_layers(goal="NP", dimension=c("resilience"))
 ```
 
-```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/MAR_long.Rmd'}
+previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/SP_long.Rmd'}
 
+## Sense of Place
+
+This goal attempts to capture the aspects of the coastal and marine system that people value as part of their cultural identity. This definition includes people living near the ocean and those who live far from it but still derive a sense of identity or value from knowing particular places or species exist. This goal is calculated using two equally weighted subgoals: iconic species and lasting special places.
+
+previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/ICO_long.Rmd'}
+
+### Iconic species (subgoal of sense of place)
+
+Iconic species are those that are relevant to local cultural identity through their relationship to one or more of the following: 1) traditional activities such as fishing, hunting or commerce; 2) local ethnic or religious practices; 3) existence value; and 4) locally-recognized aesthetic value (e.g., touristic attractions/common subjects for art such as whales). Ultimately, almost any species can be iconic to someone, and so the intent with this goal was to focus on those species widely seen as iconic from a cultural or existence value (rather than a livelihoods or extractive reason). Habitat-forming species were not included, nor were species harvested solely for economic or utilitarian purposes (even though they may be iconic to a sector or individual).
+
+#### Current status
+
+The status of this sub-goal, $x_{ico}$, is the average of status scores of the iconic species in each region based on their IUCN Red List threat categories [@iucn2022]:
+
+$$
+x_{ico} = \frac { \displaystyle\sum_{ i=EX }^{ LC }{ S_{i}\times w_{i} }  }{ \displaystyle\sum_{ i=EX }^{ LC }{ S_{i} }  }, (Eq. 6.18)
+$$
+
+where for each IUCN threat category $i$, $S_{i}$ is the number of assessed species and $w_{i}$ is the status (Table 6.3) following the methods described by Butchart et al. [-@butchart2007improvements]. This formulation gives partial credit to species that still exist but are in one of the other threat categories. The reference point is to have the risk status of all assessed species as Least Concern (i.e., a goal score = 1.0). Species that have not been assessed or labeled as data deficient are not included in the calculation.
+
+The list of iconic species was drawn from several data sources (Table 7.5. Iconic species resources), but primarily from the World Wildlife Fund’s global and regional lists for Priority Species (especially important to people for their health, livelihoods, and/or culture) and Flagship Species (‘charismatic’ and/or well-known). Many lists exist for globally important, threatened, endemic, etc. species, but in all cases it is not clear if or to what extent these species represent culturally iconic species. The World Wildlife Fund is the only data source that included cultural reasons for listing iconic species. Although, iconic species vary largely among regions, we include little regional information in our list (i.e., the same list is applied to nearly all regions). Additional culturally important species species, available at the continent level [@garcia2023], were added to supplement the original iconic species list.
+
+#### Trend
+
+We calculate trend using data the IUCN provides for current and past assessments of species, which we use to create a time series of average risk status for species within each region. Because IUCN assessments are generally infrequent for any given species, we derive the trend as the annual change in risk status for each species across the previous twenty years, rather than a five-year window typical of other goals, and include only taxa with two or more IUCN assessments within the past 20 years.
+
+#### Data
+
+*Status and trend*
+
+```{r ICO data st, results="asis", echo=FALSE}
+data_layers(goal="ICO", dimension=c("status", "trend"))
 ```
 
-```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/LE_long.Rmd'}
+*Pressure*
 
+```{r ICO data p, results="asis", echo=FALSE}
+data_layers(goal="ICO", dimension=c("pressure"))
 ```
 
-```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/ECO_long.Rmd'}
+*Resilience*
 
+```{r ICO r, results="asis", echo=FALSE}
+data_layers(goal="ICO", dimension=c("resilience"))
 ```
 
-```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/LIV_long.Rmd'}
+previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/LSP_long.Rmd'}
 
+### Lasting special places (subgoal of sense of place)
+
+The lasting special places sub-goal focuses on geographic locations that hold particular value for aesthetic, spiritual, cultural, recreational or existence reasons [@trc_inventory_2004]. This sub-goal is particularly hard to quantify. Ideally one would survey every community around the world to determine the top list of special places, and then assess how those locations are faring relative to a desired state (e.g., protected or well managed). The reality is that such lists do not exist. Instead, we assume areas that are protected indicate special places (i.e., the effort to protect them suggests they are important places). Clearly this is an imperfect assumption but in many cases it will be true.
+
+The identification of protected areas does not indicate the proportion of special places in a region that are protected. To solve this problem we make two important assumptions. First, we assume that all countries have roughly the same percentage of their coastal waters and coastline that qualify as lasting special places. In other words, they all have the same reference target (as a percentage of the total area). Second, we assume that the target reference level is 30% of area protected [@hughes2003climate].
+
+#### Current status
+
+We calculate the status of this goal as:
+
+$$
+x_{lsp} = \frac { \left( \frac{\%_{CMPA}}{\%_{Ref_{CMPA}}} + \frac {\%_{CP}}{\%_{Ref_{CP}}} \right) }{ 2 }, (Eq. 6.19)
+$$
+
+where, $\%_{CMPA}$ is the proportion of coastal marine protected area, $\%_{CP}$ is the proportion of coastline protected, and $\%_{Ref} = 30%$ for both measures.
+
+We focus only on coastal waters (within 3 nautical miles of shore) for marine special places because we assume lasting special places are primarily in coastal areas. For coastlines, we focus only on the first 1-km-wide strip of land as a way to increase the likelihood that the area being protected by terrestrial parks is connected to the marine system in some way.
+
+We use the United Nation’s World Database on Protected Areas (WDPA) to identify protected areas [@unep-wcmcandiucn2023]. The WDPA aggregates several key databases: IUCN’s World Commission on Protected Areas, Global Marine Protected Areas, UNESCO World Heritage Marine sites, National Parks and Nature Reserves, and the United Nations List of Protected Places. In most cases the year of designation is listed for each protected area.
+
+#### Trend
+
+Trend was calculated as described in section 5.3.1.
+
+#### Data
+
+*Status and trend*
+
+```{r LSP data st, results="asis", echo=FALSE}
+data_layers(goal="LSP", dimension=c("status", "trend"))
 ```
 
-```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/NP_long.Rmd'}
+*Pressure*
 
+```{r LSP data p, results="asis", echo=FALSE}
+data_layers(goal="LSP", dimension=c("pressure"))
 ```
 
-```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/SP_long.Rmd'}
+*Resilience*
 
+```{r LSP r, results="asis", echo=FALSE}
+data_layers(goal="LSP", dimension=c("resilience"))
 ```
 
-```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/ICO_long.Rmd'}
+previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/TR_long.Rmd'}
 
+## Tourism and recreation
+
+The tourism and recreation goal aims to capture the number of people, and the quality of their experience, visiting coastal and marine areas and attractions. Although coastal tourism industries can be important contributors to coastal economies, the tourism and recreation goal is assessed separately from its economic benefits, which are reported in the coastal livelihoods and economies goal. Few non-economic indicators of tourism and recreation exist at the global scale; consequently, we use international arrivals (in the form of number of non-resident inbound visitor trips including at least one overnight) as a reasonable proxy measure for the total number of people engaged in coastal tourism and recreation activities. International arrivals should respond dynamically to the number of people participating in tourist activities, based on the assumption that these will correspond. Domestic tourism, while also important, has not yet been incorporated and, for now, we operate under the assumption that international arrivals capture the relative participation in tourist activities well enough. A measure of sustainability should also be included in the model and we have incorporated that as an additional data layer.
+
+#### Current status
+
+The model for the status of the tourism & recreation goal, $x_{tr}$, is:
+
+$$
+x_{tr} = \frac{ T_r }{ T_{90th}}, (Eq. 6.20)
+$$
+
+where, $T_{90th}$ is the $T_r$ value of the region value that corresponds to the 90th quantile, and:
+
+$$
+T_{r} = { A }\times { S }, (Eq. 6.21)
+$$
+
+where, $A$ is the proportion of international overnight visitor arrivals to total international arrivals, and $S$ is sustainability.
+
+Ideally there would be data available specifically for arrivals, $A$, related to coastal tourism; however, the best data available at a global scale reports the total international arrivals, which does not solely reflect coastal tourism [@unwto2023arrivals].
+
+Unfortunately it was not possible to determine the proportion of international arrivals affiliated with strictly leisure tourism. However, some (unknown) proportion of business travelers also enjoy the coast for leisure during their visit to coastal areas, such that we assumed all tourist arrivals were related to tourism and recreation values. Regional applications of the Index can make use of better-resolved data and more direct measures of tourism, as has been done within the US West Coast [@halpern2014assessing], where data for participation in coastal recreational activities across 19 different sectors were available.
+
+Measures of sustainability are data from the World Economic Forum's Travel & Tourism Development Index (TTDI). This index measures “the set of factors and policies that enable the sustainable and resilient development of the Travel and Tourism (T&T) sector, which in turn contributes to the development of a country.” The index is comprised of five subindexes 17 pillars and 112 individual indicators, distributed among the different pillars. We use scores for the Travel and Tourism Sustainability Subindex which encompasses three pillars:
+
+Pillar 15: **Environmental Sustainability**
+
+-   Greenhouse gas (GHG) emissions per capita
+-   Renewable energy
+-   Global Climate Risk Index
+-   Investment in green energy and infrastructure
+-   Particulate matter (2.5) concentration
+-   Baseline water stress
+-   Red List Index
+-   Forest cover loss
+-   Wastewater treatment
+-   Clean ocean water
+-   Number of environmental treaty ratifications
+-   Adequate protection for nature
+-   Oversight of production impact on the environment and nature
+-   Total protected areas coverage
+-   Average proportion of key bio
+
+Pillar 16: **Socioeconomic Resilience and Conditions**
+
+-   Poverty rate
+-   Social protection basic coverage
+-   Social protection spending
+-   Not in education, employment or training (NEET) ratio
+-   Equal workforce opportunities
+-   Workers’ rights
+-   Gender Inequality Index
+
+Pillar 17: **Travel and Tourism Demand Pressure and Impact**
+
+-   T&T GDP multiplier
+-   Inbound length of stay
+-   Seasonality of international tourist arrivals
+-   Concentration of interest in cultural attractions
+-   Concentration of interest in nature attractions
+-   Geographically dispersed tourism
+-   Quality of town and city centre
+
+The sustainability factor, $S$, is the Travel and Tourism Sustainability Subindex score, which is the unweighted average of its three component pillars. Missing sustainability data were gapfilled using per capita GDP (World Bank data with gaps filled using CIA data) based on a linear regression model. For regions without per capita GDP data, remaining missing data were gapfilled using averages of [UN geopolitical regions](https://github.com/OHI-Science/ohiprep/blob/master/src/LookupTables/rgn_georegions_wide_2013b.csv), [@unitednations2013statistics] with sustainability data.
+
+#### Trend
+
+Trend was calculated as described in section 5.3.1.
+
+#### Data
+
+*Status and trend*
+
+```{r TR data st, results="asis", echo=FALSE}
+data_layers(goal="TR", dimension=c("status", "trend"))
 ```
 
-```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/LSP_long.Rmd'}
+*Pressure*
 
+```{r TR data p, results="asis", echo=FALSE}
+data_layers(goal="TR", dimension=c("pressure"))
 ```
 
-```{r child = '../../metadata_documentation/ohi_model/goal_descriptions/TR_long.Rmd'}
+*Resilience*
 
+```{r TR r, results="asis", echo=FALSE}
+data_layers(goal="TR", dimension=c("resilience"))
 ```

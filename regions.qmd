@@ -1,10 +1,8 @@
 ---
-title: "3. Regions"
+title: "Regions"
 callout-icon: false
 callout-appearance: simple
 ---
-
-# Regions
 
 One of the first steps of conducting an OHI assessment is defining regions of interest. These can be based on political and/or ecological boundaries. The definition of a “region” varies depending on the goals and scale of the OHI assessment. For the global OHI, each region is defined as the Exclusive Economic Zone boundaries [EEZ, @claus2012marine] area (300 nm offshore) for all coastal countries and territories (e.g., US Virgin Islands).
 
@@ -14,10 +12,12 @@ There are 220 global coastal countries and territorial regions (Table 4.1). Regi
 
 ![](media/figs/global_map_Index_2023_mol.png){fig-align="center"}
 
-
 ::: {.callout-note collapse=true}
-# Table 4.1. Global regions
+# Table 4.1. Global regions (click to expand)
 ```{r table_regions, eval = TRUE, echo=FALSE, message=FALSE, error=FALSE, warning=FALSE}
+library(tidyverse)
+library(magrittr)
+library(kableExtra)
 
 regions <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohiprep/master/src/LookupTables/eez_rgn_2013master.csv", stringsAsFactors = FALSE) %>%
   filter(rgn_typ == "eez") %>%

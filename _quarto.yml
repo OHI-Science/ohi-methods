@@ -2,12 +2,14 @@ project:
   type: website
   render: 
     - "!ohi-global/"
+    - "!structure.qmd"
     - "*.qmd"
     - "*.png"
   output-dir: docs
   
 
 website:
+  favicon: media/favicon-option.png
   sidebar:
     title: "OHI Methods 2024"
     logo: media/OHI_Logo_Blue.png
@@ -17,21 +19,22 @@ website:
       - href: index.qmd
         text: Home
         icon: house
+        
       - href: OHI-theory.qmd
       # look up numbering
         text: 1. Theory of OHI
         
       - href: OHI-score-anatomy.qmd
-        text: 2. Brief Anatomy of OHI Scores # data inclusion, data gaps
+        text: 2. Brief Anatomy of OHI Scores # currently still has "data inclusion, data gaps"
         
-  #    - href: OHI-score-anatomy.qmd
-  #      text: 3. data inclusion, data gaps
+      - href: data-inclusion-gaps.qmd
+        text: 3. Data Inclusion & Gaps # instead of in score anatomy?
         
       - href: regions.qmd
         text: 4. Regions 
       
-      # - href: models/models.qmd
-      #   text: 5. Models # this is where the "child = ..." issue first arises 
+      - href: models/models.qmd
+        text: 5. Models
         # subsections: 
         # regional and global index scores
         # goal scores
@@ -47,6 +50,7 @@ website:
         
       - href: ohi-global/documents/OHI.bib
         text: References
+        icon: book
         
         
   page-footer: 

@@ -1,10 +1,8 @@
 ---
-title: "2. Brief Anatomy of OHI Scores"
+title: "Brief Anatomy of OHI Scores"
 editor_options: 
   chunk_output_type: inline
 ---
-
-# A Brief Anatomy of OHI Scores
 
 We define ocean health as the sustainable delivery of ten widely-held public goals for ocean ecosystems (Table 2.1). These goals represent the full suite of benefits that people want and need from the ocean, including the traditional ‘goods and services’ people often consider (e.g., fish to eat, coastal protection from nearshore habitats) as well as benefits less commonly accounted for, such as cultural values and biodiversity. Within each region, scores, ranging from 0 to 100, are calculated for the 10 goals (section 5.2). Four of the goals are calculated from 2 subgoals. The subgoals are calculated independently (i.e., they are treated as if they are goals) and then combined into the goal status score (Table 2.2).
 
@@ -12,7 +10,7 @@ We define ocean health as the sustainable delivery of ten widely-held public goa
 
 **Table 2.1. The 10 goals of the Ocean Health Index**
 
-```{r ten_goals, eval = TRUE, echo=FALSE}
+```{r ten_goals, eval = TRUE, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
 library(dplyr)
 library(kableExtra)
 library(knitr)
