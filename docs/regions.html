@@ -20,7 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,7 +49,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./media/favicon-option.png" rel="icon" type="image/png">
+<link href="./media/favicon-ohi-test.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -191,8 +210,8 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>One of the first steps of conducting an OHI assessment is defining regions of interest. These can be based on political and/or ecological boundaries. The definition of a “region” varies depending on the goals and scale of the OHI assessment. For the global OHI, each region is defined as the Exclusive Economic Zone boundaries <span class="citation" data-cites="claus2012marine">[EEZ, @claus2012marine]</span> area (300 nm offshore) for all coastal countries and territories (e.g., US Virgin Islands).</p>
-<p>There are 220 global coastal countries and territorial regions (Table 4.1). Regions are based on EEZ boundaries. However, we aggregate some EEZ regions to the level of country (e.g., Hawaii is estimated as part of the larger U.S.). We have also modified some boundaries <span class="citation" data-cites="halpern2012index halpern2015patterns">[@halpern2012index; @halpern2015patterns]</span>. We do not estimate OHI values for disputed or unclaimed areas.</p>
+<p>One of the first steps of conducting an OHI assessment is defining regions of interest. These can be based on political and/or ecological boundaries. The definition of a “region” varies depending on the goals and scale of the OHI assessment. For the global OHI, each region is defined as the Exclusive Economic Zone boundaries <span class="citation" data-cites="claus2012marine">(EEZ, <a href="#ref-claus2012marine" role="doc-biblioref">Claus et al. 2012</a>)</span> area (300 nm offshore) for all coastal countries and territories (e.g., US Virgin Islands).</p>
+<p>There are 220 global coastal countries and territorial regions (Table 4.1). Regions are based on EEZ boundaries. However, we aggregate some EEZ regions to the level of country (e.g., Hawaii is estimated as part of the larger U.S.). We have also modified some boundaries <span class="citation" data-cites="halpern2012index halpern2015patterns">(<a href="#ref-halpern2012index" role="doc-biblioref">Halpern et al. 2012</a>; <a href="#ref-halpern2015patterns" role="doc-biblioref">Halpern et al. 2015</a>)</span>. We do not estimate OHI values for disputed or unclaimed areas.</p>
 <p><strong>Figure 4.1. Global regions</strong> Map of the OHI regions (with color corresponding to 2022 regional index scores). Mollweide coordinate reference system is used because it accurately represents area.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1776,7 +1795,18 @@ Table 4.1. Global regions (click to expand)
 
 
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-claus2012marine" class="csl-entry" role="listitem">
+Claus, S, N De Hauwere, B Vanhoorne, F Souza Dias, P Oset Garcia, F Hernandez, and J Mees. 2012. <span>“Marine <span>Regions</span>: <span>Exclusive</span> Economic Zones (V7).”</span> <a href="http://www.marineregions.org/">http://www.marineregions.org/</a>.
+</div>
+<div id="ref-halpern2012index" class="csl-entry" role="listitem">
+Halpern, Benjamin S., Catherine Longo, Darren Hardy, Karen L. McLeod, Jameal F. Samhouri, Steven K. Katona, Kristin Kleisner, et al. 2012. <span>“An Index to Assess the Health and Benefits of the Global Ocean.”</span> <em>Nature</em>. <a href="https://doi.org/10.1038/nature11397">https://doi.org/10.1038/nature11397</a>.
+</div>
+<div id="ref-halpern2015patterns" class="csl-entry" role="listitem">
+Halpern, Benjamin S., Catherine Longo, Julia S. Stewart Lowndes, Benjamin D. Best, Melanie Frazier, Steven K. Katona, Kristin M. Kleisner, Andrew A. Rosenberg, Courtney Scarborough, and Elizabeth R. Selig. 2015. <span>“Patterns and Emerging Trends in Global Ocean Health.”</span> <em>PLoS ONE</em> 10 (3): e0117863. <a href="https://doi.org/10.1371/journal.pone.0117863">https://doi.org/10.1371/journal.pone.0117863</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -20,7 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,7 +49,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../media/favicon-option.png" rel="icon" type="image/png">
+<link href="../media/favicon-ohi-test.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -180,6 +199,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#pressure" id="toc-pressure" class="nav-link" data-scroll-target="#pressure">Pressure</a></li>
   <li><a href="#resilience" id="toc-resilience" class="nav-link" data-scroll-target="#resilience">Resilience</a></li>
   </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -522,7 +542,7 @@ Table 5.1. Pressure data and categories (click to expand)
 <p><span class="math display">\[
 r\quad =\quad \gamma *(\frac { { Y }_{ E }+ {Y}_{R} }{ 2 } )+(1-\gamma )*{ Y }_{ S }, (Eq. 5.10)
 \]</span></p>
-<p>We chose <span class="math inline">\(\gamma = 0.5\)</span> so the weight of resilience components that address ecological systems (ecosystem and regulatory) vs.&nbsp;social systems would be equivalent to the proportions used in the model to calculate pressure. Resilience indicators are intended to directly address, as much as possible, specific pressures. Consequently, within a pressure category, resilience scores should not exceed pressure scores, otherwise likely future status scores will be inflated. For the 2021 OHI assessment, in a significant modification from past OHI methods <span class="citation" data-cites="halpern2012index">[@halpern2012index]</span>, where total resilience scores were allowed to exceed total pressures scores, we have capped resilience such that it will not exceed the corresponding pressures, e.g., <span class="math inline">\((r−p) ≤ 0\)</span> (i.e.&nbsp;<span class="math inline">\(r≤p\)</span>), when calculating the likely future status for a given goal <span class="citation" data-cites="ohara2020changes">[@ohara2020changes]</span>.</p>
+<p>We chose <span class="math inline">\(\gamma = 0.5\)</span> so the weight of resilience components that address ecological systems (ecosystem and regulatory) vs.&nbsp;social systems would be equivalent to the proportions used in the model to calculate pressure. Resilience indicators are intended to directly address, as much as possible, specific pressures. Consequently, within a pressure category, resilience scores should not exceed pressure scores, otherwise likely future status scores will be inflated. For the 2021 OHI assessment, in a significant modification from past OHI methods <span class="citation" data-cites="halpern2012index">(<a href="#ref-halpern2012index" role="doc-biblioref">Halpern et al. 2012</a>)</span>, where total resilience scores were allowed to exceed total pressures scores, we have capped resilience such that it will not exceed the corresponding pressures, e.g., <span class="math inline">\((r−p) ≤ 0\)</span> (i.e.&nbsp;<span class="math inline">\(r≤p\)</span>), when calculating the likely future status for a given goal <span class="citation" data-cites="ohara2020changes">(<a href="#ref-ohara2020changes" role="doc-biblioref">O’Hara et al. 2020</a>)</span>.</p>
 <p><strong>Figure 5.3. Resilience components</strong> Resilience includes both ecological and social resilience categories. Ecological resilience includes an ecosystem and regulatory category. The regulatory category includes 5 subcategories that mirror the pressure categories (fishing pressure, habitat destruction, climate change, water pollution, and species/genetic introductions) as well as a goal-specific category.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -755,14 +775,28 @@ y_{R, i}\quad =\quad \frac { \displaystyle\sum _{ i=1 }^{ N }{ { w }_{ i }{ r }_
 Y_{ S}\quad =\quad \frac { \displaystyle\sum _{ i=1 }^{ N }{ { y }_{ S,i } }  }{ N }, (Eq. 5.13)
 \]</span></p>
 <p>where <span class="math inline">\(y_{S,i}\)</span> are the social integrity measures specific to the goal.</p>
-<p>Ideally, assessments of social resilience would include state and federal level rules and other relevant institutional mechanisms as well. However, such information is extremely difficult to access for every single country, and so we relied on global datasets that focus on international treaties and assessments. Another key gap is information on social norms and community (and other local-scale) institutions (such as tenure or use rights) that influence resource use and management in many settings. Information on these institutions is also extremely difficult to find at a global scale, although the World Governance Indicator <span class="citation" data-cites="kaufmann2010worldwide">[@kaufmann2010worldwide]</span> partly measures their effectiveness through its inclusion of corruption indices.</p>
-
-
+<p>Ideally, assessments of social resilience would include state and federal level rules and other relevant institutional mechanisms as well. However, such information is extremely difficult to access for every single country, and so we relied on global datasets that focus on international treaties and assessments. Another key gap is information on social norms and community (and other local-scale) institutions (such as tenure or use rights) that influence resource use and management in many settings. Information on these institutions is also extremely difficult to find at a global scale, although the World Governance Indicator <span class="citation" data-cites="kaufmann2010worldwide">(<a href="#ref-kaufmann2010worldwide" role="doc-biblioref">Kaufmann, Kraay, and Mastruzzi 2010</a>)</span> partly measures their effectiveness through its inclusion of corruption indices.</p>
 </section>
 </section>
 </section>
+<section id="references" class="level2">
 
-</main> <!-- /main -->
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-halpern2012index" class="csl-entry" role="listitem">
+Halpern, Benjamin S., Catherine Longo, Darren Hardy, Karen L. McLeod, Jameal F. Samhouri, Steven K. Katona, Kristin Kleisner, et al. 2012. <span>“An Index to Assess the Health and Benefits of the Global Ocean.”</span> <em>Nature</em>. <a href="https://doi.org/10.1038/nature11397">https://doi.org/10.1038/nature11397</a>.
+</div>
+<div id="ref-kaufmann2010worldwide" class="csl-entry" role="listitem">
+Kaufmann, Daniel, Aart Kraay, and Massimo Mastruzzi. 2010. <span>“The <span>Worldwide</span> <span>Governance</span> <span>Indicators</span>: Methodology and Analytical Issues.”</span> {SSRN} {Scholarly} {Paper} ID 1682130. Rochester, NY: Social Science Research Network. <a href="http://info.worldbank.org/governance/wgi/index.aspx#home">http://info.worldbank.org/governance/wgi/index.aspx#home</a>.
+</div>
+<div id="ref-ohara2020changes" class="csl-entry" role="listitem">
+O’Hara, Casey C., Courtney Scarborough, Karen L. Hunter, Jamie C. Afflerbach, Karin Bodtker, Melanie Frazier, Julia S. Stewart Lowndes, R. Ian Perry, and Benjamin S. Halpern. 2020. <span>“Changes in Ocean Health in <span>British</span> <span>Columbia</span> from 2001 to 2016.”</span> Edited by Andrea Belgrano. <em>PLOS ONE</em> 15 (1): e0227502. <a href="https://doi.org/10.1371/journal.pone.0227502">https://doi.org/10.1371/journal.pone.0227502</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

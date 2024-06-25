@@ -1,5 +1,6 @@
 ---
 title: "Regions"
+bibliography: references.bib
 callout-icon: false
 callout-appearance: simple
 ---

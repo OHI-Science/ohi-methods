@@ -1,5 +1,6 @@
 ---
 title: "5. Goal Models and Data"
+bibliography: ../references.bib
 toc: true
 ---
 
@@ -1091,3 +1092,6 @@ data_layers(goal="TR", dimension=c("pressure"))
 ```{r TR r, results="asis", echo=FALSE}
 data_layers(goal="TR", dimension=c("resilience"))
 ```
+
+
+## References
