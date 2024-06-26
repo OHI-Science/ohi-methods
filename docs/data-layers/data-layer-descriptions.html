@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -174,7 +208,8 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#tables-describing-data-layers-table-7.1-and-sources-table-7.2" id="toc-tables-describing-data-layers-table-7.1-and-sources-table-7.2" class="nav-link active" data-scroll-target="#tables-describing-data-layers-table-7.1-and-sources-table-7.2">Tables describing data layers (Table 7.1) and sources (Table 7.2)</a></li>
-  <li><a href="#return-to-this" id="toc-return-to-this" class="nav-link" data-scroll-target="#return-to-this">RETURN TO THIS!</a>
+  <li><a href="#return-to-this" id="toc-return-to-this" class="nav-link" data-scroll-target="#return-to-this">RETURN TO THIS!</a></li>
+  <li><a href="#supplemental-methods-by-layer" id="toc-supplemental-methods-by-layer" class="nav-link" data-scroll-target="#supplemental-methods-by-layer">Supplemental Methods by Layer</a>
   <ul class="collapse">
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
@@ -1813,6 +1848,2053 @@ Table 7.2. Data sources used to create data layers (click to expand)
 <li><p>consider renaming tables (current names not awesome)</p></li>
 <li><p>try reading in the githubuser content (even though it’s super long, could be good to just see what it looks like…)</p></li>
 </ul>
+</section>
+<section id="supplemental-methods-by-layer" class="level1">
+<h1>Supplemental Methods by Layer</h1>
+<div class="cell" data-file="../data-layers/layers_all.Rmd" data-code-folding="true">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="st">```</span><span class="at">{r, message=FALSE, echo=FALSE, warning=FALSE, error=FALSE} </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at"> library(dplyr) </span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at"> library(tidyr) </span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at"> library(knitr) </span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at"> library(here) </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at"> layer_meta &lt;- read.csv(here('metadata_documentation/layers_eez_base.csv'), stringsAsFactors = FALSE) </span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at"> layer_path &lt;- 'https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers' </span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at"> </span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at"> </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="artisanal-fisheries-management-effectiveness" class="level2">
+<h2 class="anchored" data-anchor-id="artisanal-fisheries-management-effectiveness">Artisanal fisheries management effectiveness</h2>
+<section id="fp_artisanal" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="fp_artisanal"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/fp_artisanal.csv">fp_artisanal</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_artisanal.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="artisanal-fisheries-opportunity" class="level2">
+<h2 class="anchored" data-anchor-id="artisanal-fisheries-opportunity">Artisanal fisheries opportunity</h2>
+<section id="ao_access" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="ao_access"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/ao_access.csv">ao_access</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/ao_access.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-1">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="artisanal-fisheries-sustainability" class="level2">
+<h2 class="anchored" data-anchor-id="artisanal-fisheries-sustainability">Artisanal fisheries sustainability</h2>
+<section id="ao_sust" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="ao_sust"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/ao_sust.csv">ao_sust</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/ao_sust.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-2" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-2">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="average-species-condition" class="level2">
+<h2 class="anchored" data-anchor-id="average-species-condition">Average species condition</h2>
+<section id="spp_status" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="spp_status"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/spp_status.csv">spp_status</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/spp_status.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-3" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-3">Units</h4>
+<p>status score</p>
+</section>
+</section>
+<section id="average-species-condition-trend" class="level2">
+<h2 class="anchored" data-anchor-id="average-species-condition-trend">Average species condition trend</h2>
+<section id="spp_trend" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="spp_trend"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/spp_trend.csv">spp_trend</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/spp_trend.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-4" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-4">Units</h4>
+<p>trend score</p>
+</section>
+</section>
+<section id="bbmsy-estimates" class="level2">
+<h2 class="anchored" data-anchor-id="bbmsy-estimates">B/Bmsy estimates</h2>
+<section id="fis_b_bmsy" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="fis_b_bmsy"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/fis_b_bmsy.csv">fis_b_bmsy</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fis_b_bmsy.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-5" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-5">Units</h4>
+<p>B/Bmsy</p>
+</section>
+</section>
+<section id="cites-signatories" class="level2">
+<h2 class="anchored" data-anchor-id="cites-signatories">CITES signatories</h2>
+<section id="g_cites" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="g_cites"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/g_cites.csv">g_cites</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/g_cites.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-6" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-6">Units</h4>
+<p>0 or 1</p>
+</section>
+</section>
+<section id="carbon-storage-weights" class="level2">
+<h2 class="anchored" data-anchor-id="carbon-storage-weights">Carbon storage weights</h2>
+<section id="element_wts_cs_km2_x_storage" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="element_wts_cs_km2_x_storage"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/element_wts_cs_km2_x_storage.csv">element_wts_cs_km2_x_storage</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/element_wts_cs_km2_x_storage.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-7" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-7">Units</h4>
+<p>extent*carbon_storage</p>
+</section>
+</section>
+<section id="chemical-pollution" class="level2">
+<h2 class="anchored" data-anchor-id="chemical-pollution">Chemical pollution</h2>
+<section id="po_chemicals" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="po_chemicals"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/po_chemicals.csv">po_chemicals</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/po_chemicals.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-8" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-8">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="chemical-pollution-trend" class="level2">
+<h2 class="anchored" data-anchor-id="chemical-pollution-trend">Chemical pollution trend</h2>
+<section id="cw_chemical_trend" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="cw_chemical_trend"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/cw_chemical_trend.csv">cw_chemical_trend</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/cw_chemical_trend.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-9" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-9">Units</h4>
+<p>trend</p>
+</section>
+</section>
+<section id="coastal-chemical-pollution" class="level2">
+<h2 class="anchored" data-anchor-id="coastal-chemical-pollution">Coastal chemical pollution</h2>
+<section id="po_chemicals_3nm" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="po_chemicals_3nm"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/po_chemicals_3nm.csv">po_chemicals_3nm</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/po_chemicals_3nm.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-10" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-10">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="coastal-nutrient-pollution" class="level2">
+<h2 class="anchored" data-anchor-id="coastal-nutrient-pollution">Coastal nutrient pollution</h2>
+<section id="po_nutrients_3nm" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="po_nutrients_3nm"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/po_nutrients_3nm.csv">po_nutrients_3nm</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/po_nutrients_3nm.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-11" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-11">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="coastal-protected-marine-areas-fishing-preservation" class="level2">
+<h2 class="anchored" data-anchor-id="coastal-protected-marine-areas-fishing-preservation">Coastal protected marine areas (fishing preservation)</h2>
+<section id="fp_mpa_coast" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="fp_mpa_coast"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/fp_mpa_coast.csv">fp_mpa_coast</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_mpa_coast.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-12" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-12">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="coastal-protected-marine-areas-habitat-preservation" class="level2">
+<h2 class="anchored" data-anchor-id="coastal-protected-marine-areas-habitat-preservation">Coastal protected marine areas (habitat preservation)</h2>
+<section id="hd_mpa_coast" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hd_mpa_coast"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hd_mpa_coast.csv">hd_mpa_coast</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hd_mpa_coast.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-13" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-13">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="coastal-protection-weights" class="level2">
+<h2 class="anchored" data-anchor-id="coastal-protection-weights">Coastal protection weights</h2>
+<section id="element_wts_cp_km2_x_protection" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="element_wts_cp_km2_x_protection"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/element_wts_cp_km2_x_protection.csv">element_wts_cp_km2_x_protection</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/element_wts_cp_km2_x_protection.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-14" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-14">Units</h4>
+<p>extent*rank_protection</p>
+</section>
+</section>
+<section id="coral-harvest-pressure" class="level2">
+<h2 class="anchored" data-anchor-id="coral-harvest-pressure">Coral harvest pressure</h2>
+<section id="hd_coral" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hd_coral"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hd_coral.csv">hd_coral</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hd_coral.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-15" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-15">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="eez-protected-marine-areas-fishing-preservation" class="level2">
+<h2 class="anchored" data-anchor-id="eez-protected-marine-areas-fishing-preservation">EEZ protected marine areas (fishing preservation)</h2>
+<section id="fp_mpa_eez" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="fp_mpa_eez"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/fp_mpa_eez.csv">fp_mpa_eez</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_mpa_eez.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-16" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-16">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="eez-protected-marine-areas-habitat-preservation" class="level2">
+<h2 class="anchored" data-anchor-id="eez-protected-marine-areas-habitat-preservation">EEZ protected marine areas (habitat preservation)</h2>
+<section id="hd_mpa_eez" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hd_mpa_eez"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hd_mpa_eez.csv">hd_mpa_eez</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hd_mpa_eez.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-17" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-17">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="economic-diversity" class="level2">
+<h2 class="anchored" data-anchor-id="economic-diversity">Economic diversity</h2>
+<section id="li_sector_evenness" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="li_sector_evenness"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/li_sector_evenness.csv">li_sector_evenness</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/li_sector_evenness.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-18" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-18">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="economic-need-for-artisanal-fishing" class="level2">
+<h2 class="anchored" data-anchor-id="economic-need-for-artisanal-fishing">Economic need for artisanal fishing</h2>
+<section id="ao_need" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="ao_need"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/ao_need.csv">ao_need</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/ao_need.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-19" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-19">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="economic-status-scores" class="level2">
+<h2 class="anchored" data-anchor-id="economic-status-scores">Economic status scores</h2>
+<section id="eco_status" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="eco_status"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/eco_status.csv">eco_status</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/eco_status.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-20" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-20">Units</h4>
+<p>status 0-100</p>
+</section>
+</section>
+<section id="economic-trend-scores" class="level2">
+<h2 class="anchored" data-anchor-id="economic-trend-scores">Economic trend scores</h2>
+<section id="eco_trend" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="eco_trend"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/eco_trend.csv">eco_trend</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/eco_trend.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-21" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-21">Units</h4>
+<p>trend -1 to 1</p>
+</section>
+</section>
+<section id="exposure-of-ornamental-fishing-to-coral-and-rocky-reef-habitats" class="level2">
+<h2 class="anchored" data-anchor-id="exposure-of-ornamental-fishing-to-coral-and-rocky-reef-habitats">Exposure of ornamental fishing to coral and rocky reef habitats</h2>
+<section id="np_exposure_orn" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="np_exposure_orn"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/np_exposure_orn.csv">np_exposure_orn</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/np_exposure_orn.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-22" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-22">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="fish-oil-and-fish-meal-score" class="level2">
+<h2 class="anchored" data-anchor-id="fish-oil-and-fish-meal-score">Fish oil and fish meal score</h2>
+<section id="np_fofm_scores" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="np_fofm_scores"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/np_fofm_scores.csv">np_fofm_scores</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/np_fofm_scores.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-23" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-23">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="fishery-catch-data" class="level2">
+<h2 class="anchored" data-anchor-id="fishery-catch-data">Fishery catch data</h2>
+<section id="fis_meancatch" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="fis_meancatch"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/fis_meancatch.csv">fis_meancatch</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fis_meancatch.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-24" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-24">Units</h4>
+<p>tonnes</p>
+</section>
+</section>
+<section id="food-provision-weights" class="level2">
+<h2 class="anchored" data-anchor-id="food-provision-weights">Food provision weights</h2>
+<section id="fp_wildcaught_weight" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="fp_wildcaught_weight"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/fp_wildcaught_weight.csv">fp_wildcaught_weight</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_wildcaught_weight.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-25" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-25">Units</h4>
+<p>proportion</p>
+</section>
+</section>
+<section id="genetic-escapes" class="level2">
+<h2 class="anchored" data-anchor-id="genetic-escapes">Genetic escapes</h2>
+<section id="sp_genetic" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="sp_genetic"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/sp_genetic.csv">sp_genetic</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/sp_genetic.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-26" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-26">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="global-competitiveness-index-gci" class="level2">
+<h2 class="anchored" data-anchor-id="global-competitiveness-index-gci">Global Competitiveness Index (GCI)</h2>
+<section id="li_gci" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="li_gci"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/li_gci.csv">li_gci</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/li_gci.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-27" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-27">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="habitat-condition-of-coral" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-condition-of-coral">Habitat condition of coral</h2>
+<section id="hab_coral_health" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_coral_health"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_coral_health.csv">hab_coral_health</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_coral_health.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-28" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-28">Units</h4>
+<p>proportion</p>
+</section>
+</section>
+<section id="habitat-condition-of-kelp" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-condition-of-kelp">Habitat condition of kelp</h2>
+<section id="hab_kelp_health" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_kelp_health"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_kelp_health.csv">hab_kelp_health</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_kelp_health.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-29" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-29">Units</h4>
+<p>proportion</p>
+</section>
+</section>
+<section id="habitat-condition-of-mangrove" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-condition-of-mangrove">Habitat condition of mangrove</h2>
+<section id="hab_mangrove_health" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_mangrove_health"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_mangrove_health.csv">hab_mangrove_health</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_mangrove_health.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-30" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-30">Units</h4>
+<p>proportion</p>
+</section>
+</section>
+<section id="habitat-condition-of-saltmarsh" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-condition-of-saltmarsh">Habitat condition of saltmarsh</h2>
+<section id="hab_saltmarsh_health" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_saltmarsh_health"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_saltmarsh_health.csv">hab_saltmarsh_health</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_saltmarsh_health.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-31" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-31">Units</h4>
+<p>proportion</p>
+</section>
+</section>
+<section id="habitat-condition-of-seagrass" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-condition-of-seagrass">Habitat condition of seagrass</h2>
+<section id="hab_seagrass_health" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_seagrass_health"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_seagrass_health.csv">hab_seagrass_health</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_seagrass_health.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-32" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-32">Units</h4>
+<p>proportion</p>
+</section>
+</section>
+<section id="habitat-condition-of-seaice" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-condition-of-seaice">Habitat condition of seaice</h2>
+<section id="hab_seaice_health" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_seaice_health"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_seaice_health.csv">hab_seaice_health</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_seaice_health.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-33" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-33">Units</h4>
+<p>proportion</p>
+</section>
+</section>
+<section id="habitat-condition-of-softbottom" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-condition-of-softbottom">Habitat condition of softbottom</h2>
+<section id="hab_softbottom_health" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_softbottom_health"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_softbottom_health.csv">hab_softbottom_health</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_softbottom_health.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-34" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-34">Units</h4>
+<p>proportion</p>
+</section>
+</section>
+<section id="habitat-condition-of-tidal-flat" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-condition-of-tidal-flat">Habitat condition of tidal flat</h2>
+<section id="hab_tidal_flat_health" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_tidal_flat_health"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_tidal_flat_health.csv">hab_tidal_flat_health</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_tidal_flat_health.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-35" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-35">Units</h4>
+<p>proportion</p>
+</section>
+</section>
+<section id="habitat-condition-trend-of-coral" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-condition-trend-of-coral">Habitat condition trend of coral</h2>
+<section id="hab_coral_trend" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_coral_trend"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_coral_trend.csv">hab_coral_trend</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_coral_trend.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-36" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-36">Units</h4>
+<p>trend</p>
+</section>
+</section>
+<section id="habitat-condition-trend-of-kelp" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-condition-trend-of-kelp">Habitat condition trend of kelp</h2>
+<section id="hab_kelp_trend" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_kelp_trend"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_kelp_trend.csv">hab_kelp_trend</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_kelp_trend.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-37" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-37">Units</h4>
+<p>trend</p>
+</section>
+</section>
+<section id="habitat-condition-trend-of-mangrove" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-condition-trend-of-mangrove">Habitat condition trend of mangrove</h2>
+<section id="hab_mangrove_trend" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_mangrove_trend"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_mangrove_trend.csv">hab_mangrove_trend</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_mangrove_trend.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-38" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-38">Units</h4>
+<p>trend</p>
+</section>
+</section>
+<section id="habitat-condition-trend-of-saltmarsh" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-condition-trend-of-saltmarsh">Habitat condition trend of saltmarsh</h2>
+<section id="hab_saltmarsh_trend" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_saltmarsh_trend"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_saltmarsh_trend.csv">hab_saltmarsh_trend</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_saltmarsh_trend.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-39" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-39">Units</h4>
+<p>trend</p>
+</section>
+</section>
+<section id="habitat-condition-trend-of-seagrass" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-condition-trend-of-seagrass">Habitat condition trend of seagrass</h2>
+<section id="hab_seagrass_trend" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_seagrass_trend"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_seagrass_trend.csv">hab_seagrass_trend</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_seagrass_trend.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-40" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-40">Units</h4>
+<p>trend</p>
+</section>
+</section>
+<section id="habitat-condition-trend-of-seaice" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-condition-trend-of-seaice">Habitat condition trend of seaice</h2>
+<section id="hab_seaice_trend" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_seaice_trend"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_seaice_trend.csv">hab_seaice_trend</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_seaice_trend.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-41" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-41">Units</h4>
+<p>trend</p>
+</section>
+</section>
+<section id="habitat-condition-trend-of-softbottom" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-condition-trend-of-softbottom">Habitat condition trend of softbottom</h2>
+<section id="hab_softbottom_trend" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_softbottom_trend"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_softbottom_trend.csv">hab_softbottom_trend</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_softbottom_trend.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-42" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-42">Units</h4>
+<p>trend</p>
+</section>
+</section>
+<section id="habitat-extent-of-coral" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-extent-of-coral">Habitat extent of coral</h2>
+<section id="hab_coral_extent" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_coral_extent"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_coral_extent.csv">hab_coral_extent</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_coral_extent.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-43" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-43">Units</h4>
+<p>km2</p>
+</section>
+</section>
+<section id="habitat-extent-of-kelp" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-extent-of-kelp">Habitat extent of kelp</h2>
+<section id="hab_kelp_extent" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_kelp_extent"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_kelp_extent.csv">hab_kelp_extent</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_kelp_extent.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-44" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-44">Units</h4>
+<p>km2</p>
+</section>
+</section>
+<section id="habitat-extent-of-mangrove" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-extent-of-mangrove">Habitat extent of mangrove</h2>
+<section id="hab_mangrove_extent" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_mangrove_extent"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_mangrove_extent.csv">hab_mangrove_extent</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_mangrove_extent.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-45" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-45">Units</h4>
+<p>km2</p>
+</section>
+</section>
+<section id="habitat-extent-of-rocky-reef" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-extent-of-rocky-reef">Habitat extent of rocky reef</h2>
+<section id="hab_rockyreef_extent" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_rockyreef_extent"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_rockyreef_extent.csv">hab_rockyreef_extent</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_rockyreef_extent.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-46" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-46">Units</h4>
+<p>km2</p>
+</section>
+</section>
+<section id="habitat-extent-of-saltmarsh" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-extent-of-saltmarsh">Habitat extent of saltmarsh</h2>
+<section id="hab_saltmarsh_extent" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_saltmarsh_extent"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_saltmarsh_extent.csv">hab_saltmarsh_extent</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_saltmarsh_extent.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-47" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-47">Units</h4>
+<p>km2</p>
+</section>
+</section>
+<section id="habitat-extent-of-seagrass" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-extent-of-seagrass">Habitat extent of seagrass</h2>
+<section id="hab_seagrass_extent" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_seagrass_extent"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_seagrass_extent.csv">hab_seagrass_extent</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_seagrass_extent.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-48" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-48">Units</h4>
+<p>km2</p>
+</section>
+</section>
+<section id="habitat-extent-of-seaice" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-extent-of-seaice">Habitat extent of seaice</h2>
+<section id="hab_seaice_extent" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_seaice_extent"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_seaice_extent.csv">hab_seaice_extent</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_seaice_extent.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-49" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-49">Units</h4>
+<p>km2</p>
+</section>
+</section>
+<section id="habitat-extent-of-softbottom" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-extent-of-softbottom">Habitat extent of softbottom</h2>
+<section id="hab_softbottom_extent" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_softbottom_extent"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_softbottom_extent.csv">hab_softbottom_extent</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_softbottom_extent.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-50" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-50">Units</h4>
+<p>km2</p>
+</section>
+</section>
+<section id="habitat-extent-of-tidal-flat" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-extent-of-tidal-flat">Habitat extent of tidal flat</h2>
+<section id="hab_tidal_flat_extent" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_tidal_flat_extent"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_tidal_flat_extent.csv">hab_tidal_flat_extent</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_tidal_flat_extent.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-51" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-51">Units</h4>
+<p>km2</p>
+</section>
+</section>
+<section id="habitat-presenceabsence" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-presenceabsence">Habitat presence/absence</h2>
+<section id="element_wts_hab_pres_abs" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="element_wts_hab_pres_abs"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/element_wts_hab_pres_abs.csv">element_wts_hab_pres_abs</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/element_wts_hab_pres_abs.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-52" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-52">Units</h4>
+<p>0 or 1</p>
+</section>
+</section>
+<section id="habitat-trend-of-tidal-flat" class="level2">
+<h2 class="anchored" data-anchor-id="habitat-trend-of-tidal-flat">Habitat trend of tidal flat</h2>
+<section id="hab_tidal_flat_trend" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hab_tidal_flat_trend"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_tidal_flat_trend.csv">hab_tidal_flat_trend</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_tidal_flat_trend.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-53" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-53">Units</h4>
+<p>trend</p>
+</section>
+</section>
+<section id="high-bycatch-due-to-artisanal-fishing" class="level2">
+<h2 class="anchored" data-anchor-id="high-bycatch-due-to-artisanal-fishing">High bycatch due to artisanal fishing</h2>
+<section id="fp_art_hb" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="fp_art_hb"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/fp_art_hb.csv">fp_art_hb</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_art_hb.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-54" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-54">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="high-bycatch-due-to-commercial-fishing" class="level2">
+<h2 class="anchored" data-anchor-id="high-bycatch-due-to-commercial-fishing">High bycatch due to commercial fishing</h2>
+<section id="fp_com_hb" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="fp_com_hb"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/fp_com_hb.csv">fp_com_hb</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_com_hb.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-55" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-55">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="iucn-extinction-risk" class="level2">
+<h2 class="anchored" data-anchor-id="iucn-extinction-risk">IUCN extinction risk</h2>
+<section id="ico_spp_iucn_status" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="ico_spp_iucn_status"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/ico_spp_iucn_status.csv">ico_spp_iucn_status</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/ico_spp_iucn_status.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-56" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-56">Units</h4>
+<p>IUCN risk category</p>
+</section>
+</section>
+<section id="inland-1km-area" class="level2">
+<h2 class="anchored" data-anchor-id="inland-1km-area">Inland 1km area</h2>
+<section id="rgn_area_inland1km" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="rgn_area_inland1km"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/rgn_area_inland1km.csv">rgn_area_inland1km</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/rgn_area_inland1km.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-57" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-57">Units</h4>
+<p>km2</p>
+</section>
+</section>
+<section id="inland-coastal-protected-areas" class="level2">
+<h2 class="anchored" data-anchor-id="inland-coastal-protected-areas">Inland coastal protected areas</h2>
+<section id="lsp_prot_area_inland1km" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="lsp_prot_area_inland1km"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/lsp_prot_area_inland1km.csv">lsp_prot_area_inland1km</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/lsp_prot_area_inland1km.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-58" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-58">Units</h4>
+<p>km2</p>
+</section>
+</section>
+<section id="intertidal-habitat-destruction" class="level2">
+<h2 class="anchored" data-anchor-id="intertidal-habitat-destruction">Intertidal habitat destruction</h2>
+<section id="hd_intertidal" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hd_intertidal"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hd_intertidal.csv">hd_intertidal</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hd_intertidal.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-59" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-59">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="livelihood-status-scores" class="level2">
+<h2 class="anchored" data-anchor-id="livelihood-status-scores">Livelihood status scores</h2>
+<section id="liv_status" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="liv_status"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/liv_status.csv">liv_status</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/liv_status.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-60" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-60">Units</h4>
+<p>status 0-100</p>
+</section>
+</section>
+<section id="livelihood-trend-scores" class="level2">
+<h2 class="anchored" data-anchor-id="livelihood-trend-scores">Livelihood trend scores</h2>
+<section id="liv_trend" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="liv_trend"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/liv_trend.csv">liv_trend</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/liv_trend.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-61" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-61">Units</h4>
+<p>trend -1 to 1</p>
+</section>
+</section>
+<section id="low-bycatch-due-to-artisanal-fishing" class="level2">
+<h2 class="anchored" data-anchor-id="low-bycatch-due-to-artisanal-fishing">Low bycatch due to artisanal fishing</h2>
+<section id="fp_art_lb" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="fp_art_lb"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/fp_art_lb.csv">fp_art_lb</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_art_lb.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-62" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-62">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="low-bycatch-due-to-commercial-fishing" class="level2">
+<h2 class="anchored" data-anchor-id="low-bycatch-due-to-commercial-fishing">Low bycatch due to commercial fishing</h2>
+<section id="fp_com_lb" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="fp_com_lb"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/fp_com_lb.csv">fp_com_lb</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_com_lb.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-63" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-63">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="management-of-habitat-to-protect-fisheries-biodiversity" class="level2">
+<h2 class="anchored" data-anchor-id="management-of-habitat-to-protect-fisheries-biodiversity">Management of habitat to protect fisheries biodiversity</h2>
+<section id="fp_habitat" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="fp_habitat"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/fp_habitat.csv">fp_habitat</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_habitat.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-64" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-64">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="management-of-habitat-to-protect-habitat-biodiversity" class="level2">
+<h2 class="anchored" data-anchor-id="management-of-habitat-to-protect-habitat-biodiversity">Management of habitat to protect habitat biodiversity</h2>
+<section id="hd_habitat" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hd_habitat"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hd_habitat.csv">hd_habitat</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hd_habitat.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-65" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-65">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="management-of-nonindigenous-species" class="level2">
+<h2 class="anchored" data-anchor-id="management-of-nonindigenous-species">Management of nonindigenous species</h2>
+<section id="sp_alien_species" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="sp_alien_species"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/sp_alien_species.csv">sp_alien_species</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/sp_alien_species.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-66" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-66">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="management-of-tourism-to-preserve-biodiversity" class="level2">
+<h2 class="anchored" data-anchor-id="management-of-tourism-to-preserve-biodiversity">Management of tourism to preserve biodiversity</h2>
+<section id="g_tourism" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="g_tourism"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/g_tourism.csv">g_tourism</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/g_tourism.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-67" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-67">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="management-of-waters-to-preserve-biodiversity" class="level2">
+<h2 class="anchored" data-anchor-id="management-of-waters-to-preserve-biodiversity">Management of waters to preserve biodiversity</h2>
+<section id="po_water" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="po_water"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/po_water.csv">po_water</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/po_water.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-68" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-68">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="mariculture-harvest" class="level2">
+<h2 class="anchored" data-anchor-id="mariculture-harvest">Mariculture harvest</h2>
+<section id="mar_harvest_tonnes" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="mar_harvest_tonnes"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/mar_harvest_tonnes.csv">mar_harvest_tonnes</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/mar_harvest_tonnes.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-69" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-69">Units</h4>
+<p>tonnes</p>
+</section>
+</section>
+<section id="mariculture-sustainability-score" class="level2">
+<h2 class="anchored" data-anchor-id="mariculture-sustainability-score">Mariculture sustainability score</h2>
+<section id="mar_sustainability_score" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="mar_sustainability_score"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/mar_sustainability_score.csv">mar_sustainability_score</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/mar_sustainability_score.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-70" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-70">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="marine-plastics" class="level2">
+<h2 class="anchored" data-anchor-id="marine-plastics">Marine plastics</h2>
+<section id="po_trash" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="po_trash"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/po_trash.csv">po_trash</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/po_trash.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-71" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-71">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="measure-of-coastal-ecological-integrity" class="level2">
+<h2 class="anchored" data-anchor-id="measure-of-coastal-ecological-integrity">Measure of coastal ecological integrity</h2>
+<section id="species_diversity_3nm" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="species_diversity_3nm"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/species_diversity_3nm.csv">species_diversity_3nm</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/species_diversity_3nm.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-72" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-72">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="measure-of-ecological-integrity" class="level2">
+<h2 class="anchored" data-anchor-id="measure-of-ecological-integrity">Measure of ecological integrity</h2>
+<section id="species_diversity_eez" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="species_diversity_eez"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/species_diversity_eez.csv">species_diversity_eez</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/species_diversity_eez.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-73" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-73">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="minderoo-global-fishing-index" class="level2">
+<h2 class="anchored" data-anchor-id="minderoo-global-fishing-index">Minderoo Global Fishing Index</h2>
+<section id="fp_fish_management" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="fp_fish_management"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/fp_fish_management.csv">fp_fish_management</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_fish_management.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-74" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-74">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="nonindigenous-species" class="level2">
+<h2 class="anchored" data-anchor-id="nonindigenous-species">Nonindigenous species</h2>
+<section id="sp_alien" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="sp_alien"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/sp_alien.csv">sp_alien</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/sp_alien.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-75" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-75">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="nutrient-pollution" class="level2">
+<h2 class="anchored" data-anchor-id="nutrient-pollution">Nutrient pollution</h2>
+<section id="po_nutrients" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="po_nutrients"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/po_nutrients.csv">po_nutrients</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/po_nutrients.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-76" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-76">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="nutrient-pollution-trend" class="level2">
+<h2 class="anchored" data-anchor-id="nutrient-pollution-trend">Nutrient pollution trend</h2>
+<section id="cw_nutrient_trend" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="cw_nutrient_trend"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/cw_nutrient_trend.csv">cw_nutrient_trend</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/cw_nutrient_trend.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-77" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-77">Units</h4>
+<p>trend</p>
+</section>
+</section>
+<section id="ohi-region-id" class="level2">
+<h2 class="anchored" data-anchor-id="ohi-region-id">OHI region id</h2>
+<section id="rgn_global" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="rgn_global"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/rgn_global.csv">rgn_global</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/rgn_global.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-78" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-78">Units</h4>
+<p>label</p>
+</section>
+</section>
+<section id="ocean-acidification" class="level2">
+<h2 class="anchored" data-anchor-id="ocean-acidification">Ocean acidification</h2>
+<section id="cc_acid" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="cc_acid"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/cc_acid.csv">cc_acid</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/cc_acid.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-79" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-79">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="offshore-3nm-area" class="level2">
+<h2 class="anchored" data-anchor-id="offshore-3nm-area">Offshore 3nm area</h2>
+<section id="rgn_area_offshore3nm" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="rgn_area_offshore3nm"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/rgn_area_offshore3nm.csv">rgn_area_offshore3nm</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/rgn_area_offshore3nm.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-80" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-80">Units</h4>
+<p>km2</p>
+</section>
+</section>
+<section id="offshore-coastal-protected-areas" class="level2">
+<h2 class="anchored" data-anchor-id="offshore-coastal-protected-areas">Offshore coastal protected areas</h2>
+<section id="lsp_prot_area_offshore3nm" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="lsp_prot_area_offshore3nm"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/lsp_prot_area_offshore3nm.csv">lsp_prot_area_offshore3nm</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/lsp_prot_area_offshore3nm.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-81" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-81">Units</h4>
+<p>km2</p>
+</section>
+</section>
+<section id="pathogen-pollution" class="level2">
+<h2 class="anchored" data-anchor-id="pathogen-pollution">Pathogen pollution</h2>
+<section id="po_pathogens" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="po_pathogens"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/po_pathogens.csv">po_pathogens</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/po_pathogens.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-82" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-82">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="pathogen-pollution-trend" class="level2">
+<h2 class="anchored" data-anchor-id="pathogen-pollution-trend">Pathogen pollution trend</h2>
+<section id="cw_pathogen_trend" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="cw_pathogen_trend"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/cw_pathogen_trend.csv">cw_pathogen_trend</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/cw_pathogen_trend.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-83" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-83">Units</h4>
+<p>trend</p>
+</section>
+</section>
+<section id="plastic-trash-trends" class="level2">
+<h2 class="anchored" data-anchor-id="plastic-trash-trends">Plastic trash trends</h2>
+<section id="cw_trash_trend" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="cw_trash_trend"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/cw_trash_trend.csv">cw_trash_trend</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/cw_trash_trend.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-84" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-84">Units</h4>
+<p>trend</p>
+</section>
+</section>
+<section id="potential-tonnes-of-mariculture-harvest" class="level2">
+<h2 class="anchored" data-anchor-id="potential-tonnes-of-mariculture-harvest">Potential tonnes of mariculture harvest</h2>
+<section id="mar_capacity" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="mar_capacity"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/mar_capacity.csv">mar_capacity</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/mar_capacity.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-85" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-85">Units</h4>
+<p>tonnes</p>
+</section>
+</section>
+<section id="proportion-of-total-international-arrivals-to-area-of-coastline-to-total-population" class="level2">
+<h2 class="anchored" data-anchor-id="proportion-of-total-international-arrivals-to-area-of-coastline-to-total-population">Proportion of total international arrivals to area of coastline to total population</h2>
+<section id="tr_arrivals_props_tourism" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="tr_arrivals_props_tourism"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/tr_arrivals_props_tourism.csv">tr_arrivals_props_tourism</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/tr_arrivals_props_tourism.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-86" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-86">Units</h4>
+<p>proportion scaled 0-1</p>
+</section>
+</section>
+<section id="region-areas-based-on-eez-boundaries" class="level2">
+<h2 class="anchored" data-anchor-id="region-areas-based-on-eez-boundaries">Region areas based on EEZ boundaries</h2>
+<section id="rgn_area" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="rgn_area"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/rgn_area.csv">rgn_area</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/rgn_area.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-87" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-87">Units</h4>
+<p>km2</p>
+</section>
+</section>
+<section id="regions" class="level2">
+<h2 class="anchored" data-anchor-id="regions">Regions</h2>
+<section id="rgn_labels" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="rgn_labels"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/rgn_labels.csv">rgn_labels</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/rgn_labels.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-88" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-88">Units</h4>
+<p>label</p>
+</section>
+</section>
+<section id="relative-natural-product-harvest-value" class="level2">
+<h2 class="anchored" data-anchor-id="relative-natural-product-harvest-value">Relative natural product harvest value</h2>
+<section id="np_harvest_product_weight" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="np_harvest_product_weight"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/np_harvest_product_weight.csv">np_harvest_product_weight</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/np_harvest_product_weight.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-89" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-89">Units</h4>
+<p>proportion</p>
+</section>
+</section>
+<section id="relative-ornamental-natural-product-harvest-tonnes" class="level2">
+<h2 class="anchored" data-anchor-id="relative-ornamental-natural-product-harvest-tonnes">Relative ornamental natural product harvest tonnes</h2>
+<section id="np_orn_tonnes_relative" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="np_orn_tonnes_relative"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/np_orn_tonnes_relative.csv">np_orn_tonnes_relative</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/np_orn_tonnes_relative.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-90" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-90">Units</h4>
+<p>proportion</p>
+</section>
+</section>
+<section id="risk-of-harvest-practices-for-ornamental-fish" class="level2">
+<h2 class="anchored" data-anchor-id="risk-of-harvest-practices-for-ornamental-fish">Risk of harvest practices for ornamental fish</h2>
+<section id="np_risk_orn" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="np_risk_orn"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/np_risk_orn.csv">np_risk_orn</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/np_risk_orn.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-91" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-91">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="sea-level-rise" class="level2">
+<h2 class="anchored" data-anchor-id="sea-level-rise">Sea level rise</h2>
+<section id="cc_slr" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="cc_slr"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/cc_slr.csv">cc_slr</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/cc_slr.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-92" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-92">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="sea-surface-temperature" class="level2">
+<h2 class="anchored" data-anchor-id="sea-surface-temperature">Sea surface temperature</h2>
+<section id="cc_sst" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="cc_sst"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/cc_sst.csv">cc_sst</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/cc_sst.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-93" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-93">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="seaweed-mariculture-sustainability-score" class="level2">
+<h2 class="anchored" data-anchor-id="seaweed-mariculture-sustainability-score">Seaweed mariculture sustainability score</h2>
+<section id="np_seaweed_sust" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="np_seaweed_sust"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/np_seaweed_sust.csv">np_seaweed_sust</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/np_seaweed_sust.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-94" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-94">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="seaweed-natural-product-harvest" class="level2">
+<h2 class="anchored" data-anchor-id="seaweed-natural-product-harvest">Seaweed natural product harvest</h2>
+<section id="np_seaweed_tonnes" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="np_seaweed_tonnes"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/np_seaweed_tonnes.csv">np_seaweed_tonnes</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/np_seaweed_tonnes.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-95" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-95">Units</h4>
+<p>tonnes</p>
+</section>
+</section>
+<section id="sectors-in-each-region" class="level2">
+<h2 class="anchored" data-anchor-id="sectors-in-each-region">Sectors in each region</h2>
+<section id="le_sector_weight" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="le_sector_weight"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/le_sector_weight.csv">le_sector_weight</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/le_sector_weight.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-96" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-96">Units</h4>
+<p>value</p>
+</section>
+</section>
+<section id="social-progress-index" class="level2">
+<h2 class="anchored" data-anchor-id="social-progress-index">Social Progress Index</h2>
+<section id="res_spi" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="res_spi"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/res_spi.csv">res_spi</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/res_spi.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-97" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-97">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="strength-of-governance" class="level2">
+<h2 class="anchored" data-anchor-id="strength-of-governance">Strength of governance</h2>
+<section id="wgi_all" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="wgi_all"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/wgi_all.csv">wgi_all</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/wgi_all.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-98" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-98">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="subtidal-hardbottom-habitat-destruction" class="level2">
+<h2 class="anchored" data-anchor-id="subtidal-hardbottom-habitat-destruction">Subtidal hardbottom habitat destruction</h2>
+<section id="hd_subtidal_hb" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hd_subtidal_hb"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hd_subtidal_hb.csv">hd_subtidal_hb</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hd_subtidal_hb.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-99" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-99">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="subtidal-soft-bottom-habitat-destruction" class="level2">
+<h2 class="anchored" data-anchor-id="subtidal-soft-bottom-habitat-destruction">Subtidal soft bottom habitat destruction</h2>
+<section id="hd_subtidal_sb" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hd_subtidal_sb"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hd_subtidal_sb.csv">hd_subtidal_sb</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hd_subtidal_sb.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-100" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-100">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="targeted-harvest-of-cetaceans-and-marine-turtles" class="level2">
+<h2 class="anchored" data-anchor-id="targeted-harvest-of-cetaceans-and-marine-turtles">Targeted harvest of cetaceans and marine turtles</h2>
+<section id="fp_targetharvest" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="fp_targetharvest"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/fp_targetharvest.csv">fp_targetharvest</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_targetharvest.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-101" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-101">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="tourism-sustainability-index" class="level2">
+<h2 class="anchored" data-anchor-id="tourism-sustainability-index">Tourism sustainability index</h2>
+<section id="tr_sustainability" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="tr_sustainability"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/tr_sustainability.csv">tr_sustainability</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/tr_sustainability.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-102" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-102">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="uv-radiation" class="level2">
+<h2 class="anchored" data-anchor-id="uv-radiation">UV radiation</h2>
+<section id="cc_uv" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="cc_uv"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/cc_uv.csv">cc_uv</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/cc_uv.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-103" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-103">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="uninhabited-regions" class="level2">
+<h2 class="anchored" data-anchor-id="uninhabited-regions">Uninhabited regions</h2>
+<section id="uninhabited" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="uninhabited"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/uninhabited.csv">uninhabited</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/uninhabited.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-104" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-104">Units</h4>
+<p>population</p>
+</section>
+</section>
+<section id="weakness-of-governance" class="level2">
+<h2 class="anchored" data-anchor-id="weakness-of-governance">Weakness of governance</h2>
+<section id="ss_wgi" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="ss_wgi"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/ss_wgi.csv">ss_wgi</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/ss_wgi.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-105" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-105">Units</h4>
+<p>scaled 0-1</p>
+</section>
+</section>
+<section id="weakness-of-social-progress" class="level2">
+<h2 class="anchored" data-anchor-id="weakness-of-social-progress">Weakness of social progress</h2>
+<section id="ss_spi" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="ss_spi"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/ss_spi.csv">ss_spi</a></h4>
+<p>```{r, echo=FALSE, results=‘hide’}</p>
+<pre><code>                              x &lt;- tempfile(fileext = 'Rmd')
+
+                              on.exit(unlink(x))
+
+                              download.file("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/ss_spi.Rmd", x)</code></pre>
+<pre><code>
+```{r, child = x, echo=FALSE, results='asis'} 
+ </code></pre>
+</section>
+<section id="units-106" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="units-106">Units</h4>
+<p>scaled 0-1 ```</p>
+</section>
+</section>
+</div>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 

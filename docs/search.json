@@ -201,5 +201,754 @@
     "title": "Models",
     "section": "Likely future status dimensions",
     "text": "Likely future status dimensions\nThree dimensions are used to calculate likely future status: trends, pressure, and resilience. This section describes the calculations underlying these three dimensions.\n(previously: r child = ‘../../metadata_documentation/ohi_model/trend.Rmd’, eval=trend)\n\nTrend\nTrend is the proportional change in status predicted to occur in 5 years, based on recent status data. In most cases, this is calculated by estimating the yearly change in status using a linear regression model (i.e., slope estimate) of the five most recent years of status data and multiplying this value by 5 to estimate the change five years into the future. To determine proportional change, we divide the slope estimate by the status value of the earliest year of data used in the trend calculation.\nIn OHI assessments prior to 2016, we calculated trend as the absolute change in status predicted to occur in 5 years. In 2016, we began calculating the proportional change by dividing the slope estimate by the status of the earliest year used in the trend calculation. Although this change rarely had a large effect on trend, or ultimate score values, this method is more consistent with how trend data is incorporated into the likely future status model (Eq. 4.5). If the \\(\\beta\\), pressure (\\(p\\)), and resilience (\\(r\\)) components of the likely future status model are ignored (this assumes the pressure and resilience components fully cancel each other out), the equation becomes:\n\\(x(1 + trend)\\),\nwhere, \\(x\\) is the current status. Given this, if \\(x=50\\), and we expect trend to increase by 10% over 5 years, then likely future status would be: \\(50(1 + 0.10) = 55\\).\nTrends indicate proportional change in status, so they typically range from -100% to +100% (or, -1.0 to +1.0), therefore we constrained values to this range.\nFor all goals we included the trend estimate, even if the linear model was not statistically significant (i.e., P&lt;0.05). We chose to include these values for two key reasons: 1) we were not trying to predict the future but instead only indicate likely condition. 2) in nearly all cases we did not have sufficient data to conduct more rigorous trend analyses.\nIn some cases, we were not able to estimate trend using status data due to data limitations. In these cases, we used alternative methods to estimate trend. Specific details about trend calculations for each goal are provided in section 5.\nWe recognize several possible shortcomings in using past trends to estimate likely future status. We assume a simple linear trend, but this is not always the case due to a variety of variables such as altered pressures and resilience responses, nonlinear patterns in system response, stochastic environmental and biological variability, and simple bounding conditions (status cannot go below zero or above 1.0, and so the trend must level off as it approaches these values). Also, it is important to note that the same trend value could reflect many different processes. For example, declines due to unsustainable harvest of a resource can look identical to declines due to restrictions placed on resource users to allow the resource to recover. It also may be too short a time frame to determine true trends or the causes of those trends, but the intent here is more about informing the likely near-term trajectory.\n(r child = ‘../../metadata_documentation/ohi_model/pressure.Rmd’, eval=pressure)\n\n\nPressure\nThe pressure score, \\(p\\), describes the cumulative pressures acting on a goal which suppress the goal score. Pressure scores range from 0 to 1, and they are calculated for each goal and region and include both ecological (\\(p_{E}\\)) and social pressures (\\(p_{S}\\)) (Table 5.1, Figure 5.2), such that:\n\\[\n{ p }\\quad =\\quad \\gamma *{ p }_{ E }\\quad +\\quad (1-\\gamma )*{ p }_{ S }, (Eq. 5.6)\n\\]\nwhere \\(\\gamma\\) is the relative weight for ecological vs. social pressures and equals 0.5 for the global assessment. At global scales, little evidence exists to support unequal weighting of ecological and social pressures for most goals; furthermore, unequal weighting would require unique values for each goal and there is currently no empirical work to guide such decisions. At local or regional scales there may be clear evidence for unequal weights per goal and \\(\\gamma\\) should be adjusted accordingly.\nFigure 5.2. Pressure components Pressure is calculated using both social and ecological pressures. Ecological pressures include 5 subcategories (fishing pressure, habitat destruction, climate change, water pollution, and species/genetic introductions).\n\n\n\n\n\nTable 5.1. Pressure data and categories Description of the stressor data layers used to calculate overall pressure for each goal and region for the global assessment (descriptions of pressure data in section 6). Each data layer is assigned to an ecological or social category, and ecological data are assigned to one of five subcategories.\n\n\n\n\n\n\nTable 5.1. Pressure data and categories (click to expand)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData\nShort name\nCategory\nSubcategory\nDescription\n\n\n\n\nChemical pollution\npo_chemicals\necological\npollution\nModeled chemical pollution within EEZ from commercial shipping traffic, ports and harbors, land-based pesticide use (organic pollution), and urban runoff (inorganic pollution)\n\n\nCoastal chemical pollution\npo_chemicals_3nm\necological\npollution\nModeled chemical pollution within 3nm of coastline from commercial shipping traffic, ports and harbors, land-based pesticide use (organic pollution), and urban runoff (inorganic pollution)\n\n\nPathogen pollution\npo_pathogens\necological\npollution\nPercent of population without access to improved sanitation facilities as a proxy for pathogen pollution\n\n\nNutrient pollution\npo_nutrients\necological\npollution\nModeled nutrient pollution within EEZ based on crop fertilizer and manure consumption\n\n\nCoastal nutrient pollution\npo_nutrients_3nm\necological\npollution\nModeled nutrient pollution within 3nm based on crop fertilizer and manure consumption\n\n\nMarine plastics\npo_trash\necological\npollution\nGlobal marine plastic pollution\n\n\nNonindigenous species\nsp_alien\necological\nalien species\nMeasure of harmful invasive species\n\n\nGenetic escapes\nsp_genetic\necological\nalien species\nIntroduced mariculture species (Mariculture Sustainability Index) as a proxy for genetic escapes\n\n\nSubtidal soft bottom habitat destruction\nhd_subtidal_sb\necological\nhabitat destruction\nPressure on soft-bottom habitats due to demersal destructive commercial fishing practices (e.g., trawling)\n\n\nSubtidal hardbottom habitat destruction\nhd_subtidal_hb\necological\nhabitat destruction\nPresence of blast fishing as an estimate of subtidal hard bottom habitat destruction\n\n\nIntertidal habitat destruction\nhd_intertidal\necological\nhabitat destruction\nCoastal population density (25 mi from shore) as a proxy for intertidal habitat destruction\n\n\nCoral harvest pressure\nhd_coral\necological\nhabitat destruction\nPressure on coral due to harvesting as a natural product\n\n\nHigh bycatch due to commercial fishing\nfp_com_hb\necological\nfishing pressure\nPressure due to industrial high bycatch fishing identified by discard tonnes and standardized by NPP\n\n\nLow bycatch due to commercial fishing\nfp_com_lb\necological\nfishing pressure\nPressure due to industrial low bycatch fishing identified by reported and IUU tonnes and standardized by NPP\n\n\nLow bycatch due to artisanal fishing\nfp_art_lb\necological\nfishing pressure\nPressure due to artisanal low bycatch fishing identified by reported and IUU tonnes and standardized by NPP\n\n\nHigh bycatch due to artisanal fishing\nfp_art_hb\necological\nfishing pressure\nPressure due to artisanal high bycatch fishing identified by discard tonnes and standardized by NPP\n\n\nTargeted harvest of cetaceans and marine turtles\nfp_targetharvest\necological\nfishing pressure\nTargeted harvest of cetaceans and marine turtles\n\n\nSea surface temperature\ncc_sst\necological\nclimate change\nPresure due to increasing extreme sea surface temperature events\n\n\nOcean acidification\ncc_acid\necological\nclimate change\nPressure due to increasing ocean acidification, scaled using biological thresholds\n\n\nUV radiation\ncc_uv\necological\nclimate change\nPressure due to increasing frequency of UV anomolies\n\n\nSea level rise\ncc_slr\necological\nclimate change\nPressure due to rising mean sea level\n\n\nWeakness of governance\nss_wgi\nsocial\nsocial\nInverse of World Governance Indicators (WGI) six combined scores\n\n\nWeakness of social progress\nss_spi\nsocial\nsocial\nInverse of Social Progress Index scores\n\n\n\n\n\n\n\n\n\nEcological pressure\nWe assessed five broad, globally-relevant categories of ecological stressors: fishing pressure, habitat destruction, climate change (including ocean acidification), water pollution, and species introductions (invasive species and genetic escapes). The five categories are intended to capture known pressures to the social-ecological system associated with each goal. Each pressure category may include several stressors. The intensity of each stressor within each OHI region is scaled from 0 to 1, with 1 indicating the highest stress (e.g., example of one of these data layers is sea surface temperature).\nWe determined the rank sensitivity of each goal/subgoal to each stressor (or, when possible, an element of the goal, such as a specific habitat). We ranked ecological pressures as having ‘high’ (score = 3), ‘medium’ (score = 2), ‘low’ (score = 1), or ‘no’ (score = NA) impact (Table 5.2). Wherever possible we relied on peer-reviewed literature to establish these rankings, and relied on our collective expert judgment in cases with no available literature (Table S28 in Halpern et al. 2012). The pressure ranks are based on a rough estimate of the global average intensity and frequency of the stressor. We recognize that this will create over- and under-estimates for different places around the planet, but to address such variance in a meaningful way would require a separate weighting matrix for every single region on the planet, which is not feasible at this time.\nTable 5.2. Pressure matrix Rank sensitivity of each goal (or, goal element) to each stressor.\n\n\n\n\n\nTo estimate the cumulative effect of the ecological pressures, \\(P_E\\), we first determined the cumulative pressure, \\(p\\), within each ecological category, \\(i\\) (e.g., pollution, fishing, etc.):\n\\[\n{ p }_{ i }\\quad =\\quad \\frac { \\displaystyle\\sum _{ i=1 }^{ N }{ { w }_{ i }{ s }_{ i } }  }{ 3 }, (Eq. 5.7)\n\\]\nWhere \\(w_i\\) is the sensitivity ranks (Table 5.2) describing the relative sensitivity of each goal to each stressor, and \\(s_i\\) is intensity of the stressor in each region on a scale of 0-1. We divided by the maximum weighted intensity that could be achieved by the worst stressor (max = 3.0).\nIf \\(p_i\\) &gt; 1.0, we set the value equal to 1.0. This formulation assumes that any cumulative pressure load greater than the maximum intensity of the worst stressor is equivalent to maximum stressor intensity.\nFor the goals for which sensitivity ranks were assigned for specific habitats or livelihood sectors (i.e., goal elements), we calculated the weighted sum of the pressures for only those habitats or sectors that were present in the country.\nThe overall ecological pressure, \\(p_E\\), acting on each goal and region was calculated as the weighted-average of the pressure scores, \\(p\\), for each category, \\(i\\), with weights set as the maximum rank in each pressure category (\\(w_{i\\_max}\\)) for each goal, such that:\n\\[\n{ p }_{ E }\\quad =\\quad \\frac { \\displaystyle\\sum _{ i=1 }^{ N }{ { (w }_{ i\\_ max }*{ p }_{ i }) }  }{ \\displaystyle\\sum_{ i=1 }^{ N } { { w }_{ i\\_ max } }  },  (Eq. 5.8)\n\\]\nStressors that have no impact drop out rather than being assigned a rank of zero, which would affect the average score.\n\n\nSocial pressures\nSocial pressures describe the lack of effectiveness of government and social institutions. Social stressors are described for each region on a scale of 0 to 1 (with one indicating the highest pressure). Social pressure is then calculated as the average of the social stressors:\n\\[\n{ p }_{ S }\\quad =\\quad \\frac { \\displaystyle\\sum _{ i=1 }^{ N }{ z_{ i } }  }{ N }, (Eq. 5.9)\n\\]\nwhere \\(z_{i}\\) are the social pressure measures specific to the goal. Unequal weighting may be appropriate in some cases but is difficult to assess currently, particularly at the global scale.\n\n\nCaveats\nThere were a number of ecological pressures not included in our assessment, including altered sediment regimes, noise and light pollution, toxic chemicals from point sources, nutrient pollution from atmospheric deposition and land-based sources other than fertilizer application to agricultural land. In all cases, global data do not exist in a format that would allow for adequate comparisons within and among countries. Future global or regional iterations of the Index could include these data as they become available.\nThe calculation of ecological pressures is sensitive to the number of stressors within each category (but not to the number of categories). Inclusion of additional stressors within categories would require careful calibration of ranks so that the cumulative effect of a larger number of stressors does not overestimate pressure.\nA key assumption in our assessment of ecological pressures is that each goal has a linear and additive response to increases in intensity of the stressors. Clearly many ecosystems respond non-linearly to increased stressor intensity, exhibiting threshold responses, and there are likely nonlinear interactions among stressors. Unfortunately little is known about the nature of these types of nonlinearities and interactions so we could not include them in any meaningful way.\n(previously: r child = ‘../../metadata_documentation/ohi_model/resilience.Rmd’, eval=resilience)\n\n\n\nResilience\nTo calculate resilience for each goal and region, \\(r\\), we assess three resilience categories (Table 5.3, Figure 5.3): ecological integrity, \\(Y_{E}\\), regulatory efforts that address ecological pressures, \\(Y_R\\), and social integrity, \\(Y_{S}\\). The first two measures address ecological resilience while the third addresses social resilience. When all three aspects are relevant to a goal, resilience is calculated as:\n\\[\nr\\quad =\\quad \\gamma *(\\frac { { Y }_{ E }+ {Y}_{R} }{ 2 } )+(1-\\gamma )*{ Y }_{ S }, (Eq. 5.10)\n\\]\nWe chose \\(\\gamma = 0.5\\) so the weight of resilience components that address ecological systems (ecosystem and regulatory) vs. social systems would be equivalent to the proportions used in the model to calculate pressure. Resilience indicators are intended to directly address, as much as possible, specific pressures. Consequently, within a pressure category, resilience scores should not exceed pressure scores, otherwise likely future status scores will be inflated. For the 2021 OHI assessment, in a significant modification from past OHI methods (Halpern et al. 2012), where total resilience scores were allowed to exceed total pressures scores, we have capped resilience such that it will not exceed the corresponding pressures, e.g., \\((r−p) ≤ 0\\) (i.e. \\(r≤p\\)), when calculating the likely future status for a given goal (O’Hara et al. 2020).\nFigure 5.3. Resilience components Resilience includes both ecological and social resilience categories. Ecological resilience includes an ecosystem and regulatory category. The regulatory category includes 5 subcategories that mirror the pressure categories (fishing pressure, habitat destruction, climate change, water pollution, and species/genetic introductions) as well as a goal-specific category.\n\n\n\n\n\nEach resilience category is composed of 1 or more data layers (Table 5.3) with values scaled from 0-1, reflecting the magnitude of resilience, for each region (an example of one of these data layers describes tourism regulations that preserve biodiversity). Each resilience data layer is assigned a weight of 0.5 or 1 (Table 5.3) that is applied equally across all the goals (or, goal elements) influenced by the resilience layer (i.e., resilience matrix, Table 5.4). This information is used to calculate a score for each resilience category. The weight reflects information about governance.\nTable 5.3. Resilience categories and weights The data layers used to calculate resilience for each goal and region for the global assessment (descriptions of data layers and sources are in section 6). Each data layer is assigned to an ecological or social category. The ecological category is broken into an ecosystem and regulatory category type.\n\n\n\n\n\n\nTable 5.3. Resilience categories and weight table (click to expand)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData\nShort name\nCategory\nCategory type\nSubcategory\nWeight\n\n\n\n\nMeasure of ecological integrity\nspecies_diversity_eez\necological\necosystem\necological\n1.0\n\n\nMeasure of coastal ecological integrity\nspecies_diversity_3nm\necological\necosystem\necological\n1.0\n\n\nManagement of nonindigenous species\nsp_alien_species\necological\nregulatory\nalien species\n1.0\n\n\nCITES signatories\ng_cites\necological\nregulatory\ngoal\n0.5\n\n\nCoastal protected marine areas (fishing preservation)\nfp_mpa_coast\necological\nregulatory\nfishing pressure\n1.0\n\n\nEEZ protected marine areas (fishing preservation)\nfp_mpa_eez\necological\nregulatory\nfishing pressure\n1.0\n\n\nManagement of habitat to protect fisheries biodiversity\nfp_habitat\necological\nregulatory\nfishing pressure\n1.0\n\n\nMinderoo Global Fishing Index\nfp_fish_management\necological\nregulatory\nfishing pressure\n1.0\n\n\nArtisanal fisheries management effectiveness\nfp_artisanal\necological\nregulatory\nfishing pressure\n1.0\n\n\nManagement of habitat to protect habitat biodiversity\nhd_habitat\necological\nregulatory\nhabitat destruction\n1.0\n\n\nCoastal protected marine areas (habitat preservation)\nhd_mpa_coast\necological\nregulatory\nhabitat destruction\n1.0\n\n\nEEZ protected marine areas (habitat preservation)\nhd_mpa_eez\necological\nregulatory\nhabitat destruction\n1.0\n\n\nManagement of tourism to preserve biodiversity\ng_tourism\necological\nregulatory\ngoal\n1.0\n\n\nManagement of waters to preserve biodiversity\npo_water\necological\nregulatory\npollution\n1.0\n\n\nGlobal Competitiveness Index (GCI)\nli_gci\nsocial\nsocial\nsocial\n1.0\n\n\nEconomic diversity\nli_sector_evenness\nsocial\nsocial\nsocial\n1.0\n\n\nStrength of governance\nwgi_all\nsocial\nsocial\nsocial\n1.0\n\n\nSocial Progress Index\nres_spi\nsocial\nsocial\nsocial\n1.0\n\n\n\n\n\n\n\n\nTable 5.4. Resilience matrix Describes which goals/subgoals (and goal elements) are influenced by the resilience data layers.\n\n\n\n\n\n\n\n\n\n\nEcological resilience \n\nEcosystem integrity\nEcosystem integrity, e.g., food web integrity, is measured as relative condition of assessed species in a given location (scores from the species subgoal were used to estimate ecosystem integrity). For some goals, there is little evidence that our index of ecosystem integrity directly affects the value of the goal (or subgoal). In these instances, ecological integrity falls out of the resilience model.\nFor the global assessments, we only have one data layer describing ecosystem integrity, however, if there were multiple layers the overall score for ecosystem integrity would be a weighted mean of all the data layers, \\(i\\), that describe ecosystem integrity (\\(y_{E,i}\\)) and influence the goal:\n\\[\n{ Y }_{ E }\\quad =\\quad \\frac { \\displaystyle\\sum _{ i=1 }^{ N }{ { w }_{ i }{ y_E}_{i} }  }{ \\displaystyle\\sum _{ i=1 }^{ N }{ { w }_{ i }}}, (Eq. 5.11)\n\\]\n\n\nRegulatory resilience\nRegulatory resilience (\\(Y_R\\)) describes the institutional measures (e.g., rules, regulations, and laws) designed to address ecological pressures. The regulatory resilience datasets are grouped into five categories that address the 5 pressure categories: fishing pressure, habitat destruction, climate change (including ocean acidification), water pollution, and species introductions (invasive species and genetic escapes). There is also an additional category for goal-specific regulations that apply to a goal or goals, but do not address a larger pressure category.\nWeights were based effectiveness of governance. Governance is a function of 1) institutional structures that address the intended objective, 2) a clear process for implementing the institution is in place, and 3) whether the institution has been effective at meeting stated objectives. At global scales it is very difficult to assess these three elements; we usually only had information on whether institutions exist. However, in some cases we had detailed information on institutions that enabled us to assess whether they would contribute to effective management, and thus, increased ocean health. In those latter cases, we gave more weight to those measures (Table 5.3).\nFor each region and goal, we calculated a score for each regulatory category, \\(y_{R, i}\\), as a weighted mean of the resilience data layers, \\(r_{i}\\), that influence the goal (Table 5.4):\n\\[\ny_{R, i}\\quad =\\quad \\frac { \\displaystyle\\sum _{ i=1 }^{ N }{ { w }_{ i }{ r }_{ i } }  }{ \\displaystyle\\sum _{ i=1 }^{ N }{w_i} }, (Eq. 5.12)\n\\]\nwhere, \\(w_i\\) is the weight in Table 5.3.\nTo calculate the overall regulatory resilience, \\(Y_{R}\\), we averaged the scores for each regulatory category.\n\n\n\nSocial integrity resilience\nSocial integrity is intended to describe those processes internal to a community that affect its resilience. It is a function of a wide range of aspects of social structure. Social Integrity per goal for each region, \\(Y_{S}\\), is therefore:\n\\[\nY_{ S}\\quad =\\quad \\frac { \\displaystyle\\sum _{ i=1 }^{ N }{ { y }_{ S,i } }  }{ N }, (Eq. 5.13)\n\\]\nwhere \\(y_{S,i}\\) are the social integrity measures specific to the goal.\nIdeally, assessments of social resilience would include state and federal level rules and other relevant institutional mechanisms as well. However, such information is extremely difficult to access for every single country, and so we relied on global datasets that focus on international treaties and assessments. Another key gap is information on social norms and community (and other local-scale) institutions (such as tenure or use rights) that influence resource use and management in many settings. Information on these institutions is also extremely difficult to find at a global scale, although the World Governance Indicator (Kaufmann, Kraay, and Mastruzzi 2010) partly measures their effectiveness through its inclusion of corruption indices."
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#artisanal-fisheries-management-effectiveness",
+    "href": "data-layers/data-layer-descriptions.html#artisanal-fisheries-management-effectiveness",
+    "title": "Description of Data Layers",
+    "section": "Artisanal fisheries management effectiveness",
+    "text": "Artisanal fisheries management effectiveness\n\nfp_artisanal\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_artisanal.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#artisanal-fisheries-opportunity",
+    "href": "data-layers/data-layer-descriptions.html#artisanal-fisheries-opportunity",
+    "title": "Description of Data Layers",
+    "section": "Artisanal fisheries opportunity",
+    "text": "Artisanal fisheries opportunity\n\nao_access\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/ao_access.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#artisanal-fisheries-sustainability",
+    "href": "data-layers/data-layer-descriptions.html#artisanal-fisheries-sustainability",
+    "title": "Description of Data Layers",
+    "section": "Artisanal fisheries sustainability",
+    "text": "Artisanal fisheries sustainability\n\nao_sust\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/ao_sust.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#average-species-condition",
+    "href": "data-layers/data-layer-descriptions.html#average-species-condition",
+    "title": "Description of Data Layers",
+    "section": "Average species condition",
+    "text": "Average species condition\n\nspp_status\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/spp_status.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nstatus score"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#average-species-condition-trend",
+    "href": "data-layers/data-layer-descriptions.html#average-species-condition-trend",
+    "title": "Description of Data Layers",
+    "section": "Average species condition trend",
+    "text": "Average species condition trend\n\nspp_trend\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/spp_trend.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\ntrend score"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#bbmsy-estimates",
+    "href": "data-layers/data-layer-descriptions.html#bbmsy-estimates",
+    "title": "Description of Data Layers",
+    "section": "B/Bmsy estimates",
+    "text": "B/Bmsy estimates\n\nfis_b_bmsy\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fis_b_bmsy.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nB/Bmsy"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#cites-signatories",
+    "href": "data-layers/data-layer-descriptions.html#cites-signatories",
+    "title": "Description of Data Layers",
+    "section": "CITES signatories",
+    "text": "CITES signatories\n\ng_cites\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/g_cites.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\n0 or 1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#carbon-storage-weights",
+    "href": "data-layers/data-layer-descriptions.html#carbon-storage-weights",
+    "title": "Description of Data Layers",
+    "section": "Carbon storage weights",
+    "text": "Carbon storage weights\n\nelement_wts_cs_km2_x_storage\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/element_wts_cs_km2_x_storage.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nextent*carbon_storage"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#chemical-pollution",
+    "href": "data-layers/data-layer-descriptions.html#chemical-pollution",
+    "title": "Description of Data Layers",
+    "section": "Chemical pollution",
+    "text": "Chemical pollution\n\npo_chemicals\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/po_chemicals.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#chemical-pollution-trend",
+    "href": "data-layers/data-layer-descriptions.html#chemical-pollution-trend",
+    "title": "Description of Data Layers",
+    "section": "Chemical pollution trend",
+    "text": "Chemical pollution trend\n\ncw_chemical_trend\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/cw_chemical_trend.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\ntrend"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#coastal-chemical-pollution",
+    "href": "data-layers/data-layer-descriptions.html#coastal-chemical-pollution",
+    "title": "Description of Data Layers",
+    "section": "Coastal chemical pollution",
+    "text": "Coastal chemical pollution\n\npo_chemicals_3nm\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/po_chemicals_3nm.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#coastal-nutrient-pollution",
+    "href": "data-layers/data-layer-descriptions.html#coastal-nutrient-pollution",
+    "title": "Description of Data Layers",
+    "section": "Coastal nutrient pollution",
+    "text": "Coastal nutrient pollution\n\npo_nutrients_3nm\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/po_nutrients_3nm.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#coastal-protected-marine-areas-fishing-preservation",
+    "href": "data-layers/data-layer-descriptions.html#coastal-protected-marine-areas-fishing-preservation",
+    "title": "Description of Data Layers",
+    "section": "Coastal protected marine areas (fishing preservation)",
+    "text": "Coastal protected marine areas (fishing preservation)\n\nfp_mpa_coast\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_mpa_coast.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#coastal-protected-marine-areas-habitat-preservation",
+    "href": "data-layers/data-layer-descriptions.html#coastal-protected-marine-areas-habitat-preservation",
+    "title": "Description of Data Layers",
+    "section": "Coastal protected marine areas (habitat preservation)",
+    "text": "Coastal protected marine areas (habitat preservation)\n\nhd_mpa_coast\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hd_mpa_coast.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#coastal-protection-weights",
+    "href": "data-layers/data-layer-descriptions.html#coastal-protection-weights",
+    "title": "Description of Data Layers",
+    "section": "Coastal protection weights",
+    "text": "Coastal protection weights\n\nelement_wts_cp_km2_x_protection\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/element_wts_cp_km2_x_protection.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nextent*rank_protection"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#coral-harvest-pressure",
+    "href": "data-layers/data-layer-descriptions.html#coral-harvest-pressure",
+    "title": "Description of Data Layers",
+    "section": "Coral harvest pressure",
+    "text": "Coral harvest pressure\n\nhd_coral\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hd_coral.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#eez-protected-marine-areas-fishing-preservation",
+    "href": "data-layers/data-layer-descriptions.html#eez-protected-marine-areas-fishing-preservation",
+    "title": "Description of Data Layers",
+    "section": "EEZ protected marine areas (fishing preservation)",
+    "text": "EEZ protected marine areas (fishing preservation)\n\nfp_mpa_eez\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_mpa_eez.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#eez-protected-marine-areas-habitat-preservation",
+    "href": "data-layers/data-layer-descriptions.html#eez-protected-marine-areas-habitat-preservation",
+    "title": "Description of Data Layers",
+    "section": "EEZ protected marine areas (habitat preservation)",
+    "text": "EEZ protected marine areas (habitat preservation)\n\nhd_mpa_eez\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hd_mpa_eez.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#economic-diversity",
+    "href": "data-layers/data-layer-descriptions.html#economic-diversity",
+    "title": "Description of Data Layers",
+    "section": "Economic diversity",
+    "text": "Economic diversity\n\nli_sector_evenness\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/li_sector_evenness.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#economic-need-for-artisanal-fishing",
+    "href": "data-layers/data-layer-descriptions.html#economic-need-for-artisanal-fishing",
+    "title": "Description of Data Layers",
+    "section": "Economic need for artisanal fishing",
+    "text": "Economic need for artisanal fishing\n\nao_need\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/ao_need.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#economic-status-scores",
+    "href": "data-layers/data-layer-descriptions.html#economic-status-scores",
+    "title": "Description of Data Layers",
+    "section": "Economic status scores",
+    "text": "Economic status scores\n\neco_status\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/eco_status.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nstatus 0-100"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#economic-trend-scores",
+    "href": "data-layers/data-layer-descriptions.html#economic-trend-scores",
+    "title": "Description of Data Layers",
+    "section": "Economic trend scores",
+    "text": "Economic trend scores\n\neco_trend\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/eco_trend.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\ntrend -1 to 1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#exposure-of-ornamental-fishing-to-coral-and-rocky-reef-habitats",
+    "href": "data-layers/data-layer-descriptions.html#exposure-of-ornamental-fishing-to-coral-and-rocky-reef-habitats",
+    "title": "Description of Data Layers",
+    "section": "Exposure of ornamental fishing to coral and rocky reef habitats",
+    "text": "Exposure of ornamental fishing to coral and rocky reef habitats\n\nnp_exposure_orn\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/np_exposure_orn.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#fish-oil-and-fish-meal-score",
+    "href": "data-layers/data-layer-descriptions.html#fish-oil-and-fish-meal-score",
+    "title": "Description of Data Layers",
+    "section": "Fish oil and fish meal score",
+    "text": "Fish oil and fish meal score\n\nnp_fofm_scores\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/np_fofm_scores.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#fishery-catch-data",
+    "href": "data-layers/data-layer-descriptions.html#fishery-catch-data",
+    "title": "Description of Data Layers",
+    "section": "Fishery catch data",
+    "text": "Fishery catch data\n\nfis_meancatch\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fis_meancatch.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\ntonnes"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#food-provision-weights",
+    "href": "data-layers/data-layer-descriptions.html#food-provision-weights",
+    "title": "Description of Data Layers",
+    "section": "Food provision weights",
+    "text": "Food provision weights\n\nfp_wildcaught_weight\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_wildcaught_weight.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nproportion"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#genetic-escapes",
+    "href": "data-layers/data-layer-descriptions.html#genetic-escapes",
+    "title": "Description of Data Layers",
+    "section": "Genetic escapes",
+    "text": "Genetic escapes\n\nsp_genetic\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/sp_genetic.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#global-competitiveness-index-gci",
+    "href": "data-layers/data-layer-descriptions.html#global-competitiveness-index-gci",
+    "title": "Description of Data Layers",
+    "section": "Global Competitiveness Index (GCI)",
+    "text": "Global Competitiveness Index (GCI)\n\nli_gci\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/li_gci.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-condition-of-coral",
+    "href": "data-layers/data-layer-descriptions.html#habitat-condition-of-coral",
+    "title": "Description of Data Layers",
+    "section": "Habitat condition of coral",
+    "text": "Habitat condition of coral\n\nhab_coral_health\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_coral_health.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nproportion"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-condition-of-kelp",
+    "href": "data-layers/data-layer-descriptions.html#habitat-condition-of-kelp",
+    "title": "Description of Data Layers",
+    "section": "Habitat condition of kelp",
+    "text": "Habitat condition of kelp\n\nhab_kelp_health\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_kelp_health.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nproportion"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-condition-of-mangrove",
+    "href": "data-layers/data-layer-descriptions.html#habitat-condition-of-mangrove",
+    "title": "Description of Data Layers",
+    "section": "Habitat condition of mangrove",
+    "text": "Habitat condition of mangrove\n\nhab_mangrove_health\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_mangrove_health.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nproportion"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-condition-of-saltmarsh",
+    "href": "data-layers/data-layer-descriptions.html#habitat-condition-of-saltmarsh",
+    "title": "Description of Data Layers",
+    "section": "Habitat condition of saltmarsh",
+    "text": "Habitat condition of saltmarsh\n\nhab_saltmarsh_health\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_saltmarsh_health.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nproportion"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-condition-of-seagrass",
+    "href": "data-layers/data-layer-descriptions.html#habitat-condition-of-seagrass",
+    "title": "Description of Data Layers",
+    "section": "Habitat condition of seagrass",
+    "text": "Habitat condition of seagrass\n\nhab_seagrass_health\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_seagrass_health.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nproportion"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-condition-of-seaice",
+    "href": "data-layers/data-layer-descriptions.html#habitat-condition-of-seaice",
+    "title": "Description of Data Layers",
+    "section": "Habitat condition of seaice",
+    "text": "Habitat condition of seaice\n\nhab_seaice_health\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_seaice_health.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nproportion"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-condition-of-softbottom",
+    "href": "data-layers/data-layer-descriptions.html#habitat-condition-of-softbottom",
+    "title": "Description of Data Layers",
+    "section": "Habitat condition of softbottom",
+    "text": "Habitat condition of softbottom\n\nhab_softbottom_health\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_softbottom_health.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nproportion"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-condition-of-tidal-flat",
+    "href": "data-layers/data-layer-descriptions.html#habitat-condition-of-tidal-flat",
+    "title": "Description of Data Layers",
+    "section": "Habitat condition of tidal flat",
+    "text": "Habitat condition of tidal flat\n\nhab_tidal_flat_health\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_tidal_flat_health.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nproportion"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-condition-trend-of-coral",
+    "href": "data-layers/data-layer-descriptions.html#habitat-condition-trend-of-coral",
+    "title": "Description of Data Layers",
+    "section": "Habitat condition trend of coral",
+    "text": "Habitat condition trend of coral\n\nhab_coral_trend\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_coral_trend.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\ntrend"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-condition-trend-of-kelp",
+    "href": "data-layers/data-layer-descriptions.html#habitat-condition-trend-of-kelp",
+    "title": "Description of Data Layers",
+    "section": "Habitat condition trend of kelp",
+    "text": "Habitat condition trend of kelp\n\nhab_kelp_trend\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_kelp_trend.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\ntrend"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-condition-trend-of-mangrove",
+    "href": "data-layers/data-layer-descriptions.html#habitat-condition-trend-of-mangrove",
+    "title": "Description of Data Layers",
+    "section": "Habitat condition trend of mangrove",
+    "text": "Habitat condition trend of mangrove\n\nhab_mangrove_trend\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_mangrove_trend.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\ntrend"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-condition-trend-of-saltmarsh",
+    "href": "data-layers/data-layer-descriptions.html#habitat-condition-trend-of-saltmarsh",
+    "title": "Description of Data Layers",
+    "section": "Habitat condition trend of saltmarsh",
+    "text": "Habitat condition trend of saltmarsh\n\nhab_saltmarsh_trend\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_saltmarsh_trend.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\ntrend"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-condition-trend-of-seagrass",
+    "href": "data-layers/data-layer-descriptions.html#habitat-condition-trend-of-seagrass",
+    "title": "Description of Data Layers",
+    "section": "Habitat condition trend of seagrass",
+    "text": "Habitat condition trend of seagrass\n\nhab_seagrass_trend\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_seagrass_trend.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\ntrend"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-condition-trend-of-seaice",
+    "href": "data-layers/data-layer-descriptions.html#habitat-condition-trend-of-seaice",
+    "title": "Description of Data Layers",
+    "section": "Habitat condition trend of seaice",
+    "text": "Habitat condition trend of seaice\n\nhab_seaice_trend\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_seaice_trend.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\ntrend"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-condition-trend-of-softbottom",
+    "href": "data-layers/data-layer-descriptions.html#habitat-condition-trend-of-softbottom",
+    "title": "Description of Data Layers",
+    "section": "Habitat condition trend of softbottom",
+    "text": "Habitat condition trend of softbottom\n\nhab_softbottom_trend\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_softbottom_trend.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\ntrend"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-extent-of-coral",
+    "href": "data-layers/data-layer-descriptions.html#habitat-extent-of-coral",
+    "title": "Description of Data Layers",
+    "section": "Habitat extent of coral",
+    "text": "Habitat extent of coral\n\nhab_coral_extent\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_coral_extent.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nkm2"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-extent-of-kelp",
+    "href": "data-layers/data-layer-descriptions.html#habitat-extent-of-kelp",
+    "title": "Description of Data Layers",
+    "section": "Habitat extent of kelp",
+    "text": "Habitat extent of kelp\n\nhab_kelp_extent\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_kelp_extent.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nkm2"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-extent-of-mangrove",
+    "href": "data-layers/data-layer-descriptions.html#habitat-extent-of-mangrove",
+    "title": "Description of Data Layers",
+    "section": "Habitat extent of mangrove",
+    "text": "Habitat extent of mangrove\n\nhab_mangrove_extent\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_mangrove_extent.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nkm2"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-extent-of-rocky-reef",
+    "href": "data-layers/data-layer-descriptions.html#habitat-extent-of-rocky-reef",
+    "title": "Description of Data Layers",
+    "section": "Habitat extent of rocky reef",
+    "text": "Habitat extent of rocky reef\n\nhab_rockyreef_extent\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_rockyreef_extent.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nkm2"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-extent-of-saltmarsh",
+    "href": "data-layers/data-layer-descriptions.html#habitat-extent-of-saltmarsh",
+    "title": "Description of Data Layers",
+    "section": "Habitat extent of saltmarsh",
+    "text": "Habitat extent of saltmarsh\n\nhab_saltmarsh_extent\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_saltmarsh_extent.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nkm2"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-extent-of-seagrass",
+    "href": "data-layers/data-layer-descriptions.html#habitat-extent-of-seagrass",
+    "title": "Description of Data Layers",
+    "section": "Habitat extent of seagrass",
+    "text": "Habitat extent of seagrass\n\nhab_seagrass_extent\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_seagrass_extent.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nkm2"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-extent-of-seaice",
+    "href": "data-layers/data-layer-descriptions.html#habitat-extent-of-seaice",
+    "title": "Description of Data Layers",
+    "section": "Habitat extent of seaice",
+    "text": "Habitat extent of seaice\n\nhab_seaice_extent\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_seaice_extent.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nkm2"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-extent-of-softbottom",
+    "href": "data-layers/data-layer-descriptions.html#habitat-extent-of-softbottom",
+    "title": "Description of Data Layers",
+    "section": "Habitat extent of softbottom",
+    "text": "Habitat extent of softbottom\n\nhab_softbottom_extent\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_softbottom_extent.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nkm2"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-extent-of-tidal-flat",
+    "href": "data-layers/data-layer-descriptions.html#habitat-extent-of-tidal-flat",
+    "title": "Description of Data Layers",
+    "section": "Habitat extent of tidal flat",
+    "text": "Habitat extent of tidal flat\n\nhab_tidal_flat_extent\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_tidal_flat_extent.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nkm2"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-presenceabsence",
+    "href": "data-layers/data-layer-descriptions.html#habitat-presenceabsence",
+    "title": "Description of Data Layers",
+    "section": "Habitat presence/absence",
+    "text": "Habitat presence/absence\n\nelement_wts_hab_pres_abs\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/element_wts_hab_pres_abs.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\n0 or 1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#habitat-trend-of-tidal-flat",
+    "href": "data-layers/data-layer-descriptions.html#habitat-trend-of-tidal-flat",
+    "title": "Description of Data Layers",
+    "section": "Habitat trend of tidal flat",
+    "text": "Habitat trend of tidal flat\n\nhab_tidal_flat_trend\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hab_tidal_flat_trend.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\ntrend"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#high-bycatch-due-to-artisanal-fishing",
+    "href": "data-layers/data-layer-descriptions.html#high-bycatch-due-to-artisanal-fishing",
+    "title": "Description of Data Layers",
+    "section": "High bycatch due to artisanal fishing",
+    "text": "High bycatch due to artisanal fishing\n\nfp_art_hb\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_art_hb.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#high-bycatch-due-to-commercial-fishing",
+    "href": "data-layers/data-layer-descriptions.html#high-bycatch-due-to-commercial-fishing",
+    "title": "Description of Data Layers",
+    "section": "High bycatch due to commercial fishing",
+    "text": "High bycatch due to commercial fishing\n\nfp_com_hb\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_com_hb.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#iucn-extinction-risk",
+    "href": "data-layers/data-layer-descriptions.html#iucn-extinction-risk",
+    "title": "Description of Data Layers",
+    "section": "IUCN extinction risk",
+    "text": "IUCN extinction risk\n\nico_spp_iucn_status\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/ico_spp_iucn_status.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nIUCN risk category"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#inland-1km-area",
+    "href": "data-layers/data-layer-descriptions.html#inland-1km-area",
+    "title": "Description of Data Layers",
+    "section": "Inland 1km area",
+    "text": "Inland 1km area\n\nrgn_area_inland1km\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/rgn_area_inland1km.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nkm2"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#inland-coastal-protected-areas",
+    "href": "data-layers/data-layer-descriptions.html#inland-coastal-protected-areas",
+    "title": "Description of Data Layers",
+    "section": "Inland coastal protected areas",
+    "text": "Inland coastal protected areas\n\nlsp_prot_area_inland1km\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/lsp_prot_area_inland1km.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nkm2"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#intertidal-habitat-destruction",
+    "href": "data-layers/data-layer-descriptions.html#intertidal-habitat-destruction",
+    "title": "Description of Data Layers",
+    "section": "Intertidal habitat destruction",
+    "text": "Intertidal habitat destruction\n\nhd_intertidal\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hd_intertidal.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#livelihood-status-scores",
+    "href": "data-layers/data-layer-descriptions.html#livelihood-status-scores",
+    "title": "Description of Data Layers",
+    "section": "Livelihood status scores",
+    "text": "Livelihood status scores\n\nliv_status\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/liv_status.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nstatus 0-100"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#livelihood-trend-scores",
+    "href": "data-layers/data-layer-descriptions.html#livelihood-trend-scores",
+    "title": "Description of Data Layers",
+    "section": "Livelihood trend scores",
+    "text": "Livelihood trend scores\n\nliv_trend\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/liv_trend.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\ntrend -1 to 1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#low-bycatch-due-to-artisanal-fishing",
+    "href": "data-layers/data-layer-descriptions.html#low-bycatch-due-to-artisanal-fishing",
+    "title": "Description of Data Layers",
+    "section": "Low bycatch due to artisanal fishing",
+    "text": "Low bycatch due to artisanal fishing\n\nfp_art_lb\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_art_lb.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#low-bycatch-due-to-commercial-fishing",
+    "href": "data-layers/data-layer-descriptions.html#low-bycatch-due-to-commercial-fishing",
+    "title": "Description of Data Layers",
+    "section": "Low bycatch due to commercial fishing",
+    "text": "Low bycatch due to commercial fishing\n\nfp_com_lb\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_com_lb.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#management-of-habitat-to-protect-fisheries-biodiversity",
+    "href": "data-layers/data-layer-descriptions.html#management-of-habitat-to-protect-fisheries-biodiversity",
+    "title": "Description of Data Layers",
+    "section": "Management of habitat to protect fisheries biodiversity",
+    "text": "Management of habitat to protect fisheries biodiversity\n\nfp_habitat\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_habitat.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#management-of-habitat-to-protect-habitat-biodiversity",
+    "href": "data-layers/data-layer-descriptions.html#management-of-habitat-to-protect-habitat-biodiversity",
+    "title": "Description of Data Layers",
+    "section": "Management of habitat to protect habitat biodiversity",
+    "text": "Management of habitat to protect habitat biodiversity\n\nhd_habitat\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hd_habitat.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#management-of-nonindigenous-species",
+    "href": "data-layers/data-layer-descriptions.html#management-of-nonindigenous-species",
+    "title": "Description of Data Layers",
+    "section": "Management of nonindigenous species",
+    "text": "Management of nonindigenous species\n\nsp_alien_species\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/sp_alien_species.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#management-of-tourism-to-preserve-biodiversity",
+    "href": "data-layers/data-layer-descriptions.html#management-of-tourism-to-preserve-biodiversity",
+    "title": "Description of Data Layers",
+    "section": "Management of tourism to preserve biodiversity",
+    "text": "Management of tourism to preserve biodiversity\n\ng_tourism\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/g_tourism.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#management-of-waters-to-preserve-biodiversity",
+    "href": "data-layers/data-layer-descriptions.html#management-of-waters-to-preserve-biodiversity",
+    "title": "Description of Data Layers",
+    "section": "Management of waters to preserve biodiversity",
+    "text": "Management of waters to preserve biodiversity\n\npo_water\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/po_water.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#mariculture-harvest",
+    "href": "data-layers/data-layer-descriptions.html#mariculture-harvest",
+    "title": "Description of Data Layers",
+    "section": "Mariculture harvest",
+    "text": "Mariculture harvest\n\nmar_harvest_tonnes\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/mar_harvest_tonnes.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\ntonnes"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#mariculture-sustainability-score",
+    "href": "data-layers/data-layer-descriptions.html#mariculture-sustainability-score",
+    "title": "Description of Data Layers",
+    "section": "Mariculture sustainability score",
+    "text": "Mariculture sustainability score\n\nmar_sustainability_score\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/mar_sustainability_score.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#marine-plastics",
+    "href": "data-layers/data-layer-descriptions.html#marine-plastics",
+    "title": "Description of Data Layers",
+    "section": "Marine plastics",
+    "text": "Marine plastics\n\npo_trash\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/po_trash.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#measure-of-coastal-ecological-integrity",
+    "href": "data-layers/data-layer-descriptions.html#measure-of-coastal-ecological-integrity",
+    "title": "Description of Data Layers",
+    "section": "Measure of coastal ecological integrity",
+    "text": "Measure of coastal ecological integrity\n\nspecies_diversity_3nm\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/species_diversity_3nm.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#measure-of-ecological-integrity",
+    "href": "data-layers/data-layer-descriptions.html#measure-of-ecological-integrity",
+    "title": "Description of Data Layers",
+    "section": "Measure of ecological integrity",
+    "text": "Measure of ecological integrity\n\nspecies_diversity_eez\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/species_diversity_eez.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#minderoo-global-fishing-index",
+    "href": "data-layers/data-layer-descriptions.html#minderoo-global-fishing-index",
+    "title": "Description of Data Layers",
+    "section": "Minderoo Global Fishing Index",
+    "text": "Minderoo Global Fishing Index\n\nfp_fish_management\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_fish_management.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#nonindigenous-species",
+    "href": "data-layers/data-layer-descriptions.html#nonindigenous-species",
+    "title": "Description of Data Layers",
+    "section": "Nonindigenous species",
+    "text": "Nonindigenous species\n\nsp_alien\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/sp_alien.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#nutrient-pollution",
+    "href": "data-layers/data-layer-descriptions.html#nutrient-pollution",
+    "title": "Description of Data Layers",
+    "section": "Nutrient pollution",
+    "text": "Nutrient pollution\n\npo_nutrients\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/po_nutrients.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#nutrient-pollution-trend",
+    "href": "data-layers/data-layer-descriptions.html#nutrient-pollution-trend",
+    "title": "Description of Data Layers",
+    "section": "Nutrient pollution trend",
+    "text": "Nutrient pollution trend\n\ncw_nutrient_trend\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/cw_nutrient_trend.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\ntrend"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#ohi-region-id",
+    "href": "data-layers/data-layer-descriptions.html#ohi-region-id",
+    "title": "Description of Data Layers",
+    "section": "OHI region id",
+    "text": "OHI region id\n\nrgn_global\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/rgn_global.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nlabel"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#ocean-acidification",
+    "href": "data-layers/data-layer-descriptions.html#ocean-acidification",
+    "title": "Description of Data Layers",
+    "section": "Ocean acidification",
+    "text": "Ocean acidification\n\ncc_acid\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/cc_acid.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#offshore-3nm-area",
+    "href": "data-layers/data-layer-descriptions.html#offshore-3nm-area",
+    "title": "Description of Data Layers",
+    "section": "Offshore 3nm area",
+    "text": "Offshore 3nm area\n\nrgn_area_offshore3nm\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/rgn_area_offshore3nm.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nkm2"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#offshore-coastal-protected-areas",
+    "href": "data-layers/data-layer-descriptions.html#offshore-coastal-protected-areas",
+    "title": "Description of Data Layers",
+    "section": "Offshore coastal protected areas",
+    "text": "Offshore coastal protected areas\n\nlsp_prot_area_offshore3nm\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/lsp_prot_area_offshore3nm.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nkm2"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#pathogen-pollution",
+    "href": "data-layers/data-layer-descriptions.html#pathogen-pollution",
+    "title": "Description of Data Layers",
+    "section": "Pathogen pollution",
+    "text": "Pathogen pollution\n\npo_pathogens\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/po_pathogens.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#pathogen-pollution-trend",
+    "href": "data-layers/data-layer-descriptions.html#pathogen-pollution-trend",
+    "title": "Description of Data Layers",
+    "section": "Pathogen pollution trend",
+    "text": "Pathogen pollution trend\n\ncw_pathogen_trend\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/cw_pathogen_trend.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\ntrend"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#plastic-trash-trends",
+    "href": "data-layers/data-layer-descriptions.html#plastic-trash-trends",
+    "title": "Description of Data Layers",
+    "section": "Plastic trash trends",
+    "text": "Plastic trash trends\n\ncw_trash_trend\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/cw_trash_trend.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\ntrend"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#potential-tonnes-of-mariculture-harvest",
+    "href": "data-layers/data-layer-descriptions.html#potential-tonnes-of-mariculture-harvest",
+    "title": "Description of Data Layers",
+    "section": "Potential tonnes of mariculture harvest",
+    "text": "Potential tonnes of mariculture harvest\n\nmar_capacity\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/mar_capacity.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\ntonnes"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#proportion-of-total-international-arrivals-to-area-of-coastline-to-total-population",
+    "href": "data-layers/data-layer-descriptions.html#proportion-of-total-international-arrivals-to-area-of-coastline-to-total-population",
+    "title": "Description of Data Layers",
+    "section": "Proportion of total international arrivals to area of coastline to total population",
+    "text": "Proportion of total international arrivals to area of coastline to total population\n\ntr_arrivals_props_tourism\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/tr_arrivals_props_tourism.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nproportion scaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#region-areas-based-on-eez-boundaries",
+    "href": "data-layers/data-layer-descriptions.html#region-areas-based-on-eez-boundaries",
+    "title": "Description of Data Layers",
+    "section": "Region areas based on EEZ boundaries",
+    "text": "Region areas based on EEZ boundaries\n\nrgn_area\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/rgn_area.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nkm2"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#regions",
+    "href": "data-layers/data-layer-descriptions.html#regions",
+    "title": "Description of Data Layers",
+    "section": "Regions",
+    "text": "Regions\n\nrgn_labels\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/rgn_labels.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nlabel"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#relative-natural-product-harvest-value",
+    "href": "data-layers/data-layer-descriptions.html#relative-natural-product-harvest-value",
+    "title": "Description of Data Layers",
+    "section": "Relative natural product harvest value",
+    "text": "Relative natural product harvest value\n\nnp_harvest_product_weight\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/np_harvest_product_weight.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nproportion"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#relative-ornamental-natural-product-harvest-tonnes",
+    "href": "data-layers/data-layer-descriptions.html#relative-ornamental-natural-product-harvest-tonnes",
+    "title": "Description of Data Layers",
+    "section": "Relative ornamental natural product harvest tonnes",
+    "text": "Relative ornamental natural product harvest tonnes\n\nnp_orn_tonnes_relative\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/np_orn_tonnes_relative.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nproportion"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#risk-of-harvest-practices-for-ornamental-fish",
+    "href": "data-layers/data-layer-descriptions.html#risk-of-harvest-practices-for-ornamental-fish",
+    "title": "Description of Data Layers",
+    "section": "Risk of harvest practices for ornamental fish",
+    "text": "Risk of harvest practices for ornamental fish\n\nnp_risk_orn\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/np_risk_orn.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#sea-level-rise",
+    "href": "data-layers/data-layer-descriptions.html#sea-level-rise",
+    "title": "Description of Data Layers",
+    "section": "Sea level rise",
+    "text": "Sea level rise\n\ncc_slr\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/cc_slr.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#sea-surface-temperature",
+    "href": "data-layers/data-layer-descriptions.html#sea-surface-temperature",
+    "title": "Description of Data Layers",
+    "section": "Sea surface temperature",
+    "text": "Sea surface temperature\n\ncc_sst\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/cc_sst.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#seaweed-mariculture-sustainability-score",
+    "href": "data-layers/data-layer-descriptions.html#seaweed-mariculture-sustainability-score",
+    "title": "Description of Data Layers",
+    "section": "Seaweed mariculture sustainability score",
+    "text": "Seaweed mariculture sustainability score\n\nnp_seaweed_sust\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/np_seaweed_sust.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#seaweed-natural-product-harvest",
+    "href": "data-layers/data-layer-descriptions.html#seaweed-natural-product-harvest",
+    "title": "Description of Data Layers",
+    "section": "Seaweed natural product harvest",
+    "text": "Seaweed natural product harvest\n\nnp_seaweed_tonnes\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/np_seaweed_tonnes.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\ntonnes"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#sectors-in-each-region",
+    "href": "data-layers/data-layer-descriptions.html#sectors-in-each-region",
+    "title": "Description of Data Layers",
+    "section": "Sectors in each region",
+    "text": "Sectors in each region\n\nle_sector_weight\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/le_sector_weight.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nvalue"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#social-progress-index",
+    "href": "data-layers/data-layer-descriptions.html#social-progress-index",
+    "title": "Description of Data Layers",
+    "section": "Social Progress Index",
+    "text": "Social Progress Index\n\nres_spi\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/res_spi.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#strength-of-governance",
+    "href": "data-layers/data-layer-descriptions.html#strength-of-governance",
+    "title": "Description of Data Layers",
+    "section": "Strength of governance",
+    "text": "Strength of governance\n\nwgi_all\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/wgi_all.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#subtidal-hardbottom-habitat-destruction",
+    "href": "data-layers/data-layer-descriptions.html#subtidal-hardbottom-habitat-destruction",
+    "title": "Description of Data Layers",
+    "section": "Subtidal hardbottom habitat destruction",
+    "text": "Subtidal hardbottom habitat destruction\n\nhd_subtidal_hb\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hd_subtidal_hb.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#subtidal-soft-bottom-habitat-destruction",
+    "href": "data-layers/data-layer-descriptions.html#subtidal-soft-bottom-habitat-destruction",
+    "title": "Description of Data Layers",
+    "section": "Subtidal soft bottom habitat destruction",
+    "text": "Subtidal soft bottom habitat destruction\n\nhd_subtidal_sb\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/hd_subtidal_sb.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#targeted-harvest-of-cetaceans-and-marine-turtles",
+    "href": "data-layers/data-layer-descriptions.html#targeted-harvest-of-cetaceans-and-marine-turtles",
+    "title": "Description of Data Layers",
+    "section": "Targeted harvest of cetaceans and marine turtles",
+    "text": "Targeted harvest of cetaceans and marine turtles\n\nfp_targetharvest\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/fp_targetharvest.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#tourism-sustainability-index",
+    "href": "data-layers/data-layer-descriptions.html#tourism-sustainability-index",
+    "title": "Description of Data Layers",
+    "section": "Tourism sustainability index",
+    "text": "Tourism sustainability index\n\ntr_sustainability\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/tr_sustainability.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#uv-radiation",
+    "href": "data-layers/data-layer-descriptions.html#uv-radiation",
+    "title": "Description of Data Layers",
+    "section": "UV radiation",
+    "text": "UV radiation\n\ncc_uv\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/cc_uv.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#uninhabited-regions",
+    "href": "data-layers/data-layer-descriptions.html#uninhabited-regions",
+    "title": "Description of Data Layers",
+    "section": "Uninhabited regions",
+    "text": "Uninhabited regions\n\nuninhabited\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/uninhabited.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\npopulation"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#weakness-of-governance",
+    "href": "data-layers/data-layer-descriptions.html#weakness-of-governance",
+    "title": "Description of Data Layers",
+    "section": "Weakness of governance",
+    "text": "Weakness of governance\n\nss_wgi\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/ss_wgi.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1"
+  },
+  {
+    "objectID": "data-layers/data-layer-descriptions.html#weakness-of-social-progress",
+    "href": "data-layers/data-layer-descriptions.html#weakness-of-social-progress",
+    "title": "Description of Data Layers",
+    "section": "Weakness of social progress",
+    "text": "Weakness of social progress\n\nss_spi\n```{r, echo=FALSE, results=‘hide’}\n                              x &lt;- tempfile(fileext = 'Rmd')\n\n                              on.exit(unlink(x))\n\n                              download.file(\"https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/layers_info/ss_spi.Rmd\", x)\n\n```{r, child = x, echo=FALSE, results='asis'} \n \n\n\nUnits\nscaled 0-1 ```"
   }
 ]

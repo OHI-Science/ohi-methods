@@ -132,4 +132,12 @@ Notes for continuing this work:
 
 - try reading in the githubuser content (even though it's super long, could be good to just see what it looks like...)
 
+# Supplemental Methods by Layer
+```{r}
+#| file: ../data-layers/layers_all.Rmd
+#| eval: false
+#| echo: true
+#| code-folding: true
+```
+
 ## References
