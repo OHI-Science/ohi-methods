@@ -140,4 +140,5 @@ Notes for continuing this work:
 #| code-folding: true
 ```
 
-## References
+
+# References
