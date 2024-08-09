@@ -44,7 +44,7 @@ website:
         text: 6. Goal Models and Data
         # has all 10 goals etc.
         
-      - href: data-layers/data-layer-descriptions.qmd
+      - href: data-layers/Sanjdata-layer-descriptions.qmd
         text: 7. Description of Data Layers
         # 107 subsections :)
         
