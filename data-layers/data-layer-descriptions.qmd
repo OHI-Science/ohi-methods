@@ -141,8 +141,23 @@ kable(ds_base_source) %>%
 *Subcategory: fishing*
 
 
-https://raw.githubusercontent.com/OHI-Science/ohi-global/647c92a81ed43c51cc20f3ece98ecdeb951d3672/metadata_documentation/ohi_model/layers_info/ao_access.Rmd
+This layer represents the opportunity for artisanal and recreational fishing in each country based on the quality of management of the small-scale fishing sector. Global data were extracted from [United Nations Sustainable Development Goal (UN SDG) 14.b.1.](https://sdg.data.gov/14-b-1/) UN SDG 14.b.1 [@sdg_14_b_1]. FAO member country responses to the Code of Conduct for Responsible Fisheries (CCRF) (Table 6.1) survey questionnaire which is circulated by FAO every two years to members and IGOs and INGOs and are on a scale from 0 to 1. 
 
+Questions from UN SDG 14.b.1 that were used to evaluate access to artisanal scale fishing:
+
+* Are there any laws, regulations, policies, plans or strategies that specifically target or address the
+small-scale fisheries sector? 
+
+|                         | Yes | No |
+|-------------------------|-----|----|
+| Law                     |     |    |
+| Regulation              |     |    |
+| Policy                  |     |    |
+| Plan/strategy           |     |    |
+| Other (please specify)  |     |    |
+    
+    
+* The Voluntary Guidelines for Securing Sustainable Small-scale Fisheries in the Context of Food Security and Poverty Eradication (SSF Guidelines) were endorsed by [COFI in June 2014](https://www.fao.org/3/i4356en/I4356EN.pdf). Does your country have a specific initiative to implement the SSF Guidelines? 
 
 #### Units {.unnumbered}
 scaled 0-1
@@ -862,15 +877,15 @@ Most of the iconic species are not region specific, and the global list is appli
 **Table 7.5. Iconic species resources**
 
 Iconic List                   | Source 
------------------------------ | -----------------------------
-Priority Species              | https://wwf.panda.org/discover/knowledge_hub/endangered_species/
-Flagship Species              | https://wwf.panda.org/discover/our_focus/wildlife_practice/flagship_keystone_indicator_definition/
-Australia’s Flagship Species  | https://www.wwf.org.au/what-we-do/species
-Pakistan’s Priority Species   | https://wwf.org.pk/species/priority_species.php
-India’s Priority Species      | https://www.wwfindia.org/about_wwf/priority_species/
-Madagascar’s Flagship Species | https://www.worldwildlife.org/places/madagascar
-Malaysia’s Flagship Species   | https://www.wwf.org.my/?23365/WWF-Malaysia-calls-attention-to-flagship-species-conservation-in-conjunction-with-World-Wildlife-Day
-Culturally Important Species  | https://www.pnas.org/doi/10.1073/pnas.2217303120
+----------------------------- | ----------------------------- 
+Priority Species              | [WWF](https://wwf.panda.org/discover/knowledge_hub/endangered_species/)
+Flagship Species              | [WWF](https://wwf.panda.org/discover/our_focus/wildlife_practice/flagship_keystone_indicator_definition/) 
+Australia’s Flagship Species  | [WWF Australia](https://www.wwf.org.au/what-we-do/species) 
+Pakistan’s Priority Species   | [WWF Priority Species](https://wwf.org.pk/species/priority_species.php)
+India’s Priority Species      | [WWF India](https://www.wwfindia.org/about_wwf/priority_species/)
+Madagascar’s Flagship Species | [World Wildlife](https://www.worldwildlife.org/places/madagascar)
+Malaysia’s Flagship Species   | [WWF Malaysia](https://www.wwf.org.my/?23365/WWF-Malaysia-calls-attention-to-flagship-species-conservation-in-conjunction-with-World-Wildlife-Day)
+Culturally Important Species  | [Biocultural vulnerability exposes threats of culturally important species](https://www.pnas.org/doi/10.1073/pnas.2217303120)
 
 #### Units {-} 
  IUCN risk category
@@ -1385,10 +1400,12 @@ Eventually, the managed manure is typically applied to either crop soils or past
 
 Next, for each livestock system and country, we estimated the total proportion of N that runsoffs/leaches, $PN_{leach}$, or volatilizes as NH3, $PN_{NH3}$ based on the proportion of manure, $P_{manure}$, that enters each manure pathway for a given livestock system and country (@fao2018global, Figure 7.2): 
 
-$$PN_{leach} = P_{manure}  \times PMMS_{leach} + \\
+\begin{align*}
+               PN_{leach} = P_{manure}  \times PMMS_{leach} + \\
                P_{manure}  \times PAppliedCrops_{leach} + \\
                P_{manure}  \times PAppliedPastures_{leach} + \\
-               P_{manure}  \times PLeftPastures_{leach}$$
+P_{manure}  \times PLeftPastures_{leach}
+\end{align*}
 
 We estimated $PN_{NH3}$ similarly.
 

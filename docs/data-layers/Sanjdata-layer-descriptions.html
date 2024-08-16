@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -68,13 +67,7 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -83,44 +76,16 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
+
 <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -131,13 +96,15 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../data-layers/Sanjdata-layer-descriptions.html">7. Description of Data Layers</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      OHI Methods 2024
+      </li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -146,7 +113,7 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../media/OHI_Logo_Blue.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -207,7 +174,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-layers/Sanjdata-layer-descriptions.html" class="sidebar-item-text sidebar-link active">
+  <a href="../data-layers/data-layer-descriptions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">7. Description of Data Layers</span></a>
   </div>
 </li>
@@ -221,7 +188,7 @@ window.Quarto = {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -229,7 +196,6 @@ window.Quarto = {
    
   <ul>
   <li><a href="#tables-describing-data-layers-table-7.1-and-sources-table-7.2" id="toc-tables-describing-data-layers-table-7.1-and-sources-table-7.2" class="nav-link active" data-scroll-target="#tables-describing-data-layers-table-7.1-and-sources-table-7.2">Tables describing data layers (Table 7.1) and sources (Table 7.2)</a></li>
-  <li><a href="#return-to-this" id="toc-return-to-this" class="nav-link" data-scroll-target="#return-to-this">RETURN TO THIS!</a></li>
   <li><a href="#supplemental-methods-by-layer" id="toc-supplemental-methods-by-layer" class="nav-link" data-scroll-target="#supplemental-methods-by-layer">Supplemental Methods by Layer</a>
   <ul class="collapse">
   <li><a href="#artisanal-fisheries-management-effectiveness" id="toc-artisanal-fisheries-management-effectiveness" class="nav-link" data-scroll-target="#artisanal-fisheries-management-effectiveness">Artisanal fisheries management effectiveness</a></li>
@@ -341,6 +307,7 @@ window.Quarto = {
   <li><a href="#uninhabited-regions" id="toc-uninhabited-regions" class="nav-link" data-scroll-target="#uninhabited-regions">Uninhabited regions</a></li>
   <li><a href="#weakness-of-governance" id="toc-weakness-of-governance" class="nav-link" data-scroll-target="#weakness-of-governance">Weakness of governance</a></li>
   <li><a href="#weakness-of-social-progress" id="toc-weakness-of-social-progress" class="nav-link" data-scroll-target="#weakness-of-social-progress">Weakness of social progress</a></li>
+  <li><a href="#notes-for-continuing-this-work" id="toc-notes-for-continuing-this-work" class="nav-link" data-scroll-target="#notes-for-continuing-this-work">Notes for continuing this work:</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
@@ -364,9 +331,7 @@ window.Quarto = {
   </div>
   
 
-
 </header>
-
 
 <section id="tables-describing-data-layers-table-7.1-and-sources-table-7.2" class="level3">
 <h3 class="anchored" data-anchor-id="tables-describing-data-layers-table-7.1-and-sources-table-7.2">Tables describing data layers (Table 7.1) and sources (Table 7.2)</h3>
@@ -385,7 +350,6 @@ Table 7.1. Data layers of 2023 global OHI assessment (click to expand)
 <div class="callout-body-container callout-body">
 <div class="cell" data-messages="false">
 <div class="cell-output-display">
-<div>
 <table class="table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -1141,7 +1105,6 @@ Table 7.1. Data layers of 2023 global OHI assessment (click to expand)
 </div>
 </div>
 </div>
-</div>
 <p><strong>Table 7.2. Data sources used to create data layers for 2024 global OHI assessment</strong> A brief overview of the data sources used to calculate the global OHI.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -1157,7 +1120,6 @@ Table 7.2. Data sources used to create data layers (click to expand)
 <div class="callout-body-container callout-body">
 <div class="cell" data-messages="false">
 <div class="cell-output-display">
-<div>
 <table class="table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -1969,7 +1931,6 @@ Table 7.2. Data sources used to create data layers (click to expand)
 </div>
 </div>
 </div>
-</div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1984,7 +1945,6 @@ Table 7.3: Base Table (click to expand)
 <div class="callout-body-container callout-body">
 <div class="cell" data-messages="false">
 <div class="cell-output-display">
-<div>
 <table class="table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -3078,28 +3038,9 @@ Table 7.3: Base Table (click to expand)
 </div>
 </div>
 </div>
-</div>
-</section>
-<section id="return-to-this" class="level1">
-<h1>RETURN TO THIS!</h1>
-<!-- {r child = 'layers_all.Rmd'} -->
-<!-- ## Need to run CombineLayers.R to create the relevant Rmd file -->
-<!-- # 'https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/documents/methods/layers_all.Rmd' -->
-<p>Notes for continuing this work:</p>
-<ul>
-<li><p>consider making this into 2 sections with the first 2 tables in the first section and the veeeeery long github user content (all layers Rmd) as the second section (it’s extremely long… like super long and could be frustrating for users).</p></li>
-<li><p>look into formatting of long tables in Quarto websites (currently annoying to scroll to the side to read the full width of the long table – see Table 7.1) – floating/hover (not anchored to the bottom) scroll bar (horizontal scroll bar)</p></li>
-<li><p>make a section of which data layers apply to which goals – like Table 7.1, maybe just edit it so Dimension (goal/subgoal) is before description?</p></li>
-<li><p>consider renaming tables (current names not awesome)</p></li>
-<li><p>try reading in the githubuser content (even though it’s super long, could be good to just see what it looks like…)</p></li>
-</ul>
 </section>
 <section id="supplemental-methods-by-layer" class="level1">
 <h1>Supplemental Methods by Layer</h1>
-<!-- #| file: ../data-layers/layers_all.Rmd -->
-<!-- #| eval: false -->
-<!-- #| echo: true -->
-<!-- #| code-folding: true -->
 <section id="artisanal-fisheries-management-effectiveness" class="level2">
 <h2 class="anchored" data-anchor-id="artisanal-fisheries-management-effectiveness">Artisanal fisheries management effectiveness</h2>
 <section id="fp_artisanal" class="level4">
@@ -4543,7 +4484,7 @@ Pressure = 0.1 * \frac{S_n - min(S_n)}{max(S_n) - min(S_n)} + 0.9 * \frac{S_h - 
 <p>Excess nutrients from crops were estimated using the proportion of N that is leached, and the proportion of N that is volatilised as NH3. We define excess nitrogen, <span class="math inline">\(N_{excess}\)</span>, as the tonnes of applied nitrogen that likely runsoffs/leaches, Nleach, or volatilizes as NH3, <span class="math inline">\(N_{{vol}_{NH3}}\)</span>, which is subsequently deposited on land and water:</p>
 <p><span class="math inline">\(N_{excess} = N_{{vol}_{NH3}} + N_{leach}\)</span></p>
 <p>where,</p>
-<p><span class="math inline">\(N_{leach} = N_{applied} – N_{withdrawal} –  N_{nitrification/denitrification} – N_{{vol}_{NH3}}\)</span></p>
+<p><span class="math inline">\(N_{leach} = N_{applied} – N_{withdrawal} – N_{nitrification/denitrification} – N_{{vol}_{NH3}}\)</span></p>
 <p><span class="math inline">\(N_{withdrawal}\)</span> = estimates of withdrawal of N by plants on both crops and grazed areas at supernational scale (NUE values from <span class="citation" data-cites="bouwman2005nitrogen">A. F. Bouwman, Van Drecht, and Van der Hoek (<a href="#ref-bouwman2005nitrogen" role="doc-biblioref">2005</a>)</span>).</p>
 <p><span class="math inline">\(N_{nitrification/denitrification}\)</span> = estimate of N emissions through nitrification/denitrification processes (e.g., N20, NO, N2), with a global estimate of 10.2% used <span class="citation" data-cites="bouwman2002modeling scheer2020estimating">(<a href="#ref-bouwman2002modeling" role="doc-biblioref">A. F. Bouwman, Boumans, and Batjes 2002</a>; <a href="#ref-scheer2020estimating" role="doc-biblioref">Scheer et al. 2020</a>)</span>.</p>
 <p><span class="math inline">\(N_{{vol}_{NH3}}\)</span> = estimates of N volatilization as NH3 at supernational scale (<span class="citation" data-cites="bouwman2002estimation">A. Bouwman, Boumans, and Batjes (<a href="#ref-bouwman2002estimation" role="doc-biblioref">2002</a>)</span>, Table 5 summed grasslands, crops, wetland rice).</p>
@@ -4590,7 +4531,7 @@ Pressure = 0.1 * \frac{S_n - min(S_n)}{max(S_n) - min(S_n)} + 0.9 * \frac{S_h - 
 </tbody>
 </table>
 <p>In some cases, prior to being spread on soils, manure is collected and stored using a variety of management systems, s. The proportion of N leaching from manure management systems, <span class="math inline">\(PMMS_{leach}\)</span>, was calculated using a modified version of GLEAM equation 4.4.4 <span class="citation" data-cites="fao2018global">(<a href="#ref-fao2018global" role="doc-biblioref">FAO 2018</a>)</span>:</p>
-<p><span class="math inline">\(PMMS_{leach} = ∑_s (MS_s  × F_{leach,s}  × (1 - ex_{vol}))\)</span></p>
+<p><span class="math inline">\(PMMS_{leach} = ∑_s (MS_s × F_{leach,s} × (1 - ex_{vol}))\)</span></p>
 <p><span class="math inline">\(MMS_{leach}\)</span> = proportion N leached for managed manure for animal system</p>
 <p><span class="math inline">\(MS_s\)</span> = Fraction of manure treated in each system, s <span class="citation" data-cites="fao2018global">(<a href="#ref-fao2018global" role="doc-biblioref">FAO 2018</a>)</span></p>
 <p><span class="math inline">\(F_{leach,s}\)</span> = Fraction N leached in each manure management system <span class="citation" data-cites="fao2018global">(<a href="#ref-fao2018global" role="doc-biblioref">FAO 2018</a>)</span></p>
@@ -4778,7 +4719,6 @@ Pressure = 0.1 * \frac{S_n - min(S_n)}{max(S_n) - min(S_n)} + 0.9 * \frac{S_h - 
 <p><strong>Table 7.10. FAO categories included in each natural product commodity</strong></p>
 <div class="cell" data-messages="false">
 <div class="cell-output-display">
-<div>
 <table class="table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -4815,7 +4755,6 @@ Pressure = 0.1 * \frac{S_n - min(S_n)}{max(S_n) - min(S_n)} + 0.9 * \frac{S_h - 
 </table>
 
 
-</div>
 </div>
 </div>
 </section>
@@ -5043,6 +4982,16 @@ Pressure = 0.1 * \frac{S_n - min(S_n)}{max(S_n) - min(S_n)} + 0.9 * \frac{S_h - 
 <p>scaled 0-1</p>
 </section>
 </section>
+<section id="notes-for-continuing-this-work" class="level2">
+<h2 class="anchored" data-anchor-id="notes-for-continuing-this-work">Notes for continuing this work:</h2>
+<ul>
+<li><p>consider making this into 2 sections with the first 2 tables in the first section and the veeeeery long github user content (all layers Rmd) as the second section (it’s extremely long… like super long and could be frustrating for users).</p></li>
+<li><p>look into formatting of long tables in Quarto websites (currently annoying to scroll to the side to read the full width of the long table – see Table 7.1) – floating/hover (not anchored to the bottom) scroll bar (horizontal scroll bar)</p></li>
+<li><p>make a section of which data layers apply to which goals – like Table 7.1, maybe just edit it so Dimension (goal/subgoal) is before description?</p></li>
+<li><p>consider renaming tables (current names not awesome)</p></li>
+<li><p>try reading in the githubuser content (even though it’s super long, could be good to just see what it looks like…)</p></li>
+</ul>
+</section>
 </section>
 <section id="references" class="level1">
 
@@ -5051,7 +5000,7 @@ Pressure = 0.1 * \frac{S_n - min(S_n)}{max(S_n) - min(S_n)} + 0.9 * \frac{S_h - 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-attaran_industrial_1986" class="csl-entry" role="listitem">
 Attaran, Mohsen. 1986. <span>“Industrial Diversity and Economic Performance in <span>U</span>.<span>S</span>. Areas.”</span> <em>The Annals of Regional Science</em> 20 (2): 44–54. <a href="https://doi.org/10.1007/BF01287240">https://doi.org/10.1007/BF01287240</a>.
 </div>
@@ -5339,27 +5288,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -5369,17 +5301,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -5391,130 +5314,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -5558,7 +5358,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -5584,32 +5383,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -5672,18 +5445,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>Learn more about the <a href="https://oceanhealthindex.org/" target="_blank">Ocean Health Index</a></p>
-</div>   
+    <div class="nav-footer-left">Learn more about the <a href="https://oceanhealthindex.org/" target="_blank">Ocean Health Index</a></div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
-    <div class="nav-footer-right">
-<p>Source code available on <a href="https://github.com/OHI-Science/ohi-methods/tree/main" target="_blank"><i class="fa-brands fa-github" title="the Github octocat" aria-label="github"></i> GitHub</a></p>
-</div>
+    <div class="nav-footer-right">Source code available on <a href="https://github.com/OHI-Science/ohi-methods/tree/main" target="_blank"><i class="fa-brands fa-github" title="the Github octocat" aria-label="github"></i> GitHub</a></div>
   </div>
 </footer>
-
 
 
 
