@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -77,7 +77,8 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -102,7 +103,7 @@ div.csl-indent {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../goals/goal-models-data.html">6. Goal Models and Data</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -253,7 +254,6 @@ div.csl-indent {
 <p><img src="../media/ohi-breakdown.jpg" class="img-fluid figure-img"></p>
 </figure>
 </div>
-<p>previously {r child = ‘../../metadata_documentation/ohi_model/goal_descriptions/AO_long.Rmd’}</p>
 <section id="artisanal-opportunities" class="level2">
 <h2 class="anchored" data-anchor-id="artisanal-opportunities">Artisanal opportunities</h2>
 <p>Artisanal fishing, often also called small-scale fishing, provides a critical source of food, nutrition, poverty alleviation and livelihood opportunities for many people around the world, in particular in developing nations <span class="citation" data-cites="allison2001livelihoods">(<a href="#ref-allison2001livelihoods" role="doc-biblioref">Allison and Ellis 2001</a>)</span>. Artisanal fishing refers to fisheries involving households, cooperatives or small firms (as opposed to large, commercial companies) that use relatively small amounts of capital and energy and small fishing vessels (if any), make relatively short fishing trips, and use fish mainly for local consumption or trade. These traits differ from commercial scale fisheries that serve the global fish trade, and commercial and artisanal scale fisheries also differ in how they are valued by many communities around the world.</p>
@@ -348,13 +348,11 @@ D_{u} = (1 – PPPpcGDP) * (1 – O_{ao}), (Eq. 6.2)
 <p>Social Progress Index (res_spi): Social Progress Index scores</p>
 <p>Measure of coastal ecological integrity (species_diversity_3nm): Marine species condition (same calculation and data as the species subgoal status score) calculated within 3 nm of shoreline as a proxy for ecological integrity</p>
 <p>Strength of governance (wgi_all): World Governance Indicators (WGI) six combined scores</p>
-<p>previously {r child = ‘../../metadata_documentation/ohi_model/goal_descriptions/BD_long.Rmd’}</p>
 </section>
 </section>
 <section id="biodiversity" class="level2">
 <h2 class="anchored" data-anchor-id="biodiversity">Biodiversity</h2>
 <p>People value biodiversity in particular for its existence value. The risk of species extinction generates great emotional and moral concern for many people. As such, this goal assesses the conservation status of species based on the best available global data through two sub-goals: species and habitats. Species were assessed because they are what one typically thinks of in relation to biodiversity. Because only a small proportion of marine species worldwide have been mapped and assessed, we also assessed habitats as part of this goal, and considered them a proxy for condition of the broad suite of species that depend on them. For the species sub-goal, we used species risk assessments from the International Union for Conservation of Nature <span class="citation" data-cites="iucn2022">(<a href="#ref-iucn2022" role="doc-biblioref">IUCN 2022a</a>)</span> for a wide range of taxa to provide a geographic snapshot of how total marine biodiversity is faring, even though it is a very small sub-sample of overall species diversity <span class="citation" data-cites="mora2011how">(<a href="#ref-mora2011how" role="doc-biblioref">Mora et al. 2011</a>)</span>. We calculate each of these subgoals separately and weight them equally when calculating the overall goal score.</p>
-<p>previously {r child = ‘../../metadata_documentation/ohi_model/goal_descriptions/HAB_long.Rmd’}</p>
 <section id="habitat-subgoal-of-biodiversity" class="level3">
 <h3 class="anchored" data-anchor-id="habitat-subgoal-of-biodiversity">Habitat (subgoal of biodiversity)</h3>
 <p>The habitat subgoal measures the average condition of marine habitats present in each region that provide critical habitat for a broad range of species (mangroves, coral reefs, seagrass beds, kelp forests, salt marshes, sea ice edge, tidal flats, and subtidal soft bottom). This subgoal is considered a proxy for the condition of the broad suite of marine species.</p>
@@ -491,7 +489,6 @@ x_{hab} = \frac { \displaystyle\sum _{ k=1 }^{ N }{ { C }_{ k } }  }{ N}, \quad 
 <p>Measure of coastal ecological integrity (species_diversity_3nm): Marine species condition (same calculation and data as the species subgoal status score) calculated within 3 nm of shoreline as a proxy for ecological integrity</p>
 <p>Measure of ecological integrity (species_diversity_eez): Marine species condition (species subgoal status score) as a proxy for ecological integrity</p>
 <p>Strength of governance (wgi_all): World Governance Indicators (WGI) six combined scores</p>
-<p>previously {r child = ‘../../metadata_documentation/ohi_model/goal_descriptions/SPP_long.Rmd’}</p>
 </section>
 </section>
 <section id="species-condition-subgoal-of-biodiversity" class="level3">
@@ -593,7 +590,6 @@ x_{spp} = max \left( \frac { \bar R_{SPP} - .25 }{ .75 }, 0 \right), (Eq. 6.5)
 <p>Management of waters to preserve biodiversity (po_water): Survey responses by country to the Convention on Biological Diversity (CBD) Third National Report: clean water management related questions</p>
 <p>Social Progress Index (res_spi): Social Progress Index scores</p>
 <p>Strength of governance (wgi_all): World Governance Indicators (WGI) six combined scores</p>
-<p>previously {r child = ‘../../metadata_documentation/ohi_model/goal_descriptions/CP_long.Rmd’}</p>
 </section>
 </section>
 </section>
@@ -692,7 +688,6 @@ h = \frac { C_{ c } }{ { C }_{ r } }
 <p>Management of waters to preserve biodiversity (po_water): Survey responses by country to the Convention on Biological Diversity (CBD) Third National Report: clean water management related questions</p>
 <p>Social Progress Index (res_spi): Social Progress Index scores</p>
 <p>Strength of governance (wgi_all): World Governance Indicators (WGI) six combined scores</p>
-<p>previously {r child = ‘../../metadata_documentation/ohi_model/goal_descriptions/CS_long.Rmd’}</p>
 </section>
 </section>
 <section id="carbon-storage" class="level2">
@@ -774,7 +769,6 @@ h = \frac { C_{ c } }{ { C }_{ r } }
 <p>Management of waters to preserve biodiversity (po_water): Survey responses by country to the Convention on Biological Diversity (CBD) Third National Report: clean water management related questions</p>
 <p>Social Progress Index (res_spi): Social Progress Index scores</p>
 <p>Strength of governance (wgi_all): World Governance Indicators (WGI) six combined scores</p>
-<p>previously {r child = ‘../../metadata_documentation/ohi_model/goal_descriptions/CW_long.Rmd’}</p>
 </section>
 </section>
 </section>
@@ -860,14 +854,12 @@ x_{cw} = \sqrt [ 4 ]{ a\ast u\ast l\ast d },  (Eq. 6.8)
 <p>Management of waters to preserve biodiversity (po_water): Survey responses by country to the Convention on Biological Diversity (CBD) Third National Report: clean water management related questions</p>
 <p>Social Progress Index (res_spi): Social Progress Index scores</p>
 <p>Strength of governance (wgi_all): World Governance Indicators (WGI) six combined scores</p>
-<p>previously {r child = ‘../../metadata_documentation/ohi_model/goal_descriptions/FP_long.Rmd’}</p>
 </section>
 </section>
 <section id="food-provision" class="level2">
 <h2 class="anchored" data-anchor-id="food-provision">Food Provision</h2>
 <p>One of the most fundamental services the ocean provides people is the provision of seafood. From meeting the basic nutritional needs of over half of the world’s population to being sold in high-end sushi restaurants, seafood is an important benefit of healthy oceans. This goal measures the amount of seafood sustainably harvested within an EEZ or region through any means for use primarily in human consumption and thus includes wild-caught commercial fisheries, mariculture, artisanal-scale and recreational fisheries. Importantly, seafood harvest using unsustainable fishing practices or catch levels is penalized as the goal aims to maximize the amount of sustainably produced seafood from wild or cultured stocks. Because we do not track where the fish go after being caught or produced, this goal does not aim to measure food security for the population of a given country, but instead measures the food provided from its waters.</p>
 <p>The status of the food provision goal is calculated as the mean of the fisheries and mariculture subgoals, weighted by their relative contribution in tonnes to food production for each region.</p>
-<p>previously {r child = ‘../../metadata_documentation/ohi_model/goal_descriptions/FIS_long.Rmd’}</p>
 <section id="fisheries-subgoal-of-food-provision" class="level3">
 <h3 class="anchored" data-anchor-id="fisheries-subgoal-of-food-provision">Fisheries (subgoal of food provision)</h3>
 <p>This model aims to assess the amount of wild-caught seafood that can be sustainably harvested with penalties assigned for over-harvesting. As such, one must establish a reference point at which harvest is both maximal and sustainable. We assess food provision from wild caught fisheries by estimating population biomass relative to the biomass that can deliver maximum sustainable yield (<span class="math inline">\(B/B_{MSY}\)</span>) for each stock. When available, we obtained <span class="math inline">\(B/B_{MSY}\)</span> values from the RAM Legacy Stock Assessment Database <span class="citation" data-cites="ricard2012examining ramlegacystockassessmentdatabase2023">(<a href="#ref-ricard2012examining" role="doc-biblioref">Ricard et al. 2012</a>; <a href="#ref-ramlegacystockassessmentdatabase2023" role="doc-biblioref"><strong>ramlegacystockassessmentdatabase2023?</strong></a>)</span>, which contains stock assessment information for a portion of global fish stocks. When RAM data were not available, we used data-limited approaches that have been developed to estimate <span class="math inline">\(B/B_{MSY}\)</span> values using globally available catch data <span class="citation" data-cites="costello_status_2016 martell2016simple thorson_new_2016 rosenberg2014developing costello2016global">(<a href="#ref-costello_status_2016" role="doc-biblioref">C. Costello et al. 2012</a>; <a href="#ref-martell2016simple" role="doc-biblioref">Martell and Froese 2013</a>; <a href="#ref-thorson_new_2016" role="doc-biblioref">Thorson et al. 2013</a>; <a href="#ref-rosenberg2014developing" role="doc-biblioref">Rosenberg et al. 2014</a>; <a href="#ref-costello2016global" role="doc-biblioref">Christopher Costello et al. 2016</a>)</span>. To calculate the status for each region and year, <span class="math inline">\(B/B_{MSY}\)</span> values were converted to a stock status score between 0-1 that penalizes over-harvesting. To obtain the overall status for each region, the stock status scores for all the stocks within a region were averaged using a geometric mean weighted by the average catch (tonnes) of each stock using Sea Around Us catch data <span class="citation" data-cites="pauly2020">(<a href="#ref-pauly2020" role="doc-biblioref">D. Pauly, Zeller, and Palomareas 2020</a>)</span>.</p>
@@ -997,7 +989,6 @@ x_{fis} = \prod _{ i=1 }^{ n }{ { SS }_{ i }^{ (\frac { { C }_{ i } }{ \sum { { 
 <p>Social Progress Index (res_spi): Social Progress Index scores</p>
 <p>Measure of ecological integrity (species_diversity_eez): Marine species condition (species subgoal status score) as a proxy for ecological integrity</p>
 <p>Strength of governance (wgi_all): World Governance Indicators (WGI) six combined scores</p>
-<p>previously {r child = ‘../../metadata_documentation/ohi_model/goal_descriptions/MAR_long.Rmd’}</p>
 </section>
 </section>
 <section id="mariculture-subgoal-of-food-provision" class="level3">
@@ -1343,7 +1334,6 @@ S_{c}  =  \frac { \displaystyle\sum _{ k=1 }^{ N }{ { Y }_{ k }{ S }_{ k,r } }  
 <p><em>Status and trend</em></p>
 <p><em>Pressure</em></p>
 <p><em>Resilience</em></p>
-<p>previously {r child = ‘../../metadata_documentation/ohi_model/goal_descriptions/LE_long.Rmd’}</p>
 </section>
 </section>
 </section>
@@ -1494,7 +1484,6 @@ S_{c}  =  \frac { \displaystyle\sum _{ k=1 }^{ N }{ { Y }_{ k }{ S }_{ k,r } }  
 </table>
 <p>This goal aims to maintain coastal livelihoods and economies (i.e., avoid the loss of, coastal and ocean-dependent jobs and revenues), while also maximizing livelihood quality (relative wages). It does not attempt to capture any aspects of job identity (i.e., the reputation, desirability or other social or cultural perspectives associated with different jobs), although one can examine the component parts that make up this goal to evaluate individual sectors and infer implications for job identity. We make the assumption that all marine-related jobs are equivalent, such that, for example, a fisherman could transition to a job in mariculture or ship-building without affecting the score of this goal. While job identity has social and cultural value, there are not adequate data to track individual workers and assess their job satisfaction on a global scale. We also do not include any measure of petroleum extraction, as we do not consider these practices to be related to the biophysical state of the system and, because they rely on a non-renewable resource, they are inherently unsustainable. Furthermore, because of data constraints, this goal does not provide more credit for sectors or economic activities that are more ecologically sustainable. Future, finer scale applications of the Index may incorporate these key considerations.</p>
 <p>Gaps were filled in the adjustment datasets (national GDP and national employment) by first determining the average metric value (e.g., average employment rate) in UN geopolitical regions (<span class="citation" data-cites="unitednations2013statistics">Nations (<a href="#ref-unitednations2013statistics" role="doc-biblioref">2013b</a>)</span>) for each year based on all countries in that region for which there were data. Using these regional average time series, we fit nonlinear models to the adjustment data. Using the model fit, we determined the slope between each year. To fill in missing data points in country time series, we applied the slope (percent change in the metric) between the missing year and the following year (or previous year, if necessary). We prioritized filling in backwards (e.g., if a country has data from 2006 and 2008, to fill in 2007, one would use the regional delta between 2008 and 2007), but filled forwards when there were no data for a subsequent year.</p>
-<p>previously {r child = ‘../../metadata_documentation/ohi_model/goal_descriptions/ECO_long.Rmd’}</p>
 <section id="economies-subgoal-of-livelihoods-and-economies" class="level3">
 <h3 class="anchored" data-anchor-id="economies-subgoal-of-livelihoods-and-economies">Economies (subgoal of livelihoods and economies)</h3>
 <p>Due to discontinued and static source datasets, we have not updated the status of this subgoal since 2013 (changes across scenario years after 2013 are due to changes in pressures/resilience) <span class="citation" data-cites="unitednations2013faob">(<a href="#ref-unitednations2013faob" role="doc-biblioref">Nations 2013a</a>)</span>.</p>
@@ -1544,7 +1533,6 @@ x_{eco} = \frac { \displaystyle\sum _{ k=1 }^{ N }{ { e }_{ c,k } }  }{ \display
 <p>Global Competitiveness Index (GCI) (li_gci): Competitiveness in achieving sustained economic prosperity</p>
 <p>Social Progress Index (res_spi): Social Progress Index scores</p>
 <p>Strength of governance (wgi_all): World Governance Indicators (WGI) six combined scores</p>
-<p>previously {r child = ‘../../metadata_documentation/ohi_model/goal_descriptions/LIV_long.Rmd’}</p>
 </section>
 </section>
 <section id="livelihoods-subgoal-of-livelihoods-and-economies" class="level3">
@@ -1595,7 +1583,6 @@ x_{liv} = \frac { \frac { \sum _{ 1 }^{ k }{ { j }_{ c,k } }  }{ \sum _{ 1 }^{ k
 <p>Economic diversity (li_sector_evenness): Sector evenness based on Shannon’s Diversity Index calculated on the proportion of jobs in each sector as a measure of economic diversity</p>
 <p>Social Progress Index (res_spi): Social Progress Index scores</p>
 <p>Strength of governance (wgi_all): World Governance Indicators (WGI) six combined scores</p>
-<p>previously {r child = ‘../../metadata_documentation/ohi_model/goal_descriptions/NP_long.Rmd’}</p>
 </section>
 </section>
 </section>
@@ -1776,13 +1763,11 @@ x_{np} = \frac { \displaystyle\sum _{ c=1 }^{ N }{ { P }_{ c }\ast { w }_{ c } }
 <p>Measure of coastal ecological integrity (species_diversity_3nm): Marine species condition (same calculation and data as the species subgoal status score) calculated within 3 nm of shoreline as a proxy for ecological integrity</p>
 <p>Measure of ecological integrity (species_diversity_eez): Marine species condition (species subgoal status score) as a proxy for ecological integrity</p>
 <p>Strength of governance (wgi_all): World Governance Indicators (WGI) six combined scores</p>
-<p>previously {r child = ‘../../metadata_documentation/ohi_model/goal_descriptions/SP_long.Rmd’}</p>
 </section>
 </section>
 <section id="sense-of-place" class="level2">
 <h2 class="anchored" data-anchor-id="sense-of-place">Sense of Place</h2>
 <p>This goal attempts to capture the aspects of the coastal and marine system that people value as part of their cultural identity. This definition includes people living near the ocean and those who live far from it but still derive a sense of identity or value from knowing particular places or species exist. This goal is calculated using two equally weighted subgoals: iconic species and lasting special places.</p>
-<p>previously {r child = ‘../../metadata_documentation/ohi_model/goal_descriptions/ICO_long.Rmd’}</p>
 <section id="iconic-species-subgoal-of-sense-of-place" class="level3">
 <h3 class="anchored" data-anchor-id="iconic-species-subgoal-of-sense-of-place">Iconic species (subgoal of sense of place)</h3>
 <p>Iconic species are those that are relevant to local cultural identity through their relationship to one or more of the following: 1) traditional activities such as fishing, hunting or commerce; 2) local ethnic or religious practices; 3) existence value; and 4) locally-recognized aesthetic value (e.g., touristic attractions/common subjects for art such as whales). Ultimately, almost any species can be iconic to someone, and so the intent with this goal was to focus on those species widely seen as iconic from a cultural or existence value (rather than a livelihoods or extractive reason). Habitat-forming species were not included, nor were species harvested solely for economic or utilitarian purposes (even though they may be iconic to a sector or individual).</p>
@@ -1829,7 +1814,6 @@ x_{ico} = \frac { \displaystyle\sum_{ i=EX }^{ LC }{ S_{i}\times w_{i} }  }{ \di
 <p>Social Progress Index (res_spi): Social Progress Index scores</p>
 <p>Measure of ecological integrity (species_diversity_eez): Marine species condition (species subgoal status score) as a proxy for ecological integrity</p>
 <p>Strength of governance (wgi_all): World Governance Indicators (WGI) six combined scores</p>
-<p>previously {r child = ‘../../metadata_documentation/ohi_model/goal_descriptions/LSP_long.Rmd’}</p>
 </section>
 </section>
 <section id="lasting-special-places-subgoal-of-sense-of-place" class="level3">
@@ -1872,7 +1856,6 @@ x_{lsp} = \frac { \left( \frac{\%_{CMPA}}{\%_{Ref_{CMPA}}} + \frac {\%_{CP}}{\%_
 <p>Management of waters to preserve biodiversity (po_water): Survey responses by country to the Convention on Biological Diversity (CBD) Third National Report: clean water management related questions</p>
 <p>Social Progress Index (res_spi): Social Progress Index scores</p>
 <p>Strength of governance (wgi_all): World Governance Indicators (WGI) six combined scores</p>
-<p>previously {r child = ‘../../metadata_documentation/ohi_model/goal_descriptions/TR_long.Rmd’}</p>
 </section>
 </section>
 </section>

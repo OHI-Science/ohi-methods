@@ -14,14 +14,15 @@ callout-appearance: minimal
 library(tidyverse)
 library(magrittr)
 library(kableExtra)
+
+assessmentYear <- 2024
+
 ```
 
 ::: {.callout-note collapse="true"}
 ### Table 7.1. Data layers of 2023 global OHI assessment (click to expand)
 
 ```{r DataLayer Table, echo=FALSE, warning=FALSE, error=FALSE, messages=FALSE}
-
-assessmentYear <- 2024
 
 options(dplyr.summarise.inform=F)
 ## Get list of layers, name, description:
@@ -86,8 +87,9 @@ data <- data %>%
   select(Layer=Name, Description, Dimension, References, Updates) %>%
   arrange(Dimension)
 
-kable(data) %>%
-  kableExtra::kable_styling(full_width = F)
+data |>
+  kbl(format="markdown")
+
 ```
 :::
 
@@ -107,8 +109,9 @@ ds_source <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/
 
 # made it work by going up to 2023, ensure this is updated for 2024!!
 
-kable(ds_source) %>%
-  kableExtra::kable_styling(full_width = F)
+ds_source |>
+  kbl(format="markdown")
+
 ```
 :::
 

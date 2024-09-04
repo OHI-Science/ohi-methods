@@ -45,7 +45,6 @@ cat(paste(st_layers$info, collapse="\n\n"))
 
 ```
 
-previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/AO_long.Rmd'}
 
 ## Artisanal opportunities
 
@@ -118,13 +117,11 @@ data_layers(goal="AO", dimension=c("resilience"))
 
 ```
 
-previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/BD_long.Rmd'}
 
 ## Biodiversity
 
 People value biodiversity in particular for its existence value. The risk of species extinction generates great emotional and moral concern for many people. As such, this goal assesses the conservation status of species based on the best available global data through two sub-goals: species and habitats. Species were assessed because they are what one typically thinks of in relation to biodiversity. Because only a small proportion of marine species worldwide have been mapped and assessed, we also assessed habitats as part of this goal, and considered them a proxy for condition of the broad suite of species that depend on them. For the species sub-goal, we used species risk assessments from the International Union for Conservation of Nature [@iucn2022] for a wide range of taxa to provide a geographic snapshot of how total marine biodiversity is faring, even though it is a very small sub-sample of overall species diversity [@mora2011how]. We calculate each of these subgoals separately and weight them equally when calculating the overall goal score.
 
-previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/HAB_long.Rmd'}
 
 ### Habitat (subgoal of biodiversity)
 
@@ -182,7 +179,6 @@ data_layers(goal="HAB", dimension=c("resilience"))
 
 ```
 
-previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/SPP_long.Rmd'}
 
 ### Species condition (subgoal of biodiversity)
 
@@ -242,7 +238,6 @@ data_layers(goal="SPP", dimension=c("pressure"))
 data_layers(goal="SPP", dimension=c("resilience"))
 ```
 
-previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/CP_long.Rmd'}
 
 ## Coastal protection
 
@@ -300,8 +295,6 @@ data_layers(goal="CP", dimension=c("pressure"))
 ```{r CP r, results="asis", echo=FALSE}
 data_layers(goal="CP", dimension=c("resilience"))
 ```
-
-previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/CS_long.Rmd'}
 
 ## Carbon storage
 
@@ -362,7 +355,6 @@ data_layers(goal="CS", dimension=c("pressure"))
 data_layers(goal="CS", dimension=c("resilience"))
 ```
 
-previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/CW_long.Rmd'}
 
 ## Clean waters
 
@@ -428,7 +420,6 @@ data_layers(goal="CW", dimension=c("resilience"))
 
 ```
 
-previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/FP_long.Rmd'}
 
 ## Food Provision
 
@@ -436,7 +427,6 @@ One of the most fundamental services the ocean provides people is the provision 
 
 The status of the food provision goal is calculated as the mean of the fisheries and mariculture subgoals, weighted by their relative contribution in tonnes to food production for each region.
 
-previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/FIS_long.Rmd'}
 
 ### Fisheries (subgoal of food provision)
 
@@ -562,7 +552,6 @@ data_layers(goal="FIS", dimension=c("pressure"))
 data_layers(goal="FIS", dimension=c("resilience"))
 ```
 
-previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/MAR_long.Rmd'}
 
 ### Mariculture (subgoal of food provision)
 
@@ -643,7 +632,6 @@ data_layers(goal="MAR", dimension=c("pressure"))
 data_layers(goal="MAR", dimension=c("resilience"))
 ```
 
-previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/LE_long.Rmd'}
 
 ## Livelihoods and economies
 
@@ -689,7 +677,6 @@ This goal aims to maintain coastal livelihoods and economies (i.e., avoid the lo
 
 Gaps were filled in the adjustment datasets (national GDP and national employment) by first determining the average metric value (e.g., average employment rate) in UN geopolitical regions (@unitednations2013statistics) for each year based on all countries in that region for which there were data. Using these regional average time series, we fit nonlinear models to the adjustment data. Using the model fit, we determined the slope between each year. To fill in missing data points in country time series, we applied the slope (percent change in the metric) between the missing year and the following year (or previous year, if necessary). We prioritized filling in backwards (e.g., if a country has data from 2006 and 2008, to fill in 2007, one would use the regional delta between 2008 and 2007), but filled forwards when there were no data for a subsequent year.
 
-previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/ECO_long.Rmd'}
 
 ### Economies (subgoal of livelihoods and economies)
 
@@ -737,7 +724,6 @@ data_layers(goal="ECO", dimension=c("pressure"))
 data_layers(goal="ECO", dimension=c("resilience"))
 ```
 
-previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/LIV_long.Rmd'}
 
 ### Livelihoods (subgoal of livelihoods and economies)
 
@@ -785,7 +771,6 @@ data_layers(goal="LIV", dimension=c("pressure"))
 data_layers(goal="LIV", dimension=c("resilience"))
 ```
 
-previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/NP_long.Rmd'}
 
 ## Natural products
 
@@ -907,13 +892,11 @@ data_layers(goal="NP", dimension=c("pressure"))
 data_layers(goal="NP", dimension=c("resilience"))
 ```
 
-previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/SP_long.Rmd'}
 
 ## Sense of Place
 
 This goal attempts to capture the aspects of the coastal and marine system that people value as part of their cultural identity. This definition includes people living near the ocean and those who live far from it but still derive a sense of identity or value from knowing particular places or species exist. This goal is calculated using two equally weighted subgoals: iconic species and lasting special places.
 
-previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/ICO_long.Rmd'}
 
 ### Iconic species (subgoal of sense of place)
 
@@ -955,7 +938,6 @@ data_layers(goal="ICO", dimension=c("pressure"))
 data_layers(goal="ICO", dimension=c("resilience"))
 ```
 
-previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/LSP_long.Rmd'}
 
 ### Lasting special places (subgoal of sense of place)
 
@@ -1001,7 +983,6 @@ data_layers(goal="LSP", dimension=c("pressure"))
 data_layers(goal="LSP", dimension=c("resilience"))
 ```
 
-previously {r child = '../../metadata_documentation/ohi_model/goal_descriptions/TR_long.Rmd'}
 
 ## Tourism and recreation
 

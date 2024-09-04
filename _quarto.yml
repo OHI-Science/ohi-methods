@@ -28,7 +28,7 @@ website:
         text: 1. Theory of OHI
         
       - href: OHI-score-anatomy.qmd
-        text: 2. Brief Anatomy of OHI Scores # currently still has "data inclusion, data gaps"
+        text: 2. Brief Anatomy of OHI Scores 
         
       - href: data-inclusion-gaps.qmd
         text: 3. Data Inclusion & Gaps # instead of in score anatomy?
