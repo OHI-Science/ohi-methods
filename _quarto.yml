@@ -51,7 +51,7 @@ website:
         text: 7. Description of Data Layers
         # 107 subsections :)
         
-      - href: ohi-global/documents/OHI.bib
+      - href: references.bib
         text: References
         icon: book
         

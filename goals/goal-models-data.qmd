@@ -1,7 +1,8 @@
 ---
-title: "5. Goal Models and Data"
+title: "Goal Models and Data"
 bibliography: ../references.bib
 toc: true
+toc-depth: 4
 ---
 
 In this section we describe how the current status and trend of each goal was calculated. We also indicate which data layers were used to calculate current status, trend (if different from current status), pressure, and resilience.
@@ -62,7 +63,7 @@ $$
 x_{ao} = (1 – D_u) * S_{ao}, (Eq. 6.1)
 $$
 
-where $S_{ao}$ indicates whether artisanal fishing is done in a sustainable manner. This was approximated using Sea Around Us Project (SAUP) [@pauly2020] global marine fisheries catch data [@pauly2016catch] and B/Bmsy data [@ricard2012examining; @costello_status_2016; @martell2016simple; @thorson_new_2016; @rosenberg2014developing; @costello2016global; @ramlegacystockassessmentdatabase2023] calculated from our fisheries sub-goal (methods can be found in section 6.6.1), and subsetted for artisanal and subsistence stocks notated in the SAUP data. And, $D_u$ is calculated as:
+where $S_{ao}$ indicates whether artisanal fishing is done in a sustainable manner. This was approximated using Sea Around Us Project (SAUP) [@pauly2020] global marine fisheries catch data [@pauly2016catch] and B/Bmsy data [@ricard2012examining; @costello_status_2016; @martell2016simple; @thorson_new_2016; @rosenberg2014developing; @costello2016global; @ramlegacystockassessmentdatabase2024] calculated from our fisheries sub-goal (methods can be found in section 6.6.1), and subsetted for artisanal and subsistence stocks notated in the SAUP data. And, $D_u$ is calculated as:
 
 $$
 D_{u} = (1 – PPPpcGDP) * (1 – O_{ao}), (Eq. 6.2)
@@ -368,14 +369,14 @@ We include four measures of pollution in the clean waters goal: eutrophication (
 |-------------------|------------------------------|-----------------------|
 | Eutrophication (nutrient) | FAO fertilizer and manure data [@unitednations2022faostata; @unitednations2021faostat; @halpern2022cumulative; @tuholske2021]                                                                                                                                                   | Standard method (section 5.3.1)                                                     |
 | Chemical                  | Land-based organic pollution (FAO pesticide data), Land-based inorganic pollution (based on run-off from impermeable surfaces), ocean-based pollution based on commercial shipping and port traffic [@unitednations2022faostata; @unitednations2021faostat; @halpern2008global] | Trend based only on changes in organic pollution, other variables remained the same |
-| Pathogens                 | Proportion of population without access to improved sanitation facilities [@who-unicef2023]                                                                                                                                                                                     | Standard method                                                                     |
+| Pathogens                 | Proportion of population without access to improved sanitation facilities [@who-unicef2024]                                                                                                                                                                                     | Standard method                                                                     |
 | Marine debris             | Plastic pollution [@eriksen2014plastic]                                                                                                                                                                                                                                         | Data on improperly disposed of plastics [@jambeck2015plastic]                       |
 
 We used the modeled input of land-based nitrogen input from livestock manure and crop fertilizer application as a proxy for nutrient input following similar methods to @halpern2022cumulative and @tuholske2021. The modeled proxy approach does not allow the distinction between toxic and non-toxic bloom events that can arise from excess nutrient input (often both referred to in the literature as harmful algal blooms, or HABs) or at what nutrient concentration an ecosystem is pushed into a HAB condition (i.e., the threshold value). Local studies may be able to obtain information on such non-linear responses and include it as part of this status measure.
 
 For the chemical pollution component [@halpern2008global], we used a combination of modeled input of fertilizer input as a proxy for land-based organic pollution, and impermeable surfaces as a proxy for land-based organic pollution, and shipping and port traffic for ocean based pollution. We were not able to assess specific toxic chemicals at the global scale; however regional case studies often will have data available for the quantities and toxicity of a range of chemicals put into watersheds and coastal waters. We also did not have global data for oil spills and so could not include oil pollution, but in future assessments where such data exist it would be included in chemical pollution as well.
 
-Human-derived pathogens are found in coastal waters primarily from sewage discharge or direct human defecation. Since we did not have access to a global database of in situ measurements of pathogen levels, we used a proxy measure for the status of pathogen pollution, namely the number of people in coastal areas without access to improved sanitation facilities [@who-unicef2023]. The underlying assumption is that locations with a low number of people with access to improved facilities will likely have higher levels of coastal water contamination from human pathogens. To estimate this pathogen intensity, we multiplied the human population within 25 miles of the coast by the percentage of population without access to improved sanitation. This allows countries with low coastal population densities and low access to improved sanitation to score better than high population countries with better access if the absolute number of people without access is lower in the small country.
+Human-derived pathogens are found in coastal waters primarily from sewage discharge or direct human defecation. Since we did not have access to a global database of in situ measurements of pathogen levels, we used a proxy measure for the status of pathogen pollution, namely the number of people in coastal areas without access to improved sanitation facilities [@who-unicef2024]. The underlying assumption is that locations with a low number of people with access to improved facilities will likely have higher levels of coastal water contamination from human pathogens. To estimate this pathogen intensity, we multiplied the human population within 25 miles of the coast by the percentage of population without access to improved sanitation. This allows countries with low coastal population densities and low access to improved sanitation to score better than high population countries with better access if the absolute number of people without access is lower in the small country.
 
 The status of trash pollution was estimated using globally-available plastic pollution data [@eriksen2014plastic].
 
@@ -430,7 +431,7 @@ The status of the food provision goal is calculated as the mean of the fisheries
 
 ### Fisheries (subgoal of food provision)
 
-This model aims to assess the amount of wild-caught seafood that can be sustainably harvested with penalties assigned for over-harvesting. As such, one must establish a reference point at which harvest is both maximal and sustainable. We assess food provision from wild caught fisheries by estimating population biomass relative to the biomass that can deliver maximum sustainable yield ($B/B_{MSY}$) for each stock. When available, we obtained $B/B_{MSY}$ values from the RAM Legacy Stock Assessment Database [@ricard2012examining; @ramlegacystockassessmentdatabase2023], which contains stock assessment information for a portion of global fish stocks. When RAM data were not available, we used data-limited approaches that have been developed to estimate $B/B_{MSY}$ values using globally available catch data [@costello_status_2016; @martell2016simple; @thorson_new_2016; @rosenberg2014developing; @costello2016global]. To calculate the status for each region and year, $B/B_{MSY}$ values were converted to a stock status score between 0-1 that penalizes over-harvesting. To obtain the overall status for each region, the stock status scores for all the stocks within a region were averaged using a geometric mean weighted by the average catch (tonnes) of each stock using Sea Around Us catch data [@pauly2020].
+This model aims to assess the amount of wild-caught seafood that can be sustainably harvested with penalties assigned for over-harvesting. As such, one must establish a reference point at which harvest is both maximal and sustainable. We assess food provision from wild caught fisheries by estimating population biomass relative to the biomass that can deliver maximum sustainable yield ($B/B_{MSY}$) for each stock. When available, we obtained $B/B_{MSY}$ values from the RAM Legacy Stock Assessment Database [@ricard2012examining; @ramlegacystockassessmentdatabase2024], which contains stock assessment information for a portion of global fish stocks. When RAM data were not available, we used data-limited approaches that have been developed to estimate $B/B_{MSY}$ values using globally available catch data [@costello_status_2016; @martell2016simple; @thorson_new_2016; @rosenberg2014developing; @costello2016global]. To calculate the status for each region and year, $B/B_{MSY}$ values were converted to a stock status score between 0-1 that penalizes over-harvesting. To obtain the overall status for each region, the stock status scores for all the stocks within a region were averaged using a geometric mean weighted by the average catch (tonnes) of each stock using Sea Around Us catch data [@pauly2020].
 
 **Figure 6.1: Overview of fisheries status calculations.**
 
@@ -555,7 +556,7 @@ data_layers(goal="FIS", dimension=c("resilience"))
 
 ### Mariculture (subgoal of food provision)
 
-The mariculture subgoal attempts to measure each region's food production from mariculture relative to its capacity [@unitednations2023a] and sustainability [@2023]. A basic problem facing previous assessments of mariculture was the lack of an ecologically- and socially-based reference point for the potential yield of every suitable mariculture species for every type of geographic habitat and location. Determining such reference points for every country at the global scale is difficult, not only because of key missing data and information, but also because species, genotypes and habitats suitable for production in any given location are likely to change from year to year. However, recent research [@gentry2019exploring] estimated the global biological potential for marine aquaculture at a high resolution spatial scale, addressing one of these key gaps: ecological reference points. To account for the social and economic realities and constraints to these ecological potentials, we constrained the per-country potential to 1% of this tonnage estimate and used these country values as reference points. Furthermore, the paper does not exclude high biodiversity or environmentally sensitive areas, meaning 100% of potential aquaculture tonnage estimate is a large overestimation of what is actually possible. Additionally, we include a sustainability score for each species in each region which is based on the [Monterey Bay Aquarium Seafood Watch aquaculture recommendations](https://www.seafoodwatch.org/seafood-recommendations/standards-revision) [@2023].
+The mariculture subgoal attempts to measure each region's food production from mariculture relative to its capacity [@unitednations2024a] and sustainability [@2023monterey]. A basic problem facing previous assessments of mariculture was the lack of an ecologically- and socially-based reference point for the potential yield of every suitable mariculture species for every type of geographic habitat and location. Determining such reference points for every country at the global scale is difficult, not only because of key missing data and information, but also because species, genotypes and habitats suitable for production in any given location are likely to change from year to year. However, recent research [@gentry2019exploring] estimated the global biological potential for marine aquaculture at a high resolution spatial scale, addressing one of these key gaps: ecological reference points. To account for the social and economic realities and constraints to these ecological potentials, we constrained the per-country potential to 1% of this tonnage estimate and used these country values as reference points. Furthermore, the paper does not exclude high biodiversity or environmentally sensitive areas, meaning 100% of potential aquaculture tonnage estimate is a large overestimation of what is actually possible. Additionally, we include a sustainability score for each species in each region which is based on the [Monterey Bay Aquarium Seafood Watch aquaculture recommendations](https://www.seafoodwatch.org/seafood-recommendations/standards-revision) [@2023monterey].
 
 #### Current status
 
@@ -587,17 +588,17 @@ $$
 Y_{c}= \frac {\displaystyle\sum _{ k=1 }^{ N }{ { Y }_{ k } }}{Y_{r, ref}}, \  (Eq. 6.11)
 $$
 
-where, $Y_{r,ref}$ is the value that corresponds to 1% of the potential aquaculture harvest in each region, and $Y_{k}$ is the 4-year moving window average of tonnes of production [@unitednations2023a] for each ${k}$ mariculture species that is currently or at one time cultured within a country. $Y_{c}$ is then capped at 1, so that no country can receive a better-than-perfect score. $S_{c}$ is the production weighted average of sustainability of mariculture in each country, such that:
+where, $Y_{r,ref}$ is the value that corresponds to 1% of the potential aquaculture harvest in each region, and $Y_{k}$ is the 4-year moving window average of tonnes of production [@unitednations2024a] for each ${k}$ mariculture species that is currently or at one time cultured within a country. $Y_{c}$ is then capped at 1, so that no country can receive a better-than-perfect score. $S_{c}$ is the production weighted average of sustainability of mariculture in each country, such that:
 
 $$
 S_{c}  =  \frac { \displaystyle\sum _{ k=1 }^{ N }{ { Y }_{ k }{ S }_{ k,r } }  } {{\displaystyle\sum _{ k=1 }^{ N }{ { Y }_{ k } }}}, (Eq. 6.12)
 $$
 
-where, $Y_{k}$ is the 4-year moving window average of tonnes of production [@unitednations2023a] for each ${k}$ mariculture species that is currently or at one time cultured within a country, and $S_{k,r}$ is the sustainability score for each $k$ mariculture species and region.
+where, $Y_{k}$ is the 4-year moving window average of tonnes of production [@unitednations2024a] for each ${k}$ mariculture species that is currently or at one time cultured within a country, and $S_{k,r}$ is the sustainability score for each $k$ mariculture species and region.
 
 All regions scoring above 1.0 are given a score of 1.0. A score of one could occur when the current aquaculture harvest is greater than 1% of the biological production potential (taken from [@gentry2019exploring]) and mariculture harvest is perfectly sustainable within a region. However, when a region has a current harvested yield that is less than 100 tonnes, and when 1% of potential mariculture harfvest is less than 100 tonnes, a score of NA is assigned. This assumption is made to avoid giving a perfect score to regions that have essentially zero harvested yield, and essentially zero biological production potential.
 
-The sustainability score, $S_{k,r}$, for each species in each region is based on the [Monterey Bay Aquarium Seafood Watch aquaculture recommendations](https://www.seafoodwatch.org/seafood-recommendations/standards-revision) [@2023]. Ten mariculture practice criteria from the Monterey Bay Aquarium Seafood Watch Aquaculture Recommendations contributed to the sustainability of mariculture (data quality, effluent, habitat risk, chemical use, feed, escapes, disease, source of stock, predator and wildlife mortalities, and escape of secondary species). These criteria represent the internal mariculture practices with the potential to affect the long term sustainability of the mariculture system. Scores for each assessment criterion were aggregated and averaged. All country average scores were then rescaled from 0 to 1 using the maximum possible raw SFW score of 10 and minimum of 1. These scores are country and species-specific, however, many country/species combinations are not assessed by Seafood Watch. Given that each mariculture record must have a corresponding sustainability score, we used a series of steps to estimate sustainability scores for every country and species. If a country/species match was available we used that, otherwise, we gapfilled using the following sequence:
+The sustainability score, $S_{k,r}$, for each species in each region is based on the [Monterey Bay Aquarium Seafood Watch aquaculture recommendations](https://www.seafoodwatch.org/seafood-recommendations/standards-revision) [@2023monterey]. Ten mariculture practice criteria from the Monterey Bay Aquarium Seafood Watch Aquaculture Recommendations contributed to the sustainability of mariculture (data quality, effluent, habitat risk, chemical use, feed, escapes, disease, source of stock, predator and wildlife mortalities, and escape of secondary species). These criteria represent the internal mariculture practices with the potential to affect the long term sustainability of the mariculture system. Scores for each assessment criterion were aggregated and averaged. All country average scores were then rescaled from 0 to 1 using the maximum possible raw SFW score of 10 and minimum of 1. These scores are country and species-specific, however, many country/species combinations are not assessed by Seafood Watch. Given that each mariculture record must have a corresponding sustainability score, we used a series of steps to estimate sustainability scores for every country and species. If a country/species match was available we used that, otherwise, we gapfilled using the following sequence:
 
 1.  Used the global species value provided by Seafood Watch.
 2.  Within a country, used the average of species within the same family.
@@ -793,7 +794,7 @@ As such, we focus on three natural product categories: ornamental fish, fish oil
 
 #### Current status
 
-To determine the total production in tonnes for seaweed we summed seaweed production provided in the FAO global aquaculture production data [@unitednations2023a]. To determine total production in tonnes of ornamental fish we summed the products provided in the FAO commodities data [@un-fao2023]. Finally, to determine the total production in tonnes for fish oil and fish meal, we used Sea Around Us Project (2020) global marine fisheries catch data [@pauly2020] and B/Bmsy data [@ricard2012examining; @costello_status_2016; @martell2016simple; @thorson_new_2016; @rosenberg2014developing; @costello2016global] calculated from our fisheries sub-goal (methods can be found in section 6.6.1), and subsetted the stocks for stocks used for fish oil production (Table 6.12) [@froehlich2020avoiding]. The tonnes of harvest of fish oil and fish meal species were multiplied by 0.9 to reflect the amount of the fish actually going to production of feed or oil, while the other 10% of fish is used in other ways, such as direct human consumption [@froehlich2020avoiding].
+To determine the total production in tonnes for seaweed we summed seaweed production provided in the FAO global aquaculture production data [@unitednations2024a]. To determine total production in tonnes of ornamental fish we summed the products provided in the FAO commodities data [@un-fao2024]. Finally, to determine the total production in tonnes for fish oil and fish meal, we used Sea Around Us Project (2020) global marine fisheries catch data [@pauly2020] and B/Bmsy data [@ricard2012examining; @costello_status_2016; @martell2016simple; @thorson_new_2016; @rosenberg2014developing; @costello2016global] calculated from our fisheries sub-goal (methods can be found in section 6.6.1), and subsetted the stocks for stocks used for fish oil production (Table 6.12) [@froehlich2020avoiding]. The tonnes of harvest of fish oil and fish meal species were multiplied by 0.9 to reflect the amount of the fish actually going to production of feed or oil, while the other 10% of fish is used in other ways, such as direct human consumption [@froehlich2020avoiding].
 
 **Table 6.12. Natural product categories**. List of species and FAO products included in each of the three natural product categories.
 
@@ -832,7 +833,7 @@ The exposure term, $E_c$, is the ln-transformed intensity of harvest for ornamen
 
 The risk term, $R_c$, is based on whether ornamental fishing has unsustainable harvest practices. In specific, we used the intensity of cyanide and dynamite fishing as a proxy. Risk for ornamental fish was set based on assessments of cyanide or dynamite fishing by Reefs at Risk Revisited (www.wri.org/publication/reefs-at-risk-revisited) under the assumption that most ornamental fishes are harvested from coral reefs.
 
-For seaweed commodity sustainability, we used the mariculture sustainability scores represented in the Monterey Bay Aquarium Seafood Watch aquaculture recommendations [@2023]. Ten mariculture practice criteria from the Monterey Bay Aquarium Seafood Watch Aquaculture Recommendations contributed to the sustainability of mariculture (data quality, effluent, habitat risk, chemical use, feed, escapes, disease, source of stock, predator and wildlife mortalities, and escape of secondary species). These criteria represent the internal mariculture practices with the potential to affect the long term sustainability of the mariculture system. Scores for each assessment criterion were aggregated and averaged. All country average scores were then rescaled from 0 to 1 using the maximum possible raw SFW score of 10 and minimum of 1. The sustainability score for seaweeds in the Seafood Watch recommendations was a global score, 0.79, which was applied to the seaweed harvest. Seaweed is widely regarded as a very sustainable aquaculture harvest, however, it does poorly on 3 of the 10 criteria that Seafood Watch uses, bringing its average down to 0.79. In specific, it scores poorly on the data quality (having robust and up-to-date information on production practices and their impacts available for analysis), escapes (preventing population-level impacts to wild species or other ecosystem-level impacts from farm escapes), and habitat (maintaining the functionality of ecological valuable habitat) criteria.
+For seaweed commodity sustainability, we used the mariculture sustainability scores represented in the Monterey Bay Aquarium Seafood Watch aquaculture recommendations [@2023monterey]. Ten mariculture practice criteria from the Monterey Bay Aquarium Seafood Watch Aquaculture Recommendations contributed to the sustainability of mariculture (data quality, effluent, habitat risk, chemical use, feed, escapes, disease, source of stock, predator and wildlife mortalities, and escape of secondary species). These criteria represent the internal mariculture practices with the potential to affect the long term sustainability of the mariculture system. Scores for each assessment criterion were aggregated and averaged. All country average scores were then rescaled from 0 to 1 using the maximum possible raw SFW score of 10 and minimum of 1. The sustainability score for seaweeds in the Seafood Watch recommendations was a global score, 0.79, which was applied to the seaweed harvest. Seaweed is widely regarded as a very sustainable aquaculture harvest, however, it does poorly on 3 of the 10 criteria that Seafood Watch uses, bringing its average down to 0.79. In specific, it scores poorly on the data quality (having robust and up-to-date information on production practices and their impacts available for analysis), escapes (preventing population-level impacts to wild species or other ecosystem-level impacts from farm escapes), and habitat (maintaining the functionality of ecological valuable habitat) criteria.
 
 The fish oil commodity sustainability was estimated using the B/Bmsy values which were calculated in our fisheries sub-goal (section 6.6.1).
 
@@ -957,7 +958,7 @@ where, $\%_{CMPA}$ is the proportion of coastal marine protected area, $\%_{CP}$
 
 We focus only on coastal waters (within 3 nautical miles of shore) for marine special places because we assume lasting special places are primarily in coastal areas. For coastlines, we focus only on the first 1-km-wide strip of land as a way to increase the likelihood that the area being protected by terrestrial parks is connected to the marine system in some way.
 
-We use the United Nation’s World Database on Protected Areas (WDPA) to identify protected areas [@unep-wcmcandiucn2023]. The WDPA aggregates several key databases: IUCN’s World Commission on Protected Areas, Global Marine Protected Areas, UNESCO World Heritage Marine sites, National Parks and Nature Reserves, and the United Nations List of Protected Places. In most cases the year of designation is listed for each protected area.
+We use the United Nation’s World Database on Protected Areas (WDPA) to identify protected areas [@unep-wcmcandiucn2024]. The WDPA aggregates several key databases: IUCN’s World Commission on Protected Areas, Global Marine Protected Areas, UNESCO World Heritage Marine sites, National Parks and Nature Reserves, and the United Nations List of Protected Places. In most cases the year of designation is listed for each protected area.
 
 #### Trend
 
@@ -985,8 +986,13 @@ data_layers(goal="LSP", dimension=c("resilience"))
 
 
 ## Tourism and recreation
+The tourism and recreation goal measures both the quantity and quality of people's experiences when visiting coastal and marine areas and attractions. While coastal tourism significantly contributes to local economies, we evaluate this goal separately from its economic impact, which we address in the coastal livelihoods and economies goal.
 
-The tourism and recreation goal aims to capture the number of people, and the quality of their experience, visiting coastal and marine areas and attractions. Although coastal tourism industries can be important contributors to coastal economies, the tourism and recreation goal is assessed separately from its economic benefits, which are reported in the coastal livelihoods and economies goal. Few non-economic indicators of tourism and recreation exist at the global scale; consequently, we use international arrivals (in the form of number of non-resident inbound visitor trips including at least one overnight) as a reasonable proxy measure for the total number of people engaged in coastal tourism and recreation activities. International arrivals should respond dynamically to the number of people participating in tourist activities, based on the assumption that these will correspond. Domestic tourism, while also important, has not yet been incorporated and, for now, we operate under the assumption that international arrivals capture the relative participation in tourist activities well enough. A measure of sustainability should also be included in the model and we have incorporated that as an additional data layer.
+We use a combination of international and domestic tourism arrivals data, specifically international overnight visitors, domestic hotel accommodations, and domestic overnight trips. This approach allows us to estimate the total number of people engaging in coastal activities within each region's coastal area.
+
+In addition to capturing the volume of tourism, we incorporate a measure of sustainability to evaluate the long-term viability and impact on coastal regions.
+  
+To estimate the number of people engaged in **sustainable** coastal tourism and recreation activities within each region’s coastal area  we use international and domestic tourism arrivals (in the form of number of visitor trips including at least one overnight). We also incorporate a metric describing the sustainability of tourism within each country in order to evaluate the long-term viability and impact on coastal regions, and not just the volume of tourism.
 
 #### Current status
 
@@ -996,19 +1002,36 @@ $$
 x_{tr} = \frac{ T_r }{ T_{90th}}, (Eq. 6.20)
 $$
 
-where, $T_{90th}$ is the $T_r$ value of the region value that corresponds to the 90th quantile, and:
+where, $T_{90th}$ is the $T_r$ value for the  region scoring in the 90th quantile, and:
 
 $$
 T_{r} = { A }\times { S }, (Eq. 6.21)
 $$
 
-where, $A$ is the proportion of international overnight visitor arrivals to total international arrivals, and $S$ is sustainability.
+where $A$ is the proportion of coastal arrivals to the coastal area of each OHI region, and $S$ is sustainability.
 
-Ideally there would be data available specifically for arrivals, $A$, related to coastal tourism; however, the best data available at a global scale reports the total international arrivals, which does not solely reflect coastal tourism [@unwto2023arrivals].
+#### Coastal Arrivals Proportion (A)
 
-Unfortunately it was not possible to determine the proportion of international arrivals affiliated with strictly leisure tourism. However, some (unknown) proportion of business travelers also enjoy the coast for leisure during their visit to coastal areas, such that we assumed all tourist arrivals were related to tourism and recreation values. Regional applications of the Index can make use of better-resolved data and more direct measures of tourism, as has been done within the US West Coast [@halpern2014assessing], where data for participation in coastal recreational activities across 19 different sectors were available.
+Ideally there would be data describing arrivals specific to coastal regions, $A$; however, the best data available at a global scale reports total international arrivals, which does not solely reflect coastal tourism (general data source, probably not a reference) [@unwto2024arrivals]. Therefore, we estimate coastal tourism based on the proportion of each region’s coastal population, defined as the number of people within 25 km of the ocean, relative to its total population. We then estimate the density of coastal tourism by dividing by coastal area (km^2^, 1 kilometer inland, and 3 nautical miles out into the eez). 
 
-Measures of sustainability are data from the World Economic Forum's Travel & Tourism Development Index (TTDI). This index measures “the set of factors and policies that enable the sustainable and resilient development of the Travel and Tourism (T&T) sector, which in turn contributes to the development of a country.” The index is comprised of five subindexes 17 pillars and 112 individual indicators, distributed among the different pillars. We use scores for the Travel and Tourism Sustainability Subindex which encompasses three pillars:
+$$Ap = \frac{TourismArrivals * (CoastalPop/TotalPop)}{CoastalArea}$$
+
+Where:
+
+- *TourismArrivals*: Combined international and domestic arrivals
+
+- *CoastalPop*: Population within 25 miles of the coast
+
+- *TotalPop*: Total population
+
+- *CoastalArea*: Area 1 km inland and 3 nautical miles into the EEZ 
+
+
+Unfortunately we could not determine the proportion of international arrivals affiliated with strictly leisure tourism. However, some (unknown) proportion of business travelers also enjoy the coast for leisure during their visit to coastal areas, such that we assumed all tourist arrivals were related to tourism and recreation. Regional applications of the Index can make use of better-resolved data and more direct measures of tourism, as has been done within the US West Coast [@halpern2014assessing], where data for participation in coastal recreational activities across 19 different sectors were available.
+
+#### Sustainability Index (S)
+
+Measures of sustainability are data from the World Economic Forum's Travel & Tourism Development Index (TTDI). This index measures "the set of factors and policies that enable the sustainable and resilient development of the Travel and Tourism (T&T) sector, which in turn contributes to the development of a country." The index consists of five subindexes, 17 pillars, and 112 individual indicators, distributed among the different pillars. We use scores for the Travel and Tourism Sustainability Subindex which encompasses three pillars:
 
 Pillar 15: **Environmental Sustainability**
 
@@ -1035,7 +1058,7 @@ Pillar 16: **Socioeconomic Resilience and Conditions**
 -   Social protection spending
 -   Not in education, employment or training (NEET) ratio
 -   Equal workforce opportunities
--   Workers’ rights
+-   Workers' rights
 -   Gender Inequality Index
 
 Pillar 17: **Travel and Tourism Demand Pressure and Impact**

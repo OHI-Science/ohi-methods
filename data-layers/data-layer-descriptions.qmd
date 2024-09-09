@@ -26,7 +26,7 @@ assessmentYear <- 2024
 
 options(dplyr.summarise.inform=F)
 ## Get list of layers, name, description:
-base <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/76634d93f7fbc2470a2144793d15924d55f552ff/metadata_documentation/layers_eez_base.csv") %>%
+base <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_base.csv") %>%
   # mutate(Name = paste0("[", name, "](", "http://ohi-science.org/ohi-global/layers#", layer, ")")) %>%
   select(layer, Name = name, Description = description)
 
@@ -44,7 +44,7 @@ target <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/766
 data <- left_join(target, base, by="layer")
 
 ## Get data prep url (will be a link in description)
-url <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/76634d93f7fbc2470a2144793d15924d55f552ff/metadata_documentation/layers_eez_dataprep.csv") %>%
+url <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_dataprep.csv") %>%
   group_by(layer) %>%
   mutate(N = 1) %>%
   mutate(method_count = cumsum(N)) %>%
@@ -61,7 +61,7 @@ data <- left_join(data, url, by="layer") %>%
   select(layer, Name, Description, Dimension)
 
 ## get references:
-refs <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/76634d93f7fbc2470a2144793d15924d55f552ff/metadata_documentation/layers_eez_reference.csv") %>%
+refs <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_reference.csv") %>%
   select(layer, reference) %>%
   unique() %>%
   mutate(ref = paste0("@", reference)) %>%
@@ -77,7 +77,7 @@ data <- data %>%
   left_join(refs, by="layer")
 
 ### Get method updates
-updates <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/76634d93f7fbc2470a2144793d15924d55f552ff/metadata_documentation/layers_eez_updates.csv") %>%
+updates <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_updates.csv") %>%
   select(layer, Updates=updates) %>%
   unique()
 
@@ -93,7 +93,7 @@ data |>
 ```
 :::
 
-**Table 7.2. Data sources used to create data layers for `r assessmentYear` global OHI assessment** A brief overview of the data sources used to calculate the global OHI.
+**Table 7.2. Data sources used to create data layers for `r assessmentYear` global OHI assessment** An in-depth description of data sources used for different data layers. References of interest from the previous table (7.1) can be found here under "References". Information is provided on the last update of the data sources. An update of "NA" means that the data source does not update yearly, or that it is not currently being used to calculate scores.
 
 ::: {.callout-note collapse="true"}
 ### Table 7.2. Data sources used to create data layers (click to expand)
@@ -103,11 +103,9 @@ data |>
 ### Get datasource primary data
 
 ## get source data
-ds_source <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/76634d93f7fbc2470a2144793d15924d55f552ff/metadata_documentation/layers_eez_data_sources.csv") %>%
+ds_source <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_data_sources.csv") %>%
   mutate(ds_reference = paste0("@", ds_reference)) %>%
   select(Reference = ds_reference, "Description" = ds_description, Years=ds_years, Resolution = ds_native_resolution, Updated = sprintf("ds_updated_%s", assessmentYear - 1))
-
-# made it work by going up to 2023, ensure this is updated for 2024!!
 
 ds_source |>
   kbl(format="markdown")
@@ -120,7 +118,7 @@ ds_source |>
 
 ```{r DataBase Table, echo=FALSE, warning=FALSE, error=FALSE, messages=FALSE}
 ## get source data
-ds_base_source <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/76634d93f7fbc2470a2144793d15924d55f552ff/metadata_documentation/layers_eez_base.csv")
+ds_base_source <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_base.csv")
   
 
 kable(ds_base_source) %>%
@@ -217,7 +215,7 @@ These data incorporate regional IUCN assessment information when possible (i.e.,
 
 See Species goal for calculations.
 
-These are the trend data for the species subgoal. These data describe changes in species condition within each region based on historical changes in risk status from IUCN Red List of Threatened Species [http://www.iucnredlist.org/](http://www.iucnredlist.org/)) [[@iucn2024 ; @iucn_spatial_2024; @birdlifeinternationalandhandbookofthebirdsoftheworld2020].
+These are the trend data for the species subgoal. These data describe changes in species condition within each region based on historical changes in risk status from IUCN Red List of Threatened Species [http://www.iucnredlist.org/](http://www.iucnredlist.org/) [@iucn2024; @iucn_spatial_2024; @birdlifeinternationalandhandbookofthebirdsoftheworld2020].
 
 #### Units {-} 
  trend score
@@ -458,7 +456,7 @@ and Z is the total number of sectors, $fi$ is the frequency of the ith sector (t
 ## Economic need for artisanal fishing 
 #### [ao_need](https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/ao_need.csv) {-} 
 
-These data are used to estimate the need for artisanal fishing opportunities given the purchasing power parity adjusted per capita gross domestic product (ppppcgdp) in "constant" USD (World Bank, [http://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD](http://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD)) [@worldbank2023]. The World Bank defines gdp as the gross value of all resident producers in the economy plus product taxes and minus and subsidies not included in the value of the products. The gdp is adjusted by population size to get per capita output and by purchasing power parity (ppp) to account for the difference in exchange rates between countries.  ppppcgdp data were rescaled to values between zero and one by taking the natural log of the values and dividing by the 99th quantile value across all years/regions (2005 to most recent year). 
+These data are used to estimate the need for artisanal fishing opportunities given the purchasing power parity adjusted per capita gross domestic product (ppppcgdp) in "constant" USD (World Bank, [http://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD](http://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD)) [@worldbank2024]. The World Bank defines gdp as the gross value of all resident producers in the economy plus product taxes and minus and subsidies not included in the value of the products. The gdp is adjusted by population size to get per capita output and by purchasing power parity (ppp) to account for the difference in exchange rates between countries.  ppppcgdp data were rescaled to values between zero and one by taking the natural log of the values and dividing by the 99th quantile value across all years/regions (2005 to most recent year). 
 
 When a region is missing some years of data, a within region linear model is used to estimate the missing values.
 
@@ -1473,7 +1471,7 @@ OHI global region ID and name.
 
 *Subcategory: climate change*
 
-This pressure layer models the difference in global distribution of the aragonite saturation state ($\Omega_{arag}$) of the ocean in the pre-industrial era and modern times. Global estimates through time [@feely2009ocean] are modeled at 1-degree resolution. Changes in the saturation state can be attributed to changes in the concentration of CO~2~ and thus we use the difference between the pre-industrial and modern times as a proxy for ocean acidification due to human influences. Values are rescaled from 0 to 1 using the threshold at which seawater becomes undersaturated, where $\Omega_{arag} = 1$.
+This pressure layer models the difference in global distribution of the aragonite saturation state ($\Omega_{arag}$) of the ocean in the pre-industrial era and modern times. Global estimates through time [@eucopernicusmarineserviceinformation2024] are modeled at 1-degree resolution. Changes in the saturation state can be attributed to changes in the concentration of CO~2~ and thus we use the difference between the pre-industrial and modern times as a proxy for ocean acidification due to human influences [@barker2012; @usepa2024]. Values are rescaled from 0 to 1 using the threshold at which seawater becomes undersaturated, where $\Omega_{arag} = 1$, and by relating the current aragonite saturation to a historical reference.
 
 #### Units {-} 
  scaled 0-1
@@ -1491,7 +1489,7 @@ Area (km^2^) located from each region's land-sea interface to 3nm offshore.
 
 This includes marine protected areas within 3nm offshore of the coastline.  
 
-Data is from the United Nations Environment Programme - World Conservation Monitoring Centre’s World Database on Protected Areas [-@unep-wcmcandiucn2023]  ([http://www.protectedplanet.net](http://www.protectedplanet.net)). Data includes all nationally designated (e.g., National Parks, Nature Reserves) and internationally recognized protected areas (e.g., UNESCO World Heritage Sites, Ramsar Wetlands of International Importance) as an ESRI shapefile. We used only WDPA polygons (not points) with a status of “designated” (not “proposed”). These polygons were converted to a 500 m Mollweide raster by the value of the year in which the park was decreed “designated”. For cases in which polygons overlapped, priority was given first to the parks with the earliest year. The total amount of protected area (km^2^) was calculated for each year for: the entire eez, 3 nm offshore, and 1km inland (depending on the dimension being calculated). 
+Data is from the United Nations Environment Programme - World Conservation Monitoring Centre’s World Database on Protected Areas [-@unep-wcmcandiucn2024]  ([http://www.protectedplanet.net](http://www.protectedplanet.net)). Data includes all nationally designated (e.g., National Parks, Nature Reserves) and internationally recognized protected areas (e.g., UNESCO World Heritage Sites, Ramsar Wetlands of International Importance) as an ESRI shapefile. We used only WDPA polygons (not points) with a status of “designated” (not “proposed”). These polygons were converted to a 500 m Mollweide raster by the value of the year in which the park was decreed “designated”. For cases in which polygons overlapped, priority was given first to the parks with the earliest year. The total amount of protected area (km^2^) was calculated for each year for: the entire eez, 3 nm offshore, and 1km inland (depending on the dimension being calculated). 
 
 #### Units {-} 
  km2
@@ -1547,7 +1545,7 @@ Mariculture capacity/potential was determined for each region using Mapping the 
 ## Proportion of total international arrivals to area of coastline to total population 
 #### [tr_arrivals_props_tourism](https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/tr_arrivals_props_tourism.csv) {-} 
 
-The [United Nations World Tourism Organization (UNWTO)](https://www.unwto.org/) [-@unwto2023arrivals] includes total international arrivals data. This is provided in the form of thousands of people arriving, which we convert to total number of people arriving. We divide these arrivals by the total arrivals in the country.
+The [United Nations World Tourism Organization (UNWTO)](https://www.unwto.org/) [-@unwto2024arrivals] includes total international arrivals data. This is provided in the form of thousands of people arriving, which we convert to total number of people arriving. We divide these arrivals by the total arrivals in the country.
 
 To address missing values in arrivals, specifically referring to "Overnight visitors (tourists)," we employ a two-step process. First, we attempt to fill the gaps by subtracting "Same-day visitors (excursionists)" from "Total arrivals" if the latter is available. If this is not feasible, we resort to interpolating or extrapolating based on historical data spanning from 1995 to 2019, employing a linear model to estimate increases or decreases on a regional level.
 
@@ -1630,7 +1628,7 @@ The risk layer is based on whether ornamental fishing has unsustainable harvest 
 
 *Subcategory: climate change*
 
-The sea level rise pressure layer is derived from satellite altimetry data  ([http://www.aviso.altimetry.fr/en/data/products/sea-surface-height-products/global/msla-mean-climatology.html](http://www.aviso.altimetry.fr/en/data/products/sea-surface-height-products/global/msla-mean-climatology.html)) [@aviso2023]. Monthly mean sea level anomalies since 1993 track changes in sea level (mm) compared to a reference period from 1993-2012. Raw monthly data are provided on a 0.25x0.25 degree grid. These data were clipped to within 3 nautical miles of the coast, and monthly data layers were aggregated and averaged across pixels to compute mean sea level anomalies. The 99.99th quantile of raster values from all years was used as the reference point to rescale the layer from 0 to 1. All negative values were set to zero (i.e., no negative pressure), such that only positive sea level rise values mattered. The mean value of the raster cells within each OHI region was calculated.
+The sea level rise pressure layer is derived from satellite altimetry data  ([http://www.aviso.altimetry.fr/en/data/products/sea-surface-height-products/global/msla-mean-climatology.html](http://www.aviso.altimetry.fr/en/data/products/sea-surface-height-products/global/msla-mean-climatology.html)) [@aviso2024]. Monthly mean sea level anomalies since 1993 track changes in sea level (mm) compared to a reference period from 1993-2012. Raw monthly data are provided on a 0.25x0.25 degree grid. These data were clipped to within 3 nautical miles of the coast, and monthly data layers were aggregated and averaged across pixels to compute mean sea level anomalies. The 99.99th quantile of raster values from all years was used as the reference point to rescale the layer from 0 to 1. All negative values were set to zero (i.e., no negative pressure), such that only positive sea level rise values mattered. The mean value of the raster cells within each OHI region was calculated.
 
 #### Units {-} 
  scaled 0-1
@@ -1699,7 +1697,7 @@ The Social Progress Index ([http://www.socialprogressimperative.org/global-index
 
 *Category: social*
 
-The Worldwide Governance Indicator [-@worldbank2023wgi] is composed of six dimensions of governance: voice and accountability, political stability and absence of violence, government effectiveness, regulatory quality, rule of law, control of corruption. These 6 aggregate indicators combine data from a variety of survey institutes, think tanks, NGOs, and international organizations to report on the relative governance of 213 economies worldwide. The WGI combines individual indicators through an Unobserved Components Model to produce the 6 dimensions of governance that range in value from approximately -2.5 to 2.5, have a normal distribution, a mean of zero, and a standard deviation of 1. We take an average of the six dimension scores to produce a single governance score for each country. Social pressure is then calculated as one minus this average WGI score.
+The Worldwide Governance Indicator [-@worldbank2024wgi] is composed of six dimensions of governance: voice and accountability, political stability and absence of violence, government effectiveness, regulatory quality, rule of law, control of corruption. These 6 aggregate indicators combine data from a variety of survey institutes, think tanks, NGOs, and international organizations to report on the relative governance of 213 economies worldwide. The WGI combines individual indicators through an Unobserved Components Model to produce the 6 dimensions of governance that range in value from approximately -2.5 to 2.5, have a normal distribution, a mean of zero, and a standard deviation of 1. We take an average of the six dimension scores to produce a single governance score for each country. Social pressure is then calculated as one minus this average WGI score.
 
 WGI scores are provided for China/Hong Kong/Macao and Puerto Rico/Virgin Island, which are combined OHI regions.  These scores were averaged, weighted by population. 
 
@@ -1747,7 +1745,7 @@ The Pressure score was calculated as one minus soft-bottom habitat condition.
 
 *Subcategory: fishing pressure*
 
-This data layer describes the pressure on cetaceans and marine turtles for each country calculated using the FAO Global Capture Production Quantity dataset [@unitednations2023]. We extracted all catch records from the FAO data for cetaceans or marine turtles and aggregated to create a total reported catch count for each region. The summed catch was rescaled from 0-1, using the 95th quantile across all years (including and prior to the assessment year) and regions (values > 1 were capped at 1).
+This data layer describes the pressure on cetaceans and marine turtles for each country calculated using the FAO Global Capture Production Quantity dataset [@unitednations2024]. We extracted all catch records from the FAO data for cetaceans or marine turtles and aggregated to create a total reported catch count for each region. The summed catch was rescaled from 0-1, using the 95th quantile across all years (including and prior to the assessment year) and regions (values > 1 were capped at 1).
 
 #### Units {-} 
  scaled 0-1
@@ -1800,7 +1798,7 @@ This layer is a list of low and zero population regions based on Wikipedia.
 *Category: social*
 
 
-When used as a social pressure, 1 minus the Worldwide Governance Indicator [-@worldbank2023wgi] is used. 
+When used as a social pressure, 1 minus the Worldwide Governance Indicator [-@worldbank2024wgi] is used. 
 
 #### Units {-} 
  scaled 0-1
