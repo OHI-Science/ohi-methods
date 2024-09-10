@@ -113,21 +113,6 @@ ds_source |>
 ```
 :::
 
-::: {.callout-note collapse="true"}
-### Table 7.3: Base Table (click to expand)
-
-```{r DataBase Table, echo=FALSE, warning=FALSE, error=FALSE, messages=FALSE}
-## get source data
-ds_base_source <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_base.csv")
-  
-
-kable(ds_base_source) %>%
-  kableExtra::kable_styling(full_width = F)
-```
-:::
-
-
-
 
 # Supplemental Methods by Layer
 
@@ -201,7 +186,7 @@ These data are used to estimate the sustainability of artisanal fishing practice
 
 See Species goal for calculations.
 
-These are the status data for the species subgoal, calculated using the species model. These data describe the average condition of species within each region based on risk status from the IUCN Red List of Threatened Species ([http://www.iucnredlist.org/](http://www.iucnredlist.org/)) [@iucn2022] and BirdLife International ([http://datazone.birdlife.org](http://datazone.birdlife.org)) [@iucn_spatial_2022; @birdlifeinternationalandhandbookofthebirdsoftheworld2020] data.  
+These are the status data for the species subgoal, calculated using the species model. These data describe the average condition of species within each region based on risk status from the IUCN Red List of Threatened Species ([http://www.iucnredlist.org/](http://www.iucnredlist.org/)) [@iucn2024] and BirdLife International ([http://datazone.birdlife.org](http://datazone.birdlife.org)) [@iucn_spatial_2024; @birdlifeinternationalandhandbookofthebirdsoftheworld2020] data.  
 
 We include only species from comprehensively assessed groups (groups with >90% of species assessed) to help control for sampling bias.  We found that some regions (e.g., Atlantic) had assessments for a much larger proportion of species than other regions, but this problem was less pronounced when we only included comprehensively assessed species.      
 
@@ -691,7 +676,7 @@ A general 0.28% per year decerasing trend in salt marsh area was applied to ever
 ## Habitat condition trend of seagrass 
 #### [hab_seagrass_trend](https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_seagrass_trend.csv) {-} 
 
-Trend in seagrass condition was determined using three data sources [@waycott2009accelerating, @short2011extinction, @iucn_spatial_2022). Short et al. [-@short2011extinction] measured percent percent cover on a per sample, per site, per year basis, and determined species population trends (increasing, decreasing, or stable). The IUCN Red List of Threatened Species also provides species population trends (increasing, decreasing, or stable). Waycott et al. [-@waycott2009accelerating] measured habitat area on a per site, per year basis. We used the population trends from @short2011extinction and the IUCN Red List of Threatened Species [@iucn2022] to assign population trends to the IUCN species distribution maps [@iucn_spatial_2022]. Then we used median rate of change per year (%) from Waycott et al. [-@waycott2009accelerating] (Table S2) to assign numerical trend values to each species population trend (-0.0767 for decreasing, 0 for stable, and 0.0845 for increasing). Following this we gapfill missing trends first by species family average, and then by the global seagrass average trend. We calculate the trend per OHI region using an average weighted by species distribution area. Finally, where country data were not available, we gapfill by the georegional average. 
+Trend in seagrass condition was determined using three data sources [@waycott2009accelerating, @short2011extinction, @iucn_spatial_2022). Short et al. [-@short2011extinction] measured percent percent cover on a per sample, per site, per year basis, and determined species population trends (increasing, decreasing, or stable). The IUCN Red List of Threatened Species also provides species population trends (increasing, decreasing, or stable). Waycott et al. [-@waycott2009accelerating] measured habitat area on a per site, per year basis. We used the population trends from @short2011extinction and the IUCN Red List of Threatened Species [@iucn2024] to assign population trends to the IUCN species distribution maps [@iucn_spatial_2022]. Then we used median rate of change per year (%) from Waycott et al. [-@waycott2009accelerating] (Table S2) to assign numerical trend values to each species population trend (-0.0767 for decreasing, 0 for stable, and 0.0845 for increasing). Following this we gapfill missing trends first by species family average, and then by the global seagrass average trend. We calculate the trend per OHI region using an average weighted by species distribution area. Finally, where country data were not available, we gapfill by the georegional average. 
  
 #### Units {-} 
  trend
@@ -867,7 +852,7 @@ To summarize at the OHI region scale, the mean value of the raster cells within 
 ## IUCN extinction risk 
 #### [ico_spp_iucn_status](https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/ico_spp_iucn_status.csv) {-} 
 
-This data layer provides the risk category and the year the species was assessed from the IUCN Red List of Threatened Species ([http://www.iucnredlist.org/](http://www.iucnredlist.org/)) [@iucn2022] for the iconic species in each region. Regionally specific IUCN risk category data for *subpopulations* are included where available. Trend calculations are based on the change in each species' IUCN risk category over time, based upon past and current IUCN assessments.
+This data layer provides the risk category and the year the species was assessed from the IUCN Red List of Threatened Species ([http://www.iucnredlist.org/](http://www.iucnredlist.org/)) [@iucn2024] for the iconic species in each region. Regionally specific IUCN risk category data for *subpopulations* are included where available. Trend calculations are based on the change in each species' IUCN risk category over time, based upon past and current IUCN assessments.
 
 OHI defines iconic species as those relevant to local cultural identity through the species’ relationship to traditional activities such as fishing, hunting, commerce or involvement in local ethnic or religious practices; and species with locally-recognized aesthetic value (e.g., touristic attractions/common artistic subjects such as whales). Habitat forming species are excluded in this definition of iconic species. The OHI global iconic species list combines three species lists from WWF Global: global priorities, regional and local priorities, and flagship species. It also incorporates culturally important species [@garcia2023]. The criteria for including species on these lists are consistent with the OHI’s definition of iconic species. 
 
@@ -1243,7 +1228,7 @@ Marine plastic pollution is modeled using data on the global distribution of flo
 
 See Species goal for calculations.
 
-This value reflects the average condition of species (based on risk status from the IUCN Red List of Threatened Species, [http://www.iucnredlist.org/](http://www.iucnredlist.org/)) [@iucn2022] located within 3 nm offshore of each region based on species range maps from IUCN (shapefiles, used preferentially) [@iucn_spatial_2022; @birdlifeinternationalandhandbookofthebirdsoftheworld2020] and Aquamaps ([http://www.aquamaps.org/](http://www.aquamaps.org/), half degree resolution rasters).
+This value reflects the average condition of species (based on risk status from the IUCN Red List of Threatened Species, [http://www.iucnredlist.org/](http://www.iucnredlist.org/)) [@iucn2024] located within 3 nm offshore of each region based on species range maps from IUCN (shapefiles, used preferentially) [@iucn_spatial_2022; @birdlifeinternationalandhandbookofthebirdsoftheworld2020] and Aquamaps ([http://www.aquamaps.org/](http://www.aquamaps.org/), half degree resolution rasters).
 
 #### Units {-} 
  scaled 0-1
@@ -1257,7 +1242,7 @@ This value reflects the average condition of species (based on risk status from 
 
 See Species goal for calculations.
 
-This value reflects the average condition of species (based on risk status from the IUCN Red List of Threatened Species, [http://www.iucnredlist.org/](http://www.iucnredlist.org/)) [@iucn2022] located within the eez of each region based on species range maps from IUCN (shapefiles, used preferentially) [@iucn_spatial_2022; @birdlifeinternationalandhandbookofthebirdsoftheworld2020] and Aquamaps ([http://www.aquamaps.org/](http://www.aquamaps.org/), half degree resolution rasters).
+This value reflects the average condition of species (based on risk status from the IUCN Red List of Threatened Species, [http://www.iucnredlist.org/](http://www.iucnredlist.org/)) [@iucn2024] located within the eez of each region based on species range maps from IUCN (shapefiles, used preferentially) [@iucn_spatial_2024; @birdlifeinternationalandhandbookofthebirdsoftheworld2020] and Aquamaps ([http://www.aquamaps.org/](http://www.aquamaps.org/), half degree resolution rasters).
  
 #### Units {-} 
  scaled 0-1

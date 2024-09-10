@@ -19,7 +19,7 @@ library(kableExtra)
 ## data and functions used to list data layers in each goal
 
 # data with information
-layers <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/76634d93f7fbc2470a2144793d15924d55f552ff/metadata_documentation/layers_eez_base.csv")
+layers <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_base.csv")
 targets <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/76634d93f7fbc2470a2144793d15924d55f552ff/metadata_documentation/layers_eez_targets.csv")
 layers_web <- "http://ohi-science.org/ohi-global/layers.html"
 
@@ -121,7 +121,7 @@ data_layers(goal="AO", dimension=c("resilience"))
 
 ## Biodiversity
 
-People value biodiversity in particular for its existence value. The risk of species extinction generates great emotional and moral concern for many people. As such, this goal assesses the conservation status of species based on the best available global data through two sub-goals: species and habitats. Species were assessed because they are what one typically thinks of in relation to biodiversity. Because only a small proportion of marine species worldwide have been mapped and assessed, we also assessed habitats as part of this goal, and considered them a proxy for condition of the broad suite of species that depend on them. For the species sub-goal, we used species risk assessments from the International Union for Conservation of Nature [@iucn2022] for a wide range of taxa to provide a geographic snapshot of how total marine biodiversity is faring, even though it is a very small sub-sample of overall species diversity [@mora2011how]. We calculate each of these subgoals separately and weight them equally when calculating the overall goal score.
+People value biodiversity in particular for its existence value. The risk of species extinction generates great emotional and moral concern for many people. As such, this goal assesses the conservation status of species based on the best available global data through two sub-goals: species and habitats. Species were assessed because they are what one typically thinks of in relation to biodiversity. Because only a small proportion of marine species worldwide have been mapped and assessed, we also assessed habitats as part of this goal, and considered them a proxy for condition of the broad suite of species that depend on them. For the species sub-goal, we used species risk assessments from the International Union for Conservation of Nature [@iucn2024] for a wide range of taxa to provide a geographic snapshot of how total marine biodiversity is faring, even though it is a very small sub-sample of overall species diversity [@mora2011how]. We calculate each of these subgoals separately and weight them equally when calculating the overall goal score.
 
 
 ### Habitat (subgoal of biodiversity)
@@ -187,7 +187,7 @@ This goal aims to assess the average condition of the marine species within each
 
 #### Current status
 
-Species status was calculated as the area and status-weighted average of assessed species within each region. Marine species distribution and threat category data mostly came from IUCN Red List of Threatened Species, and we limited data to all species having IUCN habitat system of "marine" <http://www.iucnredlist.org> [@iucn2022; @iucn_spatial_2022]. Seabird distributions data came from Birdlife International <http://datazone.birdlife.org> [@birdlifeinternationalandhandbookofthebirdsoftheworld2020].
+Species status was calculated as the area and status-weighted average of assessed species within each region. Marine species distribution and threat category data mostly came from IUCN Red List of Threatened Species, and we limited data to all species having IUCN habitat system of "marine" <http://www.iucnredlist.org> [@iucn2024; @iucn_spatial_2024]. Seabird distributions data came from Birdlife International <http://datazone.birdlife.org> [@birdlifeinternationalandhandbookofthebirdsoftheworld2020].
 
 We scaled the lower end of the biodiversity goal to be 0 when 75% species are extinct, a level comparable to the five documented mass extinctions [@barnosky_has_2011] and would constitute a catastrophic loss of biodiversity.
 
@@ -568,11 +568,15 @@ The status of the mariculture subgoal, $x_{mar}$, was defined as production of s
 library(tidyverse)
 library(knitr)
 library(kableExtra)
-data <- read.csv('https://raw.githubusercontent.com/OHI-Science/ohiprep_v2023/gh-pages/globalprep/mar/v2023/raw/species_list.csv') %>%
+data <- read.csv('https://raw.githubusercontent.com/OHI-Science/ohiprep_v2024/0dedd403809cbc6f8ba6f3c67ffa47ead49319f7/globalprep/mar/v2023/raw/species_list.csv') %>%
 	dplyr::filter(Taxon_code == "AL") %>%
 dplyr::select(`FAO species name` = FAO_name, `Proportion non food use` = exclude, `Justification` = notes_2)
+# 
+# kable(data) %>%
+#   kable_styling(full_width = F)
 
-kable(data) %>%
+data |>
+  kbl(format = "markdown") %>%
   kable_styling(full_width = F)
 ```
 
@@ -905,7 +909,7 @@ Iconic species are those that are relevant to local cultural identity through th
 
 #### Current status
 
-The status of this sub-goal, $x_{ico}$, is the average of status scores of the iconic species in each region based on their IUCN Red List threat categories [@iucn2022]:
+The status of this sub-goal, $x_{ico}$, is the average of status scores of the iconic species in each region based on their IUCN Red List threat categories [@iucn2024]:
 
 $$
 x_{ico} = \frac { \displaystyle\sum_{ i=EX }^{ LC }{ S_{i}\times w_{i} }  }{ \displaystyle\sum_{ i=EX }^{ LC }{ S_{i} }  }, (Eq. 6.18)
