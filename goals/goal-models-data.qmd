@@ -568,16 +568,16 @@ The status of the mariculture subgoal, $x_{mar}$, was defined as production of s
 library(tidyverse)
 library(knitr)
 library(kableExtra)
-data <- read.csv('https://raw.githubusercontent.com/OHI-Science/ohiprep_v2024/0dedd403809cbc6f8ba6f3c67ffa47ead49319f7/globalprep/mar/v2023/raw/species_list.csv') %>%
+library(gt)
+data <- read_csv('https://raw.githubusercontent.com/OHI-Science/ohiprep_v2024/gh-pages/globalprep/mar/v2024/raw/species_list.csv') %>%
 	dplyr::filter(Taxon_code == "AL") %>%
-dplyr::select(`FAO species name` = FAO_name, `Proportion non food use` = exclude, `Justification` = notes_2)
-# 
-# kable(data) %>%
-#   kable_styling(full_width = F)
+dplyr::select(`FAO species name` = FAO_name, `Proportion non food use` = exclude, `Justification` = notes_2) %>%
+  dplyr::mutate(Justification = gsub('^"|"$', '', Justification))
 
 data |>
-  kbl(format = "markdown") %>%
-  kable_styling(full_width = F)
+  gt()|>
+  fmt_markdown(columns = everything()) |>
+  tab_options(table.width = px(400))
 ```
 
 Harvest data reported by FAO does not always clearly describe whether it is derived from mariculture or from land-based facilities. Mariculture status, $x_{mar}$, was therefore assessed as the current re-scaled met potential of harvested yield, $Y_{c}$, within each country, multiplied by the production weighted average of sustainability of mariculture within each county, $S_{c}$, such that:

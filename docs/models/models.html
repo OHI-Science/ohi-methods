@@ -225,7 +225,6 @@ div.csl-indent {
 
 <section id="regional-and-global-index-scores" class="level2">
 <h2 class="anchored" data-anchor-id="regional-and-global-index-scores">Regional and global Index scores</h2>
-<p>( previously: r child = ‘../../metadata_documentation/ohi_model/index_scores.Rmd’, eval=index_scores)</p>
 <p>The overall index score for each region (<span class="math inline">\(I_{region}\)</span>) is calculated as a weighted average of all the scores (<span class="math inline">\(G\)</span>), for each goal (<span class="math inline">\(g\)</span>) such that:</p>
 <p><span class="math display">\[
 { I_{region} }\quad =\quad \frac { \displaystyle\sum_{ g=1 }^{ N }{ { w }_{ g }{ G }_{ g } }  }{ \displaystyle\sum _{ g=1 }^{ N }{ { w }_{ g } }  }, (Eq. 5.1)
@@ -241,7 +240,6 @@ div.csl-indent {
 </section>
 <section id="goal-scores" class="level2">
 <h2 class="anchored" data-anchor-id="goal-scores">Goal scores</h2>
-<p>(previously r child = ‘../../metadata_documentation/ohi_model/goal_model.Rmd’, eval=goal_model)</p>
 <p>Each goal score is the average of its current status and likely future status (Figure 5.1, see section <em>5: Goal models and data</em> for methods used to calculate status of each goal). The Index assesses the current status of each goal relative to a reference point. Likely future status is estimated using: recent trends in current status; pressures that can stress the system and threaten future delivery of benefits; and resilience to such pressures, due to governance, institutional and ecological factors.</p>
 <p><strong>Figure 5.1. Pie chart describing the contribution of each dimension to the goal score</strong></p>
 <div class="quarto-figure quarto-figure-center">
@@ -270,7 +268,6 @@ G \quad =\quad \frac {x \quad +\quad \hat x_{F} }{ 2 }, (Eq. 5.3)
 <section id="likely-future-status-dimensions" class="level2">
 <h2 class="anchored" data-anchor-id="likely-future-status-dimensions">Likely future status dimensions</h2>
 <p>Three dimensions are used to calculate likely future status: trends, pressure, and resilience. This section describes the calculations underlying these three dimensions.</p>
-<p><em>(previously: r child = ‘../../metadata_documentation/ohi_model/trend.Rmd’, eval=trend)</em></p>
 <section id="trend" class="level3">
 <h3 class="anchored" data-anchor-id="trend">Trend</h3>
 <p>Trend is the proportional change in status predicted to occur in 5 years, based on recent status data. In most cases, this is calculated by estimating the yearly change in status using a linear regression model (i.e., slope estimate) of the five most recent years of status data and multiplying this value by 5 to estimate the change five years into the future. To determine proportional change, we divide the slope estimate by the status value of the earliest year of data used in the trend calculation.</p>
@@ -281,7 +278,6 @@ G \quad =\quad \frac {x \quad +\quad \hat x_{F} }{ 2 }, (Eq. 5.3)
 <p>For all goals we included the trend estimate, even if the linear model was not statistically significant (i.e., P&lt;0.05). We chose to include these values for two key reasons: 1) we were not trying to predict the future but instead only indicate likely condition. 2) in nearly all cases we did not have sufficient data to conduct more rigorous trend analyses.</p>
 <p>In some cases, we were not able to estimate trend using status data due to data limitations. In these cases, we used alternative methods to estimate trend. Specific details about trend calculations for each goal are provided in section 5.</p>
 <p>We recognize several possible shortcomings in using past trends to estimate likely future status. We assume a simple linear trend, but this is not always the case due to a variety of variables such as altered pressures and resilience responses, nonlinear patterns in system response, stochastic environmental and biological variability, and simple bounding conditions (status cannot go below zero or above 1.0, and so the trend must level off as it approaches these values). Also, it is important to note that the same trend value could reflect many different processes. For example, declines due to unsustainable harvest of a resource can look identical to declines due to restrictions placed on resource users to allow the resource to recover. It also may be too short a time frame to determine true trends or the causes of those trends, but the intent here is more about informing the likely near-term trajectory.</p>
-<p>(r child = ‘../../metadata_documentation/ohi_model/pressure.Rmd’, eval=pressure)</p>
 </section>
 <section id="pressure" class="level3">
 <h3 class="anchored" data-anchor-id="pressure">Pressure</h3>
@@ -533,7 +529,6 @@ Table 5.1. Pressure data and categories (click to expand)
 <p>There were a number of ecological pressures not included in our assessment, including altered sediment regimes, noise and light pollution, toxic chemicals from point sources, nutrient pollution from atmospheric deposition and land-based sources other than fertilizer application to agricultural land. In all cases, global data do not exist in a format that would allow for adequate comparisons within and among countries. Future global or regional iterations of the Index could include these data as they become available.</p>
 <p>The calculation of ecological pressures is sensitive to the number of stressors within each category (but not to the number of categories). Inclusion of additional stressors within categories would require careful calibration of ranks so that the cumulative effect of a larger number of stressors does not overestimate pressure.</p>
 <p>A key assumption in our assessment of ecological pressures is that each goal has a linear and additive response to increases in intensity of the stressors. Clearly many ecosystems respond non-linearly to increased stressor intensity, exhibiting threshold responses, and there are likely nonlinear interactions among stressors. Unfortunately little is known about the nature of these types of nonlinearities and interactions so we could not include them in any meaningful way.</p>
-<p>(previously: r child = ‘../../metadata_documentation/ohi_model/resilience.Rmd’, eval=resilience)</p>
 </section>
 </section>
 <section id="resilience" class="level3">

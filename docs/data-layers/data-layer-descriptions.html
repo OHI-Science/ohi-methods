@@ -306,7 +306,6 @@ div.csl-indent {
   <li><a href="#uninhabited-regions" id="toc-uninhabited-regions" class="nav-link" data-scroll-target="#uninhabited-regions">Uninhabited regions</a></li>
   <li><a href="#weakness-of-governance" id="toc-weakness-of-governance" class="nav-link" data-scroll-target="#weakness-of-governance">Weakness of governance</a></li>
   <li><a href="#weakness-of-social-progress" id="toc-weakness-of-social-progress" class="nav-link" data-scroll-target="#weakness-of-social-progress">Weakness of social progress</a></li>
-  <li><a href="#notes-for-continuing-this-work" id="toc-notes-for-continuing-this-work" class="nav-link" data-scroll-target="#notes-for-continuing-this-work">Notes for continuing this work:</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
@@ -2010,6 +2009,7 @@ Table 7.2. Data sources used to create data layers (click to expand)
 <section id="ao_sust" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="ao_sust"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/ao_sust.csv">ao_sust</a></h4>
 <p>These data are used to estimate the sustainability of artisanal fishing practices. Artisanal and subsistence fishing scores were calculated from <a href="https://www.seaaroundus.org/">Sea Around Us</a> catch data <span class="citation" data-cites="pauly2020">(<a href="#ref-pauly2020" role="doc-biblioref">Pauly, Zeller, and Palomareas 2020</a>)</span> and the RAM Legacy Database <a href="http://ramlegacy.org/">http://ramlegacy.org/</a> <span class="citation" data-cites="ramlegacystockassessmentdatabase2024">(<a href="#ref-ramlegacystockassessmentdatabase2024" role="doc-biblioref">RAM Legacy Stock Assessment Database 2024</a>)</span>. For this layer, nearly identical methods were used as in the fisheries sub-goal calculations. Instead of producing scores for all global fish stocks, we only produced scores for catch that is denoted as artisanal and subsistence catch in the Sea Around Us catch data.</p>
+<p>We used SeaLifeBase <span class="citation" data-cites="palomares2022search">(<a href="#ref-palomares2022search" role="doc-biblioref">Palomares and Pauly 2022</a>)</span> and FishBase <span class="citation" data-cites="froese2022fishbase">(<a href="#ref-froese2022fishbase" role="doc-biblioref">Froese and Pauly 2022</a>)</span> to align taxa names across datasets.</p>
 </section>
 <section id="units-2" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="units-2">Units</h4>
@@ -2049,6 +2049,7 @@ Table 7.2. Data sources used to create data layers (click to expand)
 <p>Status of global fish stocks based on B/Bmsy values (the ratio of population biomass compared to the biomass required to deliver maximum sustainable yield). We preferentially used B/Bmsy estimates from formal stock assessments from the<br>
 RAM Legacy Database <a href="http://ramlegacy.org/">http://ramlegacy.org/</a> <span class="citation" data-cites="ramlegacystockassessmentdatabase2024">(<a href="#ref-ramlegacystockassessmentdatabase2024" role="doc-biblioref">RAM Legacy Stock Assessment Database 2024</a>)</span>. We assigned the stocks to OHI and FAO regions using Free <span class="citation" data-cites="free2017mapping">(<a href="#ref-free2017mapping" role="doc-biblioref">2017</a>)</span> spatial data describing the range of each stock. When a stock was missing the most recent years of data, carried over the most recent year after 2010 to estimate the missing years.</p>
 <p>When RAM data were unavailable, we use the data-limited catch-MSY model <span class="citation" data-cites="martell2016simple">(<a href="#ref-martell2016simple" role="doc-biblioref">Martell and Froese 2013</a>)</span> to estimate B/Bmsy values using yearly fish catch reconstruction data. For the catch-MSY model, we defined a stock as a species caught within an FAO major fishing area (www.fao.org/fishery/area/search/en). This definition of a stock eliminated all taxa not identified to species level. This approach assumes that stocks are defined by FAO region, which we know is often not true because multiple stocks of the same species can exist within an FAO region and some stocks cover multiple FAO regions. However, this assumption is necessary without range maps of stocks. The catch data were summed for each species/FAO region/year, and the catch-MSY model was applied to each stock and FAO region to estimate B/Bmsy.</p>
+<p>We used SeaLifeBase <span class="citation" data-cites="palomares2022search">(<a href="#ref-palomares2022search" role="doc-biblioref">Palomares and Pauly 2022</a>)</span> and FishBase <span class="citation" data-cites="froese2022fishbase">(<a href="#ref-froese2022fishbase" role="doc-biblioref">Froese and Pauly 2022</a>)</span> to align taxa names across datasets.</p>
 </section>
 <section id="units-5" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="units-5">Units</h4>
@@ -2390,6 +2391,7 @@ RAM Legacy Database <a href="http://ramlegacy.org/">http://ramlegacy.org/</a> <s
 <section id="np_fofm_scores" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="np_fofm_scores"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/np_fofm_scores.csv">np_fofm_scores</a></h4>
 <p>Fish oil and fish meal scores from <a href="http://www.seaaroundus.org/">Sea Around Us catch data</a> <span class="citation" data-cites="pauly2020">(<a href="#ref-pauly2020" role="doc-biblioref">Pauly, Zeller, and Palomareas 2020</a>)</span> and the RAM Legacy Database <a href="http://ramlegacy.org/">http://ramlegacy.org/</a>. For this layer, nearly identical methods were used as in the fisheries sub-goal calculations. Instead of producing scores for all global fish stocks, we only produced scores for those that contribute to fish oil and fish meal <span class="citation" data-cites="froehlich2020avoiding">(<a href="#ref-froehlich2020avoiding" role="doc-biblioref">Froehlich 2018</a>)</span>. The tonnes of harvest of these species were multiplied by 0.7 to reflect the proportion of this catch used for oil or feed.</p>
+<p>We used SeaLifeBase <span class="citation" data-cites="palomares2022search">(<a href="#ref-palomares2022search" role="doc-biblioref">Palomares and Pauly 2022</a>)</span> and FishBase <span class="citation" data-cites="froese2022fishbase">(<a href="#ref-froese2022fishbase" role="doc-biblioref">Froese and Pauly 2022</a>)</span> to align taxa names across datasets.</p>
 </section>
 <section id="units-23" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="units-23">Units</h4>
@@ -3876,16 +3878,6 @@ P_{manure}  \times PLeftPastures_{leach}
 <p>scaled 0-1</p>
 </section>
 </section>
-<section id="notes-for-continuing-this-work" class="level2">
-<h2 class="anchored" data-anchor-id="notes-for-continuing-this-work">Notes for continuing this work:</h2>
-<ul>
-<li><p>consider making this into 2 sections with the first 2 tables in the first section and the veeeeery long github user content (all layers Rmd) as the second section (it’s extremely long… like super long and could be frustrating for users).</p></li>
-<li><p>look into formatting of long tables in Quarto websites (currently annoying to scroll to the side to read the full width of the long table – see Table 7.1) – floating/hover (not anchored to the bottom) scroll bar (horizontal scroll bar)</p></li>
-<li><p>make a section of which data layers apply to which goals – like Table 7.1, maybe just edit it so Dimension (goal/subgoal) is before description?</p></li>
-<li><p>consider renaming tables (current names not awesome)</p></li>
-<li><p>try reading in the githubuser content (even though it’s super long, could be good to just see what it looks like…)</p></li>
-</ul>
-</section>
 </section>
 <section id="references" class="level1">
 
@@ -4000,6 +3992,9 @@ Free, Christopher. 2017. <span>“Mapping Fish Stock Boundaries for the Original
 <div id="ref-froehlich2020avoiding" class="csl-entry" role="listitem">
 Froehlich, Halley. 2018. <span>“Avoiding the Ecological Limits of Forage Fish for Fed Aquaculture.”</span> <em>Nature Sustainability</em> 1: 298–303. https://doi.org/<a href="https://doi-org.proxy.library.ucsb.edu:9443/10.1038/s41893-018-0077-1">https://doi-org.proxy.library.ucsb.edu:9443/10.1038/s41893-018-0077-1</a>.
 </div>
+<div id="ref-froese2022fishbase" class="csl-entry" role="listitem">
+Froese, R., and D. Pauly. 2022. <span>“<span>FishBase</span> : <span>A</span> <span>Global</span> <span>Information</span> <span>System</span> on <span>Fishes</span>.”</span> <em>Fishbase: A Global Information System on Fishes</em>. <a href="https://www.fishbase.de/home.htm">https://www.fishbase.de/home.htm</a>.
+</div>
 <div id="ref-gavrilova2019chapter" class="csl-entry" role="listitem">
 Gavrilova, O., and et al. 2019. <span>“Chapter 10: <span>Emissions</span> from Livestock and Manure Management.”</span> In <em>2019 <span>Refinement</span> to the 2006 <span>IPCC</span> <span>Guidelines</span> for <span>National</span> <span>Greenhouse</span> <span>Gas</span> <span>Inventories</span></em>. <a href="https://www.ipcc-nggip.iges.or.jp/public/2019rf/pdf/4_Volume4/19R_V4_Ch10_Livestock.pdf">https://www.ipcc-nggip.iges.or.jp/public/2019rf/pdf/4_Volume4/19R_V4_Ch10_Livestock.pdf</a>.
 </div>
@@ -4104,6 +4099,9 @@ Oostendorp, R. H., and R. B. Freeman. 2012. <span>“The Occupational Wages Arou
 </div>
 <div id="ref-pagad_2018" class="csl-entry" role="listitem">
 Pagad, Shyama, Piero Genovesi, Lucilla Carnevali, Dmitry Schigel, and Melodie A. McGeoch. 2018. <span>“Introducing the <span>Global</span> <span>Register</span> of <span>Introduced</span> and <span>Invasive</span> <span>Species</span>.”</span> <em>Sci Data</em> 5 (1): 170202. <a href="https://doi.org/10.1038/sdata.2017.202">https://doi.org/10.1038/sdata.2017.202</a>.
+</div>
+<div id="ref-palomares2022search" class="csl-entry" role="listitem">
+Palomares, M. L. D., and D. Pauly. 2022. <span>“Search <span>SeaLifeBase</span>.”</span> <a href="https://www.sealifebase.se/search.php">https://www.sealifebase.se/search.php</a>.
 </div>
 <div id="ref-pauly2020" class="csl-entry" role="listitem">
 Pauly, D, D Zeller, and M. L. D. Palomareas, eds. 2020. <span>“Sea <span>Around</span> <span>Us</span> <span>Concepts</span>, <span>Design</span> and <span>Data</span>.”</span> <a href="https://seaaroundus.org">seaaroundus.org</a>.

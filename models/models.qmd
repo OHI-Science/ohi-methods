@@ -42,7 +42,6 @@ assessmentYear <- 2024
 
 ## Regional and global Index scores
 
-( previously: r child = '../../metadata_documentation/ohi_model/index_scores.Rmd', eval=index_scores)
 
 The overall index score for each region ($I_{region}$) is calculated as a weighted average of all the scores ($G$), for each goal ($g$) such that:
 
@@ -66,7 +65,6 @@ where, $a_{i}$ is each region's ocean area, based on the EEZ area.
 
 ## Goal scores
 
-(previously r child = '../../metadata_documentation/ohi_model/goal_model.Rmd', eval=goal_model)
 
 Each goal score is the average of its current status and likely future status (Figure 5.1, see section *5: Goal models and data* for methods used to calculate status of each goal). The Index assesses the current status of each goal relative to a reference point. Likely future status is estimated using: recent trends in current status; pressures that can stress the system and threaten future delivery of benefits; and resilience to such pressures, due to governance, institutional and ecological factors.
 
@@ -106,7 +104,6 @@ The likely future status cannot exceed the maximum possible value of the status 
 
 Three dimensions are used to calculate likely future status: trends, pressure, and resilience. This section describes the calculations underlying these three dimensions.
 
-*(previously: r child = '../../metadata_documentation/ohi_model/trend.Rmd', eval=trend)*
 
 ### Trend
 
@@ -126,7 +123,6 @@ In some cases, we were not able to estimate trend using status data due to data 
 
 We recognize several possible shortcomings in using past trends to estimate likely future status. We assume a simple linear trend, but this is not always the case due to a variety of variables such as altered pressures and resilience responses, nonlinear patterns in system response, stochastic environmental and biological variability, and simple bounding conditions (status cannot go below zero or above 1.0, and so the trend must level off as it approaches these values). Also, it is important to note that the same trend value could reflect many different processes. For example, declines due to unsustainable harvest of a resource can look identical to declines due to restrictions placed on resource users to allow the resource to recover. It also may be too short a time frame to determine true trends or the causes of those trends, but the intent here is more about informing the likely near-term trajectory.
 
-(r child = '../../metadata_documentation/ohi_model/pressure.Rmd', eval=pressure)
 
 ### Pressure
 
@@ -261,7 +257,6 @@ The calculation of ecological pressures is sensitive to the number of stressors 
 
 A key assumption in our assessment of ecological pressures is that each goal has a linear and additive response to increases in intensity of the stressors. Clearly many ecosystems respond non-linearly to increased stressor intensity, exhibiting threshold responses, and there are likely nonlinear interactions among stressors. Unfortunately little is known about the nature of these types of nonlinearities and interactions so we could not include them in any meaningful way.
 
-(previously: r child = '../../metadata_documentation/ohi_model/resilience.Rmd', eval=resilience)
 
 ### Resilience
 

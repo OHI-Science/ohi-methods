@@ -178,6 +178,8 @@ small-scale fisheries sector?
 
 These data are used to estimate the sustainability of artisanal fishing practices. Artisanal and subsistence fishing scores were calculated from [Sea Around Us](https://www.seaaroundus.org/) catch data [@pauly2020] and the RAM Legacy Database [http://ramlegacy.org/](http://ramlegacy.org/) [@ramlegacystockassessmentdatabase2024]. For this layer, nearly identical methods were used as in the fisheries sub-goal calculations. Instead of producing scores for all global fish stocks, we only produced scores for catch that is denoted as artisanal and subsistence catch in the Sea Around Us catch data.
 
+We used SeaLifeBase [@palomares2022search] and FishBase [@froese2022fishbase] to align taxa names across datasets.  
+
 #### Units {-} 
  scaled 0-1
  
@@ -213,6 +215,8 @@ RAM Legacy Database [http://ramlegacy.org/](http://ramlegacy.org/) [@ramlegacyst
 
 
 When RAM data were unavailable, we use the data-limited catch-MSY model [@martell2016simple] to estimate B/Bmsy values using yearly fish catch reconstruction data. For the catch-MSY model, we defined a stock as a species caught within an FAO major fishing area (www.fao.org/fishery/area/search/en). This definition of a stock eliminated all taxa not identified to species level. This approach assumes that stocks are defined by FAO region, which we know is often not true because multiple stocks of the same species can exist within an FAO region and some stocks cover multiple FAO regions. However, this assumption is necessary without range maps of stocks. The catch data were summed for each species/FAO region/year, and the catch-MSY model was applied to each stock and FAO region to estimate B/Bmsy.
+
+We used SeaLifeBase [@palomares2022search] and FishBase [@froese2022fishbase] to align taxa names across datasets.  
 
 #### Units {-} 
  B/Bmsy
@@ -508,6 +512,8 @@ Exposure is the log transformed intensity of harvest calculated as tonnes of har
 
 Fish oil and fish meal scores from [Sea Around Us catch data](http://www.seaaroundus.org/) [@pauly2020] and the RAM Legacy Database [http://ramlegacy.org/](http://ramlegacy.org/). For this layer, nearly identical methods were used as in the fisheries sub-goal calculations. Instead of producing scores for all global fish stocks, we only produced scores for those that contribute to fish oil and fish meal [@froehlich2020avoiding]. The tonnes of harvest of these species were multiplied by 0.7 to reflect the proportion of this catch used for oil or feed. 
  
+We used SeaLifeBase [@palomares2022search] and FishBase [@froese2022fishbase] to align taxa names across datasets.   
+
 #### Units {-} 
  scaled 0-1
  
@@ -1801,18 +1807,6 @@ When used as a social pressure, 1 minus the SPI (Social Progress Index) is used.
 
 #### Units {-} 
  scaled 0-1
-
-## Notes for continuing this work:
-
--   consider making this into 2 sections with the first 2 tables in the first section and the veeeeery long github user content (all layers Rmd) as the second section (it's extremely long... like super long and could be frustrating for users).
-
--   look into formatting of long tables in Quarto websites (currently annoying to scroll to the side to read the full width of the long table -- see Table 7.1) -- floating/hover (not anchored to the bottom) scroll bar (horizontal scroll bar)
-
--   make a section of which data layers apply to which goals -- like Table 7.1, maybe just edit it so Dimension (goal/subgoal) is before description?
-
--   consider renaming tables (current names not awesome)
-
--   try reading in the githubuser content (even though it's super long, could be good to just see what it looks like...)
 
 
 # References
