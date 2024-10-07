@@ -621,19 +621,19 @@ Trend was calculated as described in section 5.3.1.
 
 *Status and trend*
 
-```{r MAR data st, results="asis", echo=FALSE, eval = FALSE}
+```{r MAR data st, results="asis", echo=FALSE}
 data_layers(goal="MAR", dimension=c("status", "trend"))
 ```
 
 *Pressure*
 
-```{r MAR data p, results="asis", echo=FALSE, eval = FALSE}
+```{r MAR data p, results="asis", echo=FALSE}
 data_layers(goal="MAR", dimension=c("pressure"))
 ```
 
 *Resilience*
 
-```{r MAR r, results="asis", echo=FALSE, eval = FALSE}
+```{r MAR r, results="asis", echo=FALSE}
 data_layers(goal="MAR", dimension=c("resilience"))
 ```
 
