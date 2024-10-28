@@ -19,8 +19,13 @@ website:
     style: "docked"
     search: true
     contents:
+      - href: https://oceanhealthindex.org
+        text: "Home"
+        icon: globe
+        external: true
+        
       - href: index.qmd
-        text: Home
+        text: Methods
         icon: house
         
       - href: OHI-theory.qmd
