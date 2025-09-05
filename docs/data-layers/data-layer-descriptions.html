@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,6 +24,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -55,10 +56,10 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6e5bad59d9c561bd033d0b48217d8615.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -67,7 +68,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -76,17 +83,44 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
-
 <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -97,13 +131,13 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../data-layers/data-layer-descriptions.html">7. Description of Data Layers</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../data-layers/data-layer-descriptions.html">7. Description of Data Layers</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -112,7 +146,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../media/OHI_Logo_Blue.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -194,7 +228,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -336,7 +370,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <section id="tables-describing-data-layers-table-7.1-and-sources-table-7.2" class="level3">
 <h3 class="anchored" data-anchor-id="tables-describing-data-layers-table-7.1-and-sources-table-7.2">Tables describing data layers (Table 7.1) and sources (Table 7.2)</h3>
@@ -355,7 +391,7 @@ Table 7.1. Data layers of 2023 global OHI assessment (click to expand)
 <div class="callout-body-container callout-body">
 <div class="cell" data-messages="false">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Layer</th>
@@ -1123,7 +1159,7 @@ Table 7.2. Data sources used to create data layers (click to expand)
 <div class="callout-body-container callout-body">
 <div class="cell" data-messages="false">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 13%">
 <col style="width: 68%">
@@ -1912,7 +1948,7 @@ Table 7.2. Data sources used to create data layers (click to expand)
 <ul>
 <li>Are there any laws, regulations, policies, plans or strategies that specifically target or address the small-scale fisheries sector?</li>
 </ul>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -1966,7 +2002,7 @@ Table 7.2. Data sources used to create data layers (click to expand)
 <ul>
 <li>Are there any laws, regulations, policies, plans or strategies that specifically target or address the small-scale fisheries sector?</li>
 </ul>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -2085,7 +2121,7 @@ RAM Legacy Database <a href="http://ramlegacy.org/">http://ramlegacy.org/</a> <s
 <p>Data is generated in ohi-global/eez/conf/functions.R.</p>
 <p>These data are called internally by ohicore functions (see: conf/config.R to see how these data are specified) to weight the data used to calculate pressure and resilience values.</p>
 <p><strong>Table 7.3. Carbon storage weights</strong></p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Habitat carbon storage</th>
@@ -2225,7 +2261,7 @@ RAM Legacy Database <a href="http://ramlegacy.org/">http://ramlegacy.org/</a> <s
 <p>Data is generated in ohi-global/eez/conf/functions.R.</p>
 <p>These data are called internally by ohicore functions (see: conf/config.R to see how these data are specified) to weight the data used to calculate pressure and resilience values.</p>
 <p><strong>Table 7.4. Coastal protection ranks</strong></p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Habitat</th>
@@ -2808,7 +2844,7 @@ RAM Legacy Database <a href="http://ramlegacy.org/">http://ramlegacy.org/</a> <s
 <p>Once the species lists were obtained, each species was assigned to a region based on native range countries from the IUCN Red List.</p>
 <p>Most of the iconic species are not region specific, and the global list is applied across all regions. However, some countries have developed national priority and flagship species lists in conjunction with WWF. These region-specific iconic species lists supplement the global list for those specific countries only. In addition, as countries and regions conduct OHI regional assessments (<a href="http://ohi-science.org/projects/">http://ohi-science.org/projects/</a>), we will use the iconic species list developed by those countries/regions to supplement our global model. For example, iconic species identified for the Baltic Health Index regional assessment have been included for all countries bordering the Baltic Sea. Additional culturally important species were added to supplement the original iconic species list <span class="citation" data-cites="garcia2023">(<a href="#ref-garcia2023" role="doc-biblioref">Reyes-García et al. 2023</a>)</span>. These culturally important species are listed as iconic at the continent level. Species are considered iconic for all regions where they are present within the continent they are listed.</p>
 <p><strong>Table 7.5. Iconic species resources</strong></p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Iconic List</th>
@@ -2933,7 +2969,7 @@ RAM Legacy Database <a href="http://ramlegacy.org/">http://ramlegacy.org/</a> <s
 <p>Wages were multiplied by GDPpcPPP for each country/year to make values comparable.</p>
 <p>We used the Occupational Wages around the World (OWW) database produced by Remco H. Oostendorp and Richard B. Freeman in 2005 (<a href="http://www.nber.org/oww/">http://www.nber.org/oww/</a>). These data were drawn from the International Labour Organization and subjected to a standardization process (for more information, see <a href="http://www.nber.org/oww/Technical%20_document_1983-2003_standardizationv3.pdf">http://www.nber.org/oww/Technical _document_1983-2003_standardizationv3.pdf</a>). The database provides several different calibrations, and we use the “x3wl calibration”, described as a “country-specific and uniform calibration with lexicographic weighting,” and recommended as being the preferred calibration in most cases. Although significant gaps exist in this database, it contains country-specific information on average wages in many industries for more than 150 countries from 1983-2003. Data represent average monthly wages of a male worker. Wage data were divided by the inflation conversion factor for 2010 so that wage data across years would be comparable (<a href="http://oregonstate.edu/cla/polisci/sahr/sahr">http://oregonstate.edu/cla/polisci/sahr/sahr</a>), and then multiplied by the purchasing power parity-adjusted per capita gdp (ppppcgdp, WorldBank). The adjusted wage data were then multiplied by 12 to get annual wages. We used the industry and occupation classifications reported in the OWW to estimate wages for marine-related sectors.</p>
 <p><strong>Table 7.6. Occupation classification for wage data sectors</strong></p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 12%">
 <col style="width: 87%">
@@ -3183,7 +3219,7 @@ RAM Legacy Database <a href="http://ramlegacy.org/">http://ramlegacy.org/</a> <s
 <p>These scores are country and species-specific, however, many country/species combinations are not assessed by Seafood Watch. Given that each mariculture record must have a corresponding sustainability score we used a series of steps to estimate sustainability scores for every country and species. If a country/species match was available we used that, otherwise, we gapfilled using the following sequence: 1. Used the global species value provided by SeaFood Watch 2. Within a country, used average of species within the same family 3. Within a UN geo-political region, used average of species within the same family 4. Global, use average of species within the same family 5. Global, use average of species within a broad taxonomic grouping (e.g., crustaceans, algae, bivalves, etc.) 6. Finally, if these scores were not available for the categories above, we used the global average of all species.</p>
 <p>Seaweed or algae species were given the global seaweed sustainability score provided by the Seafood Watch recommendations. We are aware that there is some bias associated with using scores derived as averages across countries because they were originally assigned to specific species-country pairs, nevertheless this is preferable to applying a sustainability score solely based on a subset of the species harvested.</p>
 <p><strong>Table 7.8. Mariculture sustainability criteria</strong></p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 29%">
 <col style="width: 70%">
@@ -3292,7 +3328,7 @@ RAM Legacy Database <a href="http://ramlegacy.org/">http://ramlegacy.org/</a> <s
 <p><em>Resilience</em></p>
 <p><em>Category: social</em></p>
 <p>Fisheries management was determined using governance capacity data from the <a href="https://www.minderoo.org/global-fishing-index/">Minderoo Global Fishing Index</a> <span class="citation" data-cites="travaille2022minderoo">(<a href="#ref-travaille2022minderoo" role="doc-biblioref">Travaille et al. 2022</a>)</span>. This governance capacity data characterizes the development of a country’s fisheries governance system on a continuum from zero to 12, based on each country’s assessment score and balance across the <a href="https://cdn.minderoo.org/content/uploads/2021/11/19141814/20211112-global-fishing-index-2021-conceptual-framework.pdf">Governance Conceptual Framework</a>. The assessment score rages from 0-100 and is based on a region’s performance across 6 dimensions of fisheries governance and weights each of these dimensions unequally, based on survey responses from fisheries experts:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 34%">
 <col style="width: 41%">
@@ -3385,7 +3421,7 @@ Pressure = 0.1 * \frac{S_n - min(S_n)}{max(S_n) - min(S_n)} + 0.9 * \frac{S_h - 
 <p>Excess nutrients from crops were estimated using the proportion of N that is leached, and the proportion of N that is volatilised as NH3. We define excess nitrogen, <span class="math inline">\(N_{excess}\)</span>, as the tonnes of applied nitrogen that likely runsoffs/leaches, Nleach, or volatilizes as NH3, <span class="math inline">\(N_{{vol}_{NH3}}\)</span>, which is subsequently deposited on land and water:</p>
 <p><span class="math inline">\(N_{excess} = N_{{vol}_{NH3}} + N_{leach}\)</span></p>
 <p>where,</p>
-<p><span class="math inline">\(N_{leach} = N_{applied} – N_{withdrawal} – N_{nitrification/denitrification} – N_{{vol}_{NH3}}\)</span></p>
+<p><span class="math inline">\(N_{leach} = N_{applied} – N_{withdrawal} –  N_{nitrification/denitrification} – N_{{vol}_{NH3}}\)</span></p>
 <p><span class="math inline">\(N_{withdrawal}\)</span> = estimates of withdrawal of N by plants on both crops and grazed areas at supernational scale (NUE values from <span class="citation" data-cites="bouwman2005nitrogen">A. F. Bouwman, Van Drecht, and Van der Hoek (<a href="#ref-bouwman2005nitrogen" role="doc-biblioref">2005</a>)</span>).</p>
 <p><span class="math inline">\(N_{nitrification/denitrification}\)</span> = estimate of N emissions through nitrification/denitrification processes (e.g., N20, NO, N2), with a global estimate of 10.2% used <span class="citation" data-cites="bouwman2002modeling scheer2020estimating">(<a href="#ref-bouwman2002modeling" role="doc-biblioref">A. F. Bouwman, Boumans, and Batjes 2002</a>; <a href="#ref-scheer2020estimating" role="doc-biblioref">Scheer et al. 2020</a>)</span>.</p>
 <p><span class="math inline">\(N_{{vol}_{NH3}}\)</span> = estimates of N volatilization as NH3 at supernational scale (<span class="citation" data-cites="bouwman2002estimation">A. Bouwman, Boumans, and Batjes (<a href="#ref-bouwman2002estimation" role="doc-biblioref">2002</a>)</span>, Table 5 summed grasslands, crops, wetland rice).</p>
@@ -3395,7 +3431,7 @@ Pressure = 0.1 * \frac{S_n - min(S_n)}{max(S_n) - min(S_n)} + 0.9 * \frac{S_h - 
 <p><span class="math inline">\(PN_{leach} = 1 – PN_{withdrawal} – PN_{nitrification/denitrification} – PN_{vol_{NH3}}\)</span></p>
 <p>where the values vary according to the manure pathway (Table 7.9).</p>
 <p><strong>Table 7.9. Values used to estimate proportion of N loss due to withdrawal, nitrification/denitrification, and NH3 volatilization for different manure systems</strong></p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
 <col style="width: 25%">
@@ -3432,7 +3468,7 @@ Pressure = 0.1 * \frac{S_n - min(S_n)}{max(S_n) - min(S_n)} + 0.9 * \frac{S_h - 
 </tbody>
 </table>
 <p>In some cases, prior to being spread on soils, manure is collected and stored using a variety of management systems, s. The proportion of N leaching from manure management systems, <span class="math inline">\(PMMS_{leach}\)</span>, was calculated using a modified version of GLEAM equation 4.4.4 <span class="citation" data-cites="fao2018global">(<a href="#ref-fao2018global" role="doc-biblioref">FAO 2018</a>)</span>:</p>
-<p><span class="math inline">\(PMMS_{leach} = ∑_s (MS_s × F_{leach,s} × (1 - ex_{vol}))\)</span></p>
+<p><span class="math inline">\(PMMS_{leach} = ∑_s (MS_s  × F_{leach,s}  × (1 - ex_{vol}))\)</span></p>
 <p><span class="math inline">\(MMS_{leach}\)</span> = proportion N leached for managed manure for animal system</p>
 <p><span class="math inline">\(MS_s\)</span> = Fraction of manure treated in each system, s <span class="citation" data-cites="fao2018global">(<a href="#ref-fao2018global" role="doc-biblioref">FAO 2018</a>)</span></p>
 <p><span class="math inline">\(F_{leach,s}\)</span> = Fraction N leached in each manure management system <span class="citation" data-cites="fao2018global">(<a href="#ref-fao2018global" role="doc-biblioref">FAO 2018</a>)</span></p>
@@ -3622,7 +3658,7 @@ P_{manure}  \times PLeftPastures_{leach}
 <p><strong>Table 7.10. FAO categories included in each natural product commodity</strong></p>
 <div class="cell" data-messages="false">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">commodity</th>
@@ -3893,7 +3929,7 @@ P_{manure}  \times PLeftPastures_{leach}
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-anderson2018stock" class="csl-entry" role="listitem">
 Anderson, Sean. 2018. <span>“Stock Assessment Methods for Data-Limited Fisheries: Datalimited/Datalimited.”</span> datalimited. <a href="https://github.com/datalimited/datalimited">https://github.com/datalimited/datalimited</a>.
 </div>
@@ -4278,18 +4314,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -4321,11 +4346,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -4335,8 +4397,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -4348,7 +4419,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -4392,6 +4585,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -4417,6 +4611,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -4479,13 +4699,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Learn more about the <a href="https://oceanhealthindex.org/" target="_blank">Ocean Health Index</a></div>   
+    <div class="nav-footer-left">
+<p>Learn more about the <a href="https://oceanhealthindex.org/" target="_blank">Ocean Health Index</a></p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
-    <div class="nav-footer-right">Source code available on <a href="https://github.com/OHI-Science/ohi-methods/tree/main" target="_blank"><i class="fa-brands fa-github" title="the Github octocat" aria-label="github"></i> GitHub</a></div>
+    <div class="nav-footer-right">
+<p>Source code available on <a href="https://github.com/OHI-Science/ohi-methods/tree/main" target="_blank"><i class="fa-brands fa-github" title="the Github octocat" aria-label="github"></i> GitHub</a></p>
+</div>
   </div>
 </footer>
+
 
 
 
