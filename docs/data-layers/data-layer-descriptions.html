@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -56,10 +56,10 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6e5bad59d9c561bd033d0b48217d8615.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -92,7 +92,7 @@ div.csl-indent {
 <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -131,13 +131,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../data-layers/data-layer-descriptions.html">7. Description of Data Layers</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -391,7 +391,7 @@ Table 7.1. Data layers of 2023 global OHI assessment (click to expand)
 <div class="callout-body-container callout-body">
 <div class="cell" data-messages="false">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Layer</th>
@@ -1159,7 +1159,7 @@ Table 7.2. Data sources used to create data layers (click to expand)
 <div class="callout-body-container callout-body">
 <div class="cell" data-messages="false">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <colgroup>
 <col style="width: 13%">
 <col style="width: 68%">
@@ -1948,7 +1948,7 @@ Table 7.2. Data sources used to create data layers (click to expand)
 <ul>
 <li>Are there any laws, regulations, policies, plans or strategies that specifically target or address the small-scale fisheries sector?</li>
 </ul>
-<table class="caption-top table">
+<table class="table">
 <thead>
 <tr class="header">
 <th></th>
@@ -2002,7 +2002,7 @@ Table 7.2. Data sources used to create data layers (click to expand)
 <ul>
 <li>Are there any laws, regulations, policies, plans or strategies that specifically target or address the small-scale fisheries sector?</li>
 </ul>
-<table class="caption-top table">
+<table class="table">
 <thead>
 <tr class="header">
 <th></th>
@@ -2121,7 +2121,7 @@ RAM Legacy Database <a href="http://ramlegacy.org/">http://ramlegacy.org/</a> <s
 <p>Data is generated in ohi-global/eez/conf/functions.R.</p>
 <p>These data are called internally by ohicore functions (see: conf/config.R to see how these data are specified) to weight the data used to calculate pressure and resilience values.</p>
 <p><strong>Table 7.3. Carbon storage weights</strong></p>
-<table class="caption-top table">
+<table class="table">
 <thead>
 <tr class="header">
 <th>Habitat carbon storage</th>
@@ -2261,7 +2261,7 @@ RAM Legacy Database <a href="http://ramlegacy.org/">http://ramlegacy.org/</a> <s
 <p>Data is generated in ohi-global/eez/conf/functions.R.</p>
 <p>These data are called internally by ohicore functions (see: conf/config.R to see how these data are specified) to weight the data used to calculate pressure and resilience values.</p>
 <p><strong>Table 7.4. Coastal protection ranks</strong></p>
-<table class="caption-top table">
+<table class="table">
 <thead>
 <tr class="header">
 <th>Habitat</th>
@@ -2388,7 +2388,7 @@ RAM Legacy Database <a href="http://ramlegacy.org/">http://ramlegacy.org/</a> <s
 </section>
 <section id="commercial-fishing" class="level4">
 <h4 class="anchored" data-anchor-id="commercial-fishing">Commercial fishing</h4>
-<p>Revenue data for commercial fishing were obtained from FAO’s FishStat database, which provides yearly dollar values of commercial fisheries production for marine, brackish and freshwater species starting in 1950 and updated yearly. To isolate production values attributable to marine and brackish aquaculture, data pertaining to freshwater species were omitted. This species classification process was very time consuming as each species had to be queried individually per year. There was little year-to year variation, and thus data were extracted in 5 year increments, providing data for 1997, 2002 and 2007.</p>
+<p>Revenue data for commercial fishing were obtained from FAO’s FishStat database, which provides yearly dollar values of commercial fisheries production for marine, brackish and freshwater species starting in 1950 and updated yearly. To isolate production values attributable to marine and brackish aquaculture, data pertaining to freshwater species were omitted. This species classification process was very time consuming as each species had to be queried individually per year. Code from <a href="https://github.com/SFG-UCSB/price-db-sfg">emLab</a> was incorporated and adapted to calculate ex-vessel prices for each year beyond 2019.</p>
 </section>
 <section id="mariculture" class="level4">
 <h4 class="anchored" data-anchor-id="mariculture">Mariculture</h4>
@@ -2572,9 +2572,8 @@ RAM Legacy Database <a href="http://ramlegacy.org/">http://ramlegacy.org/</a> <s
 <section id="hab_softbottom_health" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="hab_softbottom_health"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_softbottom_health.csv">hab_softbottom_health</a></h4>
 <p>See <strong><code>hab_softbottom_extent</code></strong> layer for more information.</p>
-<p>Soft bottom subtidal habitat condition was estimated using apparent fishing effort with demersal destructive gear types from Global Fishing Watch <span class="citation" data-cites="2022global">(<a href="#ref-2022global" role="doc-biblioref"><span>“Global <span>Fishing</span> <span>Watch</span> <span></span> <span>Data</span> Download Portal”</span> 2022</a>)</span>. This data includes the apparent hours of trawling and dredging on a global scale at a 0.01 degree resolution. Global Fishing Watch combines all trawling together, so we subset annual trawling raster to just reflect bottom trawling by multiplying the annual trawling rasters by the respective annual rasters for tonnes of fisheries harvest for marine species caught with the same gear types <span class="citation" data-cites="watson2019global">(<a href="#ref-watson2019global" role="doc-biblioref">Watson 2019</a>)</span>. This fisheries harvest data serves as a proxy for the proportion of bottom trawling to mid-water trawling at each location. The annual fisheries catch rasters come with a 0.5 degree resolution and were partially composed of missing values, so it was interpolated and up-sampled to 0.01 degree resolution before it was used to subset the trawling data.</p>
-<p>We spatially standardized the fishing effort by soft bottom habitat. We first summed rasters that represent several different types of soft bottom habitat, such as soft shelfs, sediment, and benthic mud. These rasters were sourced from Halpern et al. <span class="citation" data-cites="halpern2015spatial">(<a href="#ref-halpern2015spatial" role="doc-biblioref">2015</a>)</span>. We accounted for error in the soft bottom habitat labels by aggregating the cells and deriving a proportion of the soft bottom habitat over that larger area. We multiplied this soft bottom habitat raster by the fishing effort to subset it to just the demersal fishing that occurred on soft bottom habitat, while also maintaining the soft bottom habitat that is undisturbed to assign high scores to regions that are not destructive. The annual destructive fishing effort was assigned to each OHI region by spatially extracting the effort that intersected the regional EEZ polygons.</p>
-<p>Because the distribution of fishing effort density values for each region was extremely skewed, we took transformed them by taking the natural log using <span class="math inline">\(log(X+1)\)</span> and then rescaled the values by dividing by the 95th quantile of density across all years and regions. Any rescaled density value greater than 1.0 was capped at 1.0. Condition was then calculated as one minus the rescaled fishing effort density for each year and region.</p>
+<p>Soft bottom subtidal habitat condition was calculated using data from the Global Fishing Effort Model Data and Shiny App <span class="citation" data-cites="clawson_global_2025">(<a href="#ref-clawson_global_2025" role="doc-biblioref"><strong>clawson_global_2025?</strong></a>)</span>. This data spatially allocated industrial fishing effort based off multiple data sources, and we filtered for gear type “Trawl_Bottom” prior to downloading. This data includes active fishing hours recorded at the 1 degree pixel resolution.</p>
+<p>Because the distribution of fishing effort values for each region was extremely skewed, we took transformed them by taking the natural log using <span class="math inline">\(log(X+1)\)</span> of fishing hours divided by pixel area and then rescaled the values by dividing by the 99.9th quantile of density for the 2010 data. Any rescaled density value greater than 1.0 was capped at 1.0. Condition was then calculated as one minus the rescaled fishing effort density for each year and region.</p>
 </section>
 <section id="units-34" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="units-34">Units</h4>
@@ -2759,7 +2758,7 @@ RAM Legacy Database <a href="http://ramlegacy.org/">http://ramlegacy.org/</a> <s
 <section id="hab_softbottom_extent" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="hab_softbottom_extent"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_softbottom_extent.csv">hab_softbottom_extent</a></h4>
 <p>Softbottom data is one of the variables in the habitat goal and the inverse is a habitat destruction pressure.</p>
-<p>Softbottom extent data is from Halpern et al. <span class="citation" data-cites="halpern2015spatial">(<a href="#ref-halpern2015spatial" role="doc-biblioref">2015</a>)</span>, which provides 5 different spatial files that represent soft bottom habitat, such as soft sea shelfs, sediment, and benthic mud. These files’ native resolution is approximately 934 x 934 meters.</p>
+<p>Softbottom extent data is from Clawson et al. <span class="citation" data-cites="clawson_global_2025">(<a href="#ref-clawson_global_2025" role="doc-biblioref"><strong>clawson_global_2025?</strong></a>)</span> at 1 degree resolution.</p>
 </section>
 <section id="units-50" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="units-50">Units</h4>
@@ -2839,12 +2838,12 @@ RAM Legacy Database <a href="http://ramlegacy.org/">http://ramlegacy.org/</a> <s
 <h2 class="anchored" data-anchor-id="iucn-extinction-risk">IUCN extinction risk</h2>
 <section id="ico_spp_iucn_status" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="ico_spp_iucn_status"><a href="https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/ico_spp_iucn_status.csv">ico_spp_iucn_status</a></h4>
-<p>This data layer provides the risk category and the year the species was assessed from the IUCN Red List of Threatened Species (<a href="http://www.iucnredlist.org/">http://www.iucnredlist.org/</a>) <span class="citation" data-cites="iucn2024">(<a href="#ref-iucn2024" role="doc-biblioref">IUCN 2024a</a>)</span> for the iconic species in each region. Regionally specific IUCN risk category data for <em>subpopulations</em> are included where available. Trend calculations are based on the change in each species’ IUCN risk category over time, based upon past and current IUCN assessments.</p>
+<p>This data layer provides the risk category and the year the species was assessed from the IUCN Red List of Threatened Species (<a href="http://www.iucnredlist.org/">http://www.iucnredlist.org/</a>) <span class="citation" data-cites="iucn_iucn_2025">(<a href="#ref-iucn_iucn_2025" role="doc-biblioref"><strong>iucn_iucn_2025?</strong></a>)</span> for the iconic species in each region. Regionally specific IUCN risk category data for <em>subpopulations</em> are included where available. Trend calculations are based on the change in each species’ IUCN risk category over time, based upon past and current IUCN assessments.</p>
 <p>OHI defines iconic species as those relevant to local cultural identity through the species’ relationship to traditional activities such as fishing, hunting, commerce or involvement in local ethnic or religious practices; and species with locally-recognized aesthetic value (e.g., touristic attractions/common artistic subjects such as whales). Habitat forming species are excluded in this definition of iconic species. The OHI global iconic species list combines three species lists from WWF Global: global priorities, regional and local priorities, and flagship species. It also incorporates culturally important species <span class="citation" data-cites="garcia2023">(<a href="#ref-garcia2023" role="doc-biblioref">Reyes-García et al. 2023</a>)</span>. The criteria for including species on these lists are consistent with the OHI’s definition of iconic species.</p>
 <p>Once the species lists were obtained, each species was assigned to a region based on native range countries from the IUCN Red List.</p>
 <p>Most of the iconic species are not region specific, and the global list is applied across all regions. However, some countries have developed national priority and flagship species lists in conjunction with WWF. These region-specific iconic species lists supplement the global list for those specific countries only. In addition, as countries and regions conduct OHI regional assessments (<a href="http://ohi-science.org/projects/">http://ohi-science.org/projects/</a>), we will use the iconic species list developed by those countries/regions to supplement our global model. For example, iconic species identified for the Baltic Health Index regional assessment have been included for all countries bordering the Baltic Sea. Additional culturally important species were added to supplement the original iconic species list <span class="citation" data-cites="garcia2023">(<a href="#ref-garcia2023" role="doc-biblioref">Reyes-García et al. 2023</a>)</span>. These culturally important species are listed as iconic at the continent level. Species are considered iconic for all regions where they are present within the continent they are listed.</p>
 <p><strong>Table 7.5. Iconic species resources</strong></p>
-<table class="caption-top table">
+<table class="table">
 <thead>
 <tr class="header">
 <th>Iconic List</th>
@@ -2944,11 +2943,11 @@ RAM Legacy Database <a href="http://ramlegacy.org/">http://ramlegacy.org/</a> <s
 <p>Percent employment during the current status year for each sector/region is calculated as (1 - percent unemployment)*total labor force (World Bank). Jobs data for the livelihoods subgoal were adjusted by dividing by the percent employment in the corresponding year.</p>
 <section id="commercial-fishing-1" class="level4">
 <h4 class="anchored" data-anchor-id="commercial-fishing-1">Commercial fishing</h4>
-<p>Data are from the United Nations Food and Agriculture Organization (FAO) Fisheries and Aquaculture Department which provides a Global Number of Fishers dataset ( <a href="http://www.fao.org/fishery/statistics/global-fishers/en.">http://www.fao.org/fishery/statistics/global-fishers/en</a>). The data include yearly total numbers of employees in commercial fishing, subsistence fishing, and aquaculture (land- and ocean-based combined) in more than 160 countries. The dataset includes the following occupational categories: aquatic-life cultivation, inland waters fishing, marine coastal waters fishing, marine deepsea waters fishing, subsistence and unspecified. We omitted jobs with an unspecified category to avoid overestimating employment for marine fishing or aquaculture. We omitted jobs in the subsistence category since subsistence opportunities are captured by the artisanal fishing opportunity goal and in the aquatic-life cultivation category since that represents a distinct sector (see mariculture below). For commercial fishing, we eliminated inland waters fishing and summed marine coastal waters and marine deep-sea waters fishing for each country in each year. Data are reported separately for men and women, but we summed these numbers. Employment is disaggregated into full-time, parttime, occasional, and unspecified statuses. These categories are defined as full time workers having &gt; 90% of their time or livelihood from fishing/aquaculture, part time workers are between 30-90% time (or 30-90% of their livelihood) and occasional workers are &lt; 30% time. Unspecified status workers could fall anywhere from 0-100% time. Taking the midpoints of those ranges, we assume that 1 part time worker = 0.6 full time workers, 1 occasional worker = 0.15 full time workers, and 1 unspecified worker = 0.5 full time workers, which we used as a weighting scheme for determining total numbers of jobs. The dataset has significant gaps, but it provides the most comprehensive source of global data on commercial fishing and aquaculture employment.</p>
+<p>Data are from the <a href="https://data-explorer.oecd.org/vis?fs%5B0%5D=Topic%2C1%7CAgriculture%20and%20fisheries%23AGR%23%7CFisheries%20and%20aquaculture%23AGR_FSA%23&amp;pg=0&amp;fc=Topic&amp;bp=true&amp;snb=6&amp;vw=ov&amp;df%5Bds%5D=dsDisseminateFinalDMZ&amp;df%5Bid%5D=DSD_FISH_EMP%40DF_FISH_EMPL&amp;df%5Bag%5D=OECD.TAD.ARP&amp;df%5Bvs%5D=1.0&amp;dq=.A...._T._T&amp;pd=2009%2C&amp;to%5BTIME_PERIOD%5D=false&amp;ly%5Bcl%5D=TIME_PERIOD&amp;ly%5Brs%5D=REF_AREA&amp;ly%5Brw%5D=DOMAIN">OECD (Employment in fisheries, aquaculture, and processing, 2009-2021)</a> <span class="citation" data-cites="organisation_for_economic_co-operation_and_development_oecd_employment_2025">(<a href="#ref-organisation_for_economic_co-operation_and_development_oecd_employment_2025" role="doc-biblioref">Organisation for Economic Co-operation and Development (OECD) 2025</a>)</span>. The data are filtered for the number of people working in the marine and subsistence fishing sectors. The OECD data are supplemented with additional data from the table on pg. 169 of the <a href="https://openknowledge.fao.org/server/api/core/bitstreams/2be6c2fa-07b1-429d-91c5-80d3d1af46a6/content">FAO Yearbook 2021</a> <span class="citation" data-cites="food_and_agriculture_organization_of_the_united_nations_fishery_2024">(<a href="#ref-food_and_agriculture_organization_of_the_united_nations_fishery_2024" role="doc-biblioref">Food and Agriculture Organization of the United Nations 2024</a>)</span> and <a href="https://rshiny.ilo.org/dataexplorer46/?lang=en&amp;id=EAR_4MTH_SEX_ECO_CUR_NB_A">ILOSTAT</a> for “Rev 3.1.B: Fishing” <span class="citation" data-cites="international_labour_organization_employment_2025">(<a href="#ref-international_labour_organization_employment_2025" role="doc-biblioref">International Labour Organization 2025</a>)</span>.</p>
 </section>
 <section id="mariculture-1" class="level4">
 <h4 class="anchored" data-anchor-id="mariculture-1">Mariculture</h4>
-<p>We used the FAO Global Number of Fishers dataset (see commercial fishing above for full description) to estimate jobs for mariculture. For this sector, we used data in the aquatic-life cultivation category. Again, employment is disaggregated into full-time, part-time, occasional, and unspecified statuses and we implement a weighting scheme where full time = 1 job, part-time = 0.6, occasional = 0.15, and unspecified = 0.5. Aquatic-life cultivation includes marine, brackish and freshwater aquaculture. In order to estimate the proportion of total aquaculture jobs that can be attributed to marine and brackish aquaculture, we used country-specific proportions of marine and brackish aquaculture revenues (compared to total revenues) calculated from FAO aquaculture production data, assuming that numbers of jobs approximately scale with production in terms of revenue. For country-years with no data for the proportion of marine/brackish production because of gaps in the FAO production data, we used the proportion from the most recent year for which data were available. For countries without proportion estimates from any years, we used the average proportion from the country’s geographic region (e.g., Caribbean, Polynesia, Eastern Asia), with the exception of American Samoa, for which we used the proportion value from Guam.</p>
+<p>Data are from the <a href="https://data-explorer.oecd.org/vis?df%5Bds%5D=DisseminateFinalDMZ&amp;df%5Bid%5D=DSD_SOE%40DF_SOE&amp;df%5Bag%5D=OECD.ENV.EPI&amp;dq=.A....&amp;pd=1995%2C2024&amp;to%5BTIME_PERIOD%5D=false&amp;vw=tb">OECD (Employment in fisheries, aquaculture, and processing, 2009-2021)</a> <span class="citation" data-cites="organisation_for_economic_co-operation_and_development_oecd_sustainable_2025">(<a href="#ref-organisation_for_economic_co-operation_and_development_oecd_sustainable_2025" role="doc-biblioref"><strong>organisation_for_economic_co-operation_and_development_oecd_sustainable_2025?</strong></a>)</span>. The data are filtered for “People employed in aquaculture sector.” The OECD data are supplemented with additional data from the table on pg. 170 of the <a href="https://openknowledge.fao.org/server/api/core/bitstreams/2be6c2fa-07b1-429d-91c5-80d3d1af46a6/content">FAO Yearbook 2021</a> <span class="citation" data-cites="food_and_agriculture_organization_of_the_united_nations_fishery_2024">(<a href="#ref-food_and_agriculture_organization_of_the_united_nations_fishery_2024" role="doc-biblioref">Food and Agriculture Organization of the United Nations 2024</a>)</span></p>
 </section>
 <section id="marine-mammal-watching-1" class="level4">
 <h4 class="anchored" data-anchor-id="marine-mammal-watching-1">Marine mammal watching</h4>
@@ -2969,7 +2968,7 @@ RAM Legacy Database <a href="http://ramlegacy.org/">http://ramlegacy.org/</a> <s
 <p>Wages were multiplied by GDPpcPPP for each country/year to make values comparable.</p>
 <p>We used the Occupational Wages around the World (OWW) database produced by Remco H. Oostendorp and Richard B. Freeman in 2005 (<a href="http://www.nber.org/oww/">http://www.nber.org/oww/</a>). These data were drawn from the International Labour Organization and subjected to a standardization process (for more information, see <a href="http://www.nber.org/oww/Technical%20_document_1983-2003_standardizationv3.pdf">http://www.nber.org/oww/Technical _document_1983-2003_standardizationv3.pdf</a>). The database provides several different calibrations, and we use the “x3wl calibration”, described as a “country-specific and uniform calibration with lexicographic weighting,” and recommended as being the preferred calibration in most cases. Although significant gaps exist in this database, it contains country-specific information on average wages in many industries for more than 150 countries from 1983-2003. Data represent average monthly wages of a male worker. Wage data were divided by the inflation conversion factor for 2010 so that wage data across years would be comparable (<a href="http://oregonstate.edu/cla/polisci/sahr/sahr">http://oregonstate.edu/cla/polisci/sahr/sahr</a>), and then multiplied by the purchasing power parity-adjusted per capita gdp (ppppcgdp, WorldBank). The adjusted wage data were then multiplied by 12 to get annual wages. We used the industry and occupation classifications reported in the OWW to estimate wages for marine-related sectors.</p>
 <p><strong>Table 7.6. Occupation classification for wage data sectors</strong></p>
-<table class="caption-top table">
+<table class="table">
 <colgroup>
 <col style="width: 12%">
 <col style="width: 87%">
@@ -3219,7 +3218,7 @@ RAM Legacy Database <a href="http://ramlegacy.org/">http://ramlegacy.org/</a> <s
 <p>These scores are country and species-specific, however, many country/species combinations are not assessed by Seafood Watch. Given that each mariculture record must have a corresponding sustainability score we used a series of steps to estimate sustainability scores for every country and species. If a country/species match was available we used that, otherwise, we gapfilled using the following sequence: 1. Used the global species value provided by SeaFood Watch 2. Within a country, used average of species within the same family 3. Within a UN geo-political region, used average of species within the same family 4. Global, use average of species within the same family 5. Global, use average of species within a broad taxonomic grouping (e.g., crustaceans, algae, bivalves, etc.) 6. Finally, if these scores were not available for the categories above, we used the global average of all species.</p>
 <p>Seaweed or algae species were given the global seaweed sustainability score provided by the Seafood Watch recommendations. We are aware that there is some bias associated with using scores derived as averages across countries because they were originally assigned to specific species-country pairs, nevertheless this is preferable to applying a sustainability score solely based on a subset of the species harvested.</p>
 <p><strong>Table 7.8. Mariculture sustainability criteria</strong></p>
-<table class="caption-top table">
+<table class="table">
 <colgroup>
 <col style="width: 29%">
 <col style="width: 70%">
@@ -3328,7 +3327,7 @@ RAM Legacy Database <a href="http://ramlegacy.org/">http://ramlegacy.org/</a> <s
 <p><em>Resilience</em></p>
 <p><em>Category: social</em></p>
 <p>Fisheries management was determined using governance capacity data from the <a href="https://www.minderoo.org/global-fishing-index/">Minderoo Global Fishing Index</a> <span class="citation" data-cites="travaille2022minderoo">(<a href="#ref-travaille2022minderoo" role="doc-biblioref">Travaille et al. 2022</a>)</span>. This governance capacity data characterizes the development of a country’s fisheries governance system on a continuum from zero to 12, based on each country’s assessment score and balance across the <a href="https://cdn.minderoo.org/content/uploads/2021/11/19141814/20211112-global-fishing-index-2021-conceptual-framework.pdf">Governance Conceptual Framework</a>. The assessment score rages from 0-100 and is based on a region’s performance across 6 dimensions of fisheries governance and weights each of these dimensions unequally, based on survey responses from fisheries experts:</p>
-<table class="caption-top table">
+<table class="table">
 <colgroup>
 <col style="width: 34%">
 <col style="width: 41%">
@@ -3431,7 +3430,7 @@ Pressure = 0.1 * \frac{S_n - min(S_n)}{max(S_n) - min(S_n)} + 0.9 * \frac{S_h - 
 <p><span class="math inline">\(PN_{leach} = 1 – PN_{withdrawal} – PN_{nitrification/denitrification} – PN_{vol_{NH3}}\)</span></p>
 <p>where the values vary according to the manure pathway (Table 7.9).</p>
 <p><strong>Table 7.9. Values used to estimate proportion of N loss due to withdrawal, nitrification/denitrification, and NH3 volatilization for different manure systems</strong></p>
-<table class="caption-top table">
+<table class="table">
 <colgroup>
 <col style="width: 25%">
 <col style="width: 25%">
@@ -3658,7 +3657,8 @@ P_{manure}  \times PLeftPastures_{leach}
 <p><strong>Table 7.10. FAO categories included in each natural product commodity</strong></p>
 <div class="cell" data-messages="false">
 <div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<div>
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">commodity</th>
@@ -3694,6 +3694,7 @@ P_{manure}  \times PLeftPastures_{leach}
 </table>
 
 
+</div>
 </div>
 </div>
 </section>
@@ -3849,7 +3850,7 @@ P_{manure}  \times PLeftPastures_{leach}
 <p><em>Pressure</em></p>
 <p><em>Category: ecological</em></p>
 <p><em>Subcategory: fishing pressure</em></p>
-<p>This data layer describes the pressure on cetaceans and marine turtles for each country calculated using the FAO Global Capture Production Quantity dataset <span class="citation" data-cites="unitednations2024">(<a href="#ref-unitednations2024" role="doc-biblioref">United Nations 2022a</a>)</span>. We extracted all catch records from the FAO data for cetaceans or marine turtles and aggregated to create a total reported catch count for each region. The summed catch was rescaled from 0-1, using the 95th quantile across all years (including and prior to the assessment year) and regions (values &gt; 1 were capped at 1).</p>
+<p>This data layer describes the pressure on cetaceans and marine turtles for each country calculated using the FAO Global Capture Production Quantity dataset <span class="citation" data-cites="united_nations_fao_2025-1">(<a href="#ref-united_nations_fao_2025-1" role="doc-biblioref">United Nations 2025</a>)</span>. We extracted all catch records from the FAO data for cetaceans or marine turtles and aggregated to create a total reported catch count for each region. The summed catch was rescaled from 0-1, using the 95th quantile across all years (including and prior to the assessment year) and regions (values &gt; 1 were capped at 1).</p>
 </section>
 <section id="units-101" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="units-101">Units</h4>
@@ -4026,6 +4027,9 @@ FAO/IFA/IFDC. 2002. <span>“Fertilizer <span>Use</span> by <span>Crop</span>. <
 <div id="ref-sdg_14_b_1" class="csl-entry" role="listitem">
 Food and Agriculture Organization of the United Nations. 2023. <span>“Progress in the Degree of Implementation of International Instruments to Promote and Protect Small-Scale Fisheries, 2022.”</span> <a href="https://www.fao.org/sustainable-development-goals/indicators/14b1/en/">https://www.fao.org/sustainable-development-goals/indicators/14b1/en/</a>.
 </div>
+<div id="ref-food_and_agriculture_organization_of_the_united_nations_fishery_2024" class="csl-entry" role="listitem">
+———. 2024. <span>“Fishery and Aquaculture Statistics Yearbook 2021.”</span> <a href="https://doi.org/10.4060/cc9523en">https://doi.org/10.4060/cc9523en</a>.
+</div>
 <div id="ref-edffrance2011electricite" class="csl-entry" role="listitem">
 France, EDF. 2011. <span>“Électricité de <span>France</span>.”</span> <a href="https://www.edf.fr/">https://www.edf.fr/</a>.
 </div>
@@ -4067,6 +4071,9 @@ Heffer, P., A. Gruere, and T Roberts. 2017. <span>“Assessment of <span>Fertili
 </div>
 <div id="ref-homer2004development" class="csl-entry" role="listitem">
 Homer, C, C Huang, L Yang, BK Wylie, and M Coan. 2004. <span>“Development of a 2001 National Land-Cover Database for the <span>United</span> <span>States</span>.”</span> <em>Photogrammetric Engineering &amp; Remote Sensing</em> 70 (7): 829–40. <a href="http://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1629&amp;context=usgsstaffpub">http://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1629&amp;context=usgsstaffpub</a>.
+</div>
+<div id="ref-international_labour_organization_employment_2025" class="csl-entry" role="listitem">
+International Labour Organization. 2025. <span>“Employment by Sex, Age, and Economic Activity (Thousands) - Annual.”</span> <a href="https://rshiny.ilo.org/dataexplorer46/?lang=en&amp;id=EAR_4MTH_SEX_ECO_CUR_NB_A">https://rshiny.ilo.org/dataexplorer46/?lang=en&amp;id=EAR_4MTH_SEX_ECO_CUR_NB_A</a>.
 </div>
 <div id="ref-iucn2021spatial" class="csl-entry" role="listitem">
 IUCN. 2021. <span>“Spatial Data - <span>IUCN</span> <span>Red</span> <span>List</span> of <span>Threatened</span> <span>Species</span>.”</span> <em>IUCN Red List of Threatened Species</em>. <a href="https://www.iucnredlist.org/en">https://www.iucnredlist.org/en</a>.
@@ -4139,6 +4146,9 @@ O’Malley, Robert. n.d. <span>“Ocean Productivity, <span>Standard</span> <spa
 </div>
 <div id="ref-oostendorp2012occupational" class="csl-entry" role="listitem">
 Oostendorp, R. H., and R. B. Freeman. 2012. <span>“The Occupational Wages Around the World (<span>OWW</span>) Database: <span>Update</span> for 1983-2008.”</span> <a href="http://www.nber.org/oww/">http://www.nber.org/oww/</a>.
+</div>
+<div id="ref-organisation_for_economic_co-operation_and_development_oecd_employment_2025" class="csl-entry" role="listitem">
+Organisation for Economic Co-operation and Development (OECD). 2025. <span>“Employment in Fisheries, Aquaculture, and Processing.”</span> <a href="https://data-explorer.oecd.org/vis?fs[0]=Topic%2C1%7CAgriculture%20and%20fisheries%23AGR%23%7CFisheries%20and%20aquaculture%23AGR_FSA%23&amp;pg=0&amp;fc=Topic&amp;bp=true&amp;snb=6&amp;vw=ov&amp;df[ds]=dsDisseminateFinalDMZ&amp;df[id]=DSD_FISH_EMP%40DF_FISH_EMPL&amp;df[ag]=OECD.TAD.ARP&amp;df[vs]=1.0&amp;dq=.A...._T._T&amp;pd=2009%2C&amp;to[TIME_PERIOD]=false&amp;ly[cl]=TIME_PERIOD&amp;ly[rs]=REF_AREA&amp;ly[rw]=DOMAIN">https://data-explorer.oecd.org/vis?fs[0]=Topic%2C1%7CAgriculture%20and%20fisheries%23AGR%23%7CFisheries%20and%20aquaculture%23AGR_FSA%23&amp;pg=0&amp;fc=Topic&amp;bp=true&amp;snb=6&amp;vw=ov&amp;df[ds]=dsDisseminateFinalDMZ&amp;df[id]=DSD_FISH_EMP%40DF_FISH_EMPL&amp;df[ag]=OECD.TAD.ARP&amp;df[vs]=1.0&amp;dq=.A...._T._T&amp;pd=2009%2C&amp;to[TIME_PERIOD]=false&amp;ly[cl]=TIME_PERIOD&amp;ly[rs]=REF_AREA&amp;ly[rw]=DOMAIN</a>.
 </div>
 <div id="ref-pagad_2018" class="csl-entry" role="listitem">
 Pagad, Shyama, Piero Genovesi, Lucilla Carnevali, Dmitry Schigel, and Melodie A. McGeoch. 2018. <span>“Introducing the <span>Global</span> <span>Register</span> of <span>Introduced</span> and <span>Invasive</span> <span>Species</span>.”</span> <em>Sci Data</em> 5 (1): 170202. <a href="https://doi.org/10.1038/sdata.2017.202">https://doi.org/10.1038/sdata.2017.202</a>.
@@ -4230,6 +4240,9 @@ United Nations. 2021. <span>“<span>FAOSTAT</span> - <span>N</span> Excreted in
 <div id="ref-unitednations2024a" class="csl-entry" role="listitem">
 ———. 2024. <span>“<span>FAO</span> <span>Fisheries</span> &amp; <span>Aquaculture</span> - <span>Fishery</span> <span>Statistical</span> <span>Collections</span> - <span>Global</span> <span>Aquaculture</span> <span>Production</span>.”</span> <a href="https://www.fao.org/fishery/en/collection/aquaculture?lang=en">https://www.fao.org/fishery/en/collection/aquaculture?lang=en</a>.
 </div>
+<div id="ref-united_nations_fao_2025-1" class="csl-entry" role="listitem">
+———. 2025. <span>“<span>FAO</span> Fisheries &amp; Aquaculture - Fishery Statistical Collections - Global Capture Production.”</span> <a href="https://www.fao.org/fishery/en/collection/capture?lang=en">https://www.fao.org/fishery/en/collection/capture?lang=en</a>.
+</div>
 <div id="ref-unitednationsenvironmentprogramconvention2010" class="csl-entry" role="listitem">
 United Nations Environment Program. 2010. <span>“Convention on <span>Biological</span> <span>Diversity</span>, <span>Conference</span> of the <span>Parties</span> <span>Decision</span> <span>X</span>/2: <span>The</span> <span>Strategic</span> <span>Plan</span> for <span>Biodiversity</span> 2011-2020 and the <span>Aichi</span> <span>Biodiversity</span> <span>Targets</span>.”</span> Nagoya, Japan. <a href="https://www.cbd.int/decision/cop/?id=12268">https://www.cbd.int/decision/cop/?id=12268</a>.
 </div>
@@ -4314,7 +4327,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -4346,27 +4370,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -4374,7 +4378,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -4471,6 +4475,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
