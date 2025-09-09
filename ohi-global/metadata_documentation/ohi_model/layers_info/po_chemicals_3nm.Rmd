@@ -1,8 +1,0 @@
-*Pressure*
-
-*Category: ecological*
-
-*Subcategory: pollution*
-
-
-For the clean waters goal calculations, the inverse of the pressure values is used (1 minus chemical pressure).
