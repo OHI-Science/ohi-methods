@@ -6,21 +6,21 @@ callout-icon: false
 callout-appearance: minimal
 ---
 
-### Tables describing data layers (Table 7.1) and sources (Table 7.2)
-
-**Table 7.1. Data layers of 2023 global OHI assessment** A brief overview of all the data layers used to calculate the global OHI. The "Data layer" variable provides links to a full description of the data layer. The "Description" variable provides link/s to the data preparation scripts (when available). See Table 7.2 for a description of the data sources used to create these data layers.
-
 ```{r, include=FALSE}
 library(tidyverse)
 library(magrittr)
 library(kableExtra)
 
-assessmentYear <- 2024
+assessmentYear <- 2025
 
 ```
 
+### Tables describing data layers (Table 7.1) and sources (Table 7.2)
+
+**Table 7.1. Data layers of `r assessmentYear` global OHI assessment** A brief overview of all the data layers used to calculate the global OHI. The "Data layer" variable provides links to a full description of the data layer. The "Description" variable provides link/s to the data preparation scripts (when available). See Table 7.2 for a description of the data sources used to create these data layers.
+
 ::: {.callout-note collapse="true"}
-### Table 7.1. Data layers of 2023 global OHI assessment (click to expand)
+### Table 7.1. Data layers of `r assessmentYear` global OHI assessment (click to expand)
 
 ```{r DataLayer Table, echo=FALSE, warning=FALSE, error=FALSE, messages=FALSE}
 

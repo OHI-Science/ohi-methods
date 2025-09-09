@@ -28,7 +28,7 @@ options(knitr.kable.NA = '')
 # exclude when knitting
 # setwd("documents/methods")
 # assessmentYear <- 2023
-assessmentYear <- 2024
+assessmentYear <- 2025
 
 # sections to run:
 # ten_goals <- TRUE
@@ -180,9 +180,9 @@ pressure_pre <-  read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-glo
 pressure_labels <- pressure_pre %>%
   select(pressure_short=layer, category, subcategory, pressure = name)
 
-subgoal_labels <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/tables/Subgoal_Descriptions.csv")
+subgoal_labels <- read.csv("https://raw.githubusercontent.com/OHI-Science/OHI-website/main/tables/Subgoal_Descriptions.csv")
 
-goal_labels <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/tables/ten_goals.csv") %>%
+goal_labels <- read.csv("https://raw.githubusercontent.com/OHI-Science/OHI-website/main/tables/ten_goals.csv") %>%
  filter(!(tolower(Goal) %in% tolower(subgoal_labels$Goal)))
 goal_names <- subgoal_labels %>%
  mutate(Goal = paste0(Goal, ": ", Subgoal)) %>%
