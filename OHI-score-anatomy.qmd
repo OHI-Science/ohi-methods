@@ -42,8 +42,9 @@ subgoals <- read.csv("https://raw.githubusercontent.com/OHI-Science/OHI-website/
   select(Subgoal, Goal, Abbreviation, Description) %>%
   arrange(Goal)
 
-kable(subgoals) %>%
-  kableExtra::kable_styling(full_width = F)
+suppressWarnings(
+  kable(subgoals) %>%
+    kableExtra::kable_styling(full_width = FALSE))
 ```
 
 Goal (and subgoal scores) are calculated using several variables (referred to as “dimensions”, Table 2.3). Goal scores (Section 5.2) are calculated as the average of current status (Section 5) and likely future status. Likely future status (Section 5.3) is the current status modified by variables (resilience, pressures, and trend) expected to influence future status.

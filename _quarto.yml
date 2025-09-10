@@ -14,7 +14,7 @@ project:
 website:
   favicon: media/favicon-ohi-test.png
   sidebar:
-    title: "OHI Methods 2024"
+    title: "OHI Methods 2025"
     logo: media/OHI_Logo_Blue.png
     style: "docked"
     search: true
