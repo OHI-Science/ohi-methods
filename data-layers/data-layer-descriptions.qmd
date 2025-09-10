@@ -26,12 +26,12 @@ assessmentYear <- 2025
 
 options(dplyr.summarise.inform=F)
 ## Get list of layers, name, description:
-base <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_base.csv") %>%
+base <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_base.csv") %>%
   # mutate(Name = paste0("[", name, "](", "http://ohi-science.org/ohi-global/layers#", layer, ")")) %>%
   select(layer, Name = name, Description = description)
 
 ## Get dimension/targets
-target <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_targets.csv", stringsAsFactors = FALSE) %>%
+target <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/76634d93f7fbc2470a2144793d15924d55f552ff/metadata_documentation/layers_eez_targets.csv", stringsAsFactors = FALSE) %>%
   mutate(goal = ifelse(dimension %in% c("pressure", "resilience", "spatial", "weighting"), dimension, goal)) %>%
   select(layer, goal) %>%
     unique() %>%
@@ -44,7 +44,7 @@ target <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/ref
 data <- left_join(target, base, by="layer")
 
 ## Get data prep url (will be a link in description)
-url <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_dataprep.csv") %>%
+url <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_dataprep.csv") %>%
   group_by(layer) %>%
   mutate(N = 1) %>%
   mutate(method_count = cumsum(N)) %>%
@@ -61,7 +61,7 @@ data <- left_join(data, url, by="layer") %>%
   select(layer, Name, Description, Dimension)
 
 ## get references:
-refs <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_reference.csv") %>%
+refs <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_reference.csv") %>%
   select(layer, reference) %>%
   unique() %>%
   mutate(ref = paste0("@", reference)) %>%
@@ -77,7 +77,7 @@ data <- data %>%
   left_join(refs, by="layer")
 
 ### Get method updates
-updates <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_updates.csv") %>%
+updates <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_updates.csv") %>%
   select(layer, Updates=updates) %>%
   unique()
 
@@ -103,7 +103,7 @@ data |>
 ### Get datasource primary data
 
 ## get source data
-ds_source <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_data_sources.csv") %>%
+ds_source <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_data_sources.csv") %>%
   mutate(ds_reference = paste0("@", ds_reference)) %>%
   select(Reference = ds_reference, "Description" = ds_description, Years=ds_years, Resolution = ds_native_resolution, Updated = sprintf("ds_updated_%s", assessmentYear - 1))
 
@@ -176,7 +176,7 @@ small-scale fisheries sector?
 ## Artisanal fisheries sustainability 
 #### [ao_sust](https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/ao_sust.csv) {-} 
 
-These data are used to estimate the sustainability of artisanal fishing practices. Artisanal and subsistence fishing scores were calculated from [Sea Around Us](https://www.seaaroundus.org/) catch data [@pauly2020] and the [RAM Legacy Database](http://ramlegacy.org/) [@ramlegacystockassessmentdatabase2024]. For this layer, nearly identical methods were used as in the fisheries sub-goal calculations. Instead of producing scores for all global fish stocks, we only produced scores for catch that is denoted as artisanal and subsistence catch in the Sea Around Us catch data.
+These data are used to estimate the sustainability of artisanal fishing practices. Artisanal and subsistence fishing scores were calculated from [Sea Around Us](https://www.seaaroundus.org/) catch data [@pauly2020] and the RAM Legacy Database [http://ramlegacy.org/](http://ramlegacy.org/) [@ramlegacystockassessmentdatabase2024]. For this layer, nearly identical methods were used as in the fisheries sub-goal calculations. Instead of producing scores for all global fish stocks, we only produced scores for catch that is denoted as artisanal and subsistence catch in the Sea Around Us catch data.
 
 We used SeaLifeBase [@palomares2022search] and FishBase [@froese2022fishbase] to align taxa names across datasets.  
 
@@ -188,7 +188,7 @@ We used SeaLifeBase [@palomares2022search] and FishBase [@froese2022fishbase] to
 
 See Species goal for calculations.
 
-These are the status data for the species subgoal, calculated using the species model. These data describe the average condition of species within each region based on risk status from the [IUCN Red List of Threatened Species](http://www.iucnredlist.org/) [@iucn_spatial_2025; @iucn_iucn_2025] and [BirdLife International](http://datazone.birdlife.org)  [@birdlife_international_and_handbook_of_the_birds_of_the_world_birdlife_2025] data.  
+These are the status data for the species subgoal, calculated using the species model. These data describe the average condition of species within each region based on risk status from the IUCN Red List of Threatened Species ([http://www.iucnredlist.org/](http://www.iucnredlist.org/)) [@iucn2024] and BirdLife International ([http://datazone.birdlife.org](http://datazone.birdlife.org)) [@iucn_spatial_2024; @birdlifeinternationalandhandbookofthebirdsoftheworld2020] data.  
 
 We include only species from comprehensively assessed groups (groups with >90% of species assessed) to help control for sampling bias.  We found that some regions (e.g., Atlantic) had assessments for a much larger proportion of species than other regions, but this problem was less pronounced when we only included comprehensively assessed species.      
 
@@ -202,7 +202,7 @@ These data incorporate regional IUCN assessment information when possible (i.e.,
 
 See Species goal for calculations.
 
-These are the trend data for the species subgoal. These data describe changes in species condition within each region based on historical changes in risk status from IUCN Red List of Threatened Species [@iucn_spatial_2025; @iucn_iucn_2025; @birdlife_international_and_handbook_of_the_birds_of_the_world_birdlife_2025].
+These are the trend data for the species subgoal. These data describe changes in species condition within each region based on historical changes in risk status from IUCN Red List of Threatened Species [http://www.iucnredlist.org/](http://www.iucnredlist.org/) [@iucn2024; @iucn_spatial_2024; @birdlifeinternationalandhandbookofthebirdsoftheworld2020].
 
 #### Units {-} 
  trend score
@@ -211,7 +211,7 @@ These are the trend data for the species subgoal. These data describe changes in
 #### [fis_b_bmsy](https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/fis_b_bmsy.csv) {-} 
 
 Status of global fish stocks based on B/Bmsy values (the ratio of population biomass compared to the biomass required to deliver maximum sustainable yield).  We preferentially used B/Bmsy estimates from formal stock assessments from the  
-[RAM Legacy Database](http://ramlegacy.org/) [@ramlegacystockassessmentdatabase2024]. We assigned the stocks to OHI and FAO regions using Free [-@free2017mapping] spatial data describing the range of each stock. When a stock was missing the most recent years of data, carried over the most recent year after 2010 to estimate the missing years. 
+RAM Legacy Database [http://ramlegacy.org/](http://ramlegacy.org/) [@ramlegacystockassessmentdatabase2024]. We assigned the stocks to OHI and FAO regions using Free [-@free2017mapping] spatial data describing the range of each stock. When a stock was missing the most recent years of data, carried over the most recent year after 2010 to estimate the missing years. 
 
 
 When RAM data were unavailable, we use the data-limited catch-MSY model [@martell2016simple] to estimate B/Bmsy values using yearly fish catch reconstruction data. For the catch-MSY model, we defined a stock as a species caught within an FAO major fishing area (www.fao.org/fishery/area/search/en). This definition of a stock eliminated all taxa not identified to species level. This approach assumes that stocks are defined by FAO region, which we know is often not true because multiple stocks of the same species can exist within an FAO region and some stocks cover multiple FAO regions. However, this assumption is necessary without range maps of stocks. The catch data were summed for each species/FAO region/year, and the catch-MSY model was applied to each stock and FAO region to estimate B/Bmsy.
@@ -230,7 +230,7 @@ We used SeaLifeBase [@palomares2022search] and FishBase [@froese2022fishbase] to
 
 *Subcategory: goal*
 
-Contracting parties to the Convention on International Trade in Endangered Species of Wild Fauna and Flora [CITES](http://www.cites.org/eng/ disc/parties/alphabet.php) [@cites_member_2015]. The Convention is an international agreement between governments that aims to ensure that any international trade in plants and animals “does not threaten their survival.” All countries party to the Convention are given full credit for membership (territories are given the same score as their administrative countries); those countries that are not contracting parties are given no credit (score = 0).
+Contracting parties to the Convention on International Trade in Endangered Species of Wild Fauna and Flora (CITES, [http://www.cites.org/eng/ disc/parties/alphabet.php](http://www.cites.org/eng/ disc/parties/alphabet.php)) [@cites_member_2015]. The Convention is an international agreement between governments that aims to ensure that any international trade in plants and animals “does not threaten their survival.” All countries party to the Convention are given full credit for membership (territories are given the same score as their administrative countries); those countries that are not contracting parties are given no credit (score = 0).
 
 #### Units {-} 
  0 or 1
@@ -270,17 +270,17 @@ This pressure layer is calculated using modeled data for land-based organic poll
 #### Land-based organic pollution
 Data were calculated using modeled plumes of land-based pesticide pollution that provide intensity of pollution at 1km^2^ resolution (Halpern et al. 2008). 
 
-Organic pollution was estimated from [FAO data on annual country-level pesticide](http://faostat3.fao.org/faostat-gateway/go/to/browse/R/*/E) [@united_nations_fao_2016], measured in metric tons of active ingredients.  FAO  uses survey methods to measure quantities of pesticides applied to crops and seeds in the agriculture sector, including insecticides, mineral oils, herbicides, fungicides, seed treatments insecticides, seed treatments fungicides, plant growth regulators and rodenticides. Missing values were estimated by regression between fertilizer and pesticides when possible, and when not possible with agricultural GDP as a proxy.  Data were summed across all pesticide compounds and reported in metric tons. Upon inspection the data included multiple 0 values that are most likely data gaps in the time-series, so they were treated as such and replaced with NA. In addition, regions with only 1 data point and regions where the most recent data point was prior to 2005 were excluded. Uninhabited countries were assumed to have no pesticide use and thus excluded. 
+Organic pollution was estimated from FAO data on annual country-level pesticide use ([http://faostat3.fao.org/faostat-gateway/go/to/browse/R/*/E](http://faostat3.fao.org/faostat-gateway/go/to/browse/R/*/E)) [@united_nations_fao_2016], measured in metric tons of active ingredients.  FAO  uses survey methods to measure quantities of pesticides applied to crops and seeds in the agriculture sector, including insecticides, mineral oils, herbicides, fungicides, seed treatments insecticides, seed treatments fungicides, plant growth regulators and rodenticides. Missing values were estimated by regression between fertilizer and pesticides when possible, and when not possible with agricultural GDP as a proxy.  Data were summed across all pesticide compounds and reported in metric tons. Upon inspection the data included multiple 0 values that are most likely data gaps in the time-series, so they were treated as such and replaced with NA. In addition, regions with only 1 data point and regions where the most recent data point was prior to 2005 were excluded. Uninhabited countries were assumed to have no pesticide use and thus excluded. 
 
 Region-level pollution values were then dasymetrically distributed over a region’s landscape using global landcover data from 2009, derived from the MODIS satellite data at ~500m resolution. These values were then aggregated by ~140,000 global basins, and diffusive plumes were modeled from each basin’s pourpoint. The final non-zero plumes (about ~76,000) were aggregated into ~1km Mollweide (wgs84) projection rasters to produce a single plume-aggregated pollution raster. 
 
 These raw values were then ln(X+1) transformed and normalized to 0-1 by dividing by the 99.99th quantile of raster values across all years.  The zonal mean was then calculated for each region.  
 
 #### Land-based inorganic pollution
-These data are from Halpern et al. (2008, 2015), and available from [Knowledge Network for Biocomplexity (KNB)](https://knb.ecoinformatics.org/#view/doi:10.5063/F19021PC, rescaled_2013_inorganic_mol). Non-point source inorganic pollution was modeled with global 1 km^2^ impervious surface area data [http://www.ngdc.noaa.gov/dmsp/](http://www.ngdc.noaa.gov/dmsp/) under the assumption that most of this pollution comes from urban runoff. These data will not capture point-sources of pollution or nonpoint sources where paved roads do not exist (e.g., select places in developing countries). Values were aggregated to the watershed and distributed to the pour point (i.e., stream and river mouths) for the watershed with raster statistics (i.e., aggregation by watershed).
+These data are from Halpern et al. (2008, 2015), and available from Knowledge Network for Biocomplexity (KNB, [https://knb.ecoinformatics.org/#view/doi:10.5063/F19021PC, rescaled_2013_inorganic_mol](https://knb.ecoinformatics.org/#view/doi:10.5063/F19021PC, rescaled_2013_inorganic_mol)). Non-point source inorganic pollution was modeled with global 1 km^2^ impervious surface area data [http://www.ngdc.noaa.gov/dmsp/](http://www.ngdc.noaa.gov/dmsp/) under the assumption that most of this pollution comes from urban runoff. These data will not capture point-sources of pollution or nonpoint sources where paved roads do not exist (e.g., select places in developing countries). Values were aggregated to the watershed and distributed to the pour point (i.e., stream and river mouths) for the watershed with raster statistics (i.e., aggregation by watershed).
 
 #### Ocean pollution (shipping lanes, ports)
-These data are from Halpern et al. [-@halpern2015spatial], and available from the [Knowledge Network for Biocomplexity (KNB)](https://knb.ecoinformatics.org/#view/doi:10.5063/F1DR2SDD) [@rescaled_2013_one_ocean_pollution_mol]. Ocean-based pollution combines commercial shipping traffic data and port data.  
+These data are from Halpern et al. [-@halpern2015spatial], and available from the Knowledge Network for Biocomplexity (KNB, [https://knb.ecoinformatics.org/#view/doi:10.5063/F1DR2SDD](https://knb.ecoinformatics.org/#view/doi:10.5063/F1DR2SDD), rescaled_2013_one_ocean_pollution_mol). Ocean-based pollution combines commercial shipping traffic data and port data.  
 
 Shipping data was obtained from two sources:  (1) Over the past 20 years, 10-20% of the vessel fleet has voluntarily participated in collecting meteorological data for the open ocean, which includes location at the time of measurement, as part of the Volunteer Observing System (VOS). (2) In order to improve maritime safety, in 2002 the International Maritime Organization SOLAS agreement required all vessels over 300 gross tonnage (GT) and vessels carrying passengers to equip Automatic Identification System (AIS) transceivers, which use the Global Positioning System (GPS) to precisely locate vessels.  
 
@@ -445,7 +445,7 @@ and Z is the total number of sectors, $fi$ is the frequency of the ith sector (t
 ## Economic need for artisanal fishing 
 #### [ao_need](https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/ao_need.csv) {-} 
 
-These data are used to estimate the need for artisanal fishing opportunities given the purchasing power parity adjusted per capita gross domestic product (ppppcgdp) in "constant" USD [World Bank](http://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD) [@worldbank2024]. The World Bank defines gdp as the gross value of all resident producers in the economy plus product taxes and minus and subsidies not included in the value of the products. The gdp is adjusted by population size to get per capita output and by purchasing power parity (ppp) to account for the difference in exchange rates between countries. ppppcgdp data were rescaled to values between zero and one by taking the natural log of the values and dividing by the 99th quantile value across all years/regions (2005 to most recent year). 
+These data are used to estimate the need for artisanal fishing opportunities given the purchasing power parity adjusted per capita gross domestic product (ppppcgdp) in "constant" USD (World Bank, [http://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD](http://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD)) [@worldbank2024]. The World Bank defines gdp as the gross value of all resident producers in the economy plus product taxes and minus and subsidies not included in the value of the products. The gdp is adjusted by population size to get per capita output and by purchasing power parity (ppp) to account for the difference in exchange rates between countries.  ppppcgdp data were rescaled to values between zero and one by taking the natural log of the values and dividing by the 99th quantile value across all years/regions (2005 to most recent year). 
 
 When a region is missing some years of data, a within region linear model is used to estimate the missing values.
 
@@ -455,16 +455,16 @@ This is actually a measure of prosperity, but it is converted to need in the art
  scaled 0-1
  
 ## Economic status scores 
-#### [eco_status](https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/eco_status.csv) 
+#### [eco_status](https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/eco_status.csv) {-
 
-This layer provides calculated status values for the economies subgoal. Economies is calculated using revenue data from marine sectors. 
+This layer provides calculated status values for the economies subgoal.  Economies is calculated using revenue data from marine sectors. 
 
 Note: These data are no longer supported.  Consequently, this layer was last updated in 2013, and this goal will no longer be updated with these data.
 
 Economies status is  calculated as:
 (cur_base_value / ref_base_value) / (cur_adj_value / ref_adj_value)
 
-Where, cur_base_value is the most recent revenue values for each sector/region, and ref_base_value is the earliest year of revenue data for each sector/region.  These values are adjusted by dividing by the GDP of corresponding region/year to control for larger economic trends. National GDP data were obtained from the [World Bank](http://data.worldbank.org/indicator/ NY.GDP.MKTP.CD).  For the three EEZs that fall within the China region (China, Macau, and Hong Kong), we combined the values using a population-weighted average.
+Where, cur_base_value is the most recent revenue values for each sector/region, and ref_base_value is the earliest year of revenue data for each sector/region.  These values are adjusted by dividing by the GDP of corresponding region/year to control for larger economic trends. National GDP data were obtained from the World Bank ([http://data.worldbank.org/indicator/ NY.GDP.MKTP.CD](http://data.worldbank.org/indicator/ NY.GDP.MKTP.CD)).  For the three EEZs that fall within the China region (China, Macau, and Hong Kong), we combined the values using a population-weighted average.
 
 This layer includes yearly data for revenue in commercial fishing, aquarium trade fishing, mariculture, marine mammal watching, marine renewable energy, and, tourism. The data sources and methods for each sector are described below.
 
@@ -481,7 +481,7 @@ Data on revenues from marine aquaculture were derived from FAO’s FishStat data
 IFAW provides country-level data on total expenditures (including direct and indirect) attributable to the whale watching industry [@oconnor2009whale]. Here, total expenditures are used as a close proxy for total revenue. We used total expenditure data (direct and indirect expenditures) to avoid using a literature derived multiplier effect. When IFAW reported “minimal” revenue from whale watching, we converted this description to a 0 for lack of additional information. For countries with both marine and freshwater cetacean viewing, we adjusted by the proportion of marine revenue as described for the jobs dataset.
 
 #### Marine renewable energy
-The United Nations Energy Statistics Database provides production data, in kilowatt-hours (KWh), for tidal and wave electricity. However, only two countries, France and Canada, have high enough levels of production to be reported in this data source. For Canada, production data were replaced with production data (Gross Megawatt hours per year from 1995-2010) provided directly from the Annapolis tidal power plant because the plant provided a longer time series (Ruth Thorbourne, personal communication, Aug 9, 2011). To convert production data into revenue, production values were multiplied by average yearly prices of electricity per KWh specific to Canada and France, provided by the [US Energy Information Administration](http://www.eia.gov/emeu/international/elecprii.html) (updated June 2010) after conversion to 2010 USD. Some of the production data could not be used because there were no available electricity price data to convert production into revenue, truncating our time series.
+The United Nations Energy Statistics Database provides production data, in kilowatt-hours (KWh), for tidal and wave electricity. However, only two countries, France and Canada, have high enough levels of production to be reported in this data source. For Canada, production data were replaced with production data (Gross Megawatt hours per year from 1995-2010) provided directly from the Annapolis tidal power plant because the plant provided a longer time series (Ruth Thorbourne, personal communication, Aug 9, 2011). To convert production data into revenue, production values were multiplied by average yearly prices of electricity per KWh specific to Canada and France, provided by the US Energy Information Administration ([http://www.eia.gov/emeu/international/elecprii.html](http://www.eia.gov/emeu/international/elecprii.html); updated June 2010) after conversion to 2010 USD. Some of the production data could not be used because there were no available electricity price data to convert production into revenue, truncating our time series.
 
 #### Tourism 
 WTTC reports dollar values of visitor exports (spending by foreign visitors) and domestic travel and tourism spending; combining these two data sets creates a proxy for total travel and tourism revenues. WTTC was chosen as the source for tourism revenue data because of the near-complete country coverage, the yearly time series component starting in 1988 and updated yearly, and the inclusion of both foreign and domestic expenditures. This dataset lumps inland and coastal/marine revenues, and so was adjusted by the percent of a country’s population within a 25 mile inland coastal zone. We included no projected data. We used total contribution to GDP data (rather than direct contribution to GDP) to avoid the use of literature derived multiplier effects.
@@ -489,7 +489,7 @@ WTTC reports dollar values of visitor exports (spending by foreign visitors) and
 #### Units {-} 
  status 0-100
  
-## Economic trend scores 
+ ## Economic trend scores 
 #### [eco_trend](https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/eco_trend.csv) {-} 
 
 This layer provides calculated trend values for the economies subgoal.  Economies is calculated using revenue data from marine sectors. 
@@ -510,7 +510,7 @@ Exposure is the log transformed intensity of harvest calculated as tonnes of har
 ## Fish oil and fish meal score 
 #### [np_fofm_scores](https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/np_fofm_scores.csv) {-} 
 
-Fish oil and fish meal scores from [Sea Around Us catch data](http://www.seaaroundus.org/) [@pauly2020] and the [RAM Legacy Database](http://ramlegacy.org/). For this layer, nearly identical methods were used as in the fisheries sub-goal calculations. Instead of producing scores for all global fish stocks, we only produced scores for those that contribute to fish oil and fish meal [@froehlich2020avoiding]. The tonnes of harvest of these species were multiplied by 0.7 to reflect the proportion of this catch used for oil or feed. 
+Fish oil and fish meal scores from [Sea Around Us catch data](http://www.seaaroundus.org/) [@pauly2020] and the RAM Legacy Database [http://ramlegacy.org/](http://ramlegacy.org/). For this layer, nearly identical methods were used as in the fisheries sub-goal calculations. Instead of producing scores for all global fish stocks, we only produced scores for those that contribute to fish oil and fish meal [@froehlich2020avoiding]. The tonnes of harvest of these species were multiplied by 0.7 to reflect the proportion of this catch used for oil or feed. 
  
 We used SeaLifeBase [@palomares2022search] and FishBase [@froese2022fishbase] to align taxa names across datasets.   
 
@@ -565,19 +565,28 @@ Seaweed or algae species were given the global seaweed escapes score provided by
 
 *Category: social*
 
-The World Economic Forum's [Global Competitiveness Index (GCI)](http://gcr.weforum.org) provides a country level assessment of competitiveness in achieving sustained economic prosperity (@schwab2017global). The GCI is a weighted index based on 12 pillars of economic competitiveness: institutions, infrastructure, macroeconomic environment, health and primary education, higher education and training, goods market efficiency, labor market efficiency, financial market development, technological readiness, market size, business sophistication, and innovation. The GCI can in theory span from 1 to 7, based on this range, we rescaled the scores to range between 0 and 1.  Uninhabited OHI regions are given an NA score.
+The World Economic Forum's Global Competitiveness Index (GCI) provides a country level assessment of competitiveness in achieving sustained economic prosperity (@schwab2017global, [http://gcr.weforum.org](http://gcr.weforum.org)). The GCI is a weighted index based on 12 pillars of economic competitiveness: institutions, infrastructure, macroeconomic environment, health and primary education, higher education and training, goods market efficiency, labor market efficiency, financial market development, technological readiness, market size, business sophistication, and innovation. The GCI can in theory span from 1 to 7, based on this range, we rescaled the scores to range between 0 and 1.  Uninhabited OHI regions are given an NA score.
  
 #### Units {-} 
  scaled 0-1
+ 
+## Habitat condition of beaches 
+#### [hab_beaches_health](https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_beaches_health.csv) {-} 
+
+Sandy beach condition was determined from the scientific report, The State of the World's Beaches [@luijendijk_et_al_state_2018]. This report calculated the global rate of erosion on sandy beaches via remote sensing derived shoreline change data. The data indicated a rate of erosion of exceeding 0.5 m/yr on roughly 24% of the world's sandy beaches. To calculate condition, this erosional rate was applied to 24% of the total area of each beach extent (in km2) for the total number of years from the inital calculation (from 2018-2025). We await future evaluations to increase the specificity, variability, and accuracy of this model. The condition value was then rescaled from 01.
+  
+#### Units {-} 
+ proportion
  
 ## Habitat condition of coral 
 #### [hab_coral_health](https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_coral_health.csv) {-} 
 
 
-Coral condition was calculated using current condition data divided by reference condition.  We used condition data from percent live coral cover from 12,634 surveys from 1975-2006 [@bruno_regional_2016; @schutte2010regional]. When multiple data points were available for the same site and year, we averaged these data, and also averaged the site data to calculate a per country per year average. However, data were missing for several countries and some countries did not have data for the reference or current year time periods or had only 1-2 surveys. Because coral cover can be highly temporally and spatially dynamic, having only a few surveys that may have been motivated by different reasons (i.e., documenting a pristine or an impacted habitat) can bias results. To calculate condition we used fitted values from a linear trend of all data per country, which was more robust to data poor situations and allowed us to take advantage of periods of intense sampling that did not always include both current and reference years. Then, we created a fitted linear model of all these data points from 1975-2010, provided that 2 or more points are in 1980-1995 and 2 or more points are in 2000-2010. We defined the ‘current’ condition (health) as the mean of the predicted values for 2008-2010, and the reference condition as the mean of the predicted values for 1985-1987. Where country data were not available, we used an average from adjacent EEZs weighted by habitat area, or a georegional average weighted by habitat area, based on countries within the same ocean basin (Figure 7.1).
+Coral condition was determined from global reef coverage data from the Global Coral Reef Monitoring Network's 2020 Report [@global_coral_reef_monitoring_network_status_2020]. The global status of reefs was calculated for each of the GCRMN's study regions: the Red Sea & Gulf of Aden Region, the ROPME Sea Area Region, the Western Indian Ocean Region, the South Asia Region, the East Asian Seas Region, the Australia Region, the Pacific Region, the Eastern Tropical Pacific Region, the Brazil Region, and the Caribbean Region. Status was determined from both in-situ sampling and remote sensing for live coral cover and algal cover. The overall percent decrease or increase in live coral cover from the 1980's to 2020 was used in our calculations.
 
-**Figure 7.1. Georegions to gapfill coral reef data**
-  ![](../media/CoralEcoregions.png)
+The percent change in live coral cover was applied to reef extent data calculated in the hab_coral_extent layer. The GCRMN regions were intersected with EEZ boundaries for each country. The respective percent change was applied to each extent (in km2), and subtracted from the total area. All scores were then rescaled for a condition score from 0-1.
+
+If condition data needed to be gapfilled, it was done via average regional score, or by those with similar environmental conditions in the same region if great variation occurred. 
   
 #### Units {-} 
  proportion
@@ -629,7 +638,7 @@ Sea-ice condition was calculated using sea-ice concentrations from the USA Natio
 
 See **`hab_softbottom_extent`** layer for more information.
 
-Soft bottom subtidal habitat condition was calculated using data from the [Global Fishing Effort Model Data and Shiny App](https://zenodo.org/records/15758813) [@clawson_global_2025]. This data spatially allocated industrial fishing effort based off multiple data sources, and we filtered for gear type "Trawl_Bottom" prior to downloading. This data includes active fishing hours recorded at the 1 degree pixel resolution. 
+Soft bottom subtidal habitat condition was calculated using data from the Global Fishing Effort Model Data and Shiny App [@clawson_global_2025]. This data spatially allocated industrial fishing effort based off multiple data sources, and we filtered for gear type "Trawl_Bottom" prior to downloading. This data includes active fishing hours recorded at the 1 degree pixel resolution. 
 
 Because the distribution of fishing effort values for each region was extremely skewed, we took transformed them by taking the natural log using $log(X+1)$ of fishing hours divided by pixel area and then rescaled the values by dividing by the 99.9th quantile of density for the 2010 data. Any rescaled density value greater than 1.0 was capped at 1.0. Condition was then calculated as one minus the rescaled fishing effort density for each year and region. 
  
@@ -641,6 +650,14 @@ Because the distribution of fishing effort values for each region was extremely 
 
 Tidal flat condition was defined as the current cover divided by reference cover. For current cover we use the average of the 2010 and 2013 extent. The reference cover is the average cover of 1989 and 1992. 
 
+#### Units {-} 
+ proportion
+ 
+## Habitat condition trend of beaches 
+#### [hab_beaches_health](https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_beaches_trend.csv) {-} 
+
+Sandy beach condition trend was determined from beach extent loss over time from the 2024 Global Coastline Dataset [@zhang_et_al_gcl_fcs30_2024]. The data encompasses a ten year range (2010-2020), and change from year to year was calculated to find annual rate of sandy beach loss. This rate of loss was applied to overall extent, and scaled from 0-1 to create our beach habitat trend.
+  
 #### Units {-} 
  proportion
  
@@ -703,12 +720,27 @@ Trend in soft bottom subtidal condition was estimated using a linear regression 
 #### Units {-} 
  trend
  
+## Habitat extent of beaches 
+#### [hab_beaches_extent](https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_beaches_extent.csv) {-} 
+
+Global sandy beach extent was determined from the 2024 Global Coastline Dataset [@zhang_et_al_gcl_fcs30_2024], which contained the area of global coastlines in 4 distinct categories: artifical, biogenic, sandy, muddy, rocky, and estuarine. As some of these beach types were either very broad or already encompasses in other habitat layers, we elected to only include sandy coastline in this analysis. The data encompasses a ten year range (2010-2020) of surveys and remote sensing data. The area polygons were intersected with EEZ boundaries, and the total area (in km2) was calculated for each country.
+  
+#### Units {-} 
+ km2
+ 
 ## Habitat extent of coral 
 #### [hab_coral_extent](https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/hab_coral_extent.csv) {-} 
 
 Coral data are used to calculate coastal protection goal, habitat subgoal, and exposure variable of the natural products goal.
 
-Coral extent area (km^2^) are derived from the dataset [Global Distribution of Coral Reefs](https://data.unep-wcmc.org/datasets/1) [@unep-wcmc2018global].
+Coral extent area (km^2^) are derived from the 2025 release of the 'Allen Coral Atlas' reef extent layer[@allen_coral_atlas_allen_2025]. This layer was developed from a machine learning model that utilizes remote sensing data, as well as data from benthic and geomorphic surveys, specifically designed to include deeper reef structures, steep reef slope area, and reef tracts in turbid water that can be difficult to survey. Further information on sampling and labeling methodology can be found [here](https://allencoralatlas.org/methods/#reefextent).
+
+Area cells were intersected with the EEZ boundaries, to determine total reef extent by country. Countries for which no extent data was available were gapfilled with previous year's methodology, were coral condition was calculated using current condition data divided by reference condition.  
+
+This process used condition data from percent live coral cover from 12,634 surveys from 1975-2006 [@bruno_regional_2016; @schutte2010regional]. When multiple data points were available for the same site and year, we averaged these data, and also averaged the site data to calculate a per country per year average. However, data were missing for several countries and some countries did not have data for the reference or current year time periods or had only 1-2 surveys. Because coral cover can be highly temporally and spatially dynamic, having only a few surveys that may have been motivated by different reasons (i.e., documenting a pristine or an impacted habitat) can bias results. To calculate condition we used fitted values from a linear trend of all data per country, which was more robust to data poor situations and allowed us to take advantage of periods of intense sampling that did not always include both current and reference years. Then, we created a fitted linear model of all these data points from 1975-2010, provided that 2 or more points are in 1980-1995 and 2 or more points are in 2000-2010. We defined the ‘current’ condition (health) as the mean of the predicted values for 2008-2010, and the reference condition as the mean of the predicted values for 1985-1987. Where country data were not available, we used an average from adjacent EEZs weighted by habitat area, or a georegional average weighted by habitat area, based on countries within the same ocean basin (Figure 7.1).
+
+**Figure 7.1. Georegions to gapfill coral reef data**
+  ![](../media/CoralEcoregions.png)
 
 #### Units {-} 
  km2
@@ -779,7 +811,7 @@ Sea-ice extent area (km^2^) was calculated using sea-ice concentrations from the
 
 Softbottom data is one of the variables in the habitat goal and the inverse is a habitat destruction pressure.
 
-Softbottom extent data is from [@clawson_global_2025] at 1 degree resolution.
+Softbottom extent data is from Clawson et al. [-@clawson_global_2025] at 1 degree resolution.
 
 #### Units {-} 
  km2
@@ -1218,7 +1250,7 @@ Escape of secondary species | Movement of live animals resulting in introduction
 
 *Subcategory: pollution*
 
-Marine plastic pollution is modeled using data on the global distribution of floating marine plastics at 0.2 degree resolution [@eriksen2014plastic]. Specifically, weight of floating plastics (g/km^2^) across four different size classes were aggregated to represent total weight of plastic debris per km^2^. These data were log transformed and rescaled from 0 to 1 using the 99.99th quantile as the reference point.
+Marine plastic pollution is modeled using data on the global distribution of microplastics from the NOAA's National Center for Environmental Informations' Marine Microplastics dataset [@ncei_ncei_2025]. This aggregated global dataset on microplastics in marine settings contains point observations from in-situ samples with microplastics concentration for several sampling strategies sorted into these sample categories: ocean surface, ocean subsurface, nurdle patrol, ocean sediment, and beaches. Observations were sorted by type, and intersected with EEZ boundaries to determine observations for each country. Total concentrations for each category were calculated, averaged, and rescaled from 0-1. These proportions were then averaged to create microplastic pressure scores for each country.
 
 #### Units {-} 
  scaled 0-1
@@ -1232,7 +1264,7 @@ Marine plastic pollution is modeled using data on the global distribution of flo
 
 See Species goal for calculations.
 
-This value reflects the average condition of species (based on risk status from the IUCN Red List of Threatened Species, [http://www.iucnredlist.org/](http://www.iucnredlist.org/)) [@iucn_iucn_2025] located within 3 nm offshore of each region based on species range maps from IUCN (shapefiles, used preferentially) [@iucn_spatial_2025; @birdlife_international_and_handbook_of_the_birds_of_the_world_birdlife_2025] and Aquamaps ([http://www.aquamaps.org/](http://www.aquamaps.org/), half degree resolution rasters).
+This value reflects the average condition of species (based on risk status from the IUCN Red List of Threatened Species, [http://www.iucnredlist.org/](http://www.iucnredlist.org/)) [@iucn2024] located within 3 nm offshore of each region based on species range maps from IUCN (shapefiles, used preferentially) [@iucn_spatial_2022; @birdlifeinternationalandhandbookofthebirdsoftheworld2020] and Aquamaps ([http://www.aquamaps.org/](http://www.aquamaps.org/), half degree resolution rasters).
 
 #### Units {-} 
  scaled 0-1
@@ -1246,7 +1278,7 @@ This value reflects the average condition of species (based on risk status from 
 
 See Species goal for calculations.
 
-This value reflects the average condition of species (based on risk status from the IUCN Red List of Threatened Species, [http://www.iucnredlist.org/](http://www.iucnredlist.org/)) [@iucn_iucn_2025] located within the eez of each region based on species range maps from IUCN (shapefiles, used preferentially) [@iucn_spatial_2025; @birdlife_international_and_handbook_of_the_birds_of_the_world_birdlife_2025] and Aquamaps ([http://www.aquamaps.org/](http://www.aquamaps.org/), half degree resolution rasters).
+This value reflects the average condition of species (based on risk status from the IUCN Red List of Threatened Species, [http://www.iucnredlist.org/](http://www.iucnredlist.org/)) [@iucn2024] located within the eez of each region based on species range maps from IUCN (shapefiles, used preferentially) [@iucn_spatial_2024; @birdlifeinternationalandhandbookofthebirdsoftheworld2020] and Aquamaps ([http://www.aquamaps.org/](http://www.aquamaps.org/), half degree resolution rasters).
  
 #### Units {-} 
  scaled 0-1
