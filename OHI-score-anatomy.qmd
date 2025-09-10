@@ -38,7 +38,7 @@ kable(goals) %>%
 
 ```{r subgoals, echo=FALSE}
 
-subgoals <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/tables/Subgoal_Descriptions.csv") %>%
+subgoals <- read.csv("https://raw.githubusercontent.com/OHI-Science/OHI-website/refs/heads/main/tables/Subgoal_Descriptions.csv") %>%
   select(Subgoal, Goal, Abbreviation, Description) %>%
   arrange(Goal)
 

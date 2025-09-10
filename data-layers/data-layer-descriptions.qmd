@@ -26,12 +26,12 @@ assessmentYear <- 2025
 
 options(dplyr.summarise.inform=F)
 ## Get list of layers, name, description:
-base <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_base.csv") %>%
+base <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_base.csv") %>%
   # mutate(Name = paste0("[", name, "](", "http://ohi-science.org/ohi-global/layers#", layer, ")")) %>%
   select(layer, Name = name, Description = description)
 
 ## Get dimension/targets
-target <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/76634d93f7fbc2470a2144793d15924d55f552ff/metadata_documentation/layers_eez_targets.csv", stringsAsFactors = FALSE) %>%
+target <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_targets.csv", stringsAsFactors = FALSE) %>%
   mutate(goal = ifelse(dimension %in% c("pressure", "resilience", "spatial", "weighting"), dimension, goal)) %>%
   select(layer, goal) %>%
     unique() %>%
@@ -44,7 +44,7 @@ target <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/766
 data <- left_join(target, base, by="layer")
 
 ## Get data prep url (will be a link in description)
-url <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_dataprep.csv") %>%
+url <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_dataprep.csv") %>%
   group_by(layer) %>%
   mutate(N = 1) %>%
   mutate(method_count = cumsum(N)) %>%
@@ -61,7 +61,7 @@ data <- left_join(data, url, by="layer") %>%
   select(layer, Name, Description, Dimension)
 
 ## get references:
-refs <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_reference.csv") %>%
+refs <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_reference.csv") %>%
   select(layer, reference) %>%
   unique() %>%
   mutate(ref = paste0("@", reference)) %>%
@@ -77,7 +77,7 @@ data <- data %>%
   left_join(refs, by="layer")
 
 ### Get method updates
-updates <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_updates.csv") %>%
+updates <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_updates.csv") %>%
   select(layer, Updates=updates) %>%
   unique()
 
@@ -103,7 +103,7 @@ data |>
 ### Get datasource primary data
 
 ## get source data
-ds_source <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_data_sources.csv") %>%
+ds_source <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_data_sources.csv") %>%
   mutate(ds_reference = paste0("@", ds_reference)) %>%
   select(Reference = ds_reference, "Description" = ds_description, Years=ds_years, Resolution = ds_native_resolution, Updated = sprintf("ds_updated_%s", assessmentYear - 1))
 
@@ -188,7 +188,7 @@ We used SeaLifeBase [@palomares2022search] and FishBase [@froese2022fishbase] to
 
 See Species goal for calculations.
 
-These are the status data for the species subgoal, calculated using the species model. These data describe the average condition of species within each region based on risk status from the IUCN Red List of Threatened Species ([http://www.iucnredlist.org/](http://www.iucnredlist.org/)) [@iucn2024] and BirdLife International ([http://datazone.birdlife.org](http://datazone.birdlife.org)) [@iucn_spatial_2024; @birdlifeinternationalandhandbookofthebirdsoftheworld2020] data.  
+These are the status data for the species subgoal, calculated using the species model. These data describe the average condition of species within each region based on risk status from the IUCN Red List of Threatened Species ([http://www.iucnredlist.org/](http://www.iucnredlist.org/)) [@iucn_iucn_2025] and BirdLife International ([http://datazone.birdlife.org](http://datazone.birdlife.org)) [@iucn_spatial_2025; @birdlife_international_and_handbook_of_the_birds_of_the_world_birdlife_2025] data.  
 
 We include only species from comprehensively assessed groups (groups with >90% of species assessed) to help control for sampling bias.  We found that some regions (e.g., Atlantic) had assessments for a much larger proportion of species than other regions, but this problem was less pronounced when we only included comprehensively assessed species.      
 
@@ -202,7 +202,7 @@ These data incorporate regional IUCN assessment information when possible (i.e.,
 
 See Species goal for calculations.
 
-These are the trend data for the species subgoal. These data describe changes in species condition within each region based on historical changes in risk status from IUCN Red List of Threatened Species [http://www.iucnredlist.org/](http://www.iucnredlist.org/) [@iucn2024; @iucn_spatial_2024; @birdlifeinternationalandhandbookofthebirdsoftheworld2020].
+These are the trend data for the species subgoal. These data describe changes in species condition within each region based on historical changes in risk status from IUCN Red List of Threatened Species [http://www.iucnredlist.org/](http://www.iucnredlist.org/) [@iucn_iucn_2025; @iucn_spatial_2025; @birdlife_international_and_handbook_of_the_birds_of_the_world_birdlife_2025].
 
 #### Units {-} 
  trend score
@@ -629,7 +629,7 @@ Sea-ice condition was calculated using sea-ice concentrations from the USA Natio
 
 See **`hab_softbottom_extent`** layer for more information.
 
-Soft bottom subtidal habitat condition was calculated using data from the Global Fishing Effort Model Data and Shiny App [@clawson_global_2025]. This data spatially allocated industrial fishing effort based off multiple data sources, and we filtered for gear type "Trawl_Bottom" prior to downloading. This data includes active fishing hours recorded at the 1 degree pixel resolution. 
+Soft bottom subtidal habitat condition was calculated using data from the [Global Fishing Effort Model Data and Shiny App](https://zenodo.org/records/15758813) [@clawson_global_2025]. This data spatially allocated industrial fishing effort based off multiple data sources, and we filtered for gear type "Trawl_Bottom" prior to downloading. This data includes active fishing hours recorded at the 1 degree pixel resolution. 
 
 Because the distribution of fishing effort values for each region was extremely skewed, we took transformed them by taking the natural log using $log(X+1)$ of fishing hours divided by pixel area and then rescaled the values by dividing by the 99.9th quantile of density for the 2010 data. Any rescaled density value greater than 1.0 was capped at 1.0. Condition was then calculated as one minus the rescaled fishing effort density for each year and region. 
  
@@ -779,7 +779,7 @@ Sea-ice extent area (km^2^) was calculated using sea-ice concentrations from the
 
 Softbottom data is one of the variables in the habitat goal and the inverse is a habitat destruction pressure.
 
-Softbottom extent data is from Clawson et al. [-@clawson_global_2025] at 1 degree resolution.
+Softbottom extent data is from [@clawson_global_2025] at 1 degree resolution.
 
 #### Units {-} 
  km2
@@ -1232,7 +1232,7 @@ Marine plastic pollution is modeled using data on the global distribution of flo
 
 See Species goal for calculations.
 
-This value reflects the average condition of species (based on risk status from the IUCN Red List of Threatened Species, [http://www.iucnredlist.org/](http://www.iucnredlist.org/)) [@iucn2024] located within 3 nm offshore of each region based on species range maps from IUCN (shapefiles, used preferentially) [@iucn_spatial_2022; @birdlifeinternationalandhandbookofthebirdsoftheworld2020] and Aquamaps ([http://www.aquamaps.org/](http://www.aquamaps.org/), half degree resolution rasters).
+This value reflects the average condition of species (based on risk status from the IUCN Red List of Threatened Species, [http://www.iucnredlist.org/](http://www.iucnredlist.org/)) [@iucn_iucn_2025] located within 3 nm offshore of each region based on species range maps from IUCN (shapefiles, used preferentially) [@iucn_spatial_2025; @birdlife_international_and_handbook_of_the_birds_of_the_world_birdlife_2025] and Aquamaps ([http://www.aquamaps.org/](http://www.aquamaps.org/), half degree resolution rasters).
 
 #### Units {-} 
  scaled 0-1
@@ -1246,7 +1246,7 @@ This value reflects the average condition of species (based on risk status from 
 
 See Species goal for calculations.
 
-This value reflects the average condition of species (based on risk status from the IUCN Red List of Threatened Species, [http://www.iucnredlist.org/](http://www.iucnredlist.org/)) [@iucn2024] located within the eez of each region based on species range maps from IUCN (shapefiles, used preferentially) [@iucn_spatial_2024; @birdlifeinternationalandhandbookofthebirdsoftheworld2020] and Aquamaps ([http://www.aquamaps.org/](http://www.aquamaps.org/), half degree resolution rasters).
+This value reflects the average condition of species (based on risk status from the IUCN Red List of Threatened Species, [http://www.iucnredlist.org/](http://www.iucnredlist.org/)) [@iucn_iucn_2025] located within the eez of each region based on species range maps from IUCN (shapefiles, used preferentially) [@iucn_spatial_2025; @birdlife_international_and_handbook_of_the_birds_of_the_world_birdlife_2025] and Aquamaps ([http://www.aquamaps.org/](http://www.aquamaps.org/), half degree resolution rasters).
  
 #### Units {-} 
  scaled 0-1
