@@ -22,7 +22,7 @@ library(pander)
 library(tidyr)
 library(ggplot2)
 
-goals <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/metadata_documentation/ohi_model/tables/ten_goals.csv") %>%
+goals <- read.csv("https://raw.githubusercontent.com/OHI-Science/OHI-website/refs/heads/main/tables/ten_goals.csv") %>%
   select(Goal, Abbreviation, Description) %>%
   arrange(Goal)
 
