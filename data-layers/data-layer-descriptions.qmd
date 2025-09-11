@@ -501,14 +501,6 @@ Note: These data are no longer supported.  Consequently, this layer was last upd
 #### Units {-} 
  trend -1 to 1
  
-## Exposure of ornamental fishing to coral and rocky reef habitats 
-#### [np_exposure_orn](https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/np_exposure_orn.csv) {-} 
-
-Exposure is the log transformed intensity of harvest calculated as tonnes of harvest per km^2^ of coral and rocky reef of ornamental fishing, relative to the global maximum. We log transformed the harvest intensity scores because the distribution of values was highly skewed; because we do not know the true threshold of sustainable harvest, nearly all values would be considered highly sustainable without the log transformation. To estimate rocky reef extent area (km^2^) we used data from Halpern et al. [-@halpern2008global], which assumes rocky reef habitat exists in all cells within 1 km of shore. Coral extent area (km^2^) are from @unep-wcmc2018global.
-
-#### Units {-} 
- scaled 0-1
- 
 ## Fish oil and fish meal score 
 #### [np_fofm_scores](https://github.com/OHI-Science/ohi-global/tree/draft/eez/layers/np_fofm_scores.csv) {-} 
 

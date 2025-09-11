@@ -40,7 +40,7 @@ assessmentYear <- 2025
 ### Get datasource primary data
 
 ## get source data
-ds_source <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_data_sources.csv") %>%
+ds_source <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_data_sources.csv") %>%
   mutate(ds_reference = paste0("@", ds_reference)) %>%
   select(Reference = ds_reference, "Description" = ds_description, Years=ds_years, Resolution = ds_native_resolution, Updated = sprintf("ds_updated_%s", assessmentYear - 1))
 
