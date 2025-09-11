@@ -19,8 +19,8 @@ library(kableExtra)
 ## data and functions used to list data layers in each goal
 
 # data with information
-layers <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_base.csv")
-targets <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/76634d93f7fbc2470a2144793d15924d55f552ff/metadata_documentation/layers_eez_targets.csv")
+layers <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_base.csv")
+targets <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_targets.csv")
 layers_web <- "http://ohi-science.org/ohi-global/layers.html"
 
 # function
