@@ -4,6 +4,8 @@ bibliography: ../references.bib
 toc: true
 callout-icon: false
 callout-appearance: minimal
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r, include=FALSE}
@@ -26,12 +28,12 @@ assessmentYear <- 2025
 
 options(dplyr.summarise.inform=F)
 ## Get list of layers, name, description:
-base <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_base.csv") %>%
+base <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_base.csv") %>%
   # mutate(Name = paste0("[", name, "](", "http://ohi-science.org/ohi-global/layers#", layer, ")")) %>%
   select(layer, Name = name, Description = description)
 
 ## Get dimension/targets
-target <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/76634d93f7fbc2470a2144793d15924d55f552ff/metadata_documentation/layers_eez_targets.csv", stringsAsFactors = FALSE) %>%
+target <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_targets.csv", stringsAsFactors = FALSE) %>%
   mutate(goal = ifelse(dimension %in% c("pressure", "resilience", "spatial", "weighting"), dimension, goal)) %>%
   select(layer, goal) %>%
     unique() %>%
@@ -44,7 +46,7 @@ target <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/766
 data <- left_join(target, base, by="layer")
 
 ## Get data prep url (will be a link in description)
-url <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_dataprep.csv") %>%
+url <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_dataprep.csv") %>%
   group_by(layer) %>%
   mutate(N = 1) %>%
   mutate(method_count = cumsum(N)) %>%
@@ -61,7 +63,7 @@ data <- left_join(data, url, by="layer") %>%
   select(layer, Name, Description, Dimension)
 
 ## get references:
-refs <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_reference.csv") %>%
+refs <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_reference.csv") %>%
   select(layer, reference) %>%
   unique() %>%
   mutate(ref = paste0("@", reference)) %>%
@@ -77,7 +79,7 @@ data <- data %>%
   left_join(refs, by="layer")
 
 ### Get method updates
-updates <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_updates.csv") %>%
+updates <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_updates.csv") %>%
   select(layer, Updates=updates) %>%
   unique()
 
@@ -103,7 +105,7 @@ data |>
 ### Get datasource primary data
 
 ## get source data
-ds_source <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_data_sources.csv") %>%
+ds_source <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/refs/heads/draft/metadata_documentation/layers_eez_data_sources.csv") %>%
   mutate(ds_reference = paste0("@", ds_reference)) %>%
   select(Reference = ds_reference, "Description" = ds_description, Years=ds_years, Resolution = ds_native_resolution, Updated = sprintf("ds_updated_%s", assessmentYear - 1))
 
@@ -230,7 +232,7 @@ We used SeaLifeBase [@palomares2022search] and FishBase [@froese2022fishbase] to
 
 *Subcategory: goal*
 
-Contracting parties to the Convention on International Trade in Endangered Species of Wild Fauna and Flora (CITES, [http://www.cites.org/eng/ disc/parties/alphabet.php](http://www.cites.org/eng/ disc/parties/alphabet.php)) [@cites_member_2015]. The Convention is an international agreement between governments that aims to ensure that any international trade in plants and animals “does not threaten their survival.” All countries party to the Convention are given full credit for membership (territories are given the same score as their administrative countries); those countries that are not contracting parties are given no credit (score = 0).
+Contracting parties to the [Convention on International Trade in Endangered Species of Wild Fauna and Flora (CITES)](http://www.cites.org/eng/ disc/parties/alphabet.php) [@cites_member_2015]. The Convention is an international agreement between governments that aims to ensure that any international trade in plants and animals “does not threaten their survival.” All countries party to the Convention are given full credit for membership (territories are given the same score as their administrative countries); those countries that are not contracting parties are given no credit (score = 0).
 
 #### Units {-} 
  0 or 1

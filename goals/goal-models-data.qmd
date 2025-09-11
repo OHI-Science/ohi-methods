@@ -687,7 +687,7 @@ Gaps were filled in the adjustment datasets (national GDP and national employmen
 
 ### Economies (subgoal of livelihoods and economies)
 
-Due to discontinued and static source datasets, we have not updated the status of this subgoal since 2013 (changes across scenario years after 2013 are due to changes in pressures/resilience) [@unitednations2013faob].
+After remaining static since 2013 (changes across scenario years after 2013 are due to changes in pressures/resilience) [@unitednations2013faob], the economies subgoal was initially overhauled in 2025, with room for improvement during subsequent assessments.
 
 This subgoal measures the revenue produced from marine-related industries.
 
@@ -734,7 +734,7 @@ data_layers(goal="ECO", dimension=c("resilience"))
 
 ### Livelihoods (subgoal of livelihoods and economies)
 
-Due to discontinued and non-updated source datasets, we have not updated the status of this subgoal since 2013 (changes across scenario years after 2013 are due to changes in pressures/resilience).
+The livelihoods subgoal was also static since 2013, but initially overahuled in 2025. As with the economies subgoal, there is room for improvement in future assessments.
 
 This subgoal measures the jobs produced from marine-related industries. Livelihoods includes two equally important sub-components, the number of jobs, which is a proxy for livelihood quantity, and the per capita average annual wages, which is a proxy for job quality.
 
@@ -754,7 +754,7 @@ Because there is no absolute global reference point for jobs (i.e., a target num
 
 Absolute values for $j$ and $w$ in the current and reference period (jobs) or region (wages) were lumped across all sectors before calculating relative values (even though the current and reference years will not be exactly the same for all sectors), allowing a decrease in one sector to be balanced by an increase in another sector. As such, we do not track the status of individual sectors and instead always focus on the status of all sectors together. For wages, we use the most current data available for each country and each sector, but only use data from 1990 on, assuming that wages are relatively slow to change over time (apart from inflation adjustments, which we control for by using real dollars) and thus can be compared across sectors and countries without controlling for year.
 
-Wages data were divided by the inflation conversion factor so that wage data across years would be comparable in 2010 US dollars (inflation conversion factors were downloaded from http://oregonstate.edu/cla/polisci/sahr/sahr). These data were also multiplied by the purchasing power parity-adjusted per capita GDP <https://data.worldbank.org/indicator/NY.GDP.PCAP.CD>. To account for broader economic forces that may affect jobs independent of changes in ocean health (e.g., a global recession), we adjusted jobs data by dividing by percent employment for the corresponding year: (1 – percent unemployment) \* total labor force [@worldbank2014labor; @worldbank2014unemployment]. For example, if unemployment increased from the reference to the current period, we would expect the number of marine-related jobs to decrease by a comparable proportion, without causing a lower score for the goal. Therefore, the objective of the goal is actually no loss of jobs and jobs must keep pace with growth in employment rates or sustain losses no greater than national increases in unemployment rates. The current and reference years used for unemployment data were based on the average current year and average reference year across the sector data sources used for number of jobs.
+Wages data were divided by the inflation conversion factor so that wage data across years would be comparable in 2010 US dollars (inflation conversion factors were downloaded from http://oregonstate.edu/cla/polisci/sahr/sahr). These data were also multiplied by the purchasing power parity-adjusted per capita GDP from the [World Bank](https://data.worldbank.org/indicator/NY.GDP.PCAP.CD). To account for broader economic forces that may affect jobs independent of changes in ocean health (e.g., a global recession), we adjusted jobs data by dividing by percent employment for the corresponding year: (1 – percent unemployment) \* total labor force [@worldbank2014labor; @worldbank2014unemployment]. For example, if unemployment increased from the reference to the current period, we would expect the number of marine-related jobs to decrease by a comparable proportion, without causing a lower score for the goal. Therefore, the objective of the goal is actually no loss of jobs and jobs must keep pace with growth in employment rates or sustain losses no greater than national increases in unemployment rates. The current and reference years used for unemployment data were based on the average current year and average reference year across the sector data sources used for number of jobs.
 
 #### Trend
 
