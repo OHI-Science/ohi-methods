@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Theory of OHI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./media/favicon-ohi-test.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./OHI-theory.html">1. Theory of OHI</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./media/OHI_Logo_Blue.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">OHI Methods 2025</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://oceanhealthindex.org" class="sidebar-item-text sidebar-link"><i class="bi bi-globe" role="img">
+</i> 
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><i class="bi bi-house" role="img">
+</i> 
+ <span class="menu-text">Methods</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./OHI-theory.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">1. Theory of OHI</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./OHI-score-anatomy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Brief Anatomy of OHI Scores</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-inclusion-gaps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Data Inclusion &amp; Gaps</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./regions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Regions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./models/models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Models</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./goals/goal-models-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. Goal Models and Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-layers/data-layer-descriptions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7. Description of Data Layers</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.bib" class="sidebar-item-text sidebar-link"><i class="bi bi-book" role="img">
+</i> 
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#a-comprehensive-framework-to-assess-ocean-health" id="toc-a-comprehensive-framework-to-assess-ocean-health" class="nav-link active" data-scroll-target="#a-comprehensive-framework-to-assess-ocean-health">A comprehensive framework to assess ocean health</a></li>
+  <li><a href="#the-role-of-humans" id="toc-the-role-of-humans" class="nav-link" data-scroll-target="#the-role-of-humans">The role of humans</a></li>
+  <li><a href="#yearly-assessments" id="toc-yearly-assessments" class="nav-link" data-scroll-target="#yearly-assessments">Yearly assessments</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Theory of OHI</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-figure quarto-figure-right">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-right">
+<figure class="figure">
+<p><a href="https://www.pexels.com/photo/body-of-water-during-dawn-37403/"><img src="media/ocean_sunset_island.jpg" class="img-fluid quarto-figure quarto-figure-right figure-img" alt="Credit: Body of Water during Dawn, Pixabay"></a></p>
+</figure>
+</div>
+<figcaption>Credit: Body of Water during Dawn, Pixabay</figcaption>
+</figure>
+</div>
+<section id="a-comprehensive-framework-to-assess-ocean-health" class="level2">
+<h2 class="anchored" data-anchor-id="a-comprehensive-framework-to-assess-ocean-health">A comprehensive framework to assess ocean health</h2>
+<p>The Ocean Health Index assesses ocean health which we define as how well we are sustainably managing the resources that we want and need from the ocean (e.g., tourism and recreation, food provisioning).</p>
+<p>The OHI combines many indicators into a comprehensive framework describing ocean health. This is in contrast to focusing on individual indicators, such as phosphate levels, sedimentation, biodiversity, etc. Individual indicators are important, but they provide limited information when it comes to evaluating how well an overall ecosystem is functioning. They also fail to directly assess what we actually care about in most cases, and consequently, focusing on them can hinder communication. For example, most people do not directly care about nutrient pollution, however, we do care about its effects on the ocean’s ability to provide recreation and food.</p>
+<p>Without an overall framework to evaluate indicators, certain indicators may be overemphasized relative to their true importance due to researcher bias (most researchers believe their area of study is the most important), trends in research (what is currently considered a hot topic and is funded), and availability of data (e.g., some data is easier to collect). A model that combines multiple indicators will inevitably have flaws, but at least we know which variables are included and how they are weighted.</p>
+</section>
+<section id="the-role-of-humans" class="level2">
+<h2 class="anchored" data-anchor-id="the-role-of-humans">The role of humans</h2>
+<p>One of the primary contributions of the OHI is that it recognizes people are an important part of the marine system. Both conservation and extractive use of ocean resources are valued, and consequently, scores are highest when we maximize the benefits we receive while maintaining sustainability so we can continue to receive benefits now and into the future. One temptation of indicator development is to focus only on the pressures that humans apply to systems. This makes sense because we want to be sure we are adequately protecting resources. However, eliminating all pressures on the ocean would require eliminating all contact between humans and the ocean. Beyond being unrealistic, this is undesirable because we would stop receiving all the benefits that we rely on from the ocean. The OHI is unique because it tracks both the pressures we put on oceans as well as the benefits we receive.</p>
+</section>
+<section id="yearly-assessments" class="level2">
+<h2 class="anchored" data-anchor-id="yearly-assessments">Yearly assessments</h2>
+<p>The global Ocean Health Index has been assessed every year since 2012. The primary goal of each yearly assessment is to calculate a new year of scores using the most recent data. Often, in addition to incorporating an additional year of data, we make improvements to models or decide to use different data sources. To ensure that scores for all years are comparable, we recalculate scores for previous scenario years for each assessment using new methods and data sources. For the current assessment, for example, in addition to calculating the current year’s scores, we recalculate scores for every year since 2012. Consequently, comparisons among years should always be performed using data from the same assessment year so trends in scores reflect changes to ocean health rather than changes to methods.</p>
+<p>Not all data layers are reported through the most current assessment year, and consequently, the OHI scores are calculated using the most recent year of available data. Details on which years are used for each data layer are provided in Table 7.2.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Table 7.2. Data sources used to create data layers (click to expand)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-messages="false">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 69%">
+<col style="width: 4%">
+<col style="width: 8%">
+<col style="width: 3%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Reference</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Years</th>
+<th style="text-align: left;">Resolution</th>
+<th style="text-align: left;">Updated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="allen_coral_atlas_allen_2025">Atlas (<a href="#ref-allen_coral_atlas_allen_2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Allen Coral Atlas’ global coral habitat map for reef extent (2025 release)</td>
+<td style="text-align: left;">2010-2025</td>
+<td style="text-align: left;">1m</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="anderson2018stock">Anderson (<a href="#ref-anderson2018stock" role="doc-biblioref">2018</a>)</span></td>
+<td style="text-align: left;">R code to conduct data-limited stocks assessments</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="aviso2024">AVISO (<a href="#ref-aviso2024" role="doc-biblioref">2024</a>)</span></td>
+<td style="text-align: left;">Net change in sea level during the time series</td>
+<td style="text-align: left;">1993-2022</td>
+<td style="text-align: left;">0.25 deg</td>
+<td style="text-align: left;">y</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="behrenfeld1997photosynthetic">Behrenfeld and Falkowski (<a href="#ref-behrenfeld1997photosynthetic" role="doc-biblioref">1997</a>)</span></td>
+<td style="text-align: left;">Methods: Net Primary Productivity</td>
+<td style="text-align: left;">2003-2017</td>
+<td style="text-align: left;">0.83 x 0.83 deg</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="birdlife_international_and_handbook_of_the_birds_of_the_world_birdlife_2025">BirdLife International and Handbook of the Birds of the World (<a href="#ref-birdlife_international_and_handbook_of_the_birds_of_the_world_birdlife_2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Status and distribution of marine bird species</td>
+<td style="text-align: left;">2024</td>
+<td style="text-align: left;">Global</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="mcowen2017">Mcowen et al. (<a href="#ref-mcowen2017" role="doc-biblioref">2017</a>)</span></td>
+<td style="text-align: left;">Global salt marsh extent and condition</td>
+<td style="text-align: left;">1973-2015</td>
+<td style="text-align: left;">Global</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="campbell2022">Campbell et al. (<a href="#ref-campbell2022" role="doc-biblioref">2022</a>)</span></td>
+<td style="text-align: left;">Global salt marsh trend</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Global</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="bruno_regional_2016">Bruno and Selig (<a href="#ref-bruno_regional_2016" role="doc-biblioref">2007</a>)</span></td>
+<td style="text-align: left;">Global coral condition</td>
+<td style="text-align: left;">2002,1980-2009,2006</td>
+<td style="text-align: left;">0.5 km; 1 km; Sites (points)</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="bunting2022global">Bunting et al. (<a href="#ref-bunting2022global" role="doc-biblioref">2022</a>)</span></td>
+<td style="text-align: left;">Global mangrove habitat extent based on satellite imagery — used to calculate mangrove extent and trend</td>
+<td style="text-align: left;">1996-2020</td>
+<td style="text-align: left;">Polygons rasterized to 1km</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="burke2011reefs">Burke et al. (<a href="#ref-burke2011reefs" role="doc-biblioref">2011</a>)</span></td>
+<td style="text-align: left;">Presence of artisanal blast and poison (cyanide) fishing practices</td>
+<td style="text-align: left;">2009</td>
+<td style="text-align: left;">10 km</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="burke2011reefs">Burke et al. (<a href="#ref-burke2011reefs" role="doc-biblioref">2011</a>)</span></td>
+<td style="text-align: left;">Global coral condition and trend</td>
+<td style="text-align: left;">2002,1980-2009,2006</td>
+<td style="text-align: left;">0.5 km; 1 km; Sites (points)</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="digirolamo2022">DiGirolamo et al. (<a href="#ref-digirolamo2022" role="doc-biblioref">2022</a>)</span></td>
+<td style="text-align: left;">Sea ice extent, condition and trend; edge and shoreline metrics</td>
+<td style="text-align: left;">1979-2023</td>
+<td style="text-align: left;">25 km</td>
+<td style="text-align: left;">y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="centerforinternationalearthscienceinformationnetworkciesin2000gridded">Center for International Earth Science Information Network (CIESIN) et al. (<a href="#ref-centerforinternationalearthscienceinformationnetworkciesin2000gridded" role="doc-biblioref">2000</a>)</span></td>
+<td style="text-align: left;">Raster data of human population</td>
+<td style="text-align: left;">2000-2020</td>
+<td style="text-align: left;">30 arcsec</td>
+<td style="text-align: left;">y, improved</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="cites_member_2015">CITES (<a href="#ref-cites_member_2015" role="doc-biblioref">2015</a>)</span></td>
+<td style="text-align: left;">Countries that signed the Convention on International Trade in Endangered Species of Wild Fauna and Flora (CITES)</td>
+<td style="text-align: left;">2017</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="claus2012marine">Claus et al. (<a href="#ref-claus2012marine" role="doc-biblioref">2012</a>)</span></td>
+<td style="text-align: left;">Land and ocean areas for OHI land and eez regions</td>
+<td style="text-align: left;">2013</td>
+<td style="text-align: left;">1 km</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="clawson_global_2025">Clawson, Blanchard, and Novaglio (<a href="#ref-clawson_global_2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">modeled global fishing effort (bottom trawling)</td>
+<td style="text-align: left;">2010-2017</td>
+<td style="text-align: left;">1 deg</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="convention_on_biological_diversity_3rd_2005">Secretariat of the Convention on Biological Diversity (<a href="#ref-convention_on_biological_diversity_3rd_2005" role="doc-biblioref">2005</a>)</span></td>
+<td style="text-align: left;">Convention on Biological Diversity: Data from Third National Report for regulation of alien species, habitat, mariculture, tourism, and water to preserve biodiversity</td>
+<td style="text-align: left;">2005</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="edffrance2011electricite">France (<a href="#ref-edffrance2011electricite" role="doc-biblioref">2011</a>)</span></td>
+<td style="text-align: left;">La Rance (France) and Annapolis (Canada) tidal plants employment data</td>
+<td style="text-align: left;">2003-2010</td>
+<td style="text-align: left;">Points (sites)</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="eriksen2014plastic">Eriksen et al. (<a href="#ref-eriksen2014plastic" role="doc-biblioref">2014</a>)</span></td>
+<td style="text-align: left;">Plastic trash pollution in ocean</td>
+<td style="text-align: left;">2014</td>
+<td style="text-align: left;">0.2 deg</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="esri_2010">Esri (<a href="#ref-esri_2010" role="doc-biblioref">2010</a>)</span></td>
+<td style="text-align: left;">Land and ocean areas for OHI land and eez regions</td>
+<td style="text-align: left;">2013</td>
+<td style="text-align: left;">1 km</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="free2017mapping">Free (<a href="#ref-free2017mapping" role="doc-biblioref">2017</a>)</span></td>
+<td style="text-align: left;">Maps of fish stock boundaries for the original RAM Myers stock-recruit database</td>
+<td style="text-align: left;">2017</td>
+<td style="text-align: left;">Stock</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="gentry2019exploring">Gentry et al. (<a href="#ref-gentry2019exploring" role="doc-biblioref">2019</a>)</span></td>
+<td style="text-align: left;">Aquaculture potential for finfish and bivalves.</td>
+<td style="text-align: left;">2017</td>
+<td style="text-align: left;">0.0083 deg</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="global_coral_reef_monitoring_network_status_2020">Network (<a href="#ref-global_coral_reef_monitoring_network_status_2020" role="doc-biblioref">2020</a>)</span></td>
+<td style="text-align: left;">A report on the change in coral and algal cover from 1980 through 2020 in GCRMN regions</td>
+<td style="text-align: left;">1980-2020</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="halpern2008global">Halpern et al. (<a href="#ref-halpern2008global" role="doc-biblioref">2008</a>)</span></td>
+<td style="text-align: left;">Modeled pollution from urban runoff from impervious surfaces</td>
+<td style="text-align: left;">2000</td>
+<td style="text-align: left;">1 km</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="halpern2008global">Halpern et al. (<a href="#ref-halpern2008global" role="doc-biblioref">2008</a>)</span></td>
+<td style="text-align: left;">Modeled pollution from pesticides</td>
+<td style="text-align: left;">1990-2013</td>
+<td style="text-align: left;">1 km (FAO data is National)</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="halpern2008global">Halpern et al. (<a href="#ref-halpern2008global" role="doc-biblioref">2008</a>)</span></td>
+<td style="text-align: left;">Modeled pollution from shipping and ports</td>
+<td style="text-align: left;">2003/2011</td>
+<td style="text-align: left;">1 km</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="halpern2008global">Halpern et al. (<a href="#ref-halpern2008global" role="doc-biblioref">2008</a>)</span></td>
+<td style="text-align: left;">Modeled N input from fertilizer use as a proxy for nutrient pollution</td>
+<td style="text-align: left;">1990-2013</td>
+<td style="text-align: left;">1 km (FAO data is National)</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="halpern2008global">Halpern et al. (<a href="#ref-halpern2008global" role="doc-biblioref">2008</a>)</span></td>
+<td style="text-align: left;">Global rocky reef habitat extent</td>
+<td style="text-align: left;">2005</td>
+<td style="text-align: left;">2 arcmin; Points</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="halpern2015spatial">Halpern, Frazier, et al. (<a href="#ref-halpern2015spatial" role="doc-biblioref">2015</a>)</span></td>
+<td style="text-align: left;">Global soft-bottom subtidal habitat extent</td>
+<td style="text-align: left;">2001-2005</td>
+<td style="text-align: left;">0.5 deg</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="halpern2012index">Halpern et al. (<a href="#ref-halpern2012index" role="doc-biblioref">2012</a>)</span></td>
+<td style="text-align: left;">WWF Priority and Flagship Species Lists</td>
+<td style="text-align: left;">2011</td>
+<td style="text-align: left;">Global; National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="halpern2012index">Halpern et al. (<a href="#ref-halpern2012index" role="doc-biblioref">2012</a>)</span></td>
+<td style="text-align: left;">Land and ocean areas for OHI land and eez regions</td>
+<td style="text-align: left;">2013</td>
+<td style="text-align: left;">1 km</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="halpern2015patterns">Halpern, Longo, et al. (<a href="#ref-halpern2015patterns" role="doc-biblioref">2015</a>)</span></td>
+<td style="text-align: left;">Land and ocean areas for OHI land and eez regions</td>
+<td style="text-align: left;">2013</td>
+<td style="text-align: left;">1 km</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="halpern2015spatial">Halpern, Frazier, et al. (<a href="#ref-halpern2015spatial" role="doc-biblioref">2015</a>)</span></td>
+<td style="text-align: left;">Modeled pollution from shipping and ports</td>
+<td style="text-align: left;">2003/2011</td>
+<td style="text-align: left;">1 km</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="bunting2022global">Bunting et al. (<a href="#ref-bunting2022global" role="doc-biblioref">2022</a>)</span></td>
+<td style="text-align: left;">Global mangrove habitat extent and trend, from remote sensing and assessments</td>
+<td style="text-align: left;">1996-2016</td>
+<td style="text-align: left;">Polygons rasterized to 1km</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="homer2004development">Homer et al. (<a href="#ref-homer2004development" role="doc-biblioref">2004</a>)</span></td>
+<td style="text-align: left;">Modeled pollution from urban runoff from impervious surfaces</td>
+<td style="text-align: left;">2000</td>
+<td style="text-align: left;">1 km</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="international_labour_organization_average_2025">International Labour Organization (<a href="#ref-international_labour_organization_average_2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Average monthly earnings of employees by sex and economic activity</td>
+<td style="text-align: left;">2009-2023</td>
+<td style="text-align: left;">annual</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="iucn_iucn_2025">IUCN (<a href="#ref-iucn_iucn_2025" role="doc-biblioref">2025b</a>)</span></td>
+<td style="text-align: left;">IUCN Red List of threatened species by category; sub-population status for iconic species</td>
+<td style="text-align: left;">1965-2024</td>
+<td style="text-align: left;">Global</td>
+<td style="text-align: left;">y</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="iucn_spatial_2025">IUCN (<a href="#ref-iucn_spatial_2025" role="doc-biblioref">2025a</a>)</span></td>
+<td style="text-align: left;">IUCN spatial distribution</td>
+<td style="text-align: left;">2024</td>
+<td style="text-align: left;">Polygons rasterized to 0.5 deg</td>
+<td style="text-align: left;">y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="jambeck2015plastic">Jambeck et al. (<a href="#ref-jambeck2015plastic" role="doc-biblioref">2015</a>)</span></td>
+<td style="text-align: left;">Trends in mismanaged plastic waste for 2010 and projected for 2025 as a proxy for trash trends</td>
+<td style="text-align: left;">2010-2025 (projected)</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="jarihovila2013">Jari Hovila (<a href="#ref-jarihovila2013" role="doc-biblioref">2013</a>)</span></td>
+<td style="text-align: left;">Anomalies in intensity of ultraviolet (UV) radiation</td>
+<td style="text-align: left;">2005-2024</td>
+<td style="text-align: left;">1 deg</td>
+<td style="text-align: left;">y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="kaufmann2010worldwide">Kaufmann, Kraay, and Mastruzzi (<a href="#ref-kaufmann2010worldwide" role="doc-biblioref">2010</a>)</span></td>
+<td style="text-align: left;">Methods: Accountability, Political Stability and Absence of Violence, Government Effectiveness, Regulatory Quality, Rule of Law, and Control of Corruption</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="chen_tidal_2022">Chen and Lee (<a href="#ref-chen_tidal_2022" role="doc-biblioref">2022</a>)</span></td>
+<td style="text-align: left;">Carbon sequestration by habitat</td>
+<td style="text-align: left;">2022</td>
+<td style="text-align: left;">habitat</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="lebakula_ornl_2024">Lebakula et al. (<a href="#ref-lebakula_ornl_2024" role="doc-biblioref">2024</a>)</span></td>
+<td style="text-align: left;">Raster of data of human population</td>
+<td style="text-align: left;">2000-2023</td>
+<td style="text-align: left;">Global</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="lewis2017largescale">Lewis et al. (<a href="#ref-lewis2017largescale" role="doc-biblioref">2017</a>)</span></td>
+<td style="text-align: left;">Methods: Location and area of marine and terrestrial protected areas manual</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="luijendijk_et_al_state_2018">Luijendijk et al. (<a href="#ref-luijendijk_et_al_state_2018" role="doc-biblioref">2018</a>)</span></td>
+<td style="text-align: left;">A scientific report on the deterioration of sandy beaches</td>
+<td style="text-align: left;">2018</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="martell2016simple">Martell and Froese (<a href="#ref-martell2016simple" role="doc-biblioref">2013</a>)</span></td>
+<td style="text-align: left;">Methods: Data-limited stock assessments</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="sdg_14_b_1">Food and Agriculture Organization of the United Nations (<a href="#ref-sdg_14_b_1" role="doc-biblioref">2023</a>)</span></td>
+<td style="text-align: left;">Management effectiveness and access of artisanal fisheries</td>
+<td style="text-align: left;">2018-2022</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="noaa2023">NOAA (<a href="#ref-noaa2023" role="doc-biblioref">2022</a>)</span></td>
+<td style="text-align: left;">Sea surface temperature anomalies</td>
+<td style="text-align: left;">1982-2022</td>
+<td style="text-align: left;">4 km</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="ncei_ncei_2025">NCEI (<a href="#ref-ncei_ncei_2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">National Centers for Environmental Information Marine Microplastics geodatabase</td>
+<td style="text-align: left;">2021-2025</td>
+<td style="text-align: left;">5m</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="oconnor_whale_2009">O’Connor et al. (<a href="#ref-oconnor_whale_2009" role="doc-biblioref">2009</a>)</span></td>
+<td style="text-align: left;">Jobs based on number of whale watchers in a country and a regional average number of whale watchers per employee. Includes all marine mammal watching.</td>
+<td style="text-align: left;">1998-2008</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="oconnor_whale_2009">O’Connor et al. (<a href="#ref-oconnor_whale_2009" role="doc-biblioref">2009</a>)</span></td>
+<td style="text-align: left;">Total revenue from marine mammal watching</td>
+<td style="text-align: left;">1998-2008</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="organisation_for_economic_co-operation_and_development_oecd_employment_2025">Organisation for Economic Co-operation and Development (OECD) (<a href="#ref-organisation_for_economic_co-operation_and_development_oecd_employment_2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Employment in fisheries, aquaculture, and processing</td>
+<td style="text-align: left;">2009-2023</td>
+<td style="text-align: left;">annual</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="omalleyocean">O’Malley (<a href="#ref-omalleyocean" role="doc-biblioref">n.d.</a>)</span></td>
+<td style="text-align: left;">Net Primary Productivity database</td>
+<td style="text-align: left;">2003-2015</td>
+<td style="text-align: left;">0.083 deg</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="oostendorp2012occupational">Oostendorp and Freeman (<a href="#ref-oostendorp2012occupational" role="doc-biblioref">2012</a>)</span></td>
+<td style="text-align: left;">Occupations within commercial fishing, ports and harbors, ship and boat building, tourism, and transportation and shipping</td>
+<td style="text-align: left;">1989-2008</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="ramlegacystockassessmentdatabase2024">RAM Legacy Stock Assessment Database (<a href="#ref-ramlegacystockassessmentdatabase2024" role="doc-biblioref">2024</a>)</span></td>
+<td style="text-align: left;">Stock assesment scores data</td>
+<td style="text-align: left;">1800-2023</td>
+<td style="text-align: left;">Stock</td>
+<td style="text-align: left;">y</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="ricard2012examining">Ricard et al. (<a href="#ref-ricard2012examining" role="doc-biblioref">2012</a>)</span></td>
+<td style="text-align: left;">Methods: Stock assesment RAM data</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="rosenberg2014developing">Rosenberg et al. (<a href="#ref-rosenberg2014developing" role="doc-biblioref">2014</a>)</span></td>
+<td style="text-align: left;">Methods: Data-limited stocks assessments</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="schutte2010regional">Schutte, Selig, and Bruno (<a href="#ref-schutte2010regional" role="doc-biblioref">2010</a>)</span></td>
+<td style="text-align: left;">Global coral change in condition</td>
+<td style="text-align: left;">2002,1980-2009,2006</td>
+<td style="text-align: left;">0.5 km; 1 km; Sites (points)</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="schwab2017global">Schwab (<a href="#ref-schwab2017global" role="doc-biblioref">2017</a>)</span></td>
+<td style="text-align: left;">Composite measure of 12 aspects of economic competitiveness</td>
+<td style="text-align: left;">2007-2017</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="iucn_spatial_2025">IUCN (<a href="#ref-iucn_spatial_2025" role="doc-biblioref">2025a</a>)</span></td>
+<td style="text-align: left;">Threatened Species Distribution maps (i.e., spatial data) published on the IUCN Red List</td>
+<td style="text-align: left;">2025</td>
+<td style="text-align: left;">hexagonal grid system called the ISEA10 grid</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="unep-wcmc2005">UNEP-WCMC and Short (<a href="#ref-unep-wcmc2005" role="doc-biblioref">2005</a>)</span></td>
+<td style="text-align: left;">Global seagrass habitat extent</td>
+<td style="text-align: left;">1934-2020</td>
+<td style="text-align: left;">Spatial cell scale</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="socialprogressindex2022">Social Progress Index (<a href="#ref-socialprogressindex2022" role="doc-biblioref">2021</a>)</span></td>
+<td style="text-align: left;">Index measuring quality of life indicators</td>
+<td style="text-align: left;">2011-2022</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="stern2021">Stern et al. (<a href="#ref-stern2021" role="doc-biblioref">2021</a>)</span></td>
+<td style="text-align: left;">Methods: Index measuring quality of life indicators</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="tallis2011invest">Tallis et al. (<a href="#ref-tallis2011invest" role="doc-biblioref">2011</a>)</span></td>
+<td style="text-align: left;">Ranks of coastal protection provided by habitats</td>
+<td style="text-align: left;">2011</td>
+<td style="text-align: left;">habitat</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="thorbourne2011annapolis">Thorbourne (<a href="#ref-thorbourne2011annapolis" role="doc-biblioref">2011</a>)</span></td>
+<td style="text-align: left;">La Rance (France) and Annapolis (Canada) tidal plants employment data</td>
+<td style="text-align: left;">2003-2010</td>
+<td style="text-align: left;">Points (sites)</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="travaille2022minderoo">Travaille et al. (<a href="#ref-travaille2022minderoo" role="doc-biblioref">2022</a>)</span></td>
+<td style="text-align: left;">Regional fisheries governance scores based on various metrics of government capacity to improve fisheries</td>
+<td style="text-align: left;">2021</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="2022global"><span>“Global <span>Fishing</span> <span>Watch</span> <span></span> <span>Data</span> Download Portal”</span> (<a href="#ref-2022global" role="doc-biblioref">2022</a>)</span></td>
+<td style="text-align: left;">Global Datasets of AIS-based Fishing Effort and Vessel Presence</td>
+<td style="text-align: left;">2012-2020</td>
+<td style="text-align: left;">0.01 deg</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="unep-wcmcandiucn2024">UNEP-WCMC and IUCN (<a href="#ref-unep-wcmcandiucn2024" role="doc-biblioref">2024</a>)</span></td>
+<td style="text-align: left;">Location and area of marine and terrestrial protected areas</td>
+<td style="text-align: left;">1819-2023</td>
+<td style="text-align: left;">Shapefile</td>
+<td style="text-align: left;">y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="un-fao_fao_2025">UN-FAO (<a href="#ref-un-fao_fao_2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Export tonnes and value (US dollars) and of coral, ornamental fish, fish oil, sponges, shells, and seaweeds and plants</td>
+<td style="text-align: left;">1976-2023</td>
+<td style="text-align: left;">Global</td>
+<td style="text-align: left;">y</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="unitednations2013faoa">Nations (<a href="#ref-unitednations2013faoa" role="doc-biblioref">2013b</a>)</span></td>
+<td style="text-align: left;">Total revenue from commercial marine fishing</td>
+<td style="text-align: left;">1997-2007</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="unitednations2013faoa">Nations (<a href="#ref-unitednations2013faoa" role="doc-biblioref">2013b</a>)</span></td>
+<td style="text-align: left;">Total revenue from mariculture production of marine species</td>
+<td style="text-align: left;">1977-2011</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="unitednations2013faob">Nations (<a href="#ref-unitednations2013faob" role="doc-biblioref">2013a</a>)</span></td>
+<td style="text-align: left;">Revenue of Aquarium Trade Fishing derived from commodities database</td>
+<td style="text-align: left;">1984-2009</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="united_nations_fao_2016">Nations (<a href="#ref-united_nations_fao_2016" role="doc-biblioref">2016</a>)</span></td>
+<td style="text-align: left;">Pesticide application data</td>
+<td style="text-align: left;">1990-2013</td>
+<td style="text-align: left;">1 km (FAO data is National)</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="unitednations2021faostat">United Nations (<a href="#ref-unitednations2021faostat" role="doc-biblioref">2021</a>)</span></td>
+<td style="text-align: left;">N excreted in manure data</td>
+<td style="text-align: left;">2005-2019</td>
+<td style="text-align: left;">1km (FAO data is National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="unitednations2022faostata">United Nations (<a href="#ref-unitednations2022faostata" role="doc-biblioref">2022</a>)</span></td>
+<td style="text-align: left;">Fertilizer application data</td>
+<td style="text-align: left;">2005-2020</td>
+<td style="text-align: left;">1 km (FAO data is National)</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="unitednations2024a">United Nations (<a href="#ref-unitednations2024a" role="doc-biblioref">2024</a>)</span></td>
+<td style="text-align: left;">Production of finfish, seaweeds, and invertebrates</td>
+<td style="text-align: left;">1950-2022</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="united_nations_fao_2025-1">United Nations (<a href="#ref-united_nations_fao_2025-1" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Catch statistics for cetaceans and marine turtles</td>
+<td style="text-align: left;">1950-2023</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">y</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="unitednationspersonalcommunication2011fao">communication (<a href="#ref-unitednationspersonalcommunication2011fao" role="doc-biblioref">2011</a>)</span></td>
+<td style="text-align: left;">Global Number of Fishers, commercial fishing</td>
+<td style="text-align: left;">1990-2008</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="unitednationspersonalcommunication2011fao">communication (<a href="#ref-unitednationspersonalcommunication2011fao" role="doc-biblioref">2011</a>)</span></td>
+<td style="text-align: left;">Global Number of Fishers, aquaculture</td>
+<td style="text-align: left;">1993-2008</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="unitednations2012statistics">Nations (<a href="#ref-unitednations2012statistics" role="doc-biblioref">2012</a>)</span></td>
+<td style="text-align: left;">Total revenue from marine renewable energy</td>
+<td style="text-align: left;">1990/2001-2010/2008</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="unitednations2007world">Nations (<a href="#ref-unitednations2007world" role="doc-biblioref">2007</a>)</span></td>
+<td style="text-align: left;">Global mangrove extents estimated by the FAO and used to define reference points for mangrove condition</td>
+<td style="text-align: left;">1980/1990/2000/2005</td>
+<td style="text-align: left;">Country</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="pauly2020">Pauly, Zeller, and Palomareas (<a href="#ref-pauly2020" role="doc-biblioref">2020</a>)</span></td>
+<td style="text-align: left;">Sea Around Us Project: Fisheries catch by species and country</td>
+<td style="text-align: left;">1950-2019</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="watson2019global">Watson (<a href="#ref-watson2019global" role="doc-biblioref">2019</a>)</span></td>
+<td style="text-align: left;">Fisheries catch by species and gear type (tonnes/km2)</td>
+<td style="text-align: left;">1950-2017</td>
+<td style="text-align: left;">0.5 deg</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="waycott2009accelerating">Waycott et al. (<a href="#ref-waycott2009accelerating" role="doc-biblioref">2009</a>)</span></td>
+<td style="text-align: left;">Global seagrass habitat change in condition and trends</td>
+<td style="text-align: left;">1879-2007</td>
+<td style="text-align: left;">1 km, National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="wefttdi2024">WEF (<a href="#ref-wefttdi2024" role="doc-biblioref">2024</a>)</span></td>
+<td style="text-align: left;">Index that measures the set of factors and policies that enable the sustainable and resilient development of the Travel and Tourism sector</td>
+<td style="text-align: left;">2023</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">y, new publication</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="who-unicef2024">WHO-UNICEF (<a href="#ref-who-unicef2024" role="doc-biblioref">2024</a>)</span></td>
+<td style="text-align: left;">Percent population without access to improved sanitation facilities</td>
+<td style="text-align: left;">2000-2022</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="worldbank2014gdp">Bank (<a href="#ref-worldbank2014gdp" role="doc-biblioref">2014</a>)</span></td>
+<td style="text-align: left;">Gross Domestic Product; Adjustment to all revenue data layers to factor out global economic fluctuations, in 2012 $USD</td>
+<td style="text-align: left;">1960-2012</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="worldbank2024">World Bank (<a href="#ref-worldbank2024" role="doc-biblioref">2023a</a>)</span></td>
+<td style="text-align: left;">Per capita purchasing power parity (PPP) adjusted gross domestic product (GDP): GDPpcPPP</td>
+<td style="text-align: left;">1990-2023</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="worldbank2014labor">World Bank (<a href="#ref-worldbank2014labor" role="doc-biblioref">2014a</a>)</span></td>
+<td style="text-align: left;">Number of people aged 15 and older who could contribute to the production of goods and services</td>
+<td style="text-align: left;">1990-2011</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="worldbank2016population">Bank (<a href="#ref-worldbank2016population" role="doc-biblioref">2016</a>)</span></td>
+<td style="text-align: left;">Census populations for countries</td>
+<td style="text-align: left;">1990-2012</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="worldbank2014unemployment">World Bank (<a href="#ref-worldbank2014unemployment" role="doc-biblioref">2014b</a>)</span></td>
+<td style="text-align: left;">Percent of the labor force unemployed but able to and looking for work</td>
+<td style="text-align: left;">1990-2011</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="worldbank2024wgi">WorldBank (<a href="#ref-worldbank2024wgi" role="doc-biblioref">2024</a>)</span></td>
+<td style="text-align: left;">Accountability, Political Stability and Absence of Violence, Government Effectiveness, Regulatory Quality, Rule of Law, and Control of Corruption</td>
+<td style="text-align: left;">1996-2022</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="wttc2013world">WTTC (<a href="#ref-wttc2013world" role="doc-biblioref">2013</a>)</span></td>
+<td style="text-align: left;">Total contribution of tourism to employment</td>
+<td style="text-align: left;">1988-2012</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="wttc2013world">WTTC (<a href="#ref-wttc2013world" role="doc-biblioref">2013</a>)</span></td>
+<td style="text-align: left;">Total tourism revenue by country, adjusted by country’s relative proportion of coastal area</td>
+<td style="text-align: left;">1998-2012</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="froehlich2020avoiding">Froehlich (<a href="#ref-froehlich2020avoiding" role="doc-biblioref">2018</a>)</span></td>
+<td style="text-align: left;">Avoiding the ecological limits of forage fish for fed aquaculture</td>
+<td style="text-align: left;">2018</td>
+<td style="text-align: left;">Stock</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="2023monterey"><span>“Monterey <span>Bay</span> <span>Aquarium</span> <span>Seafood</span> <span>Watch</span>”</span> (<a href="#ref-2023monterey" role="doc-biblioref">2023</a>)</span></td>
+<td style="text-align: left;">Scores for the sustainability of seafood</td>
+<td style="text-align: left;">2023</td>
+<td style="text-align: left;">Stock</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="unep-wcmc2018global">UNEP-WCMC et al. (<a href="#ref-unep-wcmc2018global" role="doc-biblioref">2018</a>)</span></td>
+<td style="text-align: left;">Global Distribution of Coral Reefs</td>
+<td style="text-align: left;">1954 - 2018</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="jayathilake2020modelled">Jayathilake and Costello (<a href="#ref-jayathilake2020modelled" role="doc-biblioref">2020</a>)</span></td>
+<td style="text-align: left;">A modeled global distribution of the kelp biome; kelp extent, kelp health</td>
+<td style="text-align: left;">1900-2020</td>
+<td style="text-align: left;">Polygons rasterized to 1km</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="wernberg2019status">Wernberg et al. (<a href="#ref-wernberg2019status" role="doc-biblioref">2019</a>)</span></td>
+<td style="text-align: left;">Global kelp forest condition</td>
+<td style="text-align: left;">1969-2019</td>
+<td style="text-align: left;">Global</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="spalding2007marine">Spalding et al. (<a href="#ref-spalding2007marine" role="doc-biblioref">2007</a>)</span></td>
+<td style="text-align: left;">Classification of the world’s marine ecoregions</td>
+<td style="text-align: left;">2007</td>
+<td style="text-align: left;">Ecoregion</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="krumhansl2016global">Krumhansl et al. (<a href="#ref-krumhansl2016global" role="doc-biblioref">2016</a>)</span></td>
+<td style="text-align: left;">Global kelp trends</td>
+<td style="text-align: left;">1983-2012</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="tuholske2021">Tuholske et al. (<a href="#ref-tuholske2021" role="doc-biblioref">2021</a>)</span></td>
+<td style="text-align: left;">Global wastewater methods</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="halpern2022cumulative">Halpern et al. (<a href="#ref-halpern2022cumulative" role="doc-biblioref">2022</a>)</span></td>
+<td style="text-align: left;">Global food systems crop and livestock maps, and excess nutrient methdos</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">1km</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="murray_2019">Murray et al. (<a href="#ref-murray_2019" role="doc-biblioref">2019</a>)</span></td>
+<td style="text-align: left;">Global tidal flat habitat extent and trend, from remote sensing</td>
+<td style="text-align: left;">1984-2016</td>
+<td style="text-align: left;">30m</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="pagad_2018">Pagad et al. (<a href="#ref-pagad_2018" role="doc-biblioref">2018</a>)</span></td>
+<td style="text-align: left;">Global country level count of introduced and invasive species</td>
+<td style="text-align: left;">2018-2020, 2022</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="faofisheriesandaquaculturedepartment2015cwp">FAO Fisheries and Aquaculture Department (<a href="#ref-faofisheriesandaquaculturedepartment2015cwp" role="doc-biblioref">2015</a>)</span></td>
+<td style="text-align: left;">Food and Agriculture Organization of the United Nations major fishing areas</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Supranational</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="unep-wcmcandiucn2024">UNEP-WCMC and IUCN (<a href="#ref-unep-wcmcandiucn2024" role="doc-biblioref">2024</a>)</span></td>
+<td style="text-align: left;">The most comprehensive global database on terrestrial and marine protected areas</td>
+<td style="text-align: left;">1800 - 2023</td>
+<td style="text-align: left;">500m</td>
+<td style="text-align: left;">y</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="garcia2023">Reyes-García et al. (<a href="#ref-garcia2023" role="doc-biblioref">2023</a>)</span></td>
+<td style="text-align: left;">Global list of Culturally important species</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">continent</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="unwto2024arrivals">UNWTO (<a href="#ref-unwto2024arrivals" role="doc-biblioref">2022</a>)</span></td>
+<td style="text-align: left;">Total international arrivals, annual by country, including Overnights (tourists), Same-day (excursionists), and Total arrivals; Total number of Guests and Nights spent in accommodation establishments by domestic tourists. Data disaggregated by: All establishments, Hotels and similar establishments; Total domestic tourism trips, disaggregated by: Overnight, Same-day</td>
+<td style="text-align: left;">1995-2021</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">y, new dataset</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="worldbank2024population">World Bank (<a href="#ref-worldbank2024population" role="doc-biblioref">2023b</a>)</span></td>
+<td style="text-align: left;">Total population, annual by country</td>
+<td style="text-align: left;">1960-2023</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="ourworldindata2023population">Data (<a href="#ref-ourworldindata2023population" role="doc-biblioref">2023</a>)</span></td>
+<td style="text-align: left;">Total population, annual by country</td>
+<td style="text-align: left;">10,000 BCE-2021</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="statista2023sabapopulation">Statista (<a href="#ref-statista2023sabapopulation" role="doc-biblioref">2023a</a>)</span></td>
+<td style="text-align: left;">Total population, annual for Saba</td>
+<td style="text-align: left;">2011-2023</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="statista2023sinteustatiuspopulation">Statista (<a href="#ref-statista2023sinteustatiuspopulation" role="doc-biblioref">2023b</a>)</span></td>
+<td style="text-align: left;">Total population, annual for Sint Eustatius</td>
+<td style="text-align: left;">2011-2023</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">n</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="cia2024">CIA (<a href="#ref-cia2024" role="doc-biblioref">2023</a>)</span></td>
+<td style="text-align: left;">GDP - per capita (PPP) compares GDP on a purchasing power parity basis divided by population as of 1 July for the same year.</td>
+<td style="text-align: left;">2023</td>
+<td style="text-align: left;">National</td>
+<td style="text-align: left;">y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="zhang_et_al_gcl_fcs30_2024">Zhang et al. (<a href="#ref-zhang_et_al_gcl_fcs30_2024" role="doc-biblioref">2024</a>)</span></td>
+<td style="text-align: left;">Global distribution of beaches by type</td>
+<td style="text-align: left;">2024</td>
+<td style="text-align: left;">30m</td>
+<td style="text-align: left;">n</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-anderson2018stock" class="csl-entry" role="listitem">
+Anderson, Sean. 2018. <span>“Stock Assessment Methods for Data-Limited Fisheries: Datalimited/Datalimited.”</span> datalimited. <a href="https://github.com/datalimited/datalimited">https://github.com/datalimited/datalimited</a>.
+</div>
+<div id="ref-allen_coral_atlas_allen_2025" class="csl-entry" role="listitem">
+Atlas, Allen Coral. 2025. <span>“Allen Coral Atlas 2025 - Reef Extent.”</span> <a href="https://allencoralatlas.org/atlas/#5.49/-18.6223/153.0900">https://allencoralatlas.org/atlas/#5.49/-18.6223/153.0900</a>.
+</div>
+<div id="ref-aviso2024" class="csl-entry" role="listitem">
+AVISO. 2024. <span>“Satellite <span>Alimetry</span> <span>Data</span>: <span>Mean</span> Sea Level Rise.”</span> <em>Satellite Alimetry Satelite Altimetry Data</em>. <a href="https://www.aviso.altimetry.fr/en/data/products/ocean-indicators-products/mean-sea-level.html">https://www.aviso.altimetry.fr/en/data/products/ocean-indicators-products/mean-sea-level.html</a>.
+</div>
+<div id="ref-worldbank2014gdp" class="csl-entry" role="listitem">
+Bank, World. 2014. <span>“<span>GDP</span> (Current <span>US</span>$).”</span> <a href="http://data.worldbank.org/indicator/%20NY.GDP.MKTP.CD">http://data.worldbank.org/indicator/%20NY.GDP.MKTP.CD</a>.
+</div>
+<div id="ref-worldbank2016population" class="csl-entry" role="listitem">
+———. 2016. <span>“Population, Total.”</span> <a href="http://data.worldbank.org/indicator/SP.POP.TOTL">http://data.worldbank.org/indicator/SP.POP.TOTL</a>.
+</div>
+<div id="ref-behrenfeld1997photosynthetic" class="csl-entry" role="listitem">
+Behrenfeld, Michael J., and Paul G. Falkowski. 1997. <span>“Photosynthetic Rates Derived from Satellite-Based Chlorophyll Concentration.”</span> <em>Limnology and Oceanography</em> 42 (1): 1–20. <a href="http://onlinelibrary.wiley.com/doi/10.4319/lo.1997.42.1.0001/full">http://onlinelibrary.wiley.com/doi/10.4319/lo.1997.42.1.0001/full</a>.
+</div>
+<div id="ref-birdlife_international_and_handbook_of_the_birds_of_the_world_birdlife_2025" class="csl-entry" role="listitem">
+BirdLife International and Handbook of the Birds of the World. 2025. <span>“<span>BirdLife</span> International and Handbook of the Birds of the World (2024) Bird Species Distribution Maps of the World. Version 2024.2.”</span> <span>BirdLife</span> International. <a href="http://datazone.birdlife.org/species/requestdis">http://datazone.birdlife.org/species/requestdis</a>.
+</div>
+<div id="ref-bruno_regional_2016" class="csl-entry" role="listitem">
+Bruno, John F., and Elizabeth R. Selig. 2007. <span>“Regional <span>Decline</span> of <span>Coral</span> <span>Cover</span> in the <span>Indo</span>-<span>Pacific</span>: <span>Timing</span>, <span>Extent</span>, and <span>Subregional</span> <span>Comparisons</span>.”</span> Edited by Rob Freckleton. <em>PLoS ONE</em> 2 (8): e711. <a href="https://doi.org/10.1371/journal.pone.0000711">https://doi.org/10.1371/journal.pone.0000711</a>.
+</div>
+<div id="ref-bunting2022global" class="csl-entry" role="listitem">
+Bunting, Pete, Ake Rosenqvist, Lammert Hilarides, Richard M. Lucas, Nathan Thomas, Takeo Tadono, Thomas A. Worthington, Mark Spalding, Nicholas J. Murray, and Lisa-Maria Rebelo. 2022. <span>“Global <span>Mangrove</span> <span>Extent</span> <span>Change</span> 1996–2020: <span>Global</span> <span>Mangrove</span> <span>Watch</span> <span>Version</span> 3.0.”</span> <em>Remote Sensing</em> 14 (15): 3657. <a href="https://doi.org/10.3390/rs14153657">https://doi.org/10.3390/rs14153657</a>.
+</div>
+<div id="ref-burke2011reefs" class="csl-entry" role="listitem">
+Burke, Lauretta, Kathleen Reytar, Mark Spadling, Allison Perry, Emily Cooper, Benjamin Kushner, Elizabeth Selig, et al. 2011. <em>Reefs at Risk - Revisited</em>. Washington, D.C: World Resources Institute.
+</div>
+<div id="ref-campbell2022" class="csl-entry" role="listitem">
+Campbell, Anthony D., Lola Fatoyinbo, Liza Goldberg, and David Lagomasino. 2022. <span>“Global Hotspots of Salt Marsh Change and Carbon Emissions.”</span> <em>Nature</em> 612 (7941): 701–6. <a href="https://doi.org/10.1038/s41586-022-05355-z">https://doi.org/10.1038/s41586-022-05355-z</a>.
+</div>
+<div id="ref-centerforinternationalearthscienceinformationnetworkciesin2000gridded" class="csl-entry" role="listitem">
+Center for International Earth Science Information Network (CIESIN), Columbia University, United Nations Food and Agriculture Programme (FAO)), and Centro Internacional de Agricultura Tropical (CIAT). 2000. <em>Gridded Population of the World, Version 3 (<span>GPWv3</span>): Population Count Grid Future Estimates</em>. Palisades, NY: NASA Socioeconomic Data; Applications Center (SEDAC). <a href="http://doi.org/10.7927/H4639MPP">http://doi.org/10.7927/H4639MPP</a>.
+</div>
+<div id="ref-chen_tidal_2022" class="csl-entry" role="listitem">
+Chen, Zhao Liang, and Shing Yip Lee. 2022. <span>“Tidal <span>Flats</span> as a <span>Significant</span> <span>Carbon</span> <span>Reservoir</span> in <span>Global</span> <span>Coastal</span> <span>Ecosystems</span>.”</span> <em>Front. Mar. Sci.</em> 9 (May): 900896. <a href="https://doi.org/10.3389/fmars.2022.900896">https://doi.org/10.3389/fmars.2022.900896</a>.
+</div>
+<div id="ref-cia2024" class="csl-entry" role="listitem">
+CIA. 2023. <span>“The <span>World</span> <span>Factbook</span>: <span>Real</span> <span>GDP</span> Per Capita.”</span> <em>Central Intelligence Agency</em>. <a href="https://www.weforum.org/publications/travel-tourism-development-index-2024/">https://www.weforum.org/publications/travel-tourism-development-index-2024/</a>.
+</div>
+<div id="ref-cites_member_2015" class="csl-entry" role="listitem">
+CITES. 2015. <span>“Member Countries.”</span> <a href="https://cites.org/eng/disc/parties/index.php">https://cites.org/eng/disc/parties/index.php</a>.
+</div>
+<div id="ref-claus2012marine" class="csl-entry" role="listitem">
+Claus, S, N De Hauwere, B Vanhoorne, F Souza Dias, P Oset Garcia, F Hernandez, and J Mees. 2012. <span>“Marine <span>Regions</span>: <span>Exclusive</span> Economic Zones (V7).”</span> <a href="http://www.marineregions.org/">http://www.marineregions.org/</a>.
+</div>
+<div id="ref-clawson_global_2025" class="csl-entry" role="listitem">
+Clawson, Gage, Julia Blanchard, and Camilla Novaglio. 2025. <span>“Global Fishing Effort Model Data and Shiny App.”</span> Zenodo. <a href="https://doi.org/10.5281/zenodo.15758813">https://doi.org/10.5281/zenodo.15758813</a>.
+</div>
+<div id="ref-unitednationspersonalcommunication2011fao" class="csl-entry" role="listitem">
+communication, United Nations personal. 2011. <span>“<span>FAO</span> <span>Fisheries</span> &amp; <span>Aquaculture</span> - <span>Fishery</span> <span>Statistical</span> <span>Collections</span> - <span>Global</span> <span>Number</span> of <span>Fishers</span>.”</span> <a href="http://www.fao.org/fishery/statistics/global-fishers/en">http://www.fao.org/fishery/statistics/global-fishers/en</a>.
+</div>
+<div id="ref-ourworldindata2023population" class="csl-entry" role="listitem">
+Data, Our World in. 2023. <span>“Population, 10,000 <span>BCE</span> to 2021.”</span> <a href="https://ourworldindata.org/grapher/population">https://ourworldindata.org/grapher/population</a>.
+</div>
+<div id="ref-digirolamo2022" class="csl-entry" role="listitem">
+DiGirolamo, N., C. L. Parkinson, D. J. Cavalieri, and H. J. Zwally. 2022. <span>“Sea <span>Ice</span> <span>Concentrations</span> from <span>Nimbus</span>-7 <span>SMMR</span> and <span>DMSP</span> <span>SSM</span>/<span>I</span>-<span>SSMIS</span> <span>Passive</span> <span>Microwave</span> <span>Data</span>, <span>Version</span> 2 [<span>Data</span> <span>Set</span>].”</span> https://doi.org/<a href="https://doi.org/10.5067/MPYG15WAA4WX">https://doi.org/10.5067/MPYG15WAA4WX</a>.
+</div>
+<div id="ref-eriksen2014plastic" class="csl-entry" role="listitem">
+Eriksen, Marcus, Laurent C. M. Lebreton, Henry S. Carson, Martin Thiel, Charles J. Moore, Jose C. Borerro, Francois Galgani, Peter G. Ryan, and Julia Reisser. 2014. <span>“Plastic Pollution in the World’s Oceans: More Than 5 Trillion Plastic Pieces Weighing over 250,000 Tons Afloat at Sea.”</span> <em>PLoS ONE</em> 9 (12): e111913. <a href="https://doi.org/10.1371/journal.pone.0111913">https://doi.org/10.1371/journal.pone.0111913</a>.
+</div>
+<div id="ref-esri_2010" class="csl-entry" role="listitem">
+Esri. 2010. <span>“Esri Data and Maps.”</span>
+</div>
+<div id="ref-faofisheriesandaquaculturedepartment2015cwp" class="csl-entry" role="listitem">
+FAO Fisheries and Aquaculture Department. 2015. <span>“<span>CWP</span> <span>Handbook</span> of <span>Fishery</span> <span>Statistical</span> <span>Standards</span>. <span>Section</span> <span>H</span>: <span>FISHING</span> <span>AREAS</span> <span>FOR</span> <span>STATISTICAL</span> <span>PURPOSES</span>.”</span> Food; Agriculture Organization of the United Nations. <a href="https://unstats.un.org/unsd/classifications/Family/Detail/1022">https://unstats.un.org/unsd/classifications/Family/Detail/1022</a>.
+</div>
+<div id="ref-sdg_14_b_1" class="csl-entry" role="listitem">
+Food and Agriculture Organization of the United Nations. 2023. <span>“Progress in the Degree of Implementation of International Instruments to Promote and Protect Small-Scale Fisheries, 2022.”</span> <a href="https://www.fao.org/sustainable-development-goals/indicators/14b1/en/">https://www.fao.org/sustainable-development-goals/indicators/14b1/en/</a>.
+</div>
+<div id="ref-edffrance2011electricite" class="csl-entry" role="listitem">
+France, EDF. 2011. <span>“Électricité de <span>France</span>.”</span> <a href="https://www.edf.fr/">https://www.edf.fr/</a>.
+</div>
+<div id="ref-free2017mapping" class="csl-entry" role="listitem">
+Free, Christopher. 2017. <span>“Mapping Fish Stock Boundaries for the Original <span>Ram</span> <span>Myers</span> Stock-Recruit Database.”</span> <a href="https://marine.rutgers.edu/~cfree/mapping-fish-stock-boundaries-for-the-original-ram-myers-stock-recruit-database/">https://marine.rutgers.edu/~cfree/mapping-fish-stock-boundaries-for-the-original-ram-myers-stock-recruit-database/</a>.
+</div>
+<div id="ref-froehlich2020avoiding" class="csl-entry" role="listitem">
+Froehlich, Halley. 2018. <span>“Avoiding the Ecological Limits of Forage Fish for Fed Aquaculture.”</span> <em>Nature Sustainability</em> 1: 298–303. https://doi.org/<a href="https://doi-org.proxy.library.ucsb.edu:9443/10.1038/s41893-018-0077-1">https://doi-org.proxy.library.ucsb.edu:9443/10.1038/s41893-018-0077-1</a>.
+</div>
+<div id="ref-gentry2019exploring" class="csl-entry" role="listitem">
+Gentry, Rebecca R., Heidi K. Alleway, Melanie J. Bishop, Chris L. Gillies, Tiffany Waters, and Robert Jones. 2019. <span>“Exploring the Potential for Marine Aquaculture to Contribute to Ecosystem Services.”</span> <em>Reviews in Aquaculture</em> 0 (0). <a href="https://doi.org/10.1111/raq.12328">https://doi.org/10.1111/raq.12328</a>.
+</div>
+<div id="ref-2022global" class="csl-entry" role="listitem">
+<span>“Global <span>Fishing</span> <span>Watch</span> <span></span> <span>Data</span> Download Portal.”</span> 2022. <em>Global Fishing Watch <span></span> Data Download Portal</em>. <a href="https://globalfishingwatch.org/">https://globalfishingwatch.org/</a>.
+</div>
+<div id="ref-halpern2015spatial" class="csl-entry" role="listitem">
+Halpern, Benjamin S., Melanie Frazier, John Potapenko, Kenneth S. Casey, Kellee Koenig, Catherine Longo, Julia Stewart Lowndes, et al. 2015. <span>“Spatial and Temporal Changes in Cumulative Human Impacts on the World’s Ocean.”</span> <em>Nat Commun</em> 6 (July): 7615. <a href="https://doi.org/10.1038/ncomms8615">https://doi.org/10.1038/ncomms8615</a>.
+</div>
+<div id="ref-halpern2022cumulative" class="csl-entry" role="listitem">
+Halpern, Benjamin S., Melanie Frazier, Juliette Verstaen, Gage Clawson, Julia L. Blanchard, Richard S. Cottrell, Halley E. Froehlich, et al. 2022. <span>“The Cumulative Environmental Footprint of Global Food Production.”</span> <em>In Review</em>.
+</div>
+<div id="ref-halpern2012index" class="csl-entry" role="listitem">
+Halpern, Benjamin S., Catherine Longo, Darren Hardy, Karen L. McLeod, Jameal F. Samhouri, Steven K. Katona, Kristin Kleisner, et al. 2012. <span>“An Index to Assess the Health and Benefits of the Global Ocean.”</span> <em>Nature</em>. <a href="https://doi.org/10.1038/nature11397">https://doi.org/10.1038/nature11397</a>.
+</div>
+<div id="ref-halpern2015patterns" class="csl-entry" role="listitem">
+Halpern, Benjamin S., Catherine Longo, Julia S. Stewart Lowndes, Benjamin D. Best, Melanie Frazier, Steven K. Katona, Kristin M. Kleisner, Andrew A. Rosenberg, Courtney Scarborough, and Elizabeth R. Selig. 2015. <span>“Patterns and Emerging Trends in Global Ocean Health.”</span> <em>PLoS ONE</em> 10 (3): e0117863. <a href="https://doi.org/10.1371/journal.pone.0117863">https://doi.org/10.1371/journal.pone.0117863</a>.
+</div>
+<div id="ref-halpern2008global" class="csl-entry" role="listitem">
+Halpern, Benjamin S., Shaun Walbridge, Kimberly A. Selkoe, Carrie V. Kappel, Fiorenza Micheli, Caterina D’Agrosa, John F. Bruno, et al. 2008. <span>“A <span>Global</span> <span>Map</span> of <span>Human</span> <span>Impact</span> on <span>Marine</span> <span>Ecosystems</span>.”</span> <em>Science</em> 319 (5865): 948–52. <a href="https://doi.org/10.1126/science.1149345">https://doi.org/10.1126/science.1149345</a>.
+</div>
+<div id="ref-homer2004development" class="csl-entry" role="listitem">
+Homer, C, C Huang, L Yang, BK Wylie, and M Coan. 2004. <span>“Development of a 2001 National Land-Cover Database for the <span>United</span> <span>States</span>.”</span> <em>Photogrammetric Engineering &amp; Remote Sensing</em> 70 (7): 829–40. <a href="http://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1629&amp;context=usgsstaffpub">http://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1629&amp;context=usgsstaffpub</a>.
+</div>
+<div id="ref-international_labour_organization_average_2025" class="csl-entry" role="listitem">
+International Labour Organization. 2025. <span>“Average Monthly Earnings of Employees by Sex and Economic Activity - Annual.”</span> <a href="https://rshiny.ilo.org/dataexplorer46/?lang=en&amp;id=EAR_4MTH_SEX_ECO_CUR_NB_A">https://rshiny.ilo.org/dataexplorer46/?lang=en&amp;id=EAR_4MTH_SEX_ECO_CUR_NB_A</a>.
+</div>
+<div id="ref-iucn_spatial_2025" class="csl-entry" role="listitem">
+IUCN. 2025a. <span>“Spatial Data - <span>IUCN</span> Red List of Threatened Species.”</span> <a href="https://www.iucnredlist.org/resources/spatial-data-download">https://www.iucnredlist.org/resources/spatial-data-download</a>.
+</div>
+<div id="ref-iucn_iucn_2025" class="csl-entry" role="listitem">
+———. 2025b. <span>“The <span>IUCN</span> Red List of Threatened Species. Version 2025-1.”</span> <a href="http://www.iucnredlist.org/">http://www.iucnredlist.org/</a>.
+</div>
+<div id="ref-jambeck2015plastic" class="csl-entry" role="listitem">
+Jambeck, Jenna R., Roland Geyer, Chris Wilcox, Theodore R. Siegler, Miriam Perryman, Anthony Andrady, Ramani Narayan, and Kara Lavender Law. 2015. <span>“Plastic Waste Inputs from Land into the Ocean.”</span> <em>Science</em> 347 (6223): 768–71. <a href="https://doi.org/10.1126/science.1260352">https://doi.org/10.1126/science.1260352</a>.
+</div>
+<div id="ref-jarihovila2013" class="csl-entry" role="listitem">
+Jari Hovila, Antii Arola. 2013. <span>“<span>OMUVBd</span>: <span>OMI</span>/<span>Aura</span> <span>Surface</span> <span>UVB</span> <span>Irradiance</span> and <span>Erythemal</span> <span>Dose</span> <span>Daily</span> <span>L3</span> <span>Global</span> <span>Gridded</span> 1.0 Degree x 1.0 Degree <span>V3</span>.”</span> <em>NASA Goddard Space Flight Center, Goddard Earth Sciences Data and Information Services Center (GES DISC)</em>. <a href="http://disc.sci.gsfc.nasa.gov/datacollection/OMUVBd_V003.html">http://disc.sci.gsfc.nasa.gov/datacollection/OMUVBd_V003.html</a>.
+</div>
+<div id="ref-jayathilake2020modelled" class="csl-entry" role="listitem">
+Jayathilake, Dinusha R. M., and Mark John Costello. 2020. <span>“A Modelled Global Distribution of the Kelp Biome.”</span> <em>Biological Conservation</em> 252 (December): 108815. <a href="https://doi.org/10.1016/j.biocon.2020.108815">https://doi.org/10.1016/j.biocon.2020.108815</a>.
+</div>
+<div id="ref-kaufmann2010worldwide" class="csl-entry" role="listitem">
+Kaufmann, Daniel, Aart Kraay, and Massimo Mastruzzi. 2010. <span>“The <span>Worldwide</span> <span>Governance</span> <span>Indicators</span>: Methodology and Analytical Issues.”</span> {SSRN} {Scholarly} {Paper} ID 1682130. Rochester, NY: Social Science Research Network. <a href="http://info.worldbank.org/governance/wgi/index.aspx#home">http://info.worldbank.org/governance/wgi/index.aspx#home</a>.
+</div>
+<div id="ref-krumhansl2016global" class="csl-entry" role="listitem">
+Krumhansl, Kira A., Daniel K. Okamoto, Andrew Rassweiler, Mark Novak, John J. Bolton, Kyle C. Cavanaugh, Sean D. Connell, et al. 2016. <span>“Global Patterns of Kelp Forest Change over the Past Half-Century.”</span> <em>Proc Natl Acad Sci USA</em> 113 (48): 13785–90. <a href="https://doi.org/10.1073/pnas.1606102113">https://doi.org/10.1073/pnas.1606102113</a>.
+</div>
+<div id="ref-lebakula_ornl_2024" class="csl-entry" role="listitem">
+Lebakula, V., J. Epting, J. Moehl, C. Stipek, D. Adams, A. Reith, J. Kaufman, et al. 2024. <span>“<span>ORNL</span> <span>LandScan</span> Viewer - Oak Ridge National Laboratory <span>LandScan</span> Silver Edition.”</span> <a href="https://landscan.ornl.gov/citations">https://landscan.ornl.gov/citations</a>.
+</div>
+<div id="ref-lewis2017largescale" class="csl-entry" role="listitem">
+Lewis, N., J. C. Day, A. Wilhelm, D. Wagner, D. Gaymer, J. Parks, A. Friedlander, et al. 2017. <span>“Large-<span>Scale</span> <span>Marine</span> <span>Protected</span> <span>Areas</span>: <span>Guidelines</span> for Design and Management. <span>Best</span> <span>Practice</span> <span>Protected</span> <span>Area</span> <span>Guidelines</span> <span>Series</span>”</span> 26. https://doi.org/<a href="https://doi.org/10.2305/IUCN.CH.2017.PAG.26.en">https://doi.org/10.2305/IUCN.CH.2017.PAG.26.en</a>.
+</div>
+<div id="ref-luijendijk_et_al_state_2018" class="csl-entry" role="listitem">
+Luijendijk et al., Arjen. 2018. <span>“The State of the World’s Beaches.”</span> <em>Scientific Reports</em> 8 (April). https://doi.org/<a href="https://doi.org/10.1038/s41598-018-24630-6">https://doi.org/10.1038/s41598-018-24630-6</a>.
+</div>
+<div id="ref-martell2016simple" class="csl-entry" role="listitem">
+Martell, Steven, and Rainer Froese. 2013. <span>“A Simple Method for Estimating <span>MSY</span> from Catch and Resilience.”</span> <em>Fish and Fisheries</em> 14 (4): 504–14. <a href="https://doi.org/10.1111/j.1467-2979.2012.00485.x">https://doi.org/10.1111/j.1467-2979.2012.00485.x</a>.
+</div>
+<div id="ref-mcowen2017" class="csl-entry" role="listitem">
+Mcowen, Chris, Lauren Weatherdon, Jan-Willem Bochove, Emma Sullivan, Simon Blyth, Christoph Zockler, Damon Stanwell-Smith, et al. 2017. <span>“A Global Map of Saltmarshes.”</span> <em>BDJ</em> 5 (March): e11764. <a href="https://doi.org/10.3897/BDJ.5.e11764">https://doi.org/10.3897/BDJ.5.e11764</a>.
+</div>
+<div id="ref-2023monterey" class="csl-entry" role="listitem">
+<span>“Monterey <span>Bay</span> <span>Aquarium</span> <span>Seafood</span> <span>Watch</span>.”</span> 2023. Monterey Bay Aquarium. <a href="https://www.seafoodwatch.org/seafood-recommendations/standards-revision">https://www.seafoodwatch.org/seafood-recommendations/standards-revision</a>.
+</div>
+<div id="ref-murray_2019" class="csl-entry" role="listitem">
+Murray, Nicholas J., Stuart R. Phinn, Michael DeWitt, Renata Ferrari, Renee Johnston, Mitchell B. Lyons, Nicholas Clinton, David Thau, and Richard A. Fuller. 2019. <span>“The Global Distribution and Trajectory of Tidal Flats.”</span> <em>Nature</em> 565 (7738): 222–25. <a href="https://doi.org/10.1038/s41586-018-0805-8">https://doi.org/10.1038/s41586-018-0805-8</a>.
+</div>
+<div id="ref-unitednations2007world" class="csl-entry" role="listitem">
+Nations, United. 2007. <span>“The World’s Mangroves 1980-2005. <span>FAO</span> <span>Forestry</span> <span>Paper</span> 153.”</span> Food; Agricutural Organization.
+</div>
+<div id="ref-unitednations2012statistics" class="csl-entry" role="listitem">
+———. 2012. <span>“Statistics <span>Division</span> - <span>Energy</span> <span>Statistics</span>.”</span> <a href="http://unstats.un.org/unsd/energy/edbase.htm">http://unstats.un.org/unsd/energy/edbase.htm</a>.
+</div>
+<div id="ref-unitednations2013faob" class="csl-entry" role="listitem">
+———. 2013a. <span>“<span>FAO</span> <span>Fisheries</span> &amp; <span>Aquaculture</span> - <span>Fishery</span> <span>Statistical</span> <span>Collections</span> - <span>Fishery</span> <span>Commodities</span> and <span>Trade</span>.”</span> <a href="http://www.fao.org/fishery/statistics/global-commodities-production/en">http://www.fao.org/fishery/statistics/global-commodities-production/en</a>.
+</div>
+<div id="ref-unitednations2013faoa" class="csl-entry" role="listitem">
+———. 2013b. <span>“<span>FAO</span> <span>Fisheries</span> &amp; <span>Aquaculture</span> - <span>Fishery</span> <span>Statistical</span> <span>Collections</span> - <span>Global</span> <span>Aquaculture</span> <span>Production</span>.”</span> <a href="http://www.fao.org/fishery/statistics/global-aquaculture-production/en">http://www.fao.org/fishery/statistics/global-aquaculture-production/en</a>.
+</div>
+<div id="ref-united_nations_fao_2016" class="csl-entry" role="listitem">
+———. 2016. <span>“<span>FAO</span> <span>Statistics</span> <span>Division</span> - <span>Inputs</span>.”</span> <a href="http://faostat3.fao.org/browse/R/*/E">http://faostat3.fao.org/browse/R/*/E</a>.
+</div>
+<div id="ref-ncei_ncei_2025" class="csl-entry" role="listitem">
+NCEI. 2025. <span>“<span>NCEI</span> Marine Microplastics.”</span> <a href="https://www.ncei.noaa.gov/products/microplastics">https://www.ncei.noaa.gov/products/microplastics</a>.
+</div>
+<div id="ref-global_coral_reef_monitoring_network_status_2020" class="csl-entry" role="listitem">
+Network, Global Coral Reef Monitoring. 2020. <span>“Status of Coral Reefs of the World: 2020.”</span> <a href="https://gcrmn.net/2020-report/">https://gcrmn.net/2020-report/</a>.
+</div>
+<div id="ref-noaa2023" class="csl-entry" role="listitem">
+NOAA. 2022. <span>“The <span>Coral</span> <span>Reef</span> <span>Temperature</span> <span>Anomaly</span> <span>Database</span> (<span>CoRTAD</span>) <span>Version</span> 6 - <span>Global</span>, 4 Km <span>Sea</span> <span>Surface</span> <span>Temperature</span> and <span>Related</span> <span>Thermal</span> <span>Stress</span> <span>Metrics</span> for 1982 to 2022.”</span> <a href="https://www.nodc.noaa.gov/sog/Cortad/">https://www.nodc.noaa.gov/sog/Cortad/</a>.
+</div>
+<div id="ref-oconnor_whale_2009" class="csl-entry" role="listitem">
+O’Connor, Simon, Roderick Campbell, Herman Cortez, Tristan Knowles, et al. 2009. <span>“Whale <span>Watching</span> <span>Worldwide</span>: Tourism Numbers, Expenditures and Expanding Economic Benefits, a Special Report from the <span>International</span> <span>Fund</span> for <span>Animal</span> <span>Welfare</span>.”</span> <em>Yarmouth MA, USA, Prepared by Economists at Large</em> 228.
+</div>
+<div id="ref-omalleyocean" class="csl-entry" role="listitem">
+O’Malley, Robert. n.d. <span>“Ocean Productivity, <span>Standard</span> <span>VGPM</span>.”</span> <em>Ocean Productivity</em>. Accessed July 31, 2018. <a href="http://orca.science.oregonstate.edu/2160.by.4320.monthly.xyz.vgpm.m.chl.m.sst.php">http://orca.science.oregonstate.edu/2160.by.4320.monthly.xyz.vgpm.m.chl.m.sst.php</a>.
+</div>
+<div id="ref-oostendorp2012occupational" class="csl-entry" role="listitem">
+Oostendorp, R. H., and R. B. Freeman. 2012. <span>“The Occupational Wages Around the World (<span>OWW</span>) Database: <span>Update</span> for 1983-2008.”</span> <a href="http://www.nber.org/oww/">http://www.nber.org/oww/</a>.
+</div>
+<div id="ref-organisation_for_economic_co-operation_and_development_oecd_employment_2025" class="csl-entry" role="listitem">
+Organisation for Economic Co-operation and Development (OECD). 2025. <span>“Employment in Fisheries, Aquaculture, and Processing.”</span> <a href="https://data-explorer.oecd.org/vis?fs[0]=Topic%2C1%7CAgriculture%20and%20fisheries%23AGR%23%7CFisheries%20and%20aquaculture%23AGR_FSA%23&amp;pg=0&amp;fc=Topic&amp;bp=true&amp;snb=6&amp;vw=ov&amp;df[ds]=dsDisseminateFinalDMZ&amp;df[id]=DSD_FISH_EMP%40DF_FISH_EMPL&amp;df[ag]=OECD.TAD.ARP&amp;df[vs]=1.0&amp;dq=.A...._T._T&amp;pd=2009%2C&amp;to[TIME_PERIOD]=false&amp;ly[cl]=TIME_PERIOD&amp;ly[rs]=REF_AREA&amp;ly[rw]=DOMAIN">https://data-explorer.oecd.org/vis?fs[0]=Topic%2C1%7CAgriculture%20and%20fisheries%23AGR%23%7CFisheries%20and%20aquaculture%23AGR_FSA%23&amp;pg=0&amp;fc=Topic&amp;bp=true&amp;snb=6&amp;vw=ov&amp;df[ds]=dsDisseminateFinalDMZ&amp;df[id]=DSD_FISH_EMP%40DF_FISH_EMPL&amp;df[ag]=OECD.TAD.ARP&amp;df[vs]=1.0&amp;dq=.A...._T._T&amp;pd=2009%2C&amp;to[TIME_PERIOD]=false&amp;ly[cl]=TIME_PERIOD&amp;ly[rs]=REF_AREA&amp;ly[rw]=DOMAIN</a>.
+</div>
+<div id="ref-pagad_2018" class="csl-entry" role="listitem">
+Pagad, Shyama, Piero Genovesi, Lucilla Carnevali, Dmitry Schigel, and Melodie A. McGeoch. 2018. <span>“Introducing the <span>Global</span> <span>Register</span> of <span>Introduced</span> and <span>Invasive</span> <span>Species</span>.”</span> <em>Sci Data</em> 5 (1): 170202. <a href="https://doi.org/10.1038/sdata.2017.202">https://doi.org/10.1038/sdata.2017.202</a>.
+</div>
+<div id="ref-pauly2020" class="csl-entry" role="listitem">
+Pauly, D, D Zeller, and M. L. D. Palomareas, eds. 2020. <span>“Sea <span>Around</span> <span>Us</span> <span>Concepts</span>, <span>Design</span> and <span>Data</span>.”</span> <a href="https://seaaroundus.org">seaaroundus.org</a>.
+</div>
+<div id="ref-ramlegacystockassessmentdatabase2024" class="csl-entry" role="listitem">
+RAM Legacy Stock Assessment Database. 2024. <span>“<span>RAM</span> <span>Legacy</span> <span>Stock</span> <span>Assessment</span> <span>Database</span> V4.65.”</span> <a href="https://doi.org/10.5281/zenodo.2542919">https://doi.org/10.5281/zenodo.2542919</a>.
+</div>
+<div id="ref-garcia2023" class="csl-entry" role="listitem">
+Reyes-García, Victoria, Rodrigo Cámara-Leret, Benjamin S. Halpern, Casey O’Hara, Delphine Renard, Noelia Zafra-Calvo, and Sandra Díaz. 2023. <span>“Biocultural Vulnerability Exposes Threats of Culturally Important Species.”</span> <em>Proceedings of the National Academy of Sciences</em> 120 (2): e2217303120. <a href="https://doi.org/10.1073/pnas.2217303120">https://doi.org/10.1073/pnas.2217303120</a>.
+</div>
+<div id="ref-ricard2012examining" class="csl-entry" role="listitem">
+Ricard, Daniel, Cóilín Minto, Olaf P Jensen, and Julia K Baum. 2012. <span>“Examining the Knowledge Base and Status of Commercially Exploited Marine Species with the <span>RAM</span> <span>Legacy</span> <span>Stock</span> <span>Assessment</span> <span>Database</span>.”</span> <em>Fish Fish</em> 13 (4): 380–98. <a href="https://doi.org/10.1111/j.1467-2979.2011.00435.x">https://doi.org/10.1111/j.1467-2979.2011.00435.x</a>.
+</div>
+<div id="ref-rosenberg2014developing" class="csl-entry" role="listitem">
+Rosenberg, Andrew A., Michael J. Fogarty, Andrew B. Cooper, Mark Dickey-Collas, Elizabeth A. Fulton, Nicolás L. Gutiérrez, Kimberly J. W. Hyde, et al. 2014. <span>“Developing <span>New</span> <span>Approaches</span> to 116 <span>Global</span> <span>Stock</span> <span>Status</span> <span>Assessment</span> and <span>Fishery</span> <span>Production</span> <span>Potential</span> of the <span>Seas</span>.”</span> <em>FAO Fisheries and Aquaculture Circular</em>, no. 1086: 0_1, I, IV, X, XI, 1, 3, 5–25, 27–45, 47–49, 51–81, 83–89, 91–103, 105–75. <a href="https://www.proquest.com/docview/1503534033/citation/730141EBD50C4F26PQ/1">https://www.proquest.com/docview/1503534033/citation/730141EBD50C4F26PQ/1</a>.
+</div>
+<div id="ref-schutte2010regional" class="csl-entry" role="listitem">
+Schutte, Vgw, Er Selig, and Jf Bruno. 2010. <span>“Regional Spatio-Temporal Trends in <span>Caribbean</span> Coral Reef Benthic Communities.”</span> <em>Marine Ecology Progress Series</em> 402 (March): 115–22. <a href="https://doi.org/10.3354/meps08438">https://doi.org/10.3354/meps08438</a>.
+</div>
+<div id="ref-schwab2017global" class="csl-entry" role="listitem">
+Schwab, Klaus. 2017. <span>“The <span>Global</span> <span>Competitiveness</span> <span>Report</span> 2017–2018.”</span> ISBN-13: 978-1-944835-11-8. World Economic Forum. <a href="http://www3.weforum.org/docs/GCR2017-2018/05FullReport/TheGlobalCompetitivenessReport2017%E2%80%932018.pdf">http://www3.weforum.org/docs/GCR2017-2018/05FullReport/TheGlobalCompetitivenessReport2017%E2%80%932018.pdf</a>.
+</div>
+<div id="ref-convention_on_biological_diversity_3rd_2005" class="csl-entry" role="listitem">
+Secretariat of the Convention on Biological Diversity. 2005. <span>“Handbook of the <span>Convention</span> on <span>Biological</span> <span>Diversity</span>.”</span> 3rd edition. Montreal, Canada. <a href="http://www.cbd.int/">http://www.cbd.int/</a>.
+</div>
+<div id="ref-socialprogressindex2022" class="csl-entry" role="listitem">
+Social Progress Index. 2021. <span>“2021 <span>Social</span> <span>Progress</span> <span>Index</span>.”</span> <em>2021 Social Progress Index</em>. <a href="https://www.socialprogress.org/">https://www.socialprogress.org/</a>.
+</div>
+<div id="ref-spalding2007marine" class="csl-entry" role="listitem">
+Spalding, Mark D., Helen E. Fox, Gerald R. Allen, Nick Davidson, Zach A. Ferdaña, Max Finlayson, Benjamin S. Halpern, et al. 2007. <span>“Marine <span>Ecoregions</span> of the <span>World</span>: <span>A</span> <span>Bioregionalization</span> of <span>Coastal</span> and <span>Shelf</span> <span>Areas</span>.”</span> <em>BioScience</em> 57 (7): 573–83. <a href="https://doi.org/10.1641/B570707">https://doi.org/10.1641/B570707</a>.
+</div>
+<div id="ref-statista2023sabapopulation" class="csl-entry" role="listitem">
+Statista. 2023a. <span>“Population of <span>Saba</span> in the <span>Caribbean</span> <span>Netherlands</span> from 2011 to 2023.”</span> <a href="https://www.statista.com/statistics/706807/population-of-saba-in-the-caribbean-netherlands/">https://www.statista.com/statistics/706807/population-of-saba-in-the-caribbean-netherlands/</a>.
+</div>
+<div id="ref-statista2023sinteustatiuspopulation" class="csl-entry" role="listitem">
+———. 2023b. <span>“Population of <span>Sint</span> <span>Eustatius</span> in the <span>Caribbean</span> <span>Netherlands</span> from 2011 to 2023.”</span> <a href="https://www.statista.com/statistics/706806/population-of-sint-eustatius-in-the-caribbean-netherlands/">https://www.statista.com/statistics/706806/population-of-sint-eustatius-in-the-caribbean-netherlands/</a>.
+</div>
+<div id="ref-stern2021" class="csl-entry" role="listitem">
+Stern, S, J Harmacek, M Htitich, and Petra Krylova. 2021. <em>Social <span>Progress</span> <span>Index</span> <span>Methodology</span> <span>Summary</span></em>. Washington, D.C.: Social Progress Imperative. <a href="http://www.socialprogressimperative.org/global-index/">http://www.socialprogressimperative.org/global-index/</a>.
+</div>
+<div id="ref-tallis2011invest" class="csl-entry" role="listitem">
+Tallis, H. T., T. Ricketts, A. D. Guerry, S. A. Wood, R. Sharp, E. Nelson, D. Ennaanay, et al. 2011. <em><span>InVEST</span> 2.2.1 <span>User</span>’s <span>Guide</span></em>. The Natural Capital Project, Stanford University.
+</div>
+<div id="ref-thorbourne2011annapolis" class="csl-entry" role="listitem">
+Thorbourne, R. 2011. <span>“Annopolis <span>Royal</span> Plant in <span>Canada</span>.”</span>
+</div>
+<div id="ref-travaille2022minderoo" class="csl-entry" role="listitem">
+Travaille, Kendra Thomas, McNeill McNeill, Julia Santana Garcon, Jemma Turner, Megan Cundy, Alex McLennan, Abiyoso Purnomosakti, Vyvyan Summers, Fiona David, and Tony Worby. 2022. <span>“Minderoo <span>Global</span> <span>Fishing</span> <span>Index</span>.”</span> Minderoo Foundation (2021) The Global Fishing Index: Assessing the Sustainability of the world’s marine fisheries. <a href="https://cdn.minderoo.org/content/uploads/2021/11/05140211/20220505-global-fishing-index-2021-report.pdf">https://cdn.minderoo.org/content/uploads/2021/11/05140211/20220505-global-fishing-index-2021-report.pdf</a>.
+</div>
+<div id="ref-tuholske2021" class="csl-entry" role="listitem">
+Tuholske, Cascade, Benjamin S. Halpern, Gordon Blasco, Juan Carlos Villasenor, Melanie Frazier, and Kelly Caylor. 2021. <span>“Mapping Global Inputs and Impacts from of Human Sewage in Coastal Ecosystems.”</span> Edited by Bijeesh Kozhikkodan Veettil. <em>PLoS ONE</em> 16 (11): e0258898. <a href="https://doi.org/10.1371/journal.pone.0258898">https://doi.org/10.1371/journal.pone.0258898</a>.
+</div>
+<div id="ref-unep-wcmcandiucn2024" class="csl-entry" role="listitem">
+UNEP-WCMC and IUCN. 2024. <span>“Protected <span>Planet</span>: <span>The</span> <span>World</span> <span>Database</span> on <span>Protected</span> <span>Areas</span> (<span>WDPA</span>).”</span> <em>Protected Planet</em>. <a href="https://www.protectedplanet.net/">https://www.protectedplanet.net/</a>.
+</div>
+<div id="ref-unep-wcmc2005" class="csl-entry" role="listitem">
+UNEP-WCMC, and F. T. Short. 2005. <em>Global <span>Distribution</span> of <span>Seagrasses</span> (Version 7.1). <span>Seventh</span> Update to the Data Layer Used in <span>Green</span> and <span>Short</span> (2003).</em> Cambridge, UK: UNEP World Conservation Monitoring Centre. <a href="http://data.unep-wcmc.org/datasets/7">http://data.unep-wcmc.org/datasets/7</a>.
+</div>
+<div id="ref-unep-wcmc2018global" class="csl-entry" role="listitem">
+UNEP-WCMC, WorldFish Centre, WRI, and TNC. 2018. <span>“Global <span>Distribution</span> of <span>Coral</span> <span>Reefs</span> Version 4.0.”</span> <a href="https://data.unep-wcmc.org/datasets/1">https://data.unep-wcmc.org/datasets/1</a>.
+</div>
+<div id="ref-un-fao_fao_2025" class="csl-entry" role="listitem">
+UN-FAO. 2025. <span>“<span>FAO</span> Fisheries &amp; Aquaculture - Fishery Statistical Collections - Fishery Commodities and Trade.”</span> <a href="https://www.fao.org/fishery/en/collection/global_commodity_prod">https://www.fao.org/fishery/en/collection/global_commodity_prod</a>.
+</div>
+<div id="ref-unitednations2021faostat" class="csl-entry" role="listitem">
+United Nations. 2021. <span>“<span>FAOSTAT</span> - <span>N</span> Excreted in Manure.”</span> <a href="http://www.fao.org/faostat/en/#data/EMN">http://www.fao.org/faostat/en/#data/EMN</a>.
+</div>
+<div id="ref-unitednations2022faostata" class="csl-entry" role="listitem">
+———. 2022. <span>“<span>FAOSTAT</span> - <span>Fertilizer</span> by <span>Nutrient</span>.”</span> <a href="http://www.fao.org/faostat/en/#data/RFN">http://www.fao.org/faostat/en/#data/RFN</a>.
+</div>
+<div id="ref-unitednations2024a" class="csl-entry" role="listitem">
+———. 2024. <span>“<span>FAO</span> <span>Fisheries</span> &amp; <span>Aquaculture</span> - <span>Fishery</span> <span>Statistical</span> <span>Collections</span> - <span>Global</span> <span>Aquaculture</span> <span>Production</span>.”</span> <a href="https://www.fao.org/fishery/en/collection/aquaculture?lang=en">https://www.fao.org/fishery/en/collection/aquaculture?lang=en</a>.
+</div>
+<div id="ref-united_nations_fao_2025-1" class="csl-entry" role="listitem">
+———. 2025. <span>“<span>FAO</span> Fisheries &amp; Aquaculture - Fishery Statistical Collections - Global Capture Production.”</span> <a href="https://www.fao.org/fishery/en/collection/capture?lang=en">https://www.fao.org/fishery/en/collection/capture?lang=en</a>.
+</div>
+<div id="ref-unwto2024arrivals" class="csl-entry" role="listitem">
+UNWTO. 2022. <span>“United <span>Nations</span> <span>World</span> <span>Tourism</span> <span>Organization</span> (<span>UNWTO</span>) 145 <span>Key</span> <span>Tourism</span> <span>Statistics</span>: <span>Inbound</span> <span>Tourism</span> - <span>Total</span> Arrivals (<span>International</span> and <span>Domestic</span>).”</span> <a href="https://www.unwto.org/tourism-statistics/key-tourism-statistics">https://www.unwto.org/tourism-statistics/key-tourism-statistics</a>.
+</div>
+<div id="ref-watson2019global" class="csl-entry" role="listitem">
+Watson, Reginald. 2019. <span>“Global <span>Fisheries</span> <span>Landings</span> <span>V5</span>.0.”</span> <a href="https://doi.org/10.25959/5c522cadbea37">https://doi.org/10.25959/5c522cadbea37</a>.
+</div>
+<div id="ref-waycott2009accelerating" class="csl-entry" role="listitem">
+Waycott, Michelle, Carlos M. Duarte, Tim J. B. Carruthers, Robert J. Orth, William C. Dennison, Suzanne Olyarnik, Ainsley Calladine, et al. 2009. <span>“Accelerating Loss of Seagrasses Across the Globe Threatens Coastal Ecosystems.”</span> <em>PNAS</em> 106 (30): 12377–81. <a href="https://doi.org/10.1073/pnas.0905620106">https://doi.org/10.1073/pnas.0905620106</a>.
+</div>
+<div id="ref-wefttdi2024" class="csl-entry" role="listitem">
+WEF. 2024. <span>“Travel &amp; <span>Tourism</span> <span>Development</span> <span>Index</span> 2024.”</span> <em>World Economic Forum</em>. <a href="https://www.weforum.org/publications/travel-tourism-development-index-2024/">https://www.weforum.org/publications/travel-tourism-development-index-2024/</a>.
+</div>
+<div id="ref-wernberg2019status" class="csl-entry" role="listitem">
+Wernberg, Thomas, Kira Krumhansl, Karen Filbee-Dexter, and Morten F. Pedersen. 2019. <span>“Status and <span>Trends</span> for the <span>World</span>’s <span>Kelp</span> <span>Forests</span>.”</span> In <em>World <span>Seas</span>: An <span>Environmental</span> <span>Evaluation</span></em>, 57–78. Elsevier. <a href="https://doi.org/10.1016/B978-0-12-805052-1.00003-6">https://doi.org/10.1016/B978-0-12-805052-1.00003-6</a>.
+</div>
+<div id="ref-who-unicef2024" class="csl-entry" role="listitem">
+WHO-UNICEF. 2024. <span>“Joint <span>Monitoring</span> <span>Programme</span> (<span>JMP</span>) for Water Supply and Sanitation - Household Data.”</span> <a href="https://washdata.org/data/household#!/">https://washdata.org/data/household#!/</a>.
+</div>
+<div id="ref-worldbank2014labor" class="csl-entry" role="listitem">
+World Bank. 2014a. <span>“Labor Force, Total.”</span> <a href="http://data.worldbank.org/indicator/SL.TLF.TOTL.IN">http://data.worldbank.org/indicator/SL.TLF.TOTL.IN</a>.
+</div>
+<div id="ref-worldbank2014unemployment" class="csl-entry" role="listitem">
+———. 2014b. <span>“Unemployment, Total (% of Total Labor Force) (Modeled <span>ILO</span> Estimate).”</span> <a href="http://data.worldbank.org/indicator/SL.UEM.TOTL.ZS">http://data.worldbank.org/indicator/SL.UEM.TOTL.ZS</a>.
+</div>
+<div id="ref-worldbank2024" class="csl-entry" role="listitem">
+———. 2023a. <span>“<span>GDP</span> Per Capita, <span>PPP</span> (Constant 2011 International $).”</span> <em>GDP Per Capita, PPP (Constant 2011 International $)</em>. <a href="https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD">https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD</a>.
+</div>
+<div id="ref-worldbank2024population" class="csl-entry" role="listitem">
+———. 2023b. <span>“Population, Total.”</span> <a href="https://data.worldbank.org/indicator/SP.POP.TOTL">https://data.worldbank.org/indicator/SP.POP.TOTL</a>.
+</div>
+<div id="ref-worldbank2024wgi" class="csl-entry" role="listitem">
+WorldBank. 2024. <span>“Worldwide <span>Governance</span> <span>Indicators</span> (<span>WGI</span>) <span></span> <span>Data</span> <span>Catalog</span>.”</span> <a href="https://datacatalog.worldbank.org/dataset/worldwide-governance-indicators">https://datacatalog.worldbank.org/dataset/worldwide-governance-indicators</a>.
+</div>
+<div id="ref-wttc2013world" class="csl-entry" role="listitem">
+WTTC. 2013. <span>“World <span>Travel</span> and <span>Tourism</span> <span>Council</span>.”</span> <a href="https://www.wttc.org/research/economicimpact-research/methodology/">www.wttc.org/research/economicimpact-research/methodology/</a>.
+</div>
+<div id="ref-zhang_et_al_gcl_fcs30_2024" class="csl-entry" role="listitem">
+Zhang et al., Li. 2024. <span>“<span>GCL</span>_FCS30: A Global Coastline Dataset with 30m Resolution.”</span> <a href="https://zenodo.org/records/13943679">https://zenodo.org/records/13943679</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Learn more about the <a href="https://oceanhealthindex.org/" target="_blank">Ocean Health Index</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Source code available on <a href="https://github.com/OHI-Science/ohi-methods/tree/main" target="_blank"><i class="fa-brands fa-github" title="the Github octocat" aria-label="github"></i> GitHub</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
