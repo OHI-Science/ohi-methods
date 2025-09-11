@@ -367,13 +367,6 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="dimensions">Dimensions</h2>
 <p><strong>Table 2.3. Dimension used to calculate an OHI goal score</strong> Goal scores are the average of current and likely future status. Likely future status adjusts current status scores based on pressures and resilience variables acting on the goal as well as recent trends in status.</p>
 <table class="table">
-<colgroup>
-<col style="width: 4%">
-<col style="width: 2%">
-<col style="width: 48%">
-<col style="width: 8%">
-<col style="width: 35%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Dimension</th>
@@ -389,28 +382,28 @@ ul.task-list li input[type="checkbox"] {
 <td>-</td>
 <td>Current state of the goal relative to the desired “reference point”. Values range from 0-100.</td>
 <td><em>Section 6. Goal models and data</em></td>
-<td>Calculated using functions in ohi-global repo: https://github.com/OHI-Science/ohi-global/blob/draft/eez/conf/functions.R and the <em>scenario_data_years.csv</em> file (in same folder)</td>
+<td>Calculated using functions in <a href="https://github.com/OHI-Science/ohi-global/blob/draft/eez/conf/functions.R">ohi-global repo</a> and the <a href="https://github.com/OHI-Science/ohi-global/blob/draft/eez/conf/scenario_data_years.csv"><em>scenario_data_years.csv</em></a> file</td>
 </tr>
 <tr class="even">
 <td>Predicted future status</td>
 <td>Resilience</td>
 <td>Variables such as good governance and ecological factors that provide resilience to pressures, and thus, are likely to improve future status. Values range from 0-100</td>
 <td><em>Section 5.3 Likely future status dimensions</em></td>
-<td>Calculated using functions in ohicore package.And, files: <em>resilience_categories.csv</em> and <em>resilience_matrix.csv</em> located here: https://github.com/OHI-Science/ohi-global/tree/draft/eez/conf</td>
+<td>Calculated using functions in ohicore package. Files: <a href="https://github.com/OHI-Science/ohi-global/blob/draft/eez/conf/resilience_categories.csv"><em>resilience_categories.csv</em></a> and <a href="https://github.com/OHI-Science/ohi-global/blob/draft/eez/conf/resilience_matrix.csv"><em>resilience_matrix.csv</em></a></td>
 </tr>
 <tr class="odd">
 <td>Predicted future status</td>
 <td>Pressure</td>
 <td>Pressures stress the system and threaten future delivery of benefits, and thus, are likely to reduce future status. Values range from 0-100</td>
 <td><em>Section 5.3 Likely future status dimensions</em></td>
-<td>Calculated using function in ohicore package. And, files: <em>pressure_categories.csv</em> and <em>pressures_matrix.csv</em>, located here: https://github.com/OHI-Science/ohi-global/tree/draft/eez/conf</td>
+<td>Calculated using function in ohicore package. Files: <a href="https://github.com/OHI-Science/ohi-global/blob/draft/eez/conf/pressure_categories.csv"><em>pressure_categories.csv</em></a> and <a href="https://github.com/OHI-Science/ohi-global/blob/draft/eez/conf/pressures_matrix.csv"><em>pressures_matrix.csv</em></a></td>
 </tr>
 <tr class="even">
 <td>Predicted future status</td>
 <td>Trend</td>
 <td>Average yearly change in status (typically estimated using most recent 5 years of data) multiplied by 5 to esimate five years into the future. Units are proportional change (absolute change/year is divided by the value of the earliest year) and range from -1 to 1</td>
 <td><em>Section 5.3 Likely future status dimensions</em></td>
-<td>Calculated using functions from ohi-global repo: https://github.com/OHI-Science/ohi-global/blob/draft/eez/conf/functions.R and the scenario_data_years.csv file (in same folder)</td>
+<td>Calculated using functions from <a href="https://github.com/OHI-Science/ohi-global/blob/draft/eez/conf/functions.R">ohi-global repo</a> and the <a href="https://github.com/OHI-Science/ohi-global/blob/draft/eez/conf/scenario_data_years.csv"><em>scenario_data_years.csv</em></a> file</td>
 </tr>
 </tbody>
 </table>

@@ -1,6 +1,9 @@
 ---
 title: "Theory of OHI"
+bibliography: references.bib
 toc: true
+messages: FALSE
+warning: FALSE
 ---
 
 [![Credit: Body of Water during Dawn, Pixabay](media/ocean_sunset_island.jpg){fig-align="right"}](https://www.pexels.com/photo/body-of-water-during-dawn-37403/)
@@ -22,3 +25,28 @@ One of the primary contributions of the OHI is that it recognizes people are an 
 The global Ocean Health Index has been assessed every year since 2012. The primary goal of each yearly assessment is to calculate a new year of scores using the most recent data. Often, in addition to incorporating an additional year of data, we make improvements to models or decide to use different data sources. To ensure that scores for all years are comparable, we recalculate scores for previous scenario years for each assessment using new methods and data sources. For the current assessment, for example, in addition to calculating the current year’s scores, we recalculate scores for every year since 2012. Consequently, comparisons among years should always be performed using data from the same assessment year so trends in scores reflect changes to ocean health rather than changes to methods.
 
 Not all data layers are reported through the most current assessment year, and consequently, the OHI scores are calculated using the most recent year of available data. Details on which years are used for each data layer are provided in Table 7.2.
+
+::: {.callout-note collapse="true"}
+### Table 7.2. Data sources used to create data layers (click to expand)
+
+```{r DataSources Table, echo=FALSE, warning=FALSE, error=FALSE, messages=FALSE}
+
+library(tidyverse)
+library(magrittr)
+library(kableExtra)
+
+assessmentYear <- 2025
+
+### Get datasource primary data
+
+## get source data
+ds_source <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/d1ef2c13e211c39c659714a66873ac1296151b6b/metadata_documentation/layers_eez_data_sources.csv") %>%
+  mutate(ds_reference = paste0("@", ds_reference)) %>%
+  select(Reference = ds_reference, "Description" = ds_description, Years=ds_years, Resolution = ds_native_resolution, Updated = sprintf("ds_updated_%s", assessmentYear - 1))
+
+ds_source |>
+  kbl(format="markdown")
+
+```
+:::
+
