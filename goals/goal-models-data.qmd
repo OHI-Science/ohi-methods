@@ -379,7 +379,7 @@ For the chemical pollution component [@halpern2008global], we used a combination
 
 Human-derived pathogens are found in coastal waters primarily from sewage discharge or direct human defecation. Since we did not have access to a global database of in situ measurements of pathogen levels, we used a proxy measure for the status of pathogen pollution, namely the number of people in coastal areas without access to improved sanitation facilities [@who-unicef2024]. The underlying assumption is that locations with a low number of people with access to improved facilities will likely have higher levels of coastal water contamination from human pathogens. To estimate this pathogen intensity, we multiplied the human population within 25 miles of the coast by the percentage of population without access to improved sanitation. This allows countries with low coastal population densities and low access to improved sanitation to score better than high population countries with better access if the absolute number of people without access is lower in the small country.
 
-The status of trash pollution was estimated using globally-available plastic pollution data [@eriksen2014plastic].
+The status of trash pollution was estimated using globally-available plastic pollution data [@ncei_ncei_2025].
 
 #### Current status
 
